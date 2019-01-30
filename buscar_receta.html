@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <title>Buscar Recetas</title>
+        <link rel="stylesheet" href="CSS/plantilla.css">
+        <link rel="stylesheet" href="CSS/buscar_receta.css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock" rel="stylesheet">
+        
+    </head>
+    
+    <body>
+
+        <div class= "inicio">
+                <a href="pagina_principal.html" ><h1>La cousine</h1></a>
+        </div>
+
+        <div>
+            <a href="perfil.html" class="boton">Perfil</a>
+            <a href="buscar_receta.html" class="boton">Recetas</a>
+            <a href="subir_receta.html" class="boton">Subir</a>
+            <a href="glosario.html" class="boton">Glosario</a>
+            <input type="search" placeholder="Buscar" class="boton buscar">
+        </div>     
+        
+        <div class="contenedor">
+            <div class="columnas">
+                <h2>Tipo de Receta</h2>
+
+                <div class="tipo_receta">
+                <form>
+                    <input type="radio" name="tipo" id="radio1">
+                    <label for="radio1">Comidas</label> <br>
+
+                    <input type="radio" name="tipo" id="radio2">
+                    <label for="radio2">Postres</label> <br>
+
+                    <input type="radio" name="tipo" id="radio3">
+                    <label for="radio3">Cocteles</label> <br>
+
+                </form>
+                </div>
+            </div>
+
+            <div class="columnas">
+                <h2>Categor&iacute;as</h2>
+
+                <div class="categoria">
+
+                    <form>
+                        <h2>Sabor</h2>
+                        <input type="radio" name="sabor" id="sabor1">
+                        <label for="sabor1">1</label>
+                        <input type="radio" name="sabor" id="sabor2">
+                        <label for="sabor2">2</label>
+                        <input type="radio" name="sabor" id="sabor3">
+                        <label for="sabor3">3</label>
+                        <input type="radio" name="sabor" id="sabor4">
+                        <label for="sabor4">4</label>
+                        <input type="radio" name="sabor" id="sabor5">
+                        <label for="sabor5">5</label>
+                        <br>
+                        <h2>Facilidad</h2>
+                        <input type="radio" name="facilidad" id="fac1">
+                        <label for="fac1">1</label>
+                        <input type="radio" name="facilidad" id="fac2">
+                        <label for="fac2">2</label>
+                        <input type="radio" name="facilidad" id="fac3">
+                        <label for="fac3">3</label>
+                        <input type="radio" name="facilidad" id="fac4">
+                        <label for="fac4">4</label>
+                        <input type="radio" name="facilidad" id="fac5">
+                        <label for="fac5">5</label>
+                        <br>
+                        <h2>Accesibilidad</h2>
+                        <input type="radio" name="accesibilidad" id="acc1">
+                        <label for="acc1">1</label>
+                        <input type="radio" name="accesibilidad" id="acc2">
+                        <label for="acc2">2</label>
+                        <input type="radio" name="accesibilidad" id="acc3">
+                        <label for="acc3">3</label>
+                        <input type="radio" name="accesibilidad" id="acc4">
+                        <label for="acc4">4</label>
+                        <input type="radio" name="accesibilidad" id="acc5">
+                        <label for="acc5">5</label>
+                        <br>
+                        <h2>Tiempo</h2>
+                        <input type="radio" name="tiempo" id="tiempo1">
+                        <label for="tiempo1">1</label>
+                        <input type="radio" name="tiempo" id="tiempo2">
+                        <label for="tiempo2">2</label>
+                        <input type="radio" name="tiempo" id="tiempo3">
+                        <label for="tiempo3">3</label>
+                        <input type="radio" name="tiempo" id="tiempo4">
+                        <label for="tiempo4">4</label>
+                        <input type="radio" name="tiempo" id="tiempo5">
+                        <label for="tiempo5">5</label>
+                    </form>
+                </div>
+            </div>
+
+            <div class="columnas">
+                <h2>Nacionalidad</h2>
+
+                <div class="nacionalidad">
+                <form>
+                    <select name="Nacionalidad">
+                        <option value="Mexico">M&eacute;xico</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Italia">Italia</option>
+                        <option value="Japón">Jap&oacute;n</option>
+                        <option value="Etc.">Etc...</option>
+                    </select>
+                </form>
+                </div>
+
+            </div>
+
+            <button class="boton_generico">Buscar Receta</button>
+        </div>
+
+        <script src="js/jquery-3.3.1.slim.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/popper.min.js"></script>
+    </body>
+</html>

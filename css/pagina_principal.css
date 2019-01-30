@@ -1,0 +1,68 @@
+h2{
+    font-size: 30px;
+}
+
+h3{
+    color: #8e3d60;
+    font-family: 'Inconsolata', monospace;
+    font-size: 23px;
+    text-align: center;
+    margin: 20px;
+    
+}
+
+td{
+    padding: 8px;
+    margin: 30px;
+    text-align: center;
+}
+p{
+    text-align: center;
+    padding: 10px;
+}
+
+a{
+    text-align: center;
+}
+
+
+.comida{
+    font-family: 'Inconsolata', monospace;
+    color:#000; 
+    margin: 0px;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration:none; 
+    float: left;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    width: 100%;
+    background: #f77d45;
+}
+.postre{
+    font-family: 'Inconsolata', monospace;
+    color:#000; 
+    margin: 0px;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration:none; 
+    float: left;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    width: 100%;
+    background: #fc6767;
+}
+
+.coctel{
+    font-family: 'Inconsolata', monospace;
+    color:#000; 
+    margin: 0px;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration:none; 
+    float: left;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    width: 100%;
+    background: #fde162;
+}

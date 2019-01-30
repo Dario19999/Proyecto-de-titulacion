@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Subir Recetas</title>
+        <link rel="stylesheet" href="CSS/plantilla.css">
+        <link rel="stylesheet" href="CSS/subir_receta.css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock" rel="stylesheet">
+    </head>
+    
+    <body>
+
+        <div class= "inicio">
+                <a href="pagina_principal.html" ><h1>La cousine</h1></a>
+        </div>
+
+        <div>
+            <a href="perfil.html" class="boton">Perfil</a>
+            <a href="buscar_receta.html" class="boton">Recetas</a>
+            <a href="subir_receta.html" class="boton">Subir</a>
+            <a href="glosario.html" class="boton">Glosario</a>
+            <input type="search" placeholder="Buscar" class="boton buscar">
+        </div>     
+        
+        <p class="subtitulo_subir">Ingredientes</p> 
+        <form name="cantidad">
+
+            <input type="text" name="cant_1" class="cantidad"> 
+            <input type="text" name="medida_1" class="medida">
+            <input type="text" name="ingr_1" class="ingr"> <br>
+            
+            <input type="text" name="cant_2" class="cantidad">
+            <input type="text" name="medida_2" class="medida">
+            <input type="text" name="ingr_2" class="ingr"> <br>
+
+            <input type="text" name="cant_3" class="cantidad">
+            <input type="text" name="medida_3" class="medida">
+            <input type="text" name="ingr_3" class="ingr"> <br>
+
+            <input type="text" name="cant_4" class="cantidad">
+            <input type="text" name="medida_4" class="medida">
+            <input type="text" name="ingr_4" class="ingr"> <br>
+
+            <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="boton_generico">
+
+        </form>
+
+        <p class="subtitulo_subir">Porciones</p>
+        <form name="porciones">
+            <input type="text" name="porcion" class="cantidad">
+        </form>
+
+        <p class="subtitulo_subir">Procedimiento</p>
+        <form name="procedimiento">
+            <p>Paso 1:</p> 
+            <textarea name="paso_1" cols="30" rows="10" placeholder="Describa el primer paso."></textarea> <br>
+
+            <p>Paso 2:</p> 
+            <textarea name="paso_1" cols="30" rows="10" placeholder="Describa el segundo paso."></textarea>
+
+            <input type="button" name="agregar_paso" value="Agregar Paso" class="boton_generico">
+        </form>
+        
+        <div class="div_boton">
+            <button class="boton_generico">Subir</button>
+        </div>
+
+        <script src="js/jquery-3.3.1.slim.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/popper.min.js"></script>
+    </body>
+</html>
