@@ -86,6 +86,12 @@ li a{
     cursor: pointer;
 }
 
+.dropdown-item {
+    text-decoration: none;
+    font-family: 'Bree Serif', serif;
+    font-size: 20px;
+}
+
 div button{
     background-color: #ff7e05;
     transition: 0.5s;
