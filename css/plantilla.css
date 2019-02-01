@@ -8,15 +8,16 @@ body{
 }
 
 .inicio{
-    background: #f2976a;
+    background: #ff7e05;
     text-align: center;
 }
-.inicio a {
+
+.brand a{
     color: #fffaa3;
-    font-family: 'Sacramento', cursive;
+    font-family: 'Yellowtail', cursive;
     font-size: 40px;
     text-align: center;
-    text-decoration:none; 
+    text-decoration: none;
     width: 100%;
 }
 
@@ -31,14 +32,13 @@ h2{
     font-family: 'Inconsolata', monospace;
     background: #e03551;
     color:#000; 
-    margin: 0px;
+    height: 50px;
     padding: 10px 0px;
     text-align: center;
     width: 20%;
-    text-decoration:none; 
+    text-decoration: none;
     float: left;
     margin-bottom: 20px;
-    margin-top: 0px;
 }
 
 .boton.buscar{
@@ -49,7 +49,7 @@ h2{
     border: none;
     outline: none;
     height: 40px;
-    background: #f1834c;
+    background: #ff7e05;
     font-size: 15px;
     border-radius: 20px;
     color: #000;
@@ -58,6 +58,35 @@ h2{
 }
 
 .boton_generico:hover{
-    background: #ef9e47;
+    background: #f18c07;
+    cursor: pointer;
+}
+
+li a{
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Yellowtail', cursive;
+    text-align: center;
+    font-size: 30px;    
+}
+
+.nav_button{
+    background-color: #ff7e05;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-size: 30px;
+    vertical-align:middle;
+}
+.nav_button:hover{
+    background-color: #e03551;
+    cursor: pointer;
+}
+
+div button{
+    background-color: #ff7e05;
+    transition: 0.5s;
+}
+div button:hover{
+    background-color: #e03551;
     cursor: pointer;
 }

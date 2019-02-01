@@ -1,44 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Pruebas</title>
+        <link rel="icon" href="img/icon1.png">
+        <link rel="stylesheet" href="CSS/plantilla.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail" rel="stylesheet">
+        
+        
+    </head>
     
-    <title>pruebas</title>
+    <body>
 
-    <style type="text/css">
-    .color1{
-        background-color: aqua;
-        height: 50px;
-    }
-    .color2{
-        background-color: blueviolet;
-        height: 50px;
-    }
-    .color3{
-        background-color: blue;
-        height: 50px;
-    }
-    </style>
-</head>
-<body>
-    
-    <div class="container-fluid">
 
-        <div class="row">
+    <nav class="navbar navbar-expand-md inicio">
+        <ul class="nav nav-justified">
 
-            <div class="col color1"> </div>
-            <div class="col color2"> </div>
-            <div class="col color3"> </div>
+            <li class="nav-item brand">
+                <a href="pagina_principal.html" class="navbar-brand" style="color: #fffaa3">La Cousine</a>
+            </li>
+            <li class="nav-item">
+                <a href="perfil.html" class="nav-link nav_button" style="color: black;">Perfil</a>
+            </li>
 
-        </div>
+            <li class="nav-item">
+                <a href="glosario.html" class="nav-link nav_button" style="color: black;">Glosario</a>
+            </li>
 
-    </div>              
+            <li class="nav-item">
+                <a href="subir_receta.html" class="nav-link nav_button" style="color: black;">Subir</a>
+            </li>
 
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/popper.min.js"></script>
-</body>
+            <li class="nav-item">
+                <a href="buscar_receta.html" class="nav-link nav_button" style="color: black;">Buscar</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <button class="btn btn-default dropdown-toggle nav_button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="img/iconfinder_Configuration-01_1976051.svg" width="45px" height="45px" alt="Settings">
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a href="#" class="dropdown-item">Editar Perfil</a>
+                    <a href="login.html" class="dropdown-item">Cerrar Sesion</a>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+
+        <script src="js/jquery-3.3.1.slim.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/popper.min.js"></script>
+    </body>
+
 </html>

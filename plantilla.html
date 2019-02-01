@@ -6,26 +6,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <title>P&aacute;gina principal</title>
+        <title>Plantilla</title>
+        <link rel="icon" href="img/icon1.png">
         <link rel="stylesheet" href="CSS/plantilla.css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail" rel="stylesheet">
+        
         
     </head>
     
     <body>
+        
+        <div class= "container-fluid inicio">
 
-        <div class= "inicio">
-                <a href="pagina_principal.html" ><h1>La cousine</h1></a>
+            <div class="row">
+                <div class="col-1"> </div>
+                <div class="col-4"> </div>
+                <div class="col">
+                    <a class="navbar-brand" href="pagina_principal.html" ><h1>La cousine</h1></a>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-1 center-block">
+                    
+                </div>
+            </div>
         </div>
 
-        <div>
-            <a href="perfil.html" class="boton">Perfil</a>
-            <a href="buscar_receta.html" class="boton">Recetas</a>
-            <a href="subir_receta.html" class="boton">Subir</a>
-            <a href="glosario.html" class="boton">Glosario</a>
-            <input type="search" placeholder="Buscar" class="boton buscar">
-        </div>     
+        <ul class="nav nav-justified">
+            <li class="nav-item">
+                <a href="perfil.html" class="nav-link">Perfil</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="glosario.html" class="nav-link">Glosario</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="subir_receta.html" class="nav-link">Subir</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="buscar_receta.html" class="nav-link">Buscar</a>
+            </li>
+        </ul>
     
+        <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    <img src="img/iconfinder_Configuration-01_1976051.svg" width="40px" height="40px" alt="Configuración">
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Editar Perfil</a>
+                    <a href="login.html" class="dropdown-item">Cerrar Sesion</a>
+                </div>
+        </div>
+
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>
