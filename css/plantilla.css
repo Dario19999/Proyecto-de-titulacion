@@ -16,9 +16,10 @@ body{
     color: #fffaa3;
     font-family: 'Yellowtail', cursive;
     font-size: 40px;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     width: 100%;
+    padding: 10px;
 }
 
 h2{
