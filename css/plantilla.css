@@ -64,21 +64,24 @@ h2{
 
 li a{
     text-decoration: none;
-    color: #000000;
     font-family: 'Yellowtail', cursive;
     text-align: center;
-    font-size: 30px;    
+    font-size: 30px;   
 }
 
 .nav_button{
     background-color: #ff7e05;
     border-radius: 10px;
     transition: 0.5s;
-    font-size: 30px;
+    font-size: 25px;
+    color: black;
     vertical-align:middle;
+    margin-top: 10px;
+    margin-right: 3px;
 }
 .nav_button:hover{
     background-color: #e03551;
+    color: #fffaa3;
     cursor: pointer;
 }
 
