@@ -1,22 +1,56 @@
+body { 
+    padding-top: 100px; 
+    
+}
+.inicio{
+    background: #ff7e05;
+    text-align: center;
+}
 
-h3{
-    color: #8e3d60;
-    font-family: 'Inconsolata', monospace;
+.brand a{
+    color: #fffaa3;
+    font-family: 'Yellowtail', cursive;
+    font-size: 40px;
     text-align: left;
-    font-size: 25px;
-    margin: 20px;
-   
-}
-p{
-    padding: 20px;
-}
-
-.video{
-    margin: 10px;
+    text-decoration: none;
+    width: 100%;
     padding: 10px;
-    width: 60%;
 }
 
-.video.boton{
-    background: white;
+li a{
+    text-decoration: none;
+    font-family: 'Yellowtail', cursive;
+    text-align: center;
+    font-size: 30px;   
+}
+
+.nav_button{
+    background-color: #ff7e05;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-size: 25px;
+    color: black;
+    vertical-align:middle;
+    margin-top: 10px;
+    margin-right: 3px;
+}
+.nav_button:hover{
+    background-color: #e03551;
+    color: #fffaa3;
+    cursor: pointer;
+}
+
+.dropdown-item {
+    text-decoration: none;
+    font-family: 'Bree Serif', serif;
+    font-size: 20px;
+}
+
+div button{
+    background-color: #ff7e05;
+    transition: 0.5s;
+}
+div button:hover{
+    background-color: #e03551;
+    cursor: pointer;
 }

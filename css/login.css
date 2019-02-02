@@ -1,6 +1,6 @@
 *{
-    font-family: 'Inconsolata', monospace;
-    background: #f0f1f5;   
+    font-family: 'Bree Serif', serif;
+    background-color: #fff;
 }
 
 body{
@@ -11,99 +11,72 @@ body{
 }
 
 h1{
-    color: #fffaa3;
-    font-family: 'Sacramento', cursive;
-    font-size: 50px;
-    text-align: center;
-    text-decoration:none; 
-    width: 100%;
-    background: #f2976a;
+    font-family: 'Yellowtail', cursive;
+    color: #ff7e05;
 }
+
+.titulo{
+    font-family: 'Yellowtail', cursive;
+    text-align: center;
+}
+
 form{
     background: #fff;
 }
+
 .login{
     width: 320px;
-    height: 430px;
-    border-color: #000;
+    height: 350px;
     background: #fff;
-    color: #000;
-    top: 55%;
+    top: 50%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 0px 30px;
+    padding: 20px 30px;
     
 }
 
-.titulo h1{
-    background: #fff;
-    color: #f2976a;
-}
-
-.login input{
-    width: 100%;
-    margin-bottom: 20px;
-    
+p{
+    text-align: center;
 }
 
 .login input[type="text"],
 .login input[type="password"] {
     outline: none;
-    height: 30px;
+    height: 35px;
     color: rgb(92, 88, 88);
     font-size: 15px;
-}
-
-.login button[type="submit"]{
-    border: none;
-    outline: none;
-    height: 40px;
-    background: #f1834c;
-    font-size: 15px;
-    border-radius: 20px;
-    color: #000;
     width: 100%;
-}
-
-.login button[type="submit"]:hover{
-    background: #ef9e47;
-    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: 'Inconsolata', monospace;
 }
 
 .boton p{
-    background: #f1834c;
+    background-color: #ff7e05;
     font-size: 15px;
-    border-radius: 20px;
+    border-radius: 10px;
+    transition: 0.5s;
     color: #000;
     width: 100%;
     border: none;
     outline: none;
-    height: 30px;
+    height: 35px;
+    transition: 0.5s;
+    padding: 5px;
+    margin-top: 7px;
 }
 
-a{
-    text-decoration: none;
-    font-size: 15px;
-    line-height: 20px;
-    color: rgb(131, 130, 130);
+p{
     background: #fff;
-    
-}
-
- p{
-    background: #fff;
-}
-
-a:hover{
-    color: #ee7133;
 }
 
 .hiperenlace{
     background: #fff;
 }
 
-label{
-    background: #fff;
+.boton:hover{
+    background-color: #e03551;
+    color: #ff7e05;
+    cursor: pointer;
 }
