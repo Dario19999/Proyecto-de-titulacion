@@ -1,68 +1,102 @@
-h2{
-    font-size: 30px;
+*{
+    margin: 0px;
+    padding: 0px;
 }
 
-h3{
-    color: #8e3d60;
-    font-family: 'Inconsolata', monospace;
-    font-size: 23px;
-    text-align: center;
-    margin: 20px;
-    
+body{
+    background: #eceff8;
+    padding-top: 100px; 
 }
 
-td{
-    padding: 8px;
-    margin: 30px;
+.inicio{
+    background: #ff7e05;
     text-align: center;
 }
-p{
-    text-align: center;
+
+.brand a{
+    color: #fffaa3;
+    font-family: 'Yellowtail', cursive;
+    font-size: 40px;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
     padding: 10px;
 }
 
-a{
+h2{
+    color: #8e3d60;
+    font-family: 'Overlock', cursive;
+    text-align: left;
+    font-size: 25px;
+}
+
+.boton.buscar{
+    background: #fff;
+}
+
+.boton_generico{
+    font-family: 'Yellowtail', cursive;
+    background-color: #ff7e05;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-size: 25px;
+    color: black;
+    vertical-align:middle;
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 3px;
+}
+
+.boton_generico:hover{
+    background-color: #e03551;
+    color: #fffaa3;
+    cursor: pointer;
+}
+
+li a{
+    text-decoration: none;
+    font-family: 'Yellowtail', cursive;
+    text-align: center;
+    font-size: 30px;   
+}
+
+.nav_button{
+    background-color: #ff7e05;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-size: 25px;
+    color: black;
+    vertical-align:middle;
+    text-align: center;
+    margin-right: 3px;
+}
+.nav_button:hover{
+    background-color: #e03551;
+    color: #fffaa3;
+    cursor: pointer;
+}
+
+.dropdown-item {
+    text-decoration: none;
+    font-family: 'Bree Serif', serif;
+    font-size: 20px;
+}
+
+.col-lg-5{
+    padding: 20px;
+}
+
+h1{
     text-align: center;
 }
 
-
-.comida{
-    font-family: 'Inconsolata', monospace;
-    color:#000; 
-    margin: 0px;
-    padding: 10px 0px;
-    text-align: center;
-    text-decoration:none; 
-    float: left;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    width: 100%;
-    background: #f77d45;
-}
-.postre{
-    font-family: 'Inconsolata', monospace;
-    color:#000; 
-    margin: 0px;
-    padding: 10px 0px;
-    text-align: center;
-    text-decoration:none; 
-    float: left;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    width: 100%;
-    background: #fc6767;
+.jumbotron{
+    margin: 10px;
+    background-color:#ff7e0581 !important;
+    
 }
 
-.coctel{
-    font-family: 'Inconsolata', monospace;
-    color:#000; 
-    margin: 0px;
-    padding: 10px 0px;
+
+p{
     text-align: center;
-    text-decoration:none; 
-    float: left;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    width: 100%;
-    background: #fde162;
 }
