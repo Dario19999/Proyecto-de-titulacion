@@ -6,59 +6,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <title>Plantilla</title>
+        <title>Pruebas</title>
         <link rel="icon" href="img/icon1.png">
         <link rel="stylesheet" href="CSS/plantilla.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
         
         
     </head>
     
     <body>
-        
-        <div class= "container-fluid inicio">
 
-            <div class="row">
-                <div class="col-1"> </div>
-                <div class="col-4"> </div>
-                <div class="col">
-                    <a class="navbar-brand" href="pagina_principal.html" ><h1>La cousine</h1></a>
-                </div>
-                <div class="col-4"></div>
-                <div class="col-1 center-block">
+
+    <nav class="navbar navbar-expand-md inicio fixed-top scrolling-navbar" role="navigation">
+
+        <a href="pagina_principal.html" class="navbar-brand" style="color: #fffaa3; font-family: 'Yellowtail', cursive; font-size: 40px;">La Cousine</a>
+
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
                     
-                </div>
-            </div>
-        </div>
-
-        <ul class="nav nav-justified">
-            <li class="nav-item">
-                <a href="perfil.html" class="nav-link">Perfil</a>
-            </li>
-
-            <li class="nav-item">
-                <a href="glosario.html" class="nav-link">Glosario</a>
-            </li>
-
-            <li class="nav-item">
-                <a href="subir_receta.html" class="nav-link">Subir</a>
-            </li>
-
-            <li class="nav-item">
-                <a href="buscar_receta.html" class="nav-link">Buscar</a>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
-        <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                    <img src="img/iconfinder_Configuration-01_1976051.svg" width="40px" height="40px" alt="Configuración">
-                </button>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Editar Perfil</a>
-                    <a href="login.html" class="dropdown-item">Cerrar Sesion</a>
-                </div>
+            <ul class="navbar-nav nav-justified w-100 mr-auto">
+
+                <li class="nav-item">
+                    <a href="perfil.html" class="nav-link nav_button">Perfil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="glosario.html" class="nav-link nav_button">Glosario</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="subir_receta.html" class="nav-link nav_button">Subir</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="buscar_receta.html" class="nav-link nav_button">Buscar</a>
+                </li>
+
+                <li class="nav-item dropdown">
+
+                    <button class="btn btn-default dropdown-toggle nav_button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/iconfinder_Configuration-01_1976051.svg" width="40px" height="40px" alt="Settings">
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a href="#" class="dropdown-item nav_button">Editar Perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item nav_button">Cerrar Sesi&oacute;n</a>
+                    </div>
+
+                </li>
+
+            </ul>
         </div>
+    </nav>
+
+
 
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
