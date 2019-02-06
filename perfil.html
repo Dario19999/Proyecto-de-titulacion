@@ -18,7 +18,7 @@
     <body>
 
 
-    <nav class="navbar navbar-expand-md inicio fixed-top scrolling-navbar" role="navigation">
+    <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
 
         <a href="pagina_principal.html" class="navbar-brand" style="color: #fffaa3; font-family: 'Yellowtail', cursive; font-size: 40px;">La Cousine</a>
 
@@ -54,6 +54,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a href="#" class="dropdown-item">Editar Perfil</a>
+                        <div class="dropdown-divider"></div>
                         <a href="login.html" class="dropdown-item">Cerrar Sesi&oacute;n</a>
                     </div>
 
@@ -62,40 +63,63 @@
             </ul>
         </div>
     </nav>
-    
-        <div class="foto">
-            <img src="http://cdn.onlinewebfonts.com/svg/download_191958.png" alt="Foto de perfil" width="300" height="300">
-            
-            <div class="datos">
+<!-----------------------------------[Fin de Plantilla]------------------------------------------>
+
+    <div class="container-fluid">
+
+        <div style="float: right;">
+            <a href="editar_perfil.html" class="btn nav_button" style="font-family: 'Yellowtail', cursive; text-decoration: none;">Editar Perfil</a>
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col d-inline text-center">
+                <img src="img/abstract-user-icon-3.svg" alt="Foto de perfil" width="300" height="300">
+            </div>
+
+            <div class="datos col d-inline" align="left">
                 <h2>Nombre</h2>
                 <h2>Nacionalidad</h2>
                 <h2>Recetas</h2>
+                <h2>Genero</h2>
             </div>
+        </div>
+        
+        <br>
+        <hr>
+        <br>
 
-            <div class="boton_coord">
-                <button class="boton_generico">Editar Perfil</button>
+        <div class="row d-block">
+            <div class="col mx-auto" style="width: 100px">
+                <h2>Insignias</h2>
             </div>
         </div>
 
-        <hr>
-        
-        <h3>Insignias</h3> <br>
-        <div class="contenedor">
-            <div class="insignias">
-                <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg" width="230" height="230">
+        <br>
+        <br>
+
+        <div class="row insignias">
+            <div class="col">
+                <div class="text-center">
+                    <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg" width="230" height="230">
+                </div>
             </div>
 
-            <div class="insignias">
-                <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg" width="230" height="230">
+            <div class="col">
+                <div class="text-center">
+                    <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg" width="230" height="230">
+                </div>
             </div>
 
-            <div class="insignias">
-                <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg" width="230" height="230">
+            <div class="col">
+                <div class="text-center">
+                    <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg" width="230" height="230">
+                </div>
             </div>
-        </div>  
-
-        <script src="js/jquery-3.3.1.slim.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/popper.min.js"></script>
-    </body>
+        </div>
+    </div>
+    
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+</body>
 </html>
