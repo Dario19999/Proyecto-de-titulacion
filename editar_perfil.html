@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <title>Pruebas</title>
+        <title>Editar Perfil</title>
         <link rel="icon" href="img/icon1.png">
         <link rel="stylesheet" href="CSS/plantilla.css">
+        <link rel="stylesheet" href="css/editar_perfil.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
         
@@ -63,12 +64,101 @@
             </ul>
         </div>
     </nav>
+<!-----------------------------------[Fin de Plantilla]------------------------------------------>
 
+<div class="container-fluid">
 
+    <div class="row justify-content-center align-items-center">
+        <div class="col d-inline text-center">
+            <img src="img/abstract-user-icon-3.svg" alt="Foto de perfil" width="300" height="300">
+        </div>
 
-        <script src="js/jquery-3.3.1.slim.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/popper.min.js"></script>
-    </body>
+        <div class="datos col d-inline" align="left">
+            <form>
+                <div class="form-group">
+                    <label for="subirArchivo">Seleccionar Imagen de Perfil</label>
+                    <input type="file" class="form-control-file" id="subirArchivo">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <br>
+    <hr>
+    <br>
 
+    <div class="contenedor_formulario text-center">
+        <form>
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <div class="form-group col-md-8 text-center">
+                    <h2>Nombre</h2>
+                    <input type="text"  class="form-control" placeholder="Ingrese su nuevo nombre de usuario...">
+                </div>
+            </div>
+
+            <div class="form-row h-100 justify-content-center align-items-center">
+
+                <div class="form-group col-md-4">
+                    <h2>Nacionalidad</h2>
+                    
+                    <select class="form control">
+                        <option>Argentina</option>
+                        <option>Bolivia</option>
+                        <option>Brasil</option>
+                        <option>Chile</option>
+                        <option>Colombia</option>
+                        <option>Costa Rica</option>
+                        <option>Cuba</option>
+                        <option>Ecuador</option>
+                        <option>El Salvador</option>
+                        <option>Guatemala</option>
+                        <option>Haití</option>
+                        <option>Honduras</option>
+                        <option selected>México</option>
+                        <option>Nicaragua</option>
+                        <option>Panamá</option>
+                        <option>Paraguay</option>
+                        <option>Perú</option>
+                        <option>Republica Dominicana</option>
+                        <option>Uruguay</option>
+                        <option>Venezuela</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    
+                        <h2>Genero</h2>
+                        <div class="form-check">
+                            <input type="radio"  class="form-check-input" id="inputGeneroM" name="Genero" value="option 1">
+                            <label for="inputGeneroM">Masuculino</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="radio"  class="form-check-input" id="inputGeneroF" name="Genero" value="option 1">
+                            <label for="inputGeneroF">Femenino</label>
+
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <a href="cambiar_contraseña.html" style="font-family: 'Bree Serif', serif; color: #ff7e05;">Cambiar Contraseña</a>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <button type="submit" class="btn boton_generico">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+    
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+</body>
 </html>

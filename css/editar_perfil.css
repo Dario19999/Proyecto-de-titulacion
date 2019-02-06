@@ -1,0 +1,23 @@
+.contenedor_formulario{
+    max-width: 700px;
+    border-style: groove;
+	padding: 10px 20px;
+	margin: 10px auto;
+	padding: 20px;
+	border-radius: 8px;
+}
+}
+div h2{
+    font-family: 'Bree Serif', serif;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+}
+
+label{
+    font-family: 'Bree Serif', serif;
+}
+
+.row{
+    display: flex;
+}

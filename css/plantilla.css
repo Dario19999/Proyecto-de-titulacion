@@ -23,27 +23,20 @@ body{
     padding: 10px;
 }
 
-h2{
-    color: #8e3d60;
-    font-family: 'Overlock', cursive;
-    text-align: left;
-    font-size: 25px;
-}
 
 .boton.buscar{
     background: #fff;
 }
 
 .boton_generico{
-    font-family: 'Yellowtail', cursive;
+    font-family: 'Bree Serif', serif;
     background-color: #ff7e05;
     border-radius: 10px;
     transition: 0.5s;
-    font-size: 25px;
+    font-size: 20px;
     color: black;
     vertical-align:middle;
     text-align: center;
-    margin-top: 10px;
     margin-right: 3px;
 }
 
