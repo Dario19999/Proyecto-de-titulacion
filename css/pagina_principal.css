@@ -5,7 +5,7 @@
 
 body{
     background: #eceff8;
-    padding-top: 100px; 
+    padding-top: 86px; 
 }
 
 .inicio{
@@ -91,12 +91,28 @@ h1{
 }
 
 .jumbotron{
-    margin: 10px;
-    background-color:#ff7e0581 !important;
+    margin: 30px;
+    background-color:#ff7e05ea !important;
+    height: 450px;
     
 }
 
 
 p{
     text-align: center;
+}
+
+.encabezado{
+    margin: 0px;
+    padding-top: 30px;
+    background-image: url("https://userscontent2.emaze.com/images/bd914df1-7980-48ec-894e-e0d677ee8026/43de5fb2-1283-4516-9847-bf211054d11b.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    opacity: .95;
+}
+
+.contenido{
+    padding-top: 40px;
+    padding-bottom: 15px;
 }
