@@ -70,8 +70,10 @@ div button:hover{
     margin-left: 15px;
 }
 
-.btn{
+a button{
     font-family: 'Bree Serif', serif;
     font-size: 20px;
     float: right;
+    background-color: #ff7e05;
+    text-decoration: none;
 }
