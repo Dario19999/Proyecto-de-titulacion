@@ -54,3 +54,18 @@ div button:hover{
     background-color: #e03551;
     cursor: pointer;
 }
+
+.page-item a{
+    font-family: 'Bree Serif', serif;
+    font-size: 30px;
+}
+
+.separador{
+    font-family: 'Yellowtail', cursive;
+    font-size: 30px;
+}
+
+.def{
+    margin: 20px;
+    margin-left: 15px;
+}
