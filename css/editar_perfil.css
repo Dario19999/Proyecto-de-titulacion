@@ -6,7 +6,7 @@
 	padding: 20px;
 	border-radius: 8px;
 }
-}
+
 div h2{
     font-family: 'Bree Serif', serif;
     font-size: 30px;
@@ -16,8 +16,4 @@ div h2{
 
 label{
     font-family: 'Bree Serif', serif;
-}
-
-.row{
-    display: flex;
 }
