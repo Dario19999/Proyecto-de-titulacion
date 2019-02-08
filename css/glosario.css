@@ -1,7 +1,13 @@
-body { 
-    padding-top: 100px; 
-    
+*{
+    margin: 0px;
+    padding: 0px;
 }
+
+body{
+    background: #eceff8;
+    padding-top: 100px; 
+}
+
 .inicio{
     background: #ff7e05;
     text-align: center;
@@ -15,6 +21,30 @@ body {
     text-decoration: none;
     width: 100%;
     padding: 10px;
+}
+
+
+.boton.buscar{
+    background: #fff;
+}
+
+.boton_generico{
+    font-family: 'Bree Serif', serif;
+    font-size: 20px;
+    float: right;
+    background-color: #ff7e05;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.5s;
+    vertical-align:middle;
+    text-align: center;
+    margin-right: 3px;
+}
+
+.boton_generico:hover{
+    background-color: #e03551;
+    color: #fffaa3;
+    cursor: pointer;
 }
 
 li a{
@@ -31,7 +61,7 @@ li a{
     font-size: 25px;
     color: black;
     vertical-align:middle;
-    margin-top: 10px;
+    text-align: center;
     margin-right: 3px;
 }
 .nav_button:hover{
@@ -45,6 +75,7 @@ li a{
     font-family: 'Bree Serif', serif;
     font-size: 20px;
 }
+
 
 div button{
     background-color: #ff7e05;
@@ -60,22 +91,30 @@ div button:hover{
     font-size: 30px;
 }
 
-.separador{
+.letra{
     font-family: 'Yellowtail', cursive;
-    font-size: 40px;
+    font-size: 45px;
+    padding-left: 15px;
 }
 
-.def{
-    margin: 20px;
-    margin-left: 15px;
+.definicion{
+    padding-left: 20px;
 }
 
-a button{
-    font-family: 'Bree Serif', serif;
-    font-size: 20px;
-    float: right;
-    background-color: #ff7e05;
-    text-decoration: none;
+dl{
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+dt{
+    font-size: 25px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.video{
+    padding-left: 15px;
+    padding-top: 10px;
 }
 
 .textarea_resize{
