@@ -41,7 +41,6 @@ body{
 }
 
 .boton_generico:hover{
-    background-color: #e03551;
     color: #fffaa3;
     cursor: pointer;
 }

@@ -30,19 +30,17 @@ body{
 
 .boton_generico{
     font-family: 'Bree Serif', serif;
-    font-size: 20px;
-    float: right;
     background-color: #ff7e05;
-    text-decoration: none;
     border-radius: 10px;
     transition: 0.5s;
+    font-size: 25px;
+    color: black;
     vertical-align:middle;
     text-align: center;
     margin-right: 3px;
 }
 
 .boton_generico:hover{
-    background-color: #e03551;
     color: #fffaa3;
     cursor: pointer;
 }
@@ -74,16 +72,6 @@ li a{
     text-decoration: none;
     font-family: 'Bree Serif', serif;
     font-size: 20px;
-}
-
-
-div button{
-    background-color: #ff7e05;
-    transition: 0.5s;
-}
-div button:hover{
-    background-color: #e03551;
-    cursor: pointer;
 }
 
 .page-item a{
