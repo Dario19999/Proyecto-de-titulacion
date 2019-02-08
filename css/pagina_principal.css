@@ -1,4 +1,74 @@
+body{
+    background: #eceff8;
+    padding-top: 85px; 
+}
 
+.inicio{
+    background: #ff7e05;
+    text-align: center;
+}
+
+.brand a{
+    color: #fffaa3;
+    font-family: 'Yellowtail', cursive;
+    font-size: 40px;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+    padding: 10px;
+}
+
+
+.boton.buscar{
+    background: #fff;
+}
+
+.boton_generico{
+    font-family: 'Bree Serif', serif;
+    background-color: #ff7e05;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-size: 20px;
+    color: black;
+    vertical-align:middle;
+    text-align: center;
+    margin-right: 3px;
+}
+
+.boton_generico:hover{
+    background-color: #e03551;
+    color: #fffaa3;
+    cursor: pointer;
+}
+
+li a{
+    text-decoration: none;
+    font-family: 'Yellowtail', cursive;
+    text-align: center;
+    font-size: 30px;   
+}
+
+.nav_button{
+    background-color: #ff7e05;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-size: 25px;
+    color: black;
+    vertical-align:middle;
+    text-align: center;
+    margin-right: 3px;
+}
+.nav_button:hover{
+    background-color: #e03551;
+    color: #fffaa3;
+    cursor: pointer;
+}
+
+.dropdown-item {
+    text-decoration: none;
+    font-family: 'Bree Serif', serif;
+    font-size: 20px;
+}
 .col-lg-5{
     padding: 20px;
 }
@@ -9,7 +79,7 @@ h1{
 
 .jumbotron{
     background-color:#ff7e05ea !important;
-    height: 450px;
+    height: 400px;
     
 }
 
