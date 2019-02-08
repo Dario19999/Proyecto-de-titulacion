@@ -30,12 +30,11 @@ body{
 
 .boton_generico{
     font-family: 'Bree Serif', serif;
-    font-size: 20px;
-    float: right;
     background-color: #ff7e05;
-    text-decoration: none;
     border-radius: 10px;
     transition: 0.5s;
+    font-size: 20px;
+    color: black;
     vertical-align:middle;
     text-align: center;
     margin-right: 3px;
@@ -76,43 +75,11 @@ li a{
     font-size: 20px;
 }
 
-
-div button{
-    background-color: #ff7e05;
-    transition: 0.5s;
-}
-div button:hover{
-    background-color: #e03551;
-    cursor: pointer;
+h2{
+    padding: 20px;
+    text-align: center;
 }
 
-.page-item a{
-    font-family: 'Bree Serif', serif;
-    font-size: 30px;
-}
-
-.letra{
-    font-family: 'Yellowtail', cursive;
-    font-size: 45px;
-    padding-left: 15px;
-}
-
-.definicion{
-    padding-left: 20px;
-}
-
-dl{
-    padding-left: 15px;
-    padding-top: 10px;
-}
-
-dt{
-    font-size: 25px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.video{
-    padding-left: 15px;
-    padding-top: 10px;
+.crnm{
+    padding: 15px;
 }

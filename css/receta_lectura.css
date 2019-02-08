@@ -75,3 +75,46 @@ li a{
     font-size: 20px;
 }
 
+
+h1{
+    padding-left: 15px;
+    padding-top: 20px;
+}
+
+.ingredientes{
+    margin: 20px;
+}
+
+.procedimiento ol{
+    padding-top: 40px;
+    padding-left: 15px;
+    margin: 20px;
+}
+
+.procedimiento li{
+    padding: 15px;
+}
+
+.procedimiento{
+    text-justify: auto;
+}
+
+.modal-footer{
+    padding-bottom: 20px;
+}
+
+.cotizacion{
+    margin: 150px;
+}
+
+.card{
+    text-align: center;
+}
+
+.btn_dictado{
+    float: right;
+}
+
+.btn_cronometro{
+    float: right;
+}

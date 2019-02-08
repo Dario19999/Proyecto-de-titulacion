@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <title>Glosario</title>
+        <title>Receta</title>
         <link rel="icon" href="img/icon1.png">
-        <link rel="stylesheet" href="CSS/glosario.css">
+        <link rel="stylesheet" href="CSS/receta_lectura.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
             
@@ -64,6 +64,152 @@
         </nav>
     <!-----------------------------------[Fin de Plantilla]------------------------------------------>
         
+    <div class="container-fluid receta">
+
+            <div style="float:right;">
+                <input type="button" name="calificar" value="Calificar" class="boton_generico">
+            </div>
+            <div class="nombre_receta">
+                <h1>Nombre receta</h1>
+            </div>
+        
+            
+            <div class="row align-items-end">
+                <div class="col-7 col-sm-5 col-md-4 ingredientes">
+                    <h3>Ingredientes</h3>
+                    <ul class="list-group">
+                            <li class="list-group-item">Obo <small> 2 cucharadas</small></li>
+                            
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+                <div class="col-2 col-md-1">
+    
+                    <label class="my-1 mr-2" for="porciones">Porciones</label>
+                    <select class="custom-select my-1 mr-sm-2" id="porciones">
+                        <option selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+    
+            </div>
+    
+            <div class="procedimiento">
+                <ol>
+    
+                    <li value="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, mollitia dolorem temporibus officiis eos facilis nemo omnis totam magni illum deserunt. Consequatur voluptas sint tempore a nemo nulla omnis reprehenderit?.</li>
+                    <li value="2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fuga fugit, odit eos tempore quam sit deserunt eaque, ex odio vel quibusdam iusto deleniti neque delectus repellat doloremque labore sequi!.</li>
+                    <li value="3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rerum laudantium dignissimos omnis eligendi ullam eveniet enim corrupti ad est illum veritatis itaque voluptate, quis minima exercitationem laborum qui similique..</li>
+                        
+                </ol>
+    
+            </div>
+    
+            
+            
+            
+        </div>
+    
+        <div class="container-fluid botones">    
+    
+                <div class="btn_dictado">
+                        <button type="button" name="dictado" value="Inicio Dictado" class="btn boton_generico"> Dictado</button>
+                </div>
+            
+                    <div class="btn_cronometro">
+                        <button type="button" name="cronometro" value="Agregar Cronómetro" class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Agregar Cronómetro</button>
+    
+                        <div class="modal fade" id="modal_crnm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal_titulo" style="text-align:center;">Agregar Cronómetro</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+            
+                            <div class="modal-body">
+                                
+                                    <form>
+                                        <div class="form-row justify-content-center">
+                                            <div class="col-3">
+                                                <label for="nombre_crnm"></label>
+                                                <input type="text" class="form-control" id="nombre_crnm" placeholder="Nombre">
+                                            </div>
+                                        </div>
+                                
+                                        <div class="form-row justify-content-center crnm">
+                                            <div class="col-2">
+                                                <label for="horas">Horas</label>
+                                                <input type="text" class="form-control" id="horas" placeholder="00">
+                                            </div>   
+                                            <div class="col-2">
+                                                <label for="minutos">Minutos</label>
+                                                <input type="text" class="form-control" id="minutos" placeholder="00">
+                                                
+                                            </div>
+                                            <div class="col-2">
+                                                <label for="segundos">Segundos</label>
+                                                <input type="text" class="form-control" id="segundos" placeholder="00">
+                                            </div>
+                                        </div>
+                                    </form>    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn boton_generico">Agregar</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+        </div>
+
+        <div class="container-fluid cotizacion">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-3">
+                    <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" id="super">Walmart</h5>
+                                <h6 class="card-subtitle mb-2 text-muted" id="precio">$$</h6>
+                                <p class="card-text">Es la cotización aproximada en este supermercado.</p>
+                                <a href="https://www.walmart.com.mx/?gclid=CjwKCAiAy-_iBRAaEiwAYhSlA4PQlONBDovv8-Z34GW2HqZ-yU14y7im4fMdLky41LtWH0PCeGcNSBoCdy4QAvD_BwE" target="_blank" class="card-link">Ir a la p&aacute;gina</a>
+                            </div>
+                    </div>
+
+                </div>
+
+                <div class="col-3">
+
+                    <div class="card" >
+                            <div class="card-body">
+                                <h5 class="card-title" id="super1">Sam's</h5>
+                                <h6 class="card-subtitle mb-2 text-muted" id="precio1">$$</h6>
+                                <p class="card-text">Es la cotización aproximada en este supermercado.</p>
+                                <a href="https://www.sams.com.mx/?gclid=CjwKCAiAy-_iBRAaEiwAYhSlA-r4joKi7ty26ohaw2a36Rubjgn86ppcNByhGLz9fNpTqKnt6A8DNRoCA_wQAvD_BwE"  target="_blank" class="card-link">Ir a la p&aacute;gina</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+                     
+                   
+                   
+                        
+                    
+            
+
+    </div>
+
 
 
 
