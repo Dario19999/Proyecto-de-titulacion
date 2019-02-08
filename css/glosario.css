@@ -77,3 +77,8 @@ a button{
     background-color: #ff7e05;
     text-decoration: none;
 }
+
+.textarea_resize{
+    width: 100%;
+    resize: none;
+}

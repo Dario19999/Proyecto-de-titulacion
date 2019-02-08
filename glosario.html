@@ -69,9 +69,43 @@
     <div class="container-fluid separador">
 
         <div>
-
-            <a href="#"><button type="button fixed-top" class="btn nav_button" style="background-color: #ff7e05; font-size: 20px;">Agregar</button></a> 
+            <button type="button fixed-top" class="btn nav_button" style="background-color: #ff7e05; font-size: 20px; float: right; font-family: 'Bree Serif', serif;" data-toggle="modal" data-target="#modal_boton">Agregar Término</button>
         </div> 
+        
+        <div class="modal fade" id="modal_boton" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="font-family: 'Bree Serif', serif;" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Término al Glosario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <h4>Término a Definir.</h4>
+                                <input type="text" class="form-control" placeholder="Ejem. Menear, Batir, Cocer, etc.">
+                            </div>
+
+                            <hr>
+
+                            <div>
+                                <h4>Definición</h4>
+                                <textarea class="form-control textarea_resize" maxlength="3000" rows="10" cols="30"></textarea>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn nav_button" style="background-color: gray" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn nav_button">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="letra">
             <li type= "circle" value="J">J</h1>
@@ -97,7 +131,7 @@
         
     </div>
 
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" class="fixed-bottom">
             <ul class="pagination pagination-sm justify-content-center align-content-end">
                 <li class="page-item disabled">
                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
