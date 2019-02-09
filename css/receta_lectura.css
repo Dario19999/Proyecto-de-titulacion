@@ -40,3 +40,20 @@ h1{
 .btn_cronometro{
     float: right;
 }
+
+.usuario_autor{
+    float: right;
+}
+
+.descarga{
+    height: 35px;
+    width: 35px;
+    float: right;
+    margin: 20px;
+}
+
+.btn_denunciar{
+    float: left;
+    margin: 20px;
+}
+
