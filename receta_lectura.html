@@ -68,9 +68,141 @@
         
     <div class="container-fluid receta">
 
+            
+        <div class="btn_calificar">
             <div style="float:right;">
-                <input type="button" name="calificar" value="Calificar" class="btn boton_generico">
+            <button type="button" name="calificar" value="calificar" class="btn boton_generico" data-toggle="modal" data-target="#modal_calificar">Calificar</button>
+
+            <div class="modal fade calificar" id="modal_calificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+    
+                    <div class="modal-content">
+    
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_titulo_calificar" style="text-align:center;">Calificar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+    
+                <div class="modal-body">
+                    <p>Sabor</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sabor1" name="sabor1" class="custom-control-input">
+                            <label class="custom-control-label" for="sabor1">1</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sabor2" name="sabor1" class="custom-control-input">
+                            <label class="custom-control-label" for="sabor2">2</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sabor3" name="sabor1" class="custom-control-input">
+                            <label class="custom-control-label" for="sabor3">3</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sabor4" name="sabor1" class="custom-control-input">
+                            <label class="custom-control-label" for="sabor4">4</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sabor5" name="sabor1" class="custom-control-input">
+                            <label class="custom-control-label" for="sabor5">5</label>
+                        </div>
+
+                        <p>Facilidad</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="facilidad1" name="facilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="facilidad1">1</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="facilidad2" name="facilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="facilidad2">2</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="facilidad3" name="facilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="facilidad3">3</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="facilidad4" name="facilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="facilidad4">4</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="facilidad5" name="facilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="facilidad5">5</label>
+                        </div>
+
+                        <p>Accesibilidad</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="accesibilidad1" name="accesibilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="accesibilidad1">1</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="accesibilidad2" name="accesibilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="accesibilidad2">2</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="accesibilidad3" name="accesibilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="accesibilidad3">3</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="accesibilidad4" name="accesibilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="accesibilidad4">4</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="accesibilidad5" name="accesibilidad1" class="custom-control-input">
+                            <label class="custom-control-label" for="accesibilidad5">5</label>
+                        </div>
+
+                        <p>Tiempo</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="tiempo1" name="tiempo1" class="custom-control-input">
+                            <label class="custom-control-label" for="tiempo1">1</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="tiempo2" name="tiempo1" class="custom-control-input">
+                            <label class="custom-control-label" for="tiempo2">2</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="tiempo3" name="tiempo1" class="custom-control-input">
+                            <label class="custom-control-label" for="tiempo3">3</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="tiempo4" name="tiempo1" class="custom-control-input">
+                            <label class="custom-control-label" for="tiempo4">4</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="tiempo5" name="tiempo1" class="custom-control-input">
+                            <label class="custom-control-label" for="tiempo5">5</label>
+                        </div>
+                        
+                </div>
+    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn boton_generico">Enviar</button>
+                    </div>
+                    </div>
+                </div>
             </div>
+            </div>
+        </div>
+
+        
             <div class="nombre_receta">
                 <h1>Nombre receta</h1>
             </div>
@@ -210,22 +342,108 @@
             </div>
 
         </div>
+
+        <div class="container-fluid pie">
+
+
+
+
+
+        </div>
     
         <div class="btn_denunciar">
-                <button type="button" name="denunciar" value="denunciar" class="btn boton_generico"> Denunciar</button>
+                <button type="button" name="denunciar_receta" value="denunciar_receta" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_receta">Denunciar receta</button>
+
+                <div class="modal fade" id="modal_denuncia_receta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+        
+                        <div class="modal-content">
+        
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal_titulo_dreceta" style="text-align:center;">Denunciar receta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+        
+                    <div class="modal-body">
+                        <form>
+                                <div class="form-group">
+                                    <label for="motivo_receta">Motivo de denuncia</label>
+                                    <select class="form-control" id="motivo_receta">
+                                    <option>Es una mala receta</option>
+                                    <option>Es dañina para la salud</option>
+                                    <option>Los ingredientes son incorrectos</option>
+                                    <option>No da los resultados esperados</option>
+                                    <option>No corresponde a la nacionalidad que indica</option>
+                                    <option>Otra</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="comentarios_receta">Comentarios</label>
+                                    <textarea class="form-control" id="comentarios_receta" rows="3"></textarea>
+                                </div>
+                        </form>           
+                    </div>
+        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn boton_generico">Enviar</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
         </div>
 
-         <img src="img/descarga.png" alt="Descargar" class="descarga">   
-         <a href="#"type="button" class="btn btn-link usuario_autor" >Usuario Autor</a> 
+         <img src="img/descarga.png" alt="Descargar" class="descarga"> 
+
+         <div class="btn_denunciar">
+                <button type="button" name="denunciar_usuario" value="denunciar_usuario" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_usuario">Denunciar usuario</button>
+
+                <div class="modal fade" id="modal_denuncia_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+        
+                        <div class="modal-content">
+        
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal_titulo_dusuario" style="text-align:center;">Denunciar usuario </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+        
+                    <div class="modal-body">
+                            <form>
+                                    <div class="form-group">
+                                        <label for="motivo_usuario">Motivo de denuncia</label>
+                                        <select class="form-control" id="motivo_usuario">
+                                        <option>Es ofensivo</option>
+                                        <option>Es un bromista</option>
+                                        <option>Es molesto</option>
+                                        <option>Otra</option>
+                                        </select>
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <label for="comentarios_usuario">Comentarios</label>
+                                        <textarea class="form-control" id="comentarios_usuario" rows="3"></textarea>
+                                    </div>
+                            </form>      
+                            
+                    </div>
+        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn boton_generico">Enviar</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
          
-                   
-                   
-                        
-                    
-            
-
-    </div>
-
+  
 
 
 

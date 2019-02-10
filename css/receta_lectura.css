@@ -50,10 +50,16 @@ h1{
     width: 35px;
     float: right;
     margin: 20px;
+    
 }
 
 .btn_denunciar{
     float: left;
     margin: 20px;
+}
+
+p{
+    padding-top: 10px;
+    padding-bottom: 0;
 }
 
