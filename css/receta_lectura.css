@@ -46,14 +46,22 @@ h1{
 }
 
 .descarga{
-    height: 35px;
-    width: 35px;
+
     float: right;
-    margin: 20px;
+    margin: 30px;
+    font-size: 35px;
+    padding-top: 5px;
+    color: black;
+    
 }
 
 .btn_denunciar{
     float: left;
     margin: 20px;
+}
+
+p{
+    padding-top: 10px;
+    padding-bottom: 0;
 }
 
