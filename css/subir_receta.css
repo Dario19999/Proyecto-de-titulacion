@@ -2,45 +2,29 @@
     margin-left: 20px;
     text-align: left;
     font-size: 30px;
-    color: #8e3d60;
-    font-family: 'Overlock', cursive;
-    font-size: 35px;
-    
-}
-
-form{
-    width: 50%;
-    margin: 10px 30px;
+    color: black; 
+    font-family: 'Bree Serif', serif;
 }
 
 .cantidad{
-    width:40px;
+    width:60px;
     height: 30px; 
-    margin-top: 10px; 
 }
 
 .medida{
-    width: 100px;
-    height: 30px;
-    margin-top: 10px; 
+    width: 130px;
+    height: 30px; 
 }
 
 .ingr{
-    width: 200px;
+    width: 300px;
     height: 30px;
-    margin-top: 10px; 
 }
 
-textarea {
+.textarea_adjust {
     width: 100%;
     resize: none;
 }
-
-form p{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 
 .div_boton{
     display: flex;

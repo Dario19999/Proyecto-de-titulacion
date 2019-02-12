@@ -17,7 +17,6 @@
     
     <body>
 
-
     <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
 
         <a href="pagina_principal.html" class="navbar-brand" style="color: #fffaa3; font-family: 'Yellowtail', cursive; font-size: 40px;">La Cousine</a>
@@ -63,49 +62,47 @@
             </ul>
         </div>
     </nav>
-<!-----------------------------------[Fin de Plantilla]------------------------------------------>
+    <!-----------------------------------[Fin de Plantilla]------------------------------------------>
     
-
-    <div class="container-fluid definicion">
-
-        <div>
-            <button type="button fixed-top" class="btn boton_generico"  style="float: right;" data-toggle="modal" data-target="#modal_boton">Agregar Término</button>
-        </div> 
+    <div>
+        <button type="button" class="btn boton_generico"  style="float: right; font-size: 20px;" data-toggle="modal" data-target="#modal_boton">Agregar Término</button>
+    </div> 
         
-        <div class="modal fade" id="modal_boton" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" style="font-family: 'Bree Serif', serif;" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar Término al Glosario</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+    <div class="modal fade" id="modal_boton" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="font-family: 'Bree Serif', serif;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Término al Glosario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-row">
-                                <h4>Término a Definir.</h4>
-                                <input type="text" class="form-control" placeholder="Ejem. Menear, Batir, Cocer, etc.">
-                            </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <h4>Término a Definir.</h4>
+                            <input type="text" class="form-control" placeholder="Ejem. Menear, Batir, Cocer, etc.">
+                        </div>
 
-                            <hr>
+                        <hr>
 
-                            <div>
-                                <h4>Definición</h4>
-                                <textarea class="form-control textarea_resize" maxlength="3000" rows="10" cols="30"></textarea>
-                            </div>
+                        <div>
+                            <h4>Definición</h4>
+                            <textarea class="form-control textarea_resize" maxlength="3000" rows="10" cols="30" placeholder="Describa detalladamente la definición del término..."></textarea>
+                        </div>
 
-                        </form>
-                    </div>
+                    </form>
+                </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn boton_generico" style="background-color: gray" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn boton_generico" sty>Agregar</button>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn boton_generico" style="font-size: 20px;">Agregar</button>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container-fluid definicion">
 
         <div class="letra">
             <li type= "circle" value="J">J</h1>
@@ -124,26 +121,26 @@
         
 
         <div class="video">
-                <button type="button" name="ver_video" value="Video" class="btn boton_generico" data-toggle="modal" data-target="#modal_video" style="float:left;">Video</button>
-                
-                <div class="modal fade" id="modal_video" tabindex="-1" role="dialog" aria-labelledby="ver_video" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="ver_video">Juliana</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">                               
-                                <video src="vid/juliana.mp4" controls></video>                            
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            </div>
-                          </div>
+            <button type="button" name="ver_video" value="Video" class="btn boton_generico" data-toggle="modal" data-target="#modal_video" style="float:left;">Video</button>
+            
+            <div class="modal fade" id="modal_video" tabindex="-1" role="dialog" aria-labelledby="ver_video" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ver_video">Juliana</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                      </div>
+                        <div class="modal-body">                               
+                            <video src="vid/juliana.mp4" controls></video>                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>  
         
         
