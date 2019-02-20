@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-
+<!--Aquí se establece el título e ícono de la página, se realizan los enlaces necesarios a los archivos css
+y se agregan las fuentes a utilizar mediante Google Fonts-->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,15 @@
     
     <body>
 
+<!-----------------------------------[Inicio de Plantilla]------------------------------------------>
+<!--Aquí, como en todas las páginas, se agrega la barra de navegación. La clase navbar es propia de
+Bootstrap; nos permite definir en qué tamaño de dispositivo se va a expandir (mediano en este caso)
+y que debe estar fijo en la parte superior
+
+Se define el botón que aparecerá cuando el tamaño del dispositivo sea uno menor al mediano, de forma
+que la barra de navegación sea colapsable al presionarlo. Luego agregamos los botones que enlazarán
+al resto de las páginas y el dropdown para que se desplieguen las opciones de editar perfil y salir
+al presionar un botón con ícono de configuarción-->
 
     <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
 
@@ -33,7 +43,7 @@
             <ul class="navbar-nav nav-justified w-100 mr-auto">
 
                 <li class="nav-item">
-                    <a href="perfil.html" class="nav-link nav_button">Perfil</a>
+                    <a href="buscar_receta.html" class="nav-link nav_button">Buscar</a>
                 </li>
 
                 <li class="nav-item">
@@ -45,7 +55,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="buscar_receta.html" class="nav-link nav_button">Buscar</a>
+                    <a href="perfil.html" class="nav-link nav_button">Perfil</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -66,6 +76,11 @@
         </div>
     </nav>
 <!-----------------------------------[Fin de Plantilla]------------------------------------------>
+
+
+
+<!--En la clase encabezado únicamente se encuentra una clase jumbotron (Bootstrap), la cual nos permite
+visualizar un recuadro de color en el que se colocará el texto de bienvenida para el usuario-->
 
     <div class="container-fluid encabezado">
         <div class="row justify-content-center align-items-center">
