@@ -6,4 +6,6 @@ $password ="";
 
 $conexion = new mysqli ($dominio, $usuario, $password);
 
+if ($conexion -> )
+
 ?>
