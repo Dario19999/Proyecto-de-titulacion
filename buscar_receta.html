@@ -117,20 +117,20 @@
         <div class="form-row align-items-center h-100">
             <div class="form-group col-md-4 text-center">
 
-                <div class="tipo_receta">
-                    <div class="custom-control custom-radio">
+                <div class="alineamiento">
+                    <div class="custom-control custom-radio margen">
                         <input type="radio" name="tipo" id="radio1" class="custom-control-input">
-                        <label class="custom-control-label" for="radio1"><h4>Comidas</h4></label> <br>
+                        <label class="custom-control-label" for="radio1"><h4>Comidas</h4></label> 
                     </div>
-
-                    <div class="custom-control custom-radio">
+                    
+                    <div class="custom-control custom-radio float-left margen">
                         <input type="radio" name="tipo" id="radio2" class="custom-control-input">
-                        <label  class="custom-control-label" for="radio2"><h4>Postres</h4></label> <br>
+                        <label  class="custom-control-label" for="radio2"><h4>Postres</h4></label> 
                     </div>
 
-                    <div class="custom-control custom-radio">
+                    <div class="custom-control custom-radio margen">
                         <input type="radio" name="tipo" id="radio3" class="custom-control-input">
-                        <label  class="custom-control-label" for="radio3"><h4>Cocteles</h4></label> <br>
+                        <label  class="custom-control-label" for="radio3"><h4>Cocteles</h4></label> 
                     </div>
                 
                 </div>
@@ -139,119 +139,46 @@
 
             <div class="form-group col-md-4 text-center">
               
-                <h4>Sabor</h4>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="sabor1" name="sabor1" class="custom-control-input">
-                    <label class="custom-control-label" for="sabor1">1</label>
-                </div>
+                <select class="custom-select" name="sabor" style="width: 225px" >
+                    <option selected>Sabor</option>
+                    <option value="Amargo">Amargo</option>
+                    <option value="Salado">Salado</option>
+                    <option value="Dulce">Dulce</option>
+                    <option value="Ácido">Ácido</option>
+                </select>
+                <hr>
+                <select class="custom-select" name="dificultad" style="width: 225px" >
+                    <option selected>Dificultad</option>
+                    <option value="Principiante">Principiante</option>
+                    <option value="Fácil">Fácil</option>
+                    <option value="Difícil">Difícil</option>
+                    <option value="Experto">Experto</option>
+                </select>
+                <hr>
+                <select class="custom-select" name="accesibilidad" style="width: 225px" >
+                    <option selected>Accesibilidad</option>
+                    <option value="Muy Accesible">Muy Accesible</option>
+                    <option value="Accesible">Accesible</option>
+                    <option value="Poco Accesible">Poco Accesible</option>
+                </select>
+                <hr>
+                <select class="custom-select" name="tiempo" style="width: 225px" >
+                    <option selected>Tiempo</option>
+                    <option value="Rápida">Rápida</option>
+                    <option value="Moderada">Moderada</option>
+                    <option value="Tardada">Tardada</option>
 
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="sabor2" name="sabor1" class="custom-control-input">
-                    <label class="custom-control-label" for="sabor2">2</label>
-                </div>
+                </select>
+                <hr>
 
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="sabor3" name="sabor1" class="custom-control-input">
-                    <label class="custom-control-label" for="sabor3">3</label>
-                </div>
 
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="sabor4" name="sabor1" class="custom-control-input">
-                    <label class="custom-control-label" for="sabor4">4</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="sabor5" name="sabor1" class="custom-control-input">
-                    <label class="custom-control-label" for="sabor5">5</label>
-                </div>
-                <br>
-
-                <h4>Facilidad</h4>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="facilidad1" name="facilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="facilidad1">1</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="facilidad2" name="facilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="facilidad2">2</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="facilidad3" name="facilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="facilidad3">3</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="facilidad4" name="facilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="facilidad4">4</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="facilidad5" name="facilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="facilidad5">5</label>
-                </div>
-                <br>
-
-                <h4>Accesibilidad</h4>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="accesibilidad1" name="accesibilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="accesibilidad1">1</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="accesibilidad2" name="accesibilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="accesibilidad2">2</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="accesibilidad3" name="accesibilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="accesibilidad3">3</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="accesibilidad4" name="accesibilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="accesibilidad4">4</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="accesibilidad5" name="accesibilidad1" class="custom-control-input">
-                    <label class="custom-control-label" for="accesibilidad5">5</label>
-                </div>
-                <br>
-
-                <h4>Tiempo</h4>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="tiempo1" name="tiempo1" class="custom-control-input">
-                    <label class="custom-control-label" for="tiempo1">1</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="tiempo2" name="tiempo1" class="custom-control-input">
-                    <label class="custom-control-label" for="tiempo2">2</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="tiempo3" name="tiempo1" class="custom-control-input">
-                    <label class="custom-control-label" for="tiempo3">3</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="tiempo4" name="tiempo1" class="custom-control-input">
-                    <label class="custom-control-label" for="tiempo4">4</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="tiempo5" name="tiempo1" class="custom-control-input">
-                    <label class="custom-control-label" for="tiempo5">5</label>
-                </div>
             </div>
 
             <div class="form-group col-md-4 text-center">
 
                 <div class="nacionalidad">
                 
-                    <select name="Nacionalidad">
+                    <select class="custom-select" name="Nacionalidad" style="width: 225px">
                         <option value="Mexico">M&eacute;xico</option>
                         <option value="Argentina">Argentina</option>
                         <option value="Italia">Italia</option>

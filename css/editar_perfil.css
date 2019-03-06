@@ -17,3 +17,7 @@ div h2{
 label{
     font-family: 'Bree Serif', serif;
 }
+
+.ajustar_bloque{
+    display: inline-block;
+}

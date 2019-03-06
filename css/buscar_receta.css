@@ -21,3 +21,11 @@ form h2{
     outline: none;
     box-shadow: none;
 }
+
+.alineamiento{
+    display: inline-block;
+}
+
+.margen{
+    margin-bottom: 13px;
+}
