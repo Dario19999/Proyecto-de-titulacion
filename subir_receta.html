@@ -64,8 +64,8 @@
             </div>
         </nav>
     <!-----------------------------------[Fin de Plantilla]------------------------------------------> 
-        <form action = "procedimiento.php" method="POST">
-            
+        <form action = "subir_receta.php" method="POST">
+
             <p class="subtitulo_subir">Nacionalidad</p>
             
             <div class="form-row">
@@ -151,9 +151,7 @@
                 <div class="form-group col-md-3 text-center">
                     <input type="text" name="ingr_4" class="ingr">
                 </div>
-            </div>
-
-            <br>
+            </div> 
 
             <div class="form-row">
                 <div class="form-group col-md-3 text-center">
@@ -299,11 +297,12 @@
                     <input type="button" name="agregar_paso" value="Agregar Paso" class="btn boton_generico">
                 </div>
             </div>
-        </form>
+        
         <hr>
         <div class="div_boton">
-            <button class="btn boton_generico">Subir!</button>
+            <button type="submit" class="btn boton_generico">Subir!</button>
         </div>
+    </form>
 
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
