@@ -66,20 +66,30 @@
     <!-----------------------------------[Fin de Plantilla]------------------------------------------> 
         <form action = "subir_receta.php" method="POST">
 
+            <p class="subtitulo_subir">Nombre de Receta</p>
+            
+            <div class="form-row">
+                <div class="form-group col-md-2 text-center">
+                    <input type="text" name="nombre_receta" class="ingr">
+                </div>
+            </div>
+            <br><hr>
+
             <p class="subtitulo_subir">Nacionalidad</p>
             
             <div class="form-row">
-                <div class="form-group col-md-1 text-center">
-                        <select name="Nacionalidad">
-                                <option value="Mexico">M&eacute;xico</option>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Italia">Italia</option>
-                                <option value="Japón">Jap&oacute;n</option>
-                                <option value="Etc.">Etc...</option>
-                        </select>
+                <div class="form-group col-md-2 text-center">
+                    <select name="nacionalidad" class="custom-select">
+                        <option value="Internacional"></option>
+                        <option value="Mexico">M&eacute;xico</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Italia">Italia</option>
+                        <option value="Japón">Jap&oacute;n</option>
+                        <option value="Etc.">Etc...</option>
+                    </select>
                 </div>
             </div>
-            <br>
+            <br><hr>
             
             <p class="subtitulo_subir">Ingredientes</p> 
 
@@ -158,6 +168,7 @@
                     <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico">
                 </div>
             </div>
+            <hr>
 
             <p class="subtitulo_subir">Porciones</p>
             
@@ -167,7 +178,9 @@
                 </div>
             </div>
             
-            <br>
+            <br><hr>
+
+            <p class="subtitulo_subir">Procedimiento</p>
 
             <div class="form-row d-flex h-100">
                 <div class="form-group col-md-1 text-center">

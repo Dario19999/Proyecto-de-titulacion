@@ -18,7 +18,7 @@ if (isset($_POST['usuario']) && isset($_POST['contra'])){
     $user = ( $_POST['usuario']);
     $correo = ( $_POST['correo']);
     $password= password_hash ($_POST['contra'], PASSWORD_DEFAULT);
-    $query="INSERT INTO usuario (nombre,contrasena,correo) values ('$user','$password','$correo')";
+    $query="INSERT INTO usuario (nombre,pass,correo) values ('$user','$password','$correo')";
     $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
 
     mysqli_close ($conexion);
