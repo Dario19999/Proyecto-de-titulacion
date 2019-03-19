@@ -1,5 +1,6 @@
 <?php
-if (isset($_POST['porcion']){
+
+if (isset($_POST['porcion'])){
     $servername = "localhost";
     $username = "root";
     $password ="";
@@ -15,8 +16,10 @@ if (isset($_POST['porcion']){
 
     $paso = ( $_POST['paso_1']);
     $porcion = ( $_POST['porcion']);
-    $query="INSERT INTO recetas (porciones) values ('$porcion')";
-    $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
+    $query_porcion="INSERT INTO datos_receta (porciones) values ('$porcion')";
+    $query_procedimiento="INSERT INTO procedimiento (paso) values ('$paso')";
+    $registrar=mysqli_query($conexion, $query_porcion) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
+    $registrar1=mysqli_query($conexion, $query_procedimiento) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
 
     mysqli_close ($conexion);
     header ('location: pagina_principal.html');
