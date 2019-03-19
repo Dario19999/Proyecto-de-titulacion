@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['usuario']) && isset($_POST['contra'])){
+if (isset($_POST['usuario']) && isset($_POST['contra']) && isset($_POST['correo']) && isset($_POST['genero'])){
 
     $servername = "localhost";
     $username = "root";
@@ -17,17 +17,17 @@ if (isset($_POST['usuario']) && isset($_POST['contra'])){
 
     $user = ( $_POST['usuario']);
     $correo = ( $_POST['correo']);
-    $sexo = ($_POST['genero'])
-    $password= password_hash ($_POST['contra'], PASSWORD_DEFAULT);
-    $query="INSERT INTO usuario (nombre,pass,correo,sexo) values ('$user','$password','$correo','$sexo')";
+    $sexo = ($_POST['genero']);
+    $pass= password_hash ($_POST['contra'], PASSWORD_DEFAULT);
+    $query="INSERT INTO usuario (nombre,pass,correo,sexo) values ('$user','$pass','$correo','$sexo')";
     $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
 
     mysqli_close ($conexion);
-    header ('location: pagina_principal.html');
+    header ('location: /Proyecto-de-titulacion/pagina_principal.html');
       
 }else{
     
-    header ('location: registro.html');
+    header ('location: /Proyecto-de-titulacion/registro.html');
 }
 
 ?>
