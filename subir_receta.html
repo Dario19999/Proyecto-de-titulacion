@@ -66,17 +66,24 @@
     <!-----------------------------------[Fin de Plantilla]------------------------------------------> 
         <form action = "procedimiento.php" method="POST">
             
+            <p class="subtitulo_subir">Nombre de Receta</p>
+            
+            <div class="form-row border">
+                <div class="form-group col-md-1 border">
+                    <input type="text" name="nombre_receta" class="cantidad">
+                </div>
+            </div>
             <p class="subtitulo_subir">Nacionalidad</p>
             
             <div class="form-row">
-                <div class="form-group col-md-1 text-center">
-                        <select name="Nacionalidad">
-                                <option value="Mexico">M&eacute;xico</option>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Italia">Italia</option>
-                                <option value="Japón">Jap&oacute;n</option>
-                                <option value="Etc.">Etc...</option>
-                        </select>
+                <div class="form-group col-md-1 align-items-center">
+                    <select name="Nacionalidad" class="custom-select">
+                        <option value="Mexico">M&eacute;xico</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Italia">Italia</option>
+                        <option value="Japón">Jap&oacute;n</option>
+                        <option value="Etc.">Etc...</option>
+                    </select>
                 </div>
             </div>
             <br>
@@ -164,7 +171,7 @@
             <p class="subtitulo_subir">Porciones</p>
             
             <div class="form-row">
-                <div class="form-group col-md-1 text-center">
+                <div class="form-group col-md-1 text-center ">
                     <input type="text" name="porcion" class="cantidad">
                 </div>
             </div>
