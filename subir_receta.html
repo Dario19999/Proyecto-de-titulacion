@@ -64,7 +64,9 @@
             </div>
         </nav>
     <!-----------------------------------[Fin de Plantilla]------------------------------------------> 
-        <form action = "procedimiento.php" method="POST">
+        <form action = "/php/subir_receta.php" method="POST">
+
+            <p class="subtitulo_subir">Nombre de Receta</p>
             
             <p class="subtitulo_subir">Nombre de Receta</p>
             
@@ -86,7 +88,7 @@
                     </select>
                 </div>
             </div>
-            <br>
+            <br><hr>
             
             <p class="subtitulo_subir">Ingredientes</p> 
 
@@ -158,15 +160,14 @@
                 <div class="form-group col-md-3 text-center">
                     <input type="text" name="ingr_4" class="ingr">
                 </div>
-            </div>
-
-            <br>
+            </div> 
 
             <div class="form-row">
                 <div class="form-group col-md-3 text-center">
                     <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico">
                 </div>
             </div>
+            <hr>
 
             <p class="subtitulo_subir">Porciones</p>
             
@@ -176,7 +177,9 @@
                 </div>
             </div>
             
-            <br>
+            <br><hr>
+
+            <p class="subtitulo_subir">Procedimiento</p>
 
             <div class="form-row d-flex h-100">
                 <div class="form-group col-md-1 text-center">
@@ -306,11 +309,12 @@
                     <input type="button" name="agregar_paso" value="Agregar Paso" class="btn boton_generico">
                 </div>
             </div>
-        </form>
+        
         <hr>
         <div class="div_boton">
-            <button class="btn boton_generico">Subir!</button>
+            <button type="submit" class="btn boton_generico">Subir!</button>
         </div>
+    </form>
 
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

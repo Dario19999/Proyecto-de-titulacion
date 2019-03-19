@@ -75,9 +75,9 @@
 
         <div class="datos col d-inline" align="left">
             <form>
-                <div class="form-group custom-file" style="width: 255px">
-                    <input type="file" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile">Elegir Foto</label>
+                <div class="form-group">
+                    <label class="form-control-file" for="subir_foto">Seleccionar nueva imagen de perfil</label>
+                    <input type="file" id="customFile">
                 </div>
             </form>
         </div>
@@ -98,10 +98,10 @@
             <hr>
             <div class="form-row h-100 justify-content-center align-items-center">
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <h2>Nacionalidad</h2>
                     
-                    <select class="form control custom-select" style="width:225px">
+                    <select class="form-control custom-select" style="width:225px">
                         <option>Argentina</option>
                         <option>Bolivia</option>
                         <option>Brasil</option>
@@ -125,27 +125,28 @@
                     </select>
                 </div>
 
-                <div class="form-group col-md-4 border ajustar_bloque">
+                <div class="form-group col-md-6">
                     
                     <h2>Genero</h2>
-                    <div class="form-check">
-                        <input type="radio"  class="form-check-input" id="inputGeneroM" name="Genero" value="option 1">
-                        <label for="inputGeneroM">Masuculino</label>
+                    <div class=" custom-control custom-radio custom-control-inline">
+                        <input type="radio"  class="custom-control-input" id="inputGeneroM" name="genero" value="M">
+                        <label for="inputGeneroM" class="custom-control-label ">Masuculino</label>
                     </div>
 
-                    <div class="form-check">
-                        <input type="radio"  class="form-check-input" id="inputGeneroF" name="Genero" value="option 1">
-                        <label for="inputGeneroF">Femenino</label>
+                    <div class=" custom-control custom-radio custom-control-inline">
+                        <input type="radio"  class="custom-control-input" id="inputGeneroF" name="genero" value="F">
+                        <label for="inputGeneroF" class="custom-control-label ">Femenino</label>
                     </div>
                 </div>
 
             </div>
+            
+            <br>
 
             <div class="form-row h-100 justify-content-center align-items-center">
                 <a href="cambiar_contraseña.html" style="font-family: 'Bree Serif', serif; color: #ff7e05;">Cambiar Contraseña</a>
             </div>
 
-            <br>
             <br>
 
             <div class="form-row h-100 justify-content-center align-items-center">

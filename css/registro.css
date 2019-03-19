@@ -1,3 +1,21 @@
 div h2{
     font-size: 20px
 }
+
+label{
+    font-family: 'Bree Serif', serif;
+}
+
+.form-radio-item label{
+
+    white-space: normal;
+    
+    display: block;
+    
+    left: 14px;
+    
+    top: -14px;
+    
+    position: relative;
+    
+    }
