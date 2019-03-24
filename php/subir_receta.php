@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['porcion'])){
+//if (isset($_GET['porcion'])){
     $servername = "localhost";
     $username = "root";
     $password ="";
@@ -14,18 +14,19 @@ if (isset($_POST['porcion'])){
     } 
     echo "Conexión exitosa<br>";
 
-    $paso = ( $_POST['paso_1']);
-    $porcion = ( $_POST['porcion']);
-    $query_porcion="INSERT INTO datos_receta (porciones) values ('$porcion')";
-    $query_procedimiento="INSERT INTO procedimiento (paso) values ('$paso')";
-    $registrar=mysqli_query($conexion, $query_porcion) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
-    $registrar1=mysqli_query($conexion, $query_procedimiento) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
-
+    $paso = ( $_GET['paso_1']);
+    $porcion = ( $_GET['porcion']);
+    $nombre = ($_GET['nombre_receta']);
+    $query="INSERT INTO datos_receta (porciones) values ('$porcion');
+            INSERT INTO procedimiento (paso) values ('$paso');
+            INSERT INTO receta (nombre_receta) values ('$nombre');";
+    $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
+    echo "Registrado<br>";
     mysqli_close ($conexion);
-    header ('location: pagina_principal.html');
-}else{
-    header ('location: subir_receta.html');
-}
+    //header ('location: /Proyecto-de-titulacion/pagina_principal.html');
+    //}else{
+    //header ('location: subir_receta.html');
+    //}
   
 
 
