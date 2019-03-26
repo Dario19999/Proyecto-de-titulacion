@@ -64,7 +64,7 @@
             </div>
         </nav>
     <!-----------------------------------[Fin de Plantilla]------------------------------------------> 
-        <form action = "/php/subir_receta.php" method="POST">
+        <form action = "/Proyecto-de-titulacion/php/subir_receta.php" method="POST">
 
             <p class="subtitulo_subir">Nombre de Receta</p>
             
@@ -245,10 +245,10 @@
             </div>
             
             <div class="form-row d-flex h-100">
-                <div class="form-group col-md-1 text-center">
+                <div class="form-group col-md-1 text-center"  >
                     <h4>Paso 2:</h4> 
                 </div>
-                <div class="form-group col-md-7">
+                <div class="form-group col-md-7" id="form_procedimiento">
                     <textarea class="textarea_adjust" name="paso_2" cols="30" rows="7" placeholder="Describa el segundo paso."></textarea>
                 </div>
                <div class="form-group col-md-3 align-self-center">
@@ -306,19 +306,20 @@
 
             <div class="form-row">
                 <div class="form-group col-md-3 text-center">
-                    <input type="button" name="agregar_paso" value="Agregar Paso" class="btn boton_generico">
+                    <input type="button" id="agregar_paso" name="agregar_paso" value="Agregar Paso" class="btn boton_generico">
                 </div>
             </div>
         
-        <hr>
+            <hr>
         <div class="div_boton">
-            <button type="submit" class="btn boton_generico">Subir!</button>
+            <button type="submit" class="btn boton_generico">¡Subir!</button>
         </div>
     </form>
 
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>
+        <script src ="js/subir_receta.js"></script>
         
     </body>
 </html>
