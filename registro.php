@@ -1,7 +1,10 @@
 <?php
- 
-  $mysqli = new mysqli('localhost', 'root', 'root', 'laousine_bd');
- 
+    $servername = "localhost";
+    $username = "root";
+    $password ="";
+    $bd="lacousine_bd";
+    
+    $conexion = new mysqli($servername, $username, $password, $bd);
 ?>
 <!DOCTYPE html>
 <html>
@@ -86,12 +89,14 @@
                     <h2>Nacionalidad</h2>
                     
                     <select name="nacionalidad" class="form-conrtol custom-select" style="width: 225px" required>
-                        <option value="0">Seleccione:</option>
-                        <?php $query = $mysqli -> query("SELECT * FROM Nacionalidad");?>
-                         <?php   while($valores = mysqli_fetch_array($query)){?>
-                          <?php      echo '<option value = "'.$valores[id_naionalidad]'">'.$valores[nombre].'</option>';
-                            }
+                    <option value="0">Seleccione:</option>
+                    <?php
                         
+                        $query = $conexion -> query ("SELECT * FROM nacionalidad");
+                        while ($valores = mysqli_fetch_array($query)) {
+                            echo '<option value="'.$valores[id_nacionalidad].'">'.$valores[nombre].'</option>';
+                        }
+                    ?>
                     </select>
                     <div class="invalid-feedback">Es necesario seleccionar una nacionalidad</div>
                 </div>
