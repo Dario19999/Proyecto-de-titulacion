@@ -1,3 +1,11 @@
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password ="";
+    $bd="lacousine_bd";
+    
+    $conexion = new mysqli($servername, $username, $password, $bd);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -81,26 +89,14 @@
                     <h2>Nacionalidad</h2>
                     
                     <select name="nacionalidad" class="form-conrtol custom-select" style="width: 225px" required>
-                        <option value="Argentina">Argentina</option>
-                        <option value="olivia">Bolivia</option>
-                        <option value="Brasil">Brasil</option>
-                        <option value="Chile">Chile</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Costa Rica">Costa Rica</option>
-                        <option value="Cuba">Cuba</option>
-                        <option value="Ecuador">Ecuador</option>
-                        <option value="El Salvador">El Salvador</option>
-                        <option value="Guatemala">Guatemala</option>
-                        <option value="Haití">Haití</option>
-                        <option value="Honduras">Honduras</option>
-                        <option selected value="México">México</option>
-                        <option value="Nicaragua">Nicaragua</option>
-                        <option value="Panamá">Panamá</option>
-                        <option value="Paraguay">Paraguay</option>
-                        <option value="Perú">Perú</option>
-                        <option value=">Republica Dominicana">Republica Dominicana</option>
-                        <option value="Uruguay">Uruguay</option>
-                        <option value="Venezuela">Venezuela</option>
+                    <option value="0">Seleccione:</option>
+                    <?php
+                        
+                        $query = $conexion -> query ("SELECT * FROM nacionalidad");
+                        while ($valores = mysqli_fetch_array($query)) {
+                            echo '<option value="'.$valores[id_nacionalidad].'">'.$valores[nombre].'</option>';
+                        }
+                    ?>
                     </select>
                     <div class="invalid-feedback">Es necesario seleccionar una nacionalidad</div>
                 </div>
