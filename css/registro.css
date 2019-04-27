@@ -1,5 +1,5 @@
 div h2{
-    font-size: 200px;
+    font-size: 20px;
 }
 
 label{
@@ -15,8 +15,9 @@ label{
 }
 
 .specs{
-    color: pink; 
+    color: black; 
     background-color: red; 
     margin-top: 10px;
     border-radius: 10px;
+    opacity: .75;
 }
