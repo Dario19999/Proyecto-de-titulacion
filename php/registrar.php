@@ -1,34 +1,44 @@
 <?php
 
-if (isset($_POST['usuario']) && isset($_POST['contra']) && isset($_POST['correo']) && isset($_POST['genero'])){
+    require 'conexion.php';
 
-    $servername = "localhost";
-    $username = "root";
-    $password ="";
-    $bd="lacousine_bd";
-    
-    $conexion = new mysqli($servername, $username, $password, $bd);
-    
-    // Check connection
-    if ($conexion->connect_error) {
-        die("Conexión fallida: " . $conexion->connect_error);
-    } 
-    echo "Conexión exitosa<br>";
+    $patron_p = "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/";
+    $patron_u = "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{50}$/";
 
-    $user = ( $_POST['usuario']);
-    $correo = ( $_POST['correo']);
-    $sexo = ($_POST['genero']);
-    $pass= password_hash ($_POST['contra'], PASSWORD_DEFAULT);
-    $nacionalidad=($_POST['nacionalidad']);
-    $query="INSERT INTO usuario (nombre,pass,correo,id_nacionalidad,sexo) values ('$user','$pass','$correo','$nacionalidad','$sexo')";
-    $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
+    $val= mysqli_query($conexion, "SELECT * FROM usuario");
 
-    mysqli_close ($conexion);
-    header ('location: /Proyecto-de-titulacion/pagina_principal.html');
-      
-}else{
-    
-    header ('location: /Proyecto-de-titulacion/registro.html');
-}
+        if(isset($_POST['registrar'])){
+            if (mysqli_num_rows($val) > 0) {
+                while($row = mysqli_fetch_array($val)){
+                
+                    $old_user = $row['nombre'];
+                    $old_correo = $row ['correo'];
+                    
+                    
+                    if($old_user == $user){
+                        echo "<p class = 'error' style = 'color: red'>*El nombre de usuario ya existe. Intente ingresando uno nuevo.</p>";
+                    }
+                    if($old_correo == $correo){
+                        echo "<p class = 'error' style = 'color: red'>*El correo ya existe. Intente ingresando uno nuevo.</p>";
+                    }
+                    
+                    if($pass != $pass_ver){
+                        echo "<p class = 'error' style = 'color: red'>*Las contraseñas deben ser iguales.</p>";
+                    }
 
+                    if(preg_match($patron_p, $pass) && preg_match($patron_u, $user) && $pass != $user){
+        
+                        $query="INSERT INTO usuario (nombre,pass,correo,id_nacionalidad,sexo) values ('$user','$pass','$correo','$nacionalidad','$sexo')";
+                        $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
+                        mysqli_close ($conexion);
+        
+                        header('location: /Proyecto-de-titulacion/pagina_principal.html');
+                    }
+                    else{
+                        echo "<p class = 'error' style = 'color: red'> *La contraseña debe contener al menos 8 caracteres. Entre ellos 1 letra mayúscula y un caracter numérico. Recuerda que el nombre de usuario y la contraseña deben de ser diferentes</p>";
+                    }
+                }     
+            } 
+
+        }
 ?>
