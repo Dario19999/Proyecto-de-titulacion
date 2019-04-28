@@ -29,8 +29,17 @@
             </div>
 
             <form action = "validar.php" method="POST" class="needs-validation">
-                <input type="text" placeholder=" Usuario" name ="usuario" required>
-                <input type="password" placeholder=" Contraseña" name ="contraseña" required> 
+
+                <?php
+
+                    if (isset($errorLogin)){
+                        echo $errorLogin;
+                    }
+
+                ?>
+
+                <input type="text" placeholder=" Usuario" name ="username" required>
+                <input type="password" placeholder=" Contraseña" name ="pass" required> 
                 <a href="pagina_principal.html" class="boton"><p>Iniciar sesión</p></a>
             </form>
 
