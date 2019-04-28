@@ -5,8 +5,8 @@
         $user = ( $_POST['usuario']);
         $correo = ( $_POST['correo']);
         $sexo = ($_POST['genero']);
-        $pass= password_hash ($_POST['contra'], PASSWORD_DEFAULT);
-        $pass_ver = password_hash($_POST['contra2'], PASSWORD_DEFAULT);
+        $pass= ($_POST['contra']);
+        $pass_ver =($_POST['contra2']);
         $nacionalidad=($_POST['nacionalidad']);
     }
 ?>
@@ -57,7 +57,7 @@
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <h2>Correo</h2>
-                    <input type="email"  class="form-control" placeholder="Correo electronico" name="correo" required>
+                    <input type="email"  class="form-control" placeholder="Correo electronico" name="correo" id="in_correo" required>
                     <div class="invalid-feedback">Es necesario ingresar un correo</div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <h2>Nombre de Usuario</h2>
-                    <input type="text"  class="form-control" placeholder="Ingrese su nuevo nombre de usuario..." name="usuario" required>
+                    <input type="text"  class="form-control" placeholder="Ingrese su nuevo nombre de usuario..." name="usuario" id="in_nombre" required>
                     <div class="invalid-feedback">Es necesario ingresar un nombre de usuario</div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
             <div class="form-row h-100 justify-content-center align-items-center sepcs">
                 <div class="form-group col-md-3 text-center">
                     <h2>Contraseña</h2>
-                    <input type="password"  class="form-control" placeholder="Contraseña" name="contra" required>
-                    <div class="col-md text-left specs">
+                    <input type="password"  class="form-control" placeholder="Contraseña" name="contra" id="in_pass" required>
+                    <div class="col-md text-left specs border">
                         <p>
                         La contraseña debe contener:
                         <br>
@@ -93,7 +93,7 @@
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <h2>Confirmar contraseña</h2>
-                    <input type="password"  class="form-control" placeholder="Confirme su contraseña" name ="contra2" required>
+                    <input type="password"  class="form-control" placeholder="Repita su contraseña" name ="contra2" id = "in_pass" required>
                     <div class="invalid-feedback">Es necesario repetir la contraseña</div>
                 </div>
             </div>
