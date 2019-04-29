@@ -67,7 +67,7 @@ al presionar un botón con ícono de configuarción-->
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a href="editar_perfil.html" class="dropdown-item">Editar Perfil</a>
                         <div class="dropdown-divider"></div>
-                        <a href="login.html" class="dropdown-item">Cerrar Sesi&oacute;n</a>
+                        <a href="php/logout.php" class="dropdown-item">Cerrar Sesi&oacute;n</a>
                     </div>
 
                 </li>
@@ -85,7 +85,7 @@ al presionar un botón con ícono de configuarción-->
         <div class="row justify-content-center align-items-center"> <!--Alinea contenido al centro horizontal y verticalmente-->
             <div class="col-md-9"> <!--Tamaño de 9 columnas del grid a partir de dispositivos medianos hacia arriba-->
                 <div class="jumbotron"> <!--Recuadro-->
-                    <h1>¡Bienvenido! </h1>
+                    <h1>¡Bienvenido  <?php echo $validar->getUser?> ! </h1>
                     <p>&Eacute;sta es la p&aacute;gina de recetas especializada que estabas buscando.</p>
                     <p>La única con dictado automático, cotizaciones y cálculo de porciones seg&uacute;n tus necesidades</p>
                 </div>
