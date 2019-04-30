@@ -1,4 +1,3 @@
-
 INSERT INTO ingrediente (nombre) VALUES ('Costillar');
 INSERT INTO ingrediente (nombre) VALUES ('Ribeye');
 INSERT INTO ingrediente (nombre) VALUES ('New york');
@@ -24,82 +23,10 @@ INSERT INTO ingrediente (nombre) VALUES ('Corazon de diesmillo');
 INSERT INTO ingrediente (nombre) VALUES ('Juil');
 INSERT INTO ingrediente (nombre) VALUES ('Planchuela');
 INSERT INTO ingrediente (nombre) VALUES ('Diezmillo');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-INSERT INTO ingrediente (nombre) VALUES ('');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+INSERT INTO ingrediente (nombre) VALUES ('Suprema');
+INSERT INTO ingrediente (nombre) VALUES ('Solomillo');
+INSERT INTO ingrediente (nombre) VALUES ('Entraña');
+INSERT INTO ingrediente (nombre) VALUES ('Presa');
+INSERT INTO ingrediente (nombre) VALUES ('Entrecot');
+INSERT INTO ingrediente (nombre) VALUES ('Rack');
+INSERT INTO ingrediente (nombre) VALUES ('Tomahawk');

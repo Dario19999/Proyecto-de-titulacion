@@ -1,5 +1,14 @@
 <?php
     require 'php/conexion.php';
+
+    if(isset($_POST['reg'])){
+        $user = $_POST['usuario'];
+        $correo = $_POST['correo'];
+        $sexo = $_POST['genero'];
+        $pass = $_POST['contra'];
+        $pass_ver = $_POST['contra2'];
+        $nacionalidad = $_POST['nacionalidad'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -43,7 +52,7 @@
     
         <hr>
         
-        <form action = "../php/registrar.php" method="POST" class="needs-validation">
+        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" class="needs-validation">
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <h2>Correo</h2>
@@ -139,11 +148,12 @@
             <br>
 
             <div class="form-row h-100 justify-content-center align-items-center">
-                <button type="submit" class="btn boton_generico" name="registrar">Registrarse</button>
+                <input type="submit" class="btn boton_generico" name ="reg" value ="Registrar">
             </div>
-
+            <?php
+                require 'php/registrar.php';
+            ?>
         </form>
-        
     </div>
     <br>
 
