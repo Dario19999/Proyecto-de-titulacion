@@ -2,13 +2,13 @@
 
 class userSession {
 
-    public funcion __construct (){
+    public function __construct (){
         session_start();
 
     }
 
     public function setCurrentUser ($user){
-        $_SESSION['user']= $user;
+        $_SESSION['user'] = $user;
 
     }
 

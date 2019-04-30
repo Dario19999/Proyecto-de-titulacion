@@ -1,10 +1,10 @@
 <?php
 
-include 'php/sesion.php';
+include 'sesion.php';
 
-$ession = new userSession();
-$userSession -> closeSession();
+$userSession = new userSession();
+$userSession->closeSession();
 
-header("location: .pagina_principal.html")
+header("location: ../login.php")
 
 ?>

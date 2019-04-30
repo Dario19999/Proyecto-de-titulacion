@@ -28,7 +28,7 @@
                 <h1>La cousine</h1>
             </div>
 
-            <form action = "validar.php" method="POST" class="needs-validation">
+            <form action = "" method="POST" class="needs-validation">
 
                 <?php
 
@@ -40,7 +40,7 @@
 
                 <input type="text" placeholder=" Usuario" name ="username" required>
                 <input type="password" placeholder=" Contraseña" name ="pass" required> 
-                <a href="pagina_principal.html" class="boton"><p>Iniciar sesión</p></a>
+                <p><button type="submit" class="boton" name="iniciar_sesion">Iniciar Sesión</button></p>
             </form>
 
             <div class="hiperenlace">
