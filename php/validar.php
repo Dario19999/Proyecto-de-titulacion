@@ -1,8 +1,8 @@
 <?php
 
-include 'php/conexion.php';
+include 'DB.php';
 
-class User extends conexion{
+class User extends DB{
 
     private $username;
     private $correo;
@@ -11,8 +11,12 @@ class User extends conexion{
 
         $md5pass = md5 ($pass);
         //En este query va a hacer una consulta para saber si coinciden las contraseñas y el usuario
-        $query = $this->connect()->prepare('SELECT * FROM usuarios WHERE nombre = :user AND pass = :pass');
-        $query->execute (['user'=> $user, 'pass'=> $md5pass]);
+
+        // $query = "SELECT * FROM usuarios WHERE nombre = '$user' AND pass = '$md5pass'";
+        // $res_q = mysqli_query($conexion, $query);
+
+        $query = $this->connect()->prepare('SELECT * FROM usuario WHERE nombre = :user AND pass = :pass');
+        $query->execute (['user'=> $user, 'pass'=> $pass]);
 
         if ($query->rowCount()){
             return true;
@@ -23,7 +27,11 @@ class User extends conexion{
     }
 
     public function setUser ($user){
-        $query = $this->connect()->prepare ('SELECT *FROM usuarios WHERE nombre = :user');
+
+        // $query = "SELECT * FROM usuarios WHERE nombre = '$user'";
+        // $res_q = mysqli_query($conexion, $query);
+
+        $query = $this->connect()->prepare ('SELECT *FROM usuario WHERE nombre = :user');
         $query->execute (['user'=> $user]);
 
         foreach ($query as $currentUser){
@@ -33,7 +41,7 @@ class User extends conexion{
     }
 
     public function getUser (){
-        return $this->correo;
+        return $this->username;
     }
 }
 
