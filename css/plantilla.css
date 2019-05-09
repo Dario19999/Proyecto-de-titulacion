@@ -13,16 +13,6 @@ body{
     text-align: center;
 }
 
-.brand{
-    color: #fffaa3;
-    font-family: 'Yellowtail', cursive;
-    font-size: 40px;
-    text-align: center;
-    text-decoration: none;
-    width: 100%;
-    padding: 10px;
-}
-
 
 .boton.buscar{
     background: #fff;
@@ -73,4 +63,3 @@ li a{
     font-family: 'Bree Serif', serif;
     font-size: 20px;
 }
-

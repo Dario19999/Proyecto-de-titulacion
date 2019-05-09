@@ -65,12 +65,13 @@
     <!-----------------------------------[Fin de Plantilla]------------------------------------------>
     
     <div>
-        <button type="button" class="btn boton_generico"  style="float: right; font-size: 20px;" data-toggle="modal" data-target="#modal_boton">Agregar Término</button>
+        <button type="button" class="btn boton_generico"  style="float: right;" data-toggle="modal" data-target="#modal_boton">Agregar Término</button>
     </div> 
         
     <div class="modal fade" id="modal_boton" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="font-family: 'Bree Serif', serif;" role="document">
             <div class="modal-content">
+                
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Agregar Término al Glosario</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -89,7 +90,9 @@
 
                         <div>
                             <h4>Definición</h4>
-                            <textarea class="form-control textarea_resize" maxlength="3000" rows="10" cols="30" placeholder="Describa detalladamente la definición del término..."></textarea>
+                            <textarea class="form-control textarea_resize" maxlength="3000" rows="10" cols="30" 
+                            placeholder="Describa detalladamente la definición del término..."></textarea>
+
                         </div>
 
                     </form>
