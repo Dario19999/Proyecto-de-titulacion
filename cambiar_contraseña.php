@@ -2,18 +2,15 @@
 <html>
 
     <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Cambiar contraseña</title>
-    <link rel="icon" href="img/icon1.png">
-    <link rel="stylesheet" href="CSS/login.css">
-    <link rel="stylesheet" href="css/plantilla.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
-
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cambiar contraseña</title>
+        <link rel="icon" href="img/icon1.png">
+        <link rel="stylesheet" href="CSS/login.css">
+        <link rel="stylesheet" href="css/plantilla.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
     </head>
     
     <body> 

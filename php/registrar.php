@@ -15,14 +15,14 @@
 
         $user_exists = mysqli_num_rows($res_u);
         $correo_exists = mysqli_num_rows($res_c);
-        $indicator = 1;
+        $bandera = 1;
         
         if(empty($correo)){
 
         }else{
             if($correo_exists === 1){
                 echo "<p class = 'error' style = 'color: red'>*El correo ya está en uso. Pruebe ingresando uno nuevo.</p>";
-                $indicator = 0;
+                $bandera = 0;
             }
         }
         
@@ -32,19 +32,19 @@
 
             if($user_exists === 1){
                 echo "<p class = 'error' style = 'color: red'>*El nombre de usuario ya existe. Intente ingresando uno nuevo.</p>";
-                $indicator = 0;
+                $bandera = 0;
             }
 
             if(!preg_match($patron_u, $user)){
                 echo "<p class = 'error' style = 'color: red'>*El nombre de usuario no puede contener más de 50 caracteres. Pruebe ingresando uno nuevo.</p>";
-                $indicator = 0;
+                $bandera = 0;
             }
             
         }
 
         if(empty($pass_ver)){
             echo "<p class = 'error' style = 'color: red'>*Reingrese su contraseña para poder registrarse.</p>";
-            $indicator = 0;
+            $bandera = 0;
         }else{
             if(!preg_match($patron_p, $pass)){
                 echo "<p class = 'error' style = 'color: red'>*La contraseña debe contener al menos 8 caracteres. Entre ellos 1 letra mayúscula y un caracter numérico. 
@@ -53,9 +53,9 @@
             }
             if($pass_ver != $pass){
                 echo "<p class = 'error' style = 'color: red'>*Las contraseñas deben de ser iguales en ambos campos.</p>";
-                $indicator = 0;
+                $bandera = 0;
             }
-            if(preg_match($patron_p, $pass) && preg_match($patron_u, $user) && $pass != $user && $indicator == 1){
+            if(preg_match($patron_p, $pass) && preg_match($patron_u, $user) && $pass != $user && $bandera == 1){
 
                 $en_pass = password_hash($pass, PASSWORD_DEFAULT);
                 $query="INSERT INTO usuario (nombre,pass,correo,id_nacionalidad,sexo) values ('$user','$en_pass','$correo','$nacionalidad','$sexo')";

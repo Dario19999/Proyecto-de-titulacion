@@ -1,73 +1,21 @@
 <?php
     require 'php/conexion.php';
+
+    if(isset($_POST['subir'])){
+        $nombre = $_POST['nombre_receta'];
+        $nacionalidad = $_POST['nacionalidad'];
+        $cant = $_POST['cant'];
+        $ingr = $_POST['ingr'];
+        $porciones = $_POST['porciones'];
+        $paso = $_POST['paso'];
+    }
 ?>
-<!DOCTYPE html>
-<html>
+<?php
 
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    include_once 'plantilla.php';
 
-        <title>Subir</title>
-        <link rel="icon" href="img/icon1.png">
-        <link rel="stylesheet" href="CSS/plantilla.css">
-        <link rel="stylesheet" href="css/subir_receta.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
-        
-        
-    </head>
-    
-    <body>
-
-        <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
-
-            <a href="pagina_principal.html" class="navbar-brand" style="color: #fffaa3; font-family: 'Yellowtail', cursive; font-size: 40px;">La Cousine</a>
-
-
-            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-            </button>
-                        
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
-                <ul class="navbar-nav nav-justified w-100 mr-auto">
-    
-                    <li class="nav-item">
-                        <a href="buscar_receta.html" class="nav-link nav_button">Buscar</a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a href="glosario.html" class="nav-link nav_button">Glosario</a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a href="subir_receta.html" class="nav-link nav_button">Subir</a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a href="perfil.html" class="nav-link nav_button">Perfil</a>
-                    </li>
-    
-                    <li class="nav-item dropdown">
-                        <button class="btn btn-default dropdown-toggle nav_button" type="button" id="dropdownMenuButton" 
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        
-                            <img src="img/iconfinder_Configuration-01_1976051.svg" width="40px" height="40px" alt="Settings">
-                        </button>
-    
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a href="editar_perfil.html" class="dropdown-item">Editar Perfil</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="login.html" class="dropdown-item">Cerrar Sesi&oacute;n</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    <!-----------------------------------[Fin de Plantilla]------------------------------------------> 
-        <form action = "/Proyecto-de-titulacion/php/subir_receta.php" method="POST" accept-charset="utf-8">
+?>
+        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
             
             <p class="subtitulo_subir">Nombre de Receta</p>
             
@@ -77,14 +25,12 @@
                 </div>
             </div>
             <hr>
-            <hr>
             
             <p class="subtitulo_subir">Nacionalidad</p>
             
             <div class="form-row">
                 <div class="form-group col-md-1 align-items-center">
-                    <select name="Nacionalidad" class="form-control custom-select"  style="width: 200px; margin-left: 30px;" required>
-                        <option value="0">Seleccione</option>
+                    <select name="nacionalidad" class="form-control custom-select"  style="width: 200px; margin-left: 30px;" required>
                         <?php
                             
                             $query = $conexion -> query ("SELECT * FROM nacionalidad");
@@ -96,7 +42,6 @@
                 </div>
             </div>
 
-            <hr>
             <hr>
 
             <p class="subtitulo_subir">Ingredientes</p> 
@@ -116,12 +61,11 @@
             </div>                     
             <div class="form-row">
                 <div class="form-group col-md-1 text-center">
-                    <input type="text" name="cant_1" class="cantidad"> 
+                    <input type="text" name="cant" class="cantidad" required> 
                 </div>
 
                 <div class="form-group col-md-1 text-center">
-                    <select class="form-control custom-select">
-                        <option value="null">Seleccione</option>
+                    <select class="form-control custom-select" name = "medida" required>
                         <option value="Kg">Kg</option>
                         <option value="g">g</option>
                         <option value="mg">mg</option>
@@ -135,7 +79,7 @@
                     </select>
                 </div>
                 <div class="form-group col-md-3 text-center">
-                    <input type="text" name="ingr_1" class="ingr">
+                    <input type="text" name="ingr" class="ingr" required>
                 </div>
                 
             </div>
@@ -153,8 +97,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-1 text-center " style="margin-left: 30px">
-                <select class="form-control custom-select">
-                        <option value="null">Seleccione</option>
+                <select class="form-control custom-select" name = "porciones" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -176,7 +119,7 @@
             
             <hr>
             <hr>
-
+            
             <p class="subtitulo_subir">Procedimiento</p>
 
             <div class="form-row d-flex h-100">
@@ -185,7 +128,7 @@
                 </div>
 
                 <div class="form-group col-md-7">
-                    <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" placeholder="Describa el primer paso."></textarea> 
+                    <textarea class="textarea_adjust" name="paso" cols="30" rows="7" placeholder="Describa el primer paso."></textarea> 
                 </div>
      
                 <div class="form-group col-md-2 align-self-center">
@@ -250,9 +193,12 @@
             <hr>
 
             <div class="div_boton">
-                <button type="submit" class="btn boton_generico">Subir</button>
+                <button type="submit" class="btn boton_generico" name="subir">Subir</button>
             </div>
-
+            
+            <?php
+                require 'php/subir_receta.php';
+            ?>
         </form>
 
         <script src="js/jquery-3.3.1.slim.min.js"></script>

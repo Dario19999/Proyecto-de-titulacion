@@ -10,6 +10,7 @@
         $nacionalidad = $_POST['nacionalidad'];
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,7 +24,7 @@
         <link rel="stylesheet" href="CSS/plantilla.css">
         <link rel="stylesheet" type ="text/css" href="css/registro.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Ser0.0if" rel="stylesheet">
         
     </head>
 
@@ -104,7 +105,6 @@
                     <h2>Nacionalidad</h2>
                     
                     <select name="nacionalidad" class="form-conrtol custom-select" style="width: 225px" required>
-                    <option value="0">Seleccione:</option>
                     <?php
                         
                         $query = $conexion -> query ("SELECT * FROM nacionalidad");
@@ -160,8 +160,6 @@
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
-
-
 
 </body>
 </html>
