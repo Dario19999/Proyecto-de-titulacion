@@ -51,6 +51,10 @@ li a{
     vertical-align:middle;
     text-align: center;
     margin-right: 3px;
+    text-decoration: none;
+    font-family: 'Yellowtail', cursive;
+    text-align: center;
+    font-size: 30px; 
 }
 .nav_button:hover{
     background-color: #e03551;

@@ -62,7 +62,7 @@
                 $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
                 mysqli_close ($conexion);
 
-                header('location: /Proyecto-de-titulacion/pagina_principal.html');
+                echo "<script type='text/javascript'>window.location.replace('perfil.php');</script>";
             }
         }
     }

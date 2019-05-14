@@ -7,7 +7,7 @@
         <div class="container-fluid">
 
             <div style="float: right;">
-                <a href="editar_perfil.html" class="btn boton_generico">Editar Perfil</a>
+                <button class="boton_generico btn" id="btn_editar_perfil" onclick="redirigir(this.id)" style="width: 100%;">Editar Perfil</button>
             </div>
 
             <div class="row justify-content-center align-items-center">

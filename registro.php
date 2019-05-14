@@ -18,14 +18,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
         <title>Registro</title>
         <link rel="icon" href="img/icon1.png">
-        <link rel="stylesheet" href="CSS/plantilla.css">
+        <link rel="stylesheet" type ="text/css" href="CSS/plantilla.css">
         <link rel="stylesheet" type ="text/css" href="css/registro.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Ser0.0if" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
+        <script src="js/redirigir.js"></script>
     </head>
 
     <body>
@@ -61,7 +60,7 @@
                     <div class="invalid-feedback">Es necesario ingresar un correo</div>
                 </div>
             </div>
-
+            <br>
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <h2>Nombre de Usuario</h2>
@@ -69,7 +68,7 @@
                     <div class="invalid-feedback">Es necesario ingresar un nombre de usuario</div>
                 </div>
             </div>
-
+            <br>
             <div class="form-row h-100 justify-content-center align-items-center sepcs">
                 <div class="form-group col-md-3 text-center">
                     <h2>Contraseña</h2>
@@ -89,7 +88,7 @@
                     <div class="invalid-feedback">Es necesario ingresar una contraseña</div>
                 </div>
             </div>
-
+            <br>        
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <h2>Confirmar contraseña</h2>
@@ -123,13 +122,13 @@
                 <h2>Genero</h2>
                     <div class = "col-md-2">
                         
-                        <div class="col-md-2 text-left" style="margin-left: 130px">
+                        <div class="col-md-2 text-left" style="margin-left: 150px">
                             <div class=" custom-control custom-radio custom-control-inline mx-auto">
                                 <input type="radio"  class="custom-control-input" id="inputGeneroM" name="genero" value="M" required>
                                 <label for="inputGeneroM" class="custom-control-label">Masuculino</label>
                             </div>
 
-                            <div class=" custom-control custom-radio custom-control-inline mx-auto" style="margin-right: 100px">
+                            <div class=" custom-control custom-radio custom-control-inline mx-auto">
                                 <input type="radio"  class="custom-control-input" id="inputGeneroF" name="genero" value="F" required>
                                 <label for="inputGeneroF" class="custom-control-label">Femenino</label>
                             </div>
@@ -142,7 +141,7 @@
             <hr>
 
             <div class="form-row h-100 justify-content-center align-items-center">
-                <a href="login.html" style="font-family: 'Bree Serif', serif; color: #ff7e05;">Ya tengo una cuenta</a>
+                <a style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor:pointer;" id="btn_logout" onclick="redirigir(this.id)">Ya tengo una cuenta</a>
             </div>
             
             <br>

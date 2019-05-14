@@ -10,6 +10,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
         <link rel="stylesheet" href="CSS/plantilla.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
+        <script src="js/redirigir.js"></script>
         <?php
             $archivo = basename($_SERVER["PHP_SELF"]);
             $pagina = str_replace(".php", "", $archivo);
@@ -23,7 +24,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
             }else if($pagina == 'glosario'){
                 echo "<title>Glosario</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/glosario.css'";
-            }else if($pagina == 'pagina_principal'){
+            }else if($pagina == 'index'){
                 echo "<title>La Cousine</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'";
             }else if($pagina == 'perfil'){
@@ -57,9 +58,10 @@ que la barra de navegación sea colapsable al presionarlo. Luego agregamos los b
 al resto de las páginas y el dropdown para que se desplieguen las opciones de editar perfil y salir
 al presionar un botón con ícono de configuarción-->
     <body>
+
         <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
 
-            <a href="pagina_principal.html" class="navbar-brand" style="color: #fffaa3; font-family: 'Yellowtail', cursive; font-size: 40px;">La Cousine</a>
+            <button class="navbar-brand btn" id="btn_brand" onclick="redirigir(this.id)" style="color: #fffaa3; background-color: #ff7e05; font-family: 'Yellowtail', cursive; font-size: 40px;">La Cousine</button>
 
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -70,19 +72,19 @@ al presionar un botón con ícono de configuarción-->
                 <ul class="navbar-nav nav-justified w-100 mr-auto">
 
                     <li class="nav-item">
-                        <a href="buscar_receta.html" class="nav-link nav_button">Buscar</a>
+                        <button class="nav_button btn" id="btn_buscar" onclick="redirigir(this.id)" style="width: 100%;">Buscar</button>
                     </li>
 
                     <li class="nav-item">
-                        <a href="glosario.html" class="nav-link nav_button">Glosario</a>
+                        <button class="nav_button btn" id="btn_glosario" onclick="redirigir(this.id)" style="width: 100%;">Glosario</button>
                     </li>
 
                     <li class="nav-item">
-                        <a href="subir_receta.html" class="nav-link nav_button">Subir</a>
+                        <button class="nav_button btn" id="btn_subir" onclick="redirigir(this.id)" style="width: 100%;">Subir</button>
                     </li>
 
                     <li class="nav-item">
-                        <a href="perfil.html" class="nav-link nav_button">Perfil</a>
+                        <button class="nav_button btn" id="btn_perfil" onclick="redirigir(this.id)" style="width: 100%;">Perfil</button>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -92,9 +94,9 @@ al presionar un botón con ícono de configuarción-->
                         </button>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a href="editar_perfil.html" class="dropdown-item">Editar Perfil</a>
+                            <a class="dropdown-item" id="btn_editar_perfil" onclick="redirigir(this.id)" style="cursor: pointer;">Editar Perfil</a>
                             <div class="dropdown-divider"></div>
-                            <a href="login.html" class="dropdown-item">Cerrar Sesi&oacute;n</a>
+                            <a class="dropdown-item" id="btn_logout" onclick="redirigir(this.id)" style="cursor: pointer;">Cerrar Sesi&oacute;n</a>
                         </div>
 
                     </li>

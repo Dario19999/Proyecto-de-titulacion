@@ -10,7 +10,8 @@
         <link rel="stylesheet" href="CSS/login.css">
         <link rel="stylesheet" href="css/plantilla.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">    
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">   
+        <script src="js/redirigir.js"></script>
     </head>
     
     <body> 
@@ -35,14 +36,15 @@
 
                 ?>
 
-                <input type="text" placeholder=" Usuario" name ="username" required>
-                <input type="password" placeholder=" Contraseña" name ="pass" required> 
-                <p><button type="submit" class="boton" name="iniciar_sesion">Iniciar Sesión</button></p>
+                <input type="text" class="form-control" placeholder="Usuario" name ="username" required>
+                <input type="password" class="form-control"  placeholder="Contraseña" name ="pass" required> 
+                <p><button type="submit" class="btn boton_generico" name="iniciar_sesion">Iniciar Sesión</button></p>
+            
             </form>
 
-            <div class="hiperenlace">
-                <p> <a href="registro.php" style="font-family: 'Bree Serif', serif; color: #ff7e05;">Registrarse</a></p>       
-                <p> <a href="cambiar_contraseña.html" style="font-family: 'Bree Serif', serif; color: #ff7e05;">¿Olvidaste tu contraseña?</a></p>
+            <div class="hiperenlace text-center">
+                <p> <a style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_registrar" onclick="redirigir(this.id)">Registrarse</a></p>
+                <p> <a style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_cambiar_contra" onclick="redirigir(this.id)">¿Olvidaste tu contraseña?</a></p>
             </div>
 
         </div>

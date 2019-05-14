@@ -1,0 +1,35 @@
+.foto{
+    margin: 50px;
+    padding: 30px;
+    position: relative;
+}
+
+.datos{
+    position:absolute;
+    top:20px;
+    bottom:0;
+    right:0;
+    left:400px;
+}
+
+.boton_coord{
+   float: right;
+}
+
+h2{
+    text-align: left;
+    font-size: 30px;
+    color: black;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.insignias{
+    float: left;
+}
+.contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -27,7 +27,7 @@
     <br>
 
     <div class="contenedor_formulario text-center">
-        <form>
+        <form action="perfil.php" method="post">
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-8 text-center">
                     <h2>Nombre</h2>
@@ -83,14 +83,21 @@
             <br>
 
             <div class="form-row h-100 justify-content-center align-items-center">
-                <a href="cambiar_contraseña.html" style="font-family: 'Bree Serif', serif; color: #ff7e05;">Cambiar Contraseña</a>
+                <a style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_cambiar_contra" onclick="redirigir(this.id)">Cambiar Contraseña</a>
             </div>
 
             <br>
 
             <div class="form-row h-100 justify-content-center align-items-center">
-                <button type="submit" class="btn boton_generico">Guardar Cambios</button>
+                <button type="submit" class="btn boton_generico" name="save">Guardar Cambios</button>
             </div>
+            <?php
+
+                if(isset($_POST['save']))
+                echo "<script type='text/javascript'>window.location.replace('perfil.php');</script>"
+
+            ?>
+           
         </form>
     </div>
     
