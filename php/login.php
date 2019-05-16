@@ -1,7 +1,7 @@
 <?php
 
-include 'sesion.php';
-include 'validar.php';
+require 'sesion.php';
+require 'validar.php';
 
 $userSession = new userSession();
 $user = new User ();
