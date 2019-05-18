@@ -4,24 +4,26 @@
 
 include 'php/conexion.php';
 
-$busqueda = $_POST ['busqueda']; // receta nombre_receta 
-$tipo = $_POST ['tipo'];
-$sabor = $_POST["sabor"]; // from clasificacion where id_puntajes == value $sabor
-$dificultad = $_POST["dificultad"]; // id_puntajes
-$accesibilidad = $_POST["accesibilidad"]; // id_puntajes
-$tiempo = $_POST["tiempo"]; // id_puntajes
-$nacionalidad = $_POST["nacionalidad"]; // receta id_nacionalidad
-
-if(!empty($tipo)){
-$tipo = $_POST['tipo']; // receta id_categoria
-}else{
-    $tipo = 0;
+if(isset($_POST ['busqueda'])){
+    $busqueda = $_POST ['busqueda'];
 }
-
-if(isset($sabor)){
-$sabor = $_POST['sabor']; // receta id_categoria
-}else{
-    $sabor = 0;
+if(isset($_POST ['tipo'])){
+    $tipo = $_POST ['tipo'];
+}
+if(isset($_POST ['sabor'])){
+    $sabor = $_POST ['sabor'];
+}
+if(isset($_POST ['dificultad'])){
+    $dificultad = $_POST ['dificultad'];
+}
+if(isset($_POST ['accesibilidad'])){
+    $accesibilidad = $_POST ['accesibilidad'];
+}
+if(isset($_POST ['tiempo'])){
+    $tiempo = $_POST ['tiempo'];
+}
+if(isset($_POST ['nacionalidad'])){
+    $nacionalidad = $_POST ['nacionalidad'];
 }
 
 
@@ -41,8 +43,6 @@ function is_empty ($query){
 }
 
 $query="SELECT nombre_receta FROM receta WHERE ";
-
-echo strlen($query);
 
 if (!empty ($busqueda) && !is_empty ($query)){
     $query.= " AND nombre_receta = %$busqueda%";
