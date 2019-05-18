@@ -21,11 +21,6 @@
     height: 30px;
 }
 
-.textarea_adjust {
-    width: 100%;
-    resize: none;
-}
-
 .div_boton{
     display: flex;
     align-items: center;
@@ -35,4 +30,9 @@
 
 .nombre_receta{
     margin-left: 40px;
+}
+
+textarea{
+    width: 100%;
+    resize: none;
 }

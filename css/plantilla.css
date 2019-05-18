@@ -77,3 +77,9 @@ li a{
     width: 100%;
     padding: 10px;
 }
+
+body{
+    margin: 0;
+    padding: 10px;
+    overflow-x: hidden;
+}

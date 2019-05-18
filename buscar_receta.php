@@ -11,13 +11,13 @@
             <div class="col-12 col-md-10 col-lg-8">
             
               
-                    <div class="card-body row no-gutters align-items-center">
+                    <div class="card-body row no-gutters align-items-center border">
                     
-                        <div class="col-auto">
+                        <div class="col-auto border">
                             <i class="fas fa-search h4 text-body"></i>
                         </div>
 
-                        <div class="col">
+                        <div class="col border">
                             <input class="form-control form-control-lg form-control-borderless" 
                             type="search" placeholder="Buscar" name="busqueda">
                         </div>
@@ -105,7 +105,7 @@
                     <input type="radio" value="5" id="sabor5" name="sabor" class="custom-control-input">
                     <label class="custom-control-label" for="sabor5">5</label>
                 </div>
-
+                <hr>
                 <p>Facilidad</p>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" value="1" id="facilidad1" name="facilidad" class="custom-control-input">
@@ -131,7 +131,7 @@
                     <input type="radio" value="5" id="facilidad5" name="facilidad" class="custom-control-input">
                     <label class="custom-control-label" for="facilidad5">5</label>
                 </div>
-
+                <hr>
                 <p>Accesibilidad</p>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" value="1" id="accesibilidad1" name="accesibilidad" class="custom-control-input">
@@ -157,7 +157,7 @@
                     <input type="radio" value="5" id="accesibilidad5" name="accesibilidad" class="custom-control-input">
                     <label class="custom-control-label" for="accesibilidad5">5</label>
                 </div>
-
+                <hr>
                 <p>Tiempo</p>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" value="1" id="tiempo1" name="tiempo" class="custom-control-input">
