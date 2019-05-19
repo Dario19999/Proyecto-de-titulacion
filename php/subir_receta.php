@@ -45,7 +45,7 @@
                                 if(stripos($nombre_receta, $row['groseria']) === FALSE){
                                         
                                 }else{
-                                        echo "<p style = 'color: red'>*Error: Se detectó un apalabra altisonante en el nombre. Favor de corregir.</p>";
+                                        echo "<p style = 'color: red'>*Error: Se detectó una palabra altisonante en el nombre. Favor de corregir.</p>";
                                         $bandera = 0;
                                 }
 
@@ -69,7 +69,7 @@
                 if($bandera == 1){
                         $query="INSERT INTO datos_receta (porciones, cantidad, medida) values ('$porcion', '$cant', '$ingr');
                                 INSERT INTO procedimiento (paso) values ('$paso');
-                                INSERT INTO receta (nombre_receta, nacionalidad) values ('$nombre', '$nacionalidad');";
+                                INSERT INTO receta (nombre_receta, nacionalidad, id_categoria) values ('$nombre', '$nacionalidad', '$categoria');";
 
                         $registrar=mysqli_query($conexion, $query);
                         mysqli_close ($conexion);

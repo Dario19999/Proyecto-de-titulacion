@@ -5,7 +5,7 @@
     if(isset($_POST['reg'])){
 
         echo '<hr>';
-        $patron_p = "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/";
+        $patron_p = "/^(?=.*\d)(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/";
         $patron_u = "/^(?=.*[a-z])(?=.*[a-zA-Z]).{1,50}$/";
 
         $query_u = "SELECT * FROM usuario WHERE nombre = '$user'";
@@ -38,10 +38,8 @@
             if(!preg_match($patron_u, $user)){
                 echo "<p class = 'error' style = 'color: red'>*El nombre de usuario no puede contener más de 50 caracteres. Pruebe ingresando uno nuevo.</p>";
                 $bandera = 0;
-            }
-            
+            }   
         }
-
         if(empty($pass_ver)){
             echo "<p class = 'error' style = 'color: red'>*Reingrese su contraseña para poder registrarse.</p>";
             $bandera = 0;

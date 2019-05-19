@@ -6,6 +6,9 @@
 <!-----------------------------------[Fin de Plantilla]------------------------------------------>
 
     <br>
+    <br>
+    <br>
+    <br>
     <form action="resultado_busqueda.php" method ="POST">
     <div class="container">
         <div class="row justify-content-center">
@@ -103,7 +106,8 @@
                     <input type="radio" value="5" id="sabor5" name="sabor" class="custom-control-input" >
                     <label class="custom-control-label" for="sabor5">5</label>
                 </div>
-
+                <hr>
+                
                 <p>Dificultad</p>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" value="1" id="dificultad1" name="dificultad" class="custom-control-input" >
@@ -189,7 +193,6 @@
                 <div class="nacionalidad">
                 
                     <select name="nacionalidad" class="custom-select" name="Nacionalidad" style="width: 225px">
-                        <option selected></option>
                         <?php
                         require 'php/conexion.php';
                         $query = $conexion -> query ("SELECT * FROM nacionalidad");

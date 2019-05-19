@@ -8,6 +8,7 @@
         $ingr = $_POST['ingr'];
         $porciones = $_POST['porciones'];
         $paso = $_POST['paso'];
+        $categoria = $_POST['tipo_receta'];
     }
 ?>
 <?php
@@ -16,7 +17,11 @@
 
 ?>
         <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
-            
+            <br>
+            <br>
+            <br>
+            <br>
+
             <p class="subtitulo_subir">Nombre de Receta</p>
             
             <div class="form-row ">
@@ -26,6 +31,23 @@
             </div>
             <hr>
             
+            
+            <p class="subtitulo_subir">Tipo de platillo</p>
+
+            <div class="form-row">
+                <div class="form-group col-md-1">
+                    <select name="tipo_receta" id="tipo" class="form-control custom-select" style="width: 200px; margin-left: 30px;" required>
+                        <?php
+                            $query = $conexion -> query ("SELECT * FROM categorias");
+                            while ($valores = mysqli_fetch_array($query)) {
+                                echo '<option value="'.$valores[id_categorias].'">'.$valores[nombre_categoria].'</option>';
+                            }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <hr>
+
             <p class="subtitulo_subir">Nacionalidad</p>
             
             <div class="form-row">
@@ -90,8 +112,7 @@
                     <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico">
                 </div>
             </div>
-            
-            <hr>
+
             <hr>
 
             <p class="subtitulo_subir">Porciones</p>
@@ -119,12 +140,11 @@
             </div>
             
             <hr>
-            <hr>
             
             <p class="subtitulo_subir">Procedimiento</p>
 
-            <div>
-                <div class="form-row d-flex h-100">
+            <div id="pasos">
+                <div class="form-row d-flex h-100" id="paso_specific">
                     <div class="form-group col-md-1 text-center">
                         <h4>Paso 1:</h4> 
                     </div>
@@ -187,7 +207,7 @@
                 </div>
                 <div class="form-row">
                         <div class="form-group col-md-3 text-center">
-                            <input type="button" id="agregar_paso" name="agregar_paso" value="Agregar Paso" class="btn boton_generico">
+                            <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico" onclick="agregar_paso()">
                         </div>
                 </div>
             </div>
