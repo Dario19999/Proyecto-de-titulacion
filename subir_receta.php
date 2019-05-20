@@ -111,7 +111,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-2 text-center">
-                    <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico" onclick="clonar()">
+                    <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico" onclick="clonar_ingr()">
                 </div>
             </div>
 
@@ -145,74 +145,78 @@
             
             <p class="subtitulo_subir">Procedimiento</p>
 
-            <div id="pasos">
-                <div class="form-row d-flex h-100" id="paso_specific">
-                    <div class="form-group col-md-1 text-center">
-                        <h4>Paso 1:</h4> 
-                    </div>
+            <div id="pasos_group">
+                <div id="pasos">
+                    <div class="form-row d-flex h-100" id="paso_specific">
+                        <div class="form-group col-md-1 text-center">
+                            <h4>Paso 1:</h4> 
+                        </div>
 
-                    <div class="form-group col-md-7">
-                        <textarea class="textarea_adjust" name="paso" cols="30" rows="7" placeholder="Describa el primer paso."></textarea> 
-                    </div>
-        
-                    <div class="form-group col-md-2 align-self-center">
-                        <div>
-                            <button type="button" name="cronometro" value="Agregar Cronómetro" class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Agregar Cronómetro</button>
-                            <div class="modal fade" id="modal_crnm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modal_titulo" style="text-align:center;">Agregar Cronómetro</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                            
-                                        <div class="modal-body">
-                                        
-                                            <form>
-                                                <div class="form-row justify-content-center">
-                                                    <div class="col-3">
-                                                        <label for="nombre_crnm"></label>
-                                                        <input type="text" class="form-control" id="nombre_crnm" placeholder="Nombre">
+                        <div class="form-group col-md-7">
+                            <textarea class="textarea_adjust" name="paso" cols="30" rows="7" placeholder="Describa el primer paso."></textarea> 
+                        </div>
+            
+                        <div class="form-group col-md-2 align-self-center">
+                            <div>
+                                <button type="button" name="cronometro" value="Agregar Cronómetro" class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Agregar Cronómetro</button>
+                                <div class="modal fade" id="modal_crnm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modal_titulo" style="text-align:center;">Agregar Cronómetro</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                
+                                            <div class="modal-body">
+                                            
+                                                <form>
+                                                    <div class="form-row justify-content-center">
+                                                        <div class="col-3">
+                                                            <label for="nombre_crnm"></label>
+                                                            <input type="text" class="form-control" id="nombre_crnm" placeholder="Nombre">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                        
-                                                <div class="form-row justify-content-center">
-                                                    <div class="col-md-2">
-                                                        <label for="horas">Horas</label>
-                                                        <input type="text" class="form-control" id="horas" placeholder="00">
-                                                    </div>   
-                                                    <div class="col-md-2">
-                                                        <label for="minutos">Minutos</label>
-                                                        <input type="text" class="form-control" id="minutos" placeholder="00">
-                                                        
+                                            
+                                                    <div class="form-row justify-content-center">
+                                                        <div class="col-md-2">
+                                                            <label for="horas">Horas</label>
+                                                            <input type="text" class="form-control" id="horas" placeholder="00">
+                                                        </div>   
+                                                        <div class="col-md-2">
+                                                            <label for="minutos">Minutos</label>
+                                                            <input type="text" class="form-control" id="minutos" placeholder="00">
+                                                            
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="segundos">Segundos</label>
+                                                            <input type="text" class="form-control" id="segundos" placeholder="00">
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <label for="segundos">Segundos</label>
-                                                        <input type="text" class="form-control" id="segundos" placeholder="00">
-                                                    </div>
-                                                </div>
-                                            </form>    
-                                        </div>
+                                                </form>    
+                                            </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn boton_generico">Agregar</button>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn boton_generico">Agregar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>  
                     </div>
                     
                 </div>
+
                 <div class="form-row">
-                        <div class="form-group col-md-3 text-center">
-                            <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico" onclick="agregar_paso()">
-                        </div>
+                    <div class="form-group col-md-3 text-center">
+                        <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico" onclick="clonar_paso()">
+                    </div>
                 </div>
             </div>
+            
             
         
             <hr>
