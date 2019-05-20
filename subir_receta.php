@@ -16,7 +16,7 @@
     include_once 'plantilla.php';
 
 ?>
-        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" id="form_subir">
             <br>
             <br>
             <br>
@@ -80,36 +80,38 @@
                 <div class="form-group col-md-3 text-center">
                     <h4>Ingrediente.</h4>
                 </div>
-            </div>                     
-            <div class="form-row" id="ingrediente">
-                <div class="form-group col-md-1 text-center">
-                    <input type="text" name="cant" class="cantidad" required> 
-                </div>
+            </div>      
 
-                <div class="form-group col-md-1 text-center">
-                    <select class="form-control custom-select" name = "medida" required>
-                        <option value="Kg">Kg</option>
-                        <option value="g">g</option>
-                        <option value="mg">mg</option>
-                        <option value="Oz">Oz</option>
-                        <option value="L">L</option>
-                        <option value="ml">ml</option>
-                        <option value="Cucharada">Cucharada</option>
-                        <option value="Cucharadita">Cucharadita</option>
-                        <option value="Taza">Taza</option>
-                        <option value="Pugno">Puño</option>
-                        <option value="noImporta">Al gusto</option>
-                    </select>
+            <div id="ingr_group">
+                <div class="form-row" id="ingrediente">
+                    <div class="form-group col-md-1 text-center">
+                        <input type="text" name="cant_0" class="cantidad" required> 
+                    </div>
+
+                    <div class="form-group col-md-1 text-center">
+                        <select class="form-control custom-select" name="medida_0" required>
+                            <option value="Kg">Kg</option>
+                            <option value="g">g</option>
+                            <option value="mg">mg</option>
+                            <option value="Oz">Oz</option>
+                            <option value="L">L</option>
+                            <option value="ml">ml</option>
+                            <option value="Cucharada">Cucharada</option>
+                            <option value="Cucharadita">Cucharadita</option>
+                            <option value="Taza">Taza</option>
+                            <option value="Pugno">Puño</option>
+                            <option value="noImporta">Al gusto</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 text-center">
+                        <input type="text" name="ingr_0" class="ingr" required>
+                    </div>
                 </div>
-                <div class="form-group col-md-3 text-center">
-                    <input type="text" name="ingr" class="ingr" required>
-                </div>
-                
             </div>
-
+            
             <div class="form-row">
                 <div class="form-group col-md-2 text-center">
-                    <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico">
+                    <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico" onclick="clonar()">
                 </div>
             </div>
 
