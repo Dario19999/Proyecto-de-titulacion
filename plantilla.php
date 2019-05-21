@@ -96,7 +96,7 @@ al presionar un botón con ícono de configuarción-->
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" id="btn_editar_perfil" onclick="redirigir(this.id)" style="cursor: pointer;">Editar Perfil</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" id="btn_logout" onclick="redirigir(this.id)" style="cursor: pointer;">Cerrar Sesi&oacute;n</a>
+                            <a href="logout.php" class="dropdown-item" id="btn_logout" style="cursor: pointer;">Cerrar Sesi&oacute;n</a>
                         </div>
 
                     </li>

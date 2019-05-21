@@ -193,6 +193,7 @@
                 <div class="nacionalidad">
                 
                     <select name="nacionalidad" class="custom-select" name="Nacionalidad" style="width: 225px">
+                    <option value="0" selected>Ninguna</option>
                         <?php
                         require 'php/conexion.php';
                         $query = $conexion -> query ("SELECT * FROM nacionalidad");

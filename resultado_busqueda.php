@@ -1,8 +1,18 @@
 <html>
+<link rel="stylesheet" href="CSS/resultado_busqueda.css">    
 
 <?php
 
+include_once 'plantilla.php';
 include 'php/conexion.php';
+
+
+// Aquí se establece una serie de condicionales para saber 
+// qué campos han sido llenados dentro del formulario en
+// la busqueda de recetas. Con isset podemos saber si 
+//una variable está definida y no es NULL
+
+
 
 if(isset($_POST ['busqueda'])){
     $busqueda = $_POST ['busqueda'];
@@ -12,20 +22,19 @@ if(isset($_POST ['tipo'])){
 }
 if(isset($_POST ['sabor'])){
     $sabor = $_POST ['sabor'];
-}
+}else $sabor=0;
 if(isset($_POST ['dificultad'])){
     $dificultad = $_POST ['dificultad'];
-}
+}else $dificultad=0;
 if(isset($_POST ['accesibilidad'])){
     $accesibilidad = $_POST ['accesibilidad'];
-}
+}else $accesibilidad=0;
 if(isset($_POST ['tiempo'])){
     $tiempo = $_POST ['tiempo'];
-}
+}else $tiempo=0;
 if(isset($_POST ['nacionalidad'])){
     $nacionalidad = $_POST ['nacionalidad'];
-}
-
+}else $dificultad=0;
 
 // echo $busqueda."<br>";
 // echo $tipo."<br>";
@@ -36,13 +45,12 @@ if(isset($_POST ['nacionalidad'])){
 // echo $nacionalidad."<br>";
 
 function is_empty ($query){
-
-    if (strlen($query)==39) {
+    if (strlen($query)==27) {
     return true;
     }else {return false;}
 }
 
-$query="SELECT nombre_receta FROM receta WHERE ";
+$query="SELECT * FROM receta WHERE ";
 
 if (!empty ($busqueda) && !is_empty ($query)){
     $query.= " AND nombre_receta = %$busqueda%";
@@ -88,21 +96,49 @@ if (!empty ($tiempo) && !is_empty ($query)){
 
 is_empty($query);
 
-if (!empty ($nacionalidad) && !is_empty ($query)){
+if (!empty ($nacionalidad) && !is_empty ($query) && $nacionalidad!==0){
     $query.= " AND id_nacionalidad=$nacionalidad";
-}else if(!empty ($nacionalidad) && is_empty ($query)){
+}else if(!empty ($nacionalidad) && is_empty ($query) && $nacionalidad!==0){
     $query.= "  id_nacionalidad=$nacionalidad";
 }
 
+echo $query;
 $rs = mysqli_query ($conexion, $query);
-echo '<br>'.$query;
-
-while(($row=mysqli_fetch_assoc($rs)))  { 
-    echo "Nombre: ".($row['nombre_receta'])."<br>"; 
-}
-
 ?>
 
+<?php while(($row=mysqli_fetch_assoc($rs))) {?>
+<hr>
+<hr>
+<hr>
+<div class="card">
+    <div class="card-body">
+        <a href="receta_lectura.php?id_receta=<?php echo ($row['id_receta'])?>"><?php echo ($row['nombre_receta'])?></a>
+        <hr>
+            <p>Sabor</p>
+            <div class="progress"> 
+                <div class="progress-bar" role="progressbar" style="width: <?php echo ($row['sabor'])*20?>%" aria-valuenow="<?php echo ($row['sabor'])*20?>" 
+                aria-valuemin="0" aria-valuemax="100%"><?php echo ($row['sabor'])?></div>
+            </div>
+            <p>Dificultad</p>
+            <div class="progress"> 
+                <div class="progress-bar" role="progressbar" style="width: <?php echo ($row['dificultad'])*20?>%;" aria-valuenow="<?php echo ($row['dificultad'])*20?>" 
+                aria-valuemin="0" aria-valuemax="100%"><?php echo ($row['dificultad'])?></div>
+            </div>
+            <p>Accesibilidad</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <?php echo ($row['accesibilidad'])*20?>%;" aria-valuenow="<?php echo ($row['accesibilidad'])*20?>" 
+                aria-valuemin="0" aria-valuemax="100%"><?php echo ($row['accesibilidad'])?></div>
+            </div>
+            <p>Tiempo</p>
+            <div class="progress"> 
+                <div class="progress-bar" role="progressbar" style="width: <?php echo ($row['tiempo'])*20?>%;" aria-valuenow="<?php echo ($row['tiempo'])*20?>" 
+                aria-valuemin="0" aria-valuemax="100%"><?php echo ($row['tiempo'])?></div>
+            </div>
+    </div>
+
+</div>
+
+<?php } ?>
 
 
 

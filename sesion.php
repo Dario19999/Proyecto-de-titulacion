@@ -4,16 +4,14 @@ class userSession {
 
     public function __construct (){
         session_start();
-
     }
 
     public function setCurrentUser ($user){
-        $_SESSION['user'] = $user;
-
+       return $_SESSION['username'] = $user;
     }
 
     public function getCurrentUser(){
-        return $_SESSION['user'];
+        return $_SESSION['username'];
     }
 
     public function closeSession(){
