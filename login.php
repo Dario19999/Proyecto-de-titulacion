@@ -25,7 +25,9 @@
             <div class="titulo">
                 <h1>La cousine</h1>
             </div>
+            <?php
 
+            ?>
             <form action = "" method="POST" class="needs-validation">
 
                 <?php

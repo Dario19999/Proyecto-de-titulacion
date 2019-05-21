@@ -21,17 +21,17 @@
                 </div>
 
                 <div class="modal-body">
-                    <form>
+                    <form action="php/glosario.php" method="POST">
                         <div class="form-row">
                             <h4>Término a Definir.</h4>
-                            <input type="text" class="form-control" placeholder="Ejem. Menear, Batir, Cocer, etc.">
+                            <input type="text" class="form-control" name="termino" placeholder="Ejem. Menear, Batir, Cocer, etc.">
                         </div>
 
                         <hr>
 
                         <div>
                             <h4>Definición</h4>
-                            <textarea class="form-control textarea_resize" maxlength="3000" rows="10" cols="30" 
+                            <textarea name="definicion" class="form-control textarea_resize" maxlength="3000" rows="10" cols="30" 
                             placeholder="Describa detalladamente la definición del término..."></textarea>
 
                         </div>
@@ -41,7 +41,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn boton_generico" style="font-size: 20px;">Agregar</button>
+                    <button type="submit" class="btn boton_generico" style="font-size: 20px;">Agregar</button>
                 </div>
             </div>
         </div>

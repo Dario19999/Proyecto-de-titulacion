@@ -1,25 +1,27 @@
-<?php
+<html>
+    <?php
 
-    include_once 'plantilla.php';
+        include_once 'plantilla.php';
 
-?>
-        <hr>
-        <hr>
-        <hr>
-                <hr>
-        <hr>
-        <hr>
-                <hr>
-        <hr>
-        <hr>
+    ?>
+
+
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+
+
     <div class="container-fluid receta">
 
             
         <div class="btn_calificar">
             <div style="float:right;">
-            <button type="button" name="calificar" value="calificar" class="btn boton_generico" data-toggle="modal" data-target="#modal_calificar">Calificar</button>
-
-            <div class="modal fade calificar" id="modal_calificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <button type="button" name="calificar" value="calificar" class="btn boton_generico" data-toggle="modal" 
+            data-target="#modal_calificar">Calificar</button>
+    
+            <div class="modal fade calificar" id="modal_calificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+            aria-hidden="true">
                 <div class="modal-dialog" role="document">
     
                     <div class="modal-content">
@@ -32,7 +34,7 @@
                         </div>
     
                         <div class="modal-body">
-                            <form>
+                            <form action="php/calificar.php" method="POST">
                                 <p>Sabor</p>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="sabor1" name="sabor1" class="custom-control-input">
@@ -141,7 +143,7 @@
     
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn boton_generico">Enviar</button>
+                            <button type="submit" class="btn boton_generico">Enviar</button>
                         </div>
 
                     </div>
@@ -155,12 +157,9 @@
                 <?php 
                 require 'php/conexion.php';
                 if(isset($_GET ['id_receta'])) {
-                    echo $id_receta = $_GET ['id_receta'];
-                    $nombre =("SELECT nombre_receta FROM receta WHERE id_receta = $id_receta");
-                    $rs = mysqli_query ($conexion, $nombre);?>
-                    <h1><?php while(($row=mysqli_fetch_array($rs))){ 
-                    echo $row['nombre_receta']; }?></h1>
-                <?php}?>
+                    $nombre = $conexion -> $nombre("SELECT nombre_receta FROM receta WHERE id_receta = $_GET ['id_receta']");?>
+                }
+                <h1><?php $nombre ?></h1>
             </div>
         
             
@@ -168,17 +167,13 @@
                 <div class="col-7 col-sm-5 col-md-4 ingredientes">
                     <h3>Ingredientes</h3>
                     <ul class="list-group">
-                      <?php 
+                       <?php 
                         require 'php/conexion.php';
                         $id_receta = $conexion -> $id_receta("SELECT id_receta FROM receta WHERE nombre_receta = $nombre");
-                        $query = ("SELECT porciones, cantidad, medida, ingrediente.nombre 
-                        FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
-                        = ingrediente.id_ingrediente");
-                         $rs = mysqli_query ($conexion, $query);
-
-                        while(($row=mysqli_fetch_assoc($rs))){ ?>
-
-                            <li class="list-group-item"><?php echo $row['nombre'] ?><small> <?php echo $row['cantidad'] ?></small></li>
+                        $query = $conexion -> query ("SELECT porciones, cantidad, medida, ingrediente.nombre 
+                        FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente = ingrediente.id_ingrediente");
+                        while ($valores = mysqli_fetch_array($query)) { ?>
+                            <li class="list-group-item"><?php echo $valores['nombre'] ?><small> <?php echo $valores['cantidad'] ?></small></li>
                             
                        <?php }?>
                     </ul>
@@ -195,7 +190,7 @@
                 </div>
     
             </div>
-    
+        <hr>
             <div class="procedimiento">
                 <ol>
     
@@ -255,7 +250,7 @@
                                     <a href="https://www.costco.com.mx/"  target="_blank" class="card-link">Ir a la p&aacute;gina</a>
                                 </div>
                         </div>
-                    </div>
+                </div>
             </div>
 
         </div>
@@ -264,10 +259,8 @@
 
 
 
-
-
         </div>
-    
+        <hr>
         <div class="btn_denunciar">
                 <button type="button" name="denunciar_receta" value="denunciar_receta" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_receta">Denunciar receta</button>
 
@@ -275,14 +268,14 @@
                     <div class="modal-dialog" role="document">
         
                         <div class="modal-content">
-        
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modal_titulo_dreceta" style="text-align:center;">Denunciar receta</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal_titulo_dreceta" style="text-align:center;">Denunciar receta</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
-        
+                    
                     <div class="modal-body">
                         <form>
                                 <div class="form-group">
@@ -308,11 +301,11 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn boton_generico">Enviar</button>
                         </div>
-                        </div>
-                    </div>
+                        
                 </div>
-        </div>
+            </div>
 
+    <hr>
          <i class="descarga fas fa-arrow-down"></i> 
 
          <div class="btn_denunciar">
@@ -322,38 +315,39 @@
                     <div class="modal-dialog" role="document">
         
                         <div class="modal-content">
-        
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modal_titulo_dusuario" style="text-align:center;">Denunciar usuario </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-        
-                    <div class="modal-body">
-                            <form>
-                                    <div class="form-group">
-                                        <label for="motivo_usuario">Motivo de denuncia</label>
-                                        <select class="form-control" id="motivo_usuario">
-                                        <option>Es ofensivo</option>
-                                        <option>Es un bromista</option>
-                                        <option>Es molesto</option>
-                                        <option>Otra</option>
-                                        </select>
-                                    </div>
-    
-                                    <div class="form-group">
-                                        <label for="comentarios_usuario">Comentarios</label>
-                                        <textarea class="form-control" id="comentarios_usuario" rows="3"></textarea>
-                                    </div>
-                            </form>      
-                            
-                    </div>
-        
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn boton_generico">Enviar</button>
-                        </div>
+            
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal_titulo_dusuario" style="text-align:center;">Denunciar usuario </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+            
+                            <div class="modal-body">
+                                
+                                <form>
+                                        <div class="form-group">
+                                            <label for="motivo_usuario">Motivo de denuncia</label>
+                                            <select class="form-control" id="motivo_usuario">
+                                            <option>Es ofensivo</option>
+                                            <option>Es un bromista</option>
+                                            <option>Es molesto</option>
+                                            <option>Otra</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="comentarios_usuario">Comentarios</label>
+                                            <textarea class="form-control" id="comentarios_usuario" rows="3"></textarea>
+                                        </div>
+                                    </form>      
+                                    
+                            </div>
+            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn boton_generico">Enviar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -362,7 +356,4 @@
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
-
-    </body>
-
 </html>
