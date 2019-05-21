@@ -16,7 +16,7 @@
     include_once 'plantilla.php';
 
 ?>
-        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" id="form_subir">
+        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
             <br>
             <br>
             <br>
@@ -73,7 +73,7 @@
                     <h4>Cantidad.</h4>
                 </div>
 
-                <div class="form-group col-md-1 text-center">
+                <div class="form-group col-md-2 text-center">
                     <h4>Medida.</h4>
                 </div>
 
@@ -83,13 +83,13 @@
             </div>      
 
             <div id="ingr_group">
-                <div class="form-row" id="ingrediente">
+                <div class="form-row" id="ingrediente_1">
                     <div class="form-group col-md-1 text-center">
-                        <input type="text" name="cant_0" class="cantidad" required> 
+                        <input type="number" name="cant_1" class="cantidad" min="1" value="1" required> 
                     </div>
 
-                    <div class="form-group col-md-1 text-center">
-                        <select class="form-control custom-select" name="medida_0" required>
+                    <div class="form-group col-md-2 text-center">
+                        <select class="form-control custom-select" name="medida_1" required>
                             <option value="Kg">Kg</option>
                             <option value="g">g</option>
                             <option value="mg">mg</option>
@@ -100,11 +100,12 @@
                             <option value="Cucharadita">Cucharadita</option>
                             <option value="Taza">Taza</option>
                             <option value="Pugno">Puño</option>
-                            <option value="noImporta">Al gusto</option>
+                            <option value="x">Al gusto</option>
                         </select>
                     </div>
+
                     <div class="form-group col-md-3 text-center">
-                        <input type="text" name="ingr_0" class="ingr" required>
+                        <input type="text" name="ingr_1" class="ingr" required>
                     </div>
                 </div>
             </div>
@@ -121,23 +122,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-1 text-center " style="margin-left: 30px">
-                <select class="form-control custom-select" name = "porciones" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                    </select>
+                    <input type="number" name="cant_0" class="cantidad" min="1" value="1" required> 
                 </div>
             </div>
             
@@ -146,77 +131,73 @@
             <p class="subtitulo_subir">Procedimiento</p>
 
             <div id="pasos_group">
-                <div id="pasos">
-                    <div class="form-row d-flex h-100" id="paso_specific">
-                        <div class="form-group col-md-1 text-center">
-                            <h4>Paso 1:</h4> 
-                        </div>
+                <div class="form-row d-flex h-100" id="paso_1">
+                    <div class="form-group col-md-1 text-center">
+                        <h4>Paso 1:</h4> 
+                    </div>
 
-                        <div class="form-group col-md-7">
-                            <textarea class="textarea_adjust" name="paso" cols="30" rows="7" placeholder="Describa el primer paso."></textarea> 
-                        </div>
-            
-                        <div class="form-group col-md-2 align-self-center">
-                            <div>
-                                <button type="button" name="cronometro" value="Agregar Cronómetro" class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Agregar Cronómetro</button>
-                                <div class="modal fade" id="modal_crnm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modal_titulo" style="text-align:center;">Agregar Cronómetro</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                
-                                            <div class="modal-body">
-                                            
-                                                <form>
-                                                    <div class="form-row justify-content-center">
-                                                        <div class="col-3">
-                                                            <label for="nombre_crnm"></label>
-                                                            <input type="text" class="form-control" id="nombre_crnm" placeholder="Nombre">
-                                                        </div>
-                                                    </div>
-                                            
-                                                    <div class="form-row justify-content-center">
-                                                        <div class="col-md-2">
-                                                            <label for="horas">Horas</label>
-                                                            <input type="text" class="form-control" id="horas" placeholder="00">
-                                                        </div>   
-                                                        <div class="col-md-2">
-                                                            <label for="minutos">Minutos</label>
-                                                            <input type="text" class="form-control" id="minutos" placeholder="00">
-                                                            
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <label for="segundos">Segundos</label>
-                                                            <input type="text" class="form-control" id="segundos" placeholder="00">
-                                                        </div>
-                                                    </div>
-                                                </form>    
-                                            </div>
+                    <div class="form-group col-md-7">
+                        <textarea class="textarea_adjust" name="paso" cols="30" rows="7" placeholder="Describa el paso."></textarea> 
+                    </div>
+        
+                    <div class="form-group col-md-2 align-self-center">
+                        <button class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Cronómetro</button>
+                        <div class="modal fade" id="modal_crnm" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
 
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal_titulo" style="text-align:center;">Agregar Cronómetro</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                        
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-row justify-content-center">
+                                                <div class="col-3">
+                                                    <label for="nombre_crnm"></label>
+                                                    <input type="text" class="form-control" id="nombre_crnm" placeholder="Nombre">
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="form-row justify-content-center">
+                                                <div class="col-md-2">
+                                                    <label for="horas">Horas</label>
+                                                    <input type="text" class="form-control" id="horas" placeholder="00">
+                                                </div>   
+                                                <div class="col-md-2">
+                                                    <label for="minutos">Minutos</label>
+                                                    <input type="text" class="form-control" id="minutos" placeholder="00">
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="segundos">Segundos</label>
+                                                    <input type="text" class="form-control" id="segundos" placeholder="00">
+                                                </div>
+                                            </div>
+                                            <br>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                                <button type="button" class="btn boton_generico">Agregar</button>
+                                                <button type="submit" class="btn boton_generico">Agregar</button>
                                             </div>
-                                        </div>
+                                        </form>    
                                     </div>
+
+                                    
                                 </div>
                             </div>
-                        </div>  
-                    </div>
-                    
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-3 text-center">
-                        <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico" onclick="clonar_paso()">
-                    </div>
+                        </div>
+                    </div>  
                 </div>
             </div>
-            
+
+            <div class="form-row">
+                <div class="form-group col-md-3 text-center">
+                    <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico" onclick="clonar_paso()">
+                </div>
+            </div>
             
         
             <hr>
