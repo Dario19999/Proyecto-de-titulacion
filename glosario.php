@@ -35,14 +35,14 @@
                             placeholder="Describa detalladamente la definición del término..."></textarea>
 
                         </div>
-
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn boton_generico" style="font-size: 20px;">Agregar</button>
+                        </div>
                     </form>
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn boton_generico" style="font-size: 20px;">Agregar</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -54,11 +54,16 @@
 
         <div>
             <dl>
-
-                <dt id="termino">Juliana</dt>
+                <?php
+                include 'php/conexion.php';
+                $query = "SELECT * FROM termino" ;
+                $rs = mysqli_query ($conexion, $query);
+                while(($row=mysqli_fetch_assoc($rs))) {
+                ?>
+                <dt id="termino"><?php echo $row['palabra']?></dt>
                     
-                <dd>La juliana es una técnica culinaria que consiste en cortar las verduras en tiras alargadas y muy finas, con ayuda de un cuchillo o de una mandolina.</dd>
-                        
+                <dd><?php echo $row['definicion']?></dd>
+                <?php } ?>       
             </dl>
         
         </div>
@@ -127,12 +132,6 @@
                 </li>
             </ul>
             </nav>
-
-            
-
-
-
-
 
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
