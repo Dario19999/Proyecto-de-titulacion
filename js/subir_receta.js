@@ -1,13 +1,31 @@
+// $(document).ready(function(){
+
+    // $("#form_subir").on('submit', function(e){
+    //     e.preventDefault();
+    //     var datos = $(this).serializeArray();
+    //     console.log($(this).attr('action'));
+    //     $.ajax({
+    //         type: 'post',
+    //         data: datos,
+    //         url: $(this).attr('action'),
+    //         dataType: 'json',
+    //         success: function(data){
+    //             console.log("hola");
+    //         }
+    //     })
+    // });
+
+
 let cont_ingr = 2;
 let cont_npaso = 2;
 let cont_paso = 1;
 
 function clonar_ingr(){
     
-    let id_cant = "cant_"+cont;
-    let id_medida = "medida_"+cont;
-    let id_ingr = "ingr_"+cont;
-    let id_group = "ingrediente_"+cont
+    let id_cant = "cant_"+cont_ingr;
+    let id_medida = "medida_"+cont_ingr;
+    let id_ingr = "ingr_"+cont_ingr;
+    let id_group = "ingrediente_"+cont_ingr;
 
     var ingr_input = document.getElementById("ingr_group");
 
@@ -51,13 +69,17 @@ function clonar_ingr(){
     new_ingr.setAttribute("required", "");
     div_ingr.appendChild(new_ingr);
 
-    cont+=1;
+    cont_ingr+=1;
 }
 
 function clonar_paso(){
 
     let container = "paso_"+cont_npaso;
-    let npaso = "paso_"+cont_paso
+    let npaso = "paso_"+cont_npaso;
+    let nombre_cont = "nombre_"+cont_npaso;
+    let hora_cont = "hora_"+cont_npaso;
+    let minuto_cont = "minuto_"+cont_npaso;
+    let segundo_cont = "segundo_"+cont_npaso;
 
     var paso_input = document.getElementById("pasos_group");
 
@@ -92,7 +114,7 @@ function clonar_paso(){
     modal_container.setAttribute("class", "form-group col-md-2 align-self-center");
     new_container.appendChild(modal_container);
     //boton que activa el modal
-    var boton_toggle = docuent.createElement("button");
+    var boton_toggle = document.createElement("button");
     boton_toggle.setAttribute("class", "btn boton_generico");
     boton_toggle.setAttribute("data-toggle", "modal");
     boton_toggle.setAttribute("data-target", "#modal_crnm");
@@ -111,7 +133,6 @@ function clonar_paso(){
     modal_dialog.setAttribute("class", "modal-dialog");
     modal_dialog.setAttribute("role", "document");
     div_modal.appendChild(modal_dialog);
-
     var modal_content = document.createElement("div");
     modal_content.setAttribute("class", "modal-content");
     modal_dialog.appendChild(modal_content);
@@ -127,7 +148,69 @@ function clonar_paso(){
     var form = document.createElement("form");
     modal_body.appendChild(form);
 
+    var form_row = document.querySelector('form div.form-row.justify-content-center').cloneNode(false);
+    var nombre_form_row = form_row;
+    var form_row_time = form_row;
+    form.appendChild(nombre_form_row);
+    form.appendChild(form_row_time);
     
+    var div_nombre_crnm = document.createElement("div");
+    div_nombre_crnm.setAttribute("class", "col-3");
+    nombre_form_row.appendChild(div_nombre_crnm);
+    var label_hora = document.createElement("label");
+    label_hora.setAttribute("for", "nombre_crnm");
+    div_nombre_crnm.appendChild(label_hora);
+    var new_nombre = document.createElement("input");
+    new_nombre.setAttribute("type", "text");
+    new_nombre.setAttribute("class", "form-control");
+    new_nombre.setAttribute("id", "nombre_crnm");
+    new_nombre.setAttribute("name", nombre_cont);
+    new_nombre.setAttribute("placeholder", "Nombre");
+    div_nombre_crnm.appendChild(new_nombre);
 
+    var div_hora = document.createElement("div");
+    div_hora.setAttribute("class", "col-md-2");
+    form_row_time.appendChild(div_hora);
+    var label_hora = document.createElement("label");
+    label_hora.setAttribute("for", "horas");
+    div_hora.appendChild(label_hora);
+    var new_hora = document.createElement("input");
+    new_hora.setAttribute("type", "text");
+    new_hora.setAttribute("class", "form-control");
+    new_hora.setAttribute("id", "horas");
+    new_hora.setAttribute("name", hora_cont);
+    new_hora.setAttribute("placeholder", "00");
+    div_hora.appendChild(new_hora);
 
+    var div_minuto = div_hora.cloneNode(false);
+    form_row_time.appendChild(div_minuto);
+    var label_minuto = document.createElement("label");
+    label_hora.setAttribute("for", "minutos");
+    div_minuto.appendChild(label_minuto);
+    var new_minuto = document.createElement("input");
+    new_minuto.setAttribute("type", "text");
+    new_minuto.setAttribute("class", "form-control");
+    new_minuto.setAttribute("id", "minutos");
+    new_minuto.setAttribute("name", minuto_cont);
+    new_minuto.setAttribute("placeholder", "00");
+    div_minuto.appendChild(new_minuto);
+
+    var div_segundo= div_hora.cloneNode(false);
+    form_row_time.appendChild(div_segundo);
+    var label_segundo = document.createElement("label");
+    label_segundo.setAttribute("for", "segundos");
+    div_segundo.appendChild(label_segundo);
+    var new_segundo = document.createElement("input");
+    new_segundo.setAttribute("type", "text");
+    new_segundo.setAttribute("class", "form-control");
+    new_segundo.setAttribute("id", "segundos");
+    new_segundo.setAttribute("name", segundo_cont);
+    new_segundo.setAttribute("placeholder", "00");
+    div_segundo.appendChild(new_segundo);
+
+    cont_npaso+=1;
+    cont_paso+=1;
 }
+// });
+
+

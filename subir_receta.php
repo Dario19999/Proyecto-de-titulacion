@@ -8,7 +8,7 @@
         $ingr = $_POST['ingr'];
         $porciones = $_POST['porciones'];
         $paso = $_POST['paso'];
-        $categoria = $_POST['tipo_receta'];
+        $categoria = $_POST['tipo_receta']; 
     }
 ?>
 <?php
@@ -16,7 +16,7 @@
     include_once 'plantilla.php';
 
 ?>
-        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST"  id="form_subir">
             <br>
             <br>
             <br>
@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="form-group col-md-7">
-                        <textarea class="textarea_adjust" name="paso" cols="30" rows="7" placeholder="Describa el paso."></textarea> 
+                        <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" placeholder="Describa el paso."></textarea> 
                     </div>
         
                     <div class="form-group col-md-2 align-self-center">
@@ -158,23 +158,23 @@
                                             <div class="form-row justify-content-center">
                                                 <div class="col-3">
                                                     <label for="nombre_crnm"></label>
-                                                    <input type="text" class="form-control" id="nombre_crnm" placeholder="Nombre">
+                                                    <input type="text" class="form-control" id="nombre_crnm" name="nombre_1" placeholder="Nombre">
                                                 </div>
                                             </div>
                                     
                                             <div class="form-row justify-content-center">
                                                 <div class="col-md-2">
                                                     <label for="horas">Horas</label>
-                                                    <input type="text" class="form-control" id="horas" placeholder="00">
+                                                    <input type="text" class="form-control" id="horas" name="hora_1" placeholder="00">
                                                 </div>   
                                                 <div class="col-md-2">
                                                     <label for="minutos">Minutos</label>
-                                                    <input type="text" class="form-control" id="minutos" placeholder="00">
+                                                    <input type="text" class="form-control" id="minutos" name ="minuto_1" placeholder="00">
                                                     
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="segundos">Segundos</label>
-                                                    <input type="text" class="form-control" id="segundos" placeholder="00">
+                                                    <input type="text" class="form-control" id="segundos" name ="segundo_1" placeholder="00">
                                                 </div>
                                             </div>
                                             <br>
@@ -183,9 +183,7 @@
                                                 <button type="submit" class="btn boton_generico">Agregar</button>
                                             </div>
                                         </form>    
-                                    </div>
-
-                                    
+                                    </div>                                   
                                 </div>
                             </div>
                         </div>
@@ -211,7 +209,7 @@
             ?>
         </form>
 
-        <script src="js/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src ="js/subir_receta.js"></script>
