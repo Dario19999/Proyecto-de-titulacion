@@ -27,7 +27,7 @@
     <br>
 
     <div class="contenedor_formulario text-center">
-        <form action="perfil.php" method="post">
+        <form action="" method="POST">
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-8 text-center">
                     <h2>Nombre</h2>
@@ -41,12 +41,14 @@
                     <h2>Nacionalidad</h2>
                     
                     <select class="form-control custom-select" style="width:225px">
+                    <option value="0">Ninguna</option>
                         <?php
-                            $query = $conexion -> query ("SELECT * FROM nacionalidad");
-                            while ($valores = mysqli_fetch_array($query)) {
-                                echo '<option value="'.$valores[id_nacionalidad].'">'.$valores[nombre].'</option>';
-                            }
-                        ?>
+                        require 'php/conexion.php';
+                        $query = $conexion -> query ("SELECT * FROM nacionalidad");
+                        while ($valores = mysqli_fetch_array($query)) {
+                            echo '<option value="'.$valores[id_nacionalidad].'">'.$valores[nombre].'</option>';
+                        }
+                    ?>
                     </select>
                 </div>
 

@@ -6,6 +6,9 @@
 body{
     background: #eceff8;
     padding-top: 100px; 
+    margin: 0;
+    padding: 10px;
+    overflow-x: hidden;
 }
 
 .inicio{
@@ -76,10 +79,4 @@ li a{
     text-decoration: none;
     width: 100%;
     padding: 10px;
-}
-
-body{
-    margin: 0;
-    padding: 10px;
-    overflow-x: hidden;
 }
