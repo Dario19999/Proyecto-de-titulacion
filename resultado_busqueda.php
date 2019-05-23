@@ -102,8 +102,9 @@ if (!empty ($nacionalidad) && !is_empty ($query) && $nacionalidad!==0){
     $query.= "  id_nacionalidad=$nacionalidad";
 }
 
-echo $query;
+
 $rs = mysqli_query ($conexion, $query);
+$cant_recetas = mysqli_num_rows($rs);
 ?>
 
 <?php while(($row=mysqli_fetch_assoc($rs))) {?>
@@ -112,7 +113,8 @@ $rs = mysqli_query ($conexion, $query);
 <hr>
 <div class="card">
     <div class="card-body">
-        <a href="receta_lectura.php?id_receta=<?php echo ($row['id_receta'])?>"><?php echo ($row['nombre_receta'])?></a>
+        <a href="receta_lectura.php?id_receta=<?php echo ($row['id_receta'])?>">
+        <?php echo ($row['nombre_receta'])?></a>
         <hr>
             <p>Sabor</p>
             <div class="progress"> 
@@ -138,9 +140,16 @@ $rs = mysqli_query ($conexion, $query);
 
 </div>
 
-<?php } ?>
+            <?php }
 
 
+            if($cant_recetas==0){ ?>
+            <hr>
+            <hr>
+            <hr>
+            <h1>No hay resultados</h1>
+
+            <?php } ?>
 
 </html>
 
