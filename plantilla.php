@@ -11,6 +11,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
         <script src="js/redirigir.js"></script>
+
         <?php
             $archivo = basename($_SERVER["PHP_SELF"]);
             $pagina = str_replace(".php", "", $archivo);
@@ -33,7 +34,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
                 echo "<title>Dictado</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_dictado.css'";
-                 echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
+                echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
             }else if($pagina == 'receta_edicion'){
                 echo "<title>Editar Receta</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'";
@@ -41,7 +42,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
             }else if($pagina == 'receta_lectura'){
                 echo "<title>Lectura</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'";
-                 echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
+                echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
             }else if($pagina == 'subir_receta'){
                 echo "<title>Subir Receta</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/subir_receta.css'";
@@ -72,19 +73,19 @@ al presionar un botón con ícono de configuarción-->
                 <ul class="navbar-nav nav-justified w-100 mr-auto">
 
                     <li class="nav-item">
-                        <button class="nav_button btn" id="btn_buscar" onclick="redirigir(this.id)" style="width: 100%;">Buscar</button>
+                        <button class="nav_button btn" id="btn_buscar" onclick="redirigir(this.id)" style="width: 100%; font-size: 25px;">Buscar</button>
                     </li>
 
                     <li class="nav-item">
-                        <button class="nav_button btn" id="btn_glosario" onclick="redirigir(this.id)" style="width: 100%;">Glosario</button>
+                        <button class="nav_button btn" id="btn_glosario" onclick="redirigir(this.id)" style="width: 100%; font-size: 25px;">Glosario</button>
                     </li>
 
                     <li class="nav-item">
-                        <button class="nav_button btn" id="btn_subir" onclick="redirigir(this.id)" style="width: 100%;">Subir</button>
+                        <button class="nav_button btn" id="btn_subir" onclick="redirigir(this.id)" style="width: 100%; font-size: 25px;">Subir</button>
                     </li>
 
                     <li class="nav-item">
-                        <button class="nav_button btn" id="btn_perfil" onclick="redirigir(this.id)" style="width: 100%;">Perfil</button>
+                        <button class="nav_button btn" id="btn_perfil" onclick="redirigir(this.id)" style="width: 100%; font-size: 25px;">Perfil</button>
                     </li>
 
                     <li class="nav-item dropdown">

@@ -41,26 +41,12 @@
                     <h2>Nacionalidad</h2>
                     
                     <select class="form-control custom-select" style="width:225px">
-                        <option>Argentina</option>
-                        <option>Bolivia</option>
-                        <option>Brasil</option>
-                        <option>Chile</option>
-                        <option>Colombia</option>
-                        <option>Costa Rica</option>
-                        <option>Cuba</option>
-                        <option>Ecuador</option>
-                        <option>El Salvador</option>
-                        <option>Guatemala</option>
-                        <option>Haití</option>
-                        <option>Honduras</option>
-                        <option selected>México</option>
-                        <option>Nicaragua</option>
-                        <option>Panamá</option>
-                        <option>Paraguay</option>
-                        <option>Perú</option>
-                        <option>Republica Dominicana</option>
-                        <option>Uruguay</option>
-                        <option>Venezuela</option>
+                        <?php
+                            $query = $conexion -> query ("SELECT * FROM nacionalidad");
+                            while ($valores = mysqli_fetch_array($query)) {
+                                echo '<option value="'.$valores[id_nacionalidad].'">'.$valores[nombre].'</option>';
+                            }
+                        ?>
                     </select>
                 </div>
 
