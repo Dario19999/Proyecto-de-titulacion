@@ -56,7 +56,7 @@
             <dl>
                 <?php
                 include 'php/conexion.php';
-                $query = "SELECT * FROM termino" ;
+                $query = "SELECT * FROM termino ORDER BY palabra ASC" ;
                 $rs = mysqli_query ($conexion, $query);
                 while(($row=mysqli_fetch_assoc($rs))) {
                 ?>

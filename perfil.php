@@ -81,14 +81,23 @@
                 </h2>
                 
 
-                <h2>Recetas</h2>
+                <h2>Recetas:</h2>
  
                 <h4>                     
                     <?php while(($row=mysqli_fetch_assoc($recetas))) {?>
                         <div class="card-body">
                             <a href="receta_lectura.php?id_receta=<?php echo ($row['id_receta'])?>"><?php echo ($row['nombre_receta'])?></a>     
                         </div>
-                <?php }?>
+                    <?php }?>
+
+                    <?php 
+                        if ($cant_recetas==0){ ?>
+
+                        <h5>Usted no tiene recetas</h5>
+
+                    <?php } ?>
+                    
+
                 </h4>
 
 
@@ -112,32 +121,102 @@
                 <div class="col">
                     <div class="text-center">
                         <h2>Subidas</h2>
-                        <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg"
-                        width="230" height="230">
+                            <?php if($cant_recetas>=1 && $cant_recetas<5){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                            <?php }else if($cant_recetas>=5 && $cant_recetas<10){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                            <?php }else if($cant_recetas>=10 && $cant_recetas<20){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                            <?php }else if($cant_recetas>=20 && $cant_recetas<50){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                            <?php }else if($cant_recetas>=20 && $cant_recetas<100){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                                <img src="img/insignia5.png" width="100" height="100">
+                            <?php }else if($cant_recetas>=100){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                                <img src="img/insignia5.png" width="100" height="100">
+                                <img src="img/insignia6.png" width="100" height="100">
+                            <?php } ?>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="text-center">
                         <h2>Descargas</h2>
-                        <?php
-
-                        if($descargas>=5 && $descargas<10){
-                            
-                        }else if($descargas>=10 && $descargas<20){
-
-                        }else if($descargas>=20 && $descargas)
-                        ?>
-                        <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg" 
-                        width="230" height="230">
+                            <?php if($descargas>=1 && $descargas<5){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                            <?php }else if($descargas>=5 && $descargas<10){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                            <?php }else if($descargas>=10 && $descargas<20){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                            <?php }else if($descargas>=20 && $descargas<50){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                            <?php }else if($descargas>=20 && $descargas<100){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                                <img src="img/insignia5.png" width="100" height="100">
+                            <?php }else if($descargas>=100){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                                <img src="img/insignia5.png" width="100" height="100">
+                                <img src="img/insignia6.png" width="100" height="100">
+                            <?php } ?>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="text-center">
                         <h2>Votos</h2>
-                        <img src="https://previews.123rf.com/images/petrnutil/petrnutil1610/petrnutil161000135/63703025-pr%C3%B3ximamente-vector-insignia.jpg"
-                        width="230" height="230">
+                            <?php if($votos>=1 && $votos<5){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                            <?php }else if($votos>=5 && $votos<10){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                            <?php }else if($votos>=10 && $votos<20){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                            <?php }else if($votos>=20 && $votos<50){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                            <?php }else if($votos>=20 && $votos<100){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                                <img src="img/insignia5.png" width="100" height="100">
+                            <?php }else if($votos>=100){?>
+                                <img src="img/insignia1.png" width="100" height="100">
+                                <img src="img/insignia2.png" width="100" height="100">
+                                <img src="img/insignia3.png" width="100" height="100">
+                                <img src="img/insignia4.png" width="100" height="100">
+                                <img src="img/insignia5.png" width="100" height="100">
+                                <img src="img/insignia6.png" width="100" height="100">
+                            <?php } ?>
                     </div>
                 </div>
             </div>

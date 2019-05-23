@@ -5,6 +5,7 @@
     $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
+    $puntuar=0;
 
 
 ?>
@@ -12,6 +13,7 @@
         <hr>
         <hr>
         <hr>
+        <?php echo $puntuar; ?>
 
 <div class="container-fluid receta">
 
@@ -159,14 +161,14 @@
                                             $tiempo = $_POST ['tiempo'];
                                         } else $tiempo=0;
 
-                                        if(isset($_GET ['id_receta'])) {
+                                        if(isset($_GET ['id_receta']) && $puntuar!=0) {
                                             $id_receta = $_GET ['id_receta'];
                                             $query="UPDATE receta SET cantidad_vot=cantidad_vot+1, sabor=(sabor+$sabor)/cantidad_vot, 
                                             dificultad= (dificultad+$dificultad)/cantidad_vot,
                                             accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
                                             WHERE receta.id_receta = $id_receta;";
                                             $rs = mysqli_query ($conexion, $query);
-
+                                            $puntuar = 1;
                                         }
                                     }
                                 ?>
@@ -305,10 +307,6 @@
 
     <div class="container-fluid pie">
 
-
-
-
-
     </div>
 
     <div class="btn_denunciar">
@@ -357,7 +355,12 @@
             </div>
     </div>
 
-        <i class="descarga fas fa-arrow-down"></i> 
+
+
+        <i class="descarga fas fa-arrow-down">
+            <a href="descarga.php?id_receta=<?php echo $id_receta?>" type="button" name="descargar" class="btn boton_generico" >Descargar</button>
+
+        </i> 
 
         <div class="btn_denunciar">
             <hr>
