@@ -1,19 +1,22 @@
 //$(document).ready(function(){
-
-    // $("#form_subir").on('submit', function(e){
-    //     e.preventDefault();
-    //     var datos = $(this).serializeArray();
-    //     console.log($(this).attr('action'));
-    //     $.ajax({
-    //         type: 'post',
-    //         data: datos,
-    //         url: $(this).attr('action'),
-    //         dataType: 'json',
-    //         success: function(data){
-    //             console.log("hola");
-    //         }
-    //     })
-    // });
+    $(document).ready(function(){
+    $( "#form_subir" ).unbind().submit(function(e){
+            
+            e.preventDefault();
+            var datos = $(this).serializeArray();
+            console.log(datos);
+            // $.ajax({
+            //     type: 'post',
+            //     data: datos,
+            //     url: $(this).attr('action'),
+            //     dataType: 'json',
+            //     success: function(data){
+            //         console.log("hola");
+            //     }
+            // })
+        });
+    });
+       
 
 
     let cont_ingr = 2;
@@ -151,6 +154,7 @@
         div_modal.setAttribute("aria-hidden", "true");
         modal_container.appendChild(div_modal);
 
+        //se declara el contenido del modal
         var modal_dialog = document.createElement("div");
         modal_dialog.setAttribute("class", "modal-dialog");
         modal_dialog.setAttribute("role", "document");
@@ -159,23 +163,25 @@
         modal_content.setAttribute("class", "modal-content");
         modal_dialog.appendChild(modal_content);
 
+        //se declara el encabezado del modal y se adiere al contenido del modal
         var cloned_header = document.querySelector('div.modal-header');
         var modal_header = cloned_header.cloneNode(true);
         modal_content.appendChild(modal_header);
 
+        //se declara el cuerpo del modal
         var modal_body = document.createElement("div");
         modal_body.setAttribute("class", "modal-body");
         modal_content.appendChild(modal_body);
-
+        //se crea el formulario y se agrega como hijo del cuerpo del modal
         var form = document.createElement("form");
         modal_body.appendChild(form);
-
         var form_row = document.querySelector('form div.form-row.justify-content-center').cloneNode(false);
         var nombre_form_row = form_row;
         var form_row_time = form_row;
         form.appendChild(nombre_form_row);
         form.appendChild(form_row_time);
         
+        //se crea un input text para agregar el nombre del cronómetro
         var div_nombre_crnm = document.createElement("div");
         div_nombre_crnm.setAttribute("class", "col-3");
         nombre_form_row.appendChild(div_nombre_crnm);
@@ -190,6 +196,7 @@
         new_nombre.setAttribute("placeholder", "Nombre");
         div_nombre_crnm.appendChild(new_nombre);
 
+        //se crea el input text para agregar las horas del cronómetro
         var div_hora = document.createElement("div");
         div_hora.setAttribute("class", "col-md-2");
         form_row_time.appendChild(div_hora);
@@ -204,6 +211,7 @@
         new_hora.setAttribute("placeholder", "00");
         div_hora.appendChild(new_hora);
 
+        //se crea el input text para agregar los minutos del cronómetro
         var div_minuto = div_hora.cloneNode(false);
         form_row_time.appendChild(div_minuto);
         var label_minuto = document.createElement("label");
@@ -217,6 +225,7 @@
         new_minuto.setAttribute("placeholder", "00");
         div_minuto.appendChild(new_minuto);
 
+        //se crea el input text para agregar las segundos del cronómetro
         var div_segundo= div_hora.cloneNode(false);
         form_row_time.appendChild(div_segundo);
         var label_segundo = document.createElement("label");
@@ -244,17 +253,19 @@
         span.setAttribute("aria-hidden", "true");
         span.innerHTML = "&times;"
         btn_delete.appendChild(span);
-
+        //función que elimina el nodo
         btn_delete.addEventListener("click", function(){
             var deleted = document.querySelectorAll('div#pasos_group div.form-row.d-flex.h-100');
             deleted[1].parentNode.removeChild(deleted[1]);
         });
 
+        //se incrementa el contador para asignar nuevos name a cada input
+        //y para incrementar el label de numero de paso con cada click
         cont_npaso+=1;
     }
 
     function autocompletar(arreglo){
-        const input_ingr_name = document.querySelector('form input#name_ingrediente');
+        const input_ingr_name = document.querySelector('form input#name_ingr');
         indexFocus = -1;
 
         input_ingr_name.addEventListener("input", function(){

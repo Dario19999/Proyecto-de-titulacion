@@ -1,11 +1,11 @@
 <?php
-  require_once 'conexion.php';
-
+  include_once 'conexion.php';
+  $actual_conexion = $conexion;
   class autocompletar{
     function search_for_ingredients($nombre){
       $res = array();
 
-      $query = $conexion->prepare("SELECT nombre FROM ingrediente WHERE nombre LIKE :incoming_nombre '%'");
+      $query = $actual_conexion->prepare("SELECT nombre FROM ingrediente WHERE nombre LIKE :incoming_nombre '%'");
       $query->execute(array(':incoming_nombre' => $nombre));
 
       if($query->rowCount()){

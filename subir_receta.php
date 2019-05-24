@@ -1,22 +1,10 @@
+
 <?php
     require 'php/conexion.php';
-
-    if(isset($_POST['subir'])){
-        $nombre = $_POST['nombre_receta'];
-        $nacionalidad = $_POST['nacionalidad'];
-        $cant = $_POST['cant'];
-        $ingr = $_POST['ingr'];
-        $porciones = $_POST['porciones'];
-        $paso = $_POST['paso'];
-        $categoria = $_POST['tipo_receta']; 
-    }
-?>
-<?php
-
     include_once 'plantilla.php';
 
 ?>
-        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST"  id="form_subir">
+        <form action = "php/subir_receta.php" method="POST"  id="form_subir">
             <br>
             <br>
             <br>
@@ -105,7 +93,7 @@
                     </div>
 
                     <div class="form-group col-md-3 text-center">
-                        <input type="text" name="ingr_1" class="ingr" required>
+                        <input type="text" name="ingr_1" class="ingr" id="name_ingr" required>
                     </div>
                 </div>
             </div>
@@ -154,7 +142,7 @@
                                     </div>
                         
                                     <div class="modal-body">
-                                        <form>
+                                        <!-- <form>
                                             <div class="form-row justify-content-center">
                                                 <div class="col-3">
                                                     <label for="nombre_crnm"></label>
@@ -182,7 +170,7 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                                 <button type="submit" class="btn boton_generico">Agregar</button>
                                             </div>
-                                        </form>    
+                                        </form>     -->
                                     </div>                                   
                                 </div>
                             </div>

@@ -4,6 +4,14 @@
 
         if(isset($_POST['subir'])){
 
+                $nombre = $_POST['nombre_receta'];
+                $nacionalidad = $_POST['nacionalidad'];
+                $cant = $_POST['cant'];
+                $ingr = $_POST['ingr'];
+                $porciones = $_POST['porciones'];
+                $paso = $_POST['paso'];
+                $categoria = $_POST['tipo_receta']; 
+
                 $bandera = 1;
                 $query_groseria = "SELECT groseria FROM groseria";
                 $res_groseria = mysqli_query($conexion, $query_groseria);
