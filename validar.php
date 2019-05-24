@@ -1,6 +1,8 @@
+
 <?php
 
 include 'DB.php';
+
 
 class User extends DB{
 
@@ -8,10 +10,28 @@ class User extends DB{
     public $id;
     public $correo;
 
+    public function userUnabled ($user){
+        //Aquí verifica si la cuenta ha sido deshabilitada
+        $query = "SELECT * FROM usuario WHERE nombre = '$user' AND deshabilitada=1 AND
+        DATE_ADD( fecha, INTERVAL 10 DAY ) != CURDATE( )";
+        $rs = $this->connect() -> query($query);
+        while((mysqli_fetch_assoc($rs))){ 
+            return true;
+        }
+
+        $query = "UPDATE usuario SET deshabilitada = '0', fecha = '0000-00-00' WHERE usuario.nombre = '$user' AND
+        DATE_ADD( fecha, INTERVAL 10 DAY ) = CURDATE( )";
+        $rs = $this->connect() -> query($query);
+            return false;
+        
+    }
+
+
     public function userExists ($user, $pass){
+   
+
 
         //En este query va a hacer una consulta para saber si coinciden las contraseñas y el usuario
-
         $query = ("SELECT pass FROM usuario WHERE nombre = '$user'");
         $rs = $this->connect() -> query($query);
 
@@ -24,6 +44,7 @@ class User extends DB{
         if(password_verify ($pass, $hash)){
             return true;
         }else{
+
             return false;
         }
 
@@ -32,14 +53,7 @@ class User extends DB{
 
 
     public function setUser ($user){
-    //jessicaa tiene dicc
-    // $query = "SELECT * FROM usuarios WHERE nombre = '$user'";
-    // $res_q = mysqli_query($conexion, $query);
-    // var(jessica){
-    // if(merari + zanahorio){orgia};
-    // else(chaquetita_express);
 
-    // };
 
         $query = ("SELECT * FROM usuario WHERE nombre = '$user'");
         $rs = $this->connect() -> query($query);

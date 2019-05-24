@@ -36,6 +36,8 @@
                         echo $errorLogin;
                     }
 
+
+
                 ?>
 
                 <input type="text" class="form-control" placeholder="Usuario" name ="username" required>

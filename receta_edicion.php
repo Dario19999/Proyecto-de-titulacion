@@ -1,3 +1,4 @@
+<html>
 <?php
 
     include_once 'plantilla.php';
