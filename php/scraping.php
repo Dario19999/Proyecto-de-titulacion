@@ -2,17 +2,25 @@
 
 require 'simple_html_dom.php';
 
-$html = file_get_html ("https://www.sams.com.mx/alimentos-y-bebidas/frutas-y-verduras/cat30315");
+$html = file_get_html("https://www.superama.com.mx/catalogo/d-despensa/f-cereales");
 
+// foreach($html->find('ul') as $ul) 
+// {
+//        foreach($ul->find('li') as $li) 
+//        {
+//             $li->find('a.nombreProductoDisplay', 0)->plaintext .'<br>';
+//        }
+// }
 
-$wrap_content = $html->find ('div#productMainContaienr.products-container',0);
+// $container = $html->find('div.result_col');
 
-
-$list_ingredients = array();
-
-foreach ($wrap_content as $element){
-   // $ingredient = new stdClass();
-    echo $element->find('.item-name',0)->plaintext . '<br />';
+foreach($container->find('ul') as $ul) 
+{
+       foreach($ul->find('li') as $li) 
+       {
+            $li->find('a.nombreProductoDisplay', 0)->plaintext .'<br>';
+       }
 }
+
 
 ?>

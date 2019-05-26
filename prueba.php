@@ -14,13 +14,17 @@ $rs = mysqli_query ($conexion, $query);
 ?>
 
 <h2>Temporizador</h2>
-<h1 id="tiempo"><?php echo $horas ?>:<?php echo $minutos ?>
-:<?php echo $segundos ?></h1>
+<h1 id="tiempo">00:00:00</h1>
+
+Horas<input type="number" id="h">
+Minutos<input type="number" id="m">
+Segundos<input type="number" id="s">
+
 
 <button type="button" onclick="Empezar()">Empezar</button>
 <button type="button" id="detener">Detener</button>
 <button type="button" id="reiniciar">Continuar</button>
-<!-- <button type="button" id="eliminar">Eliminar</button> -->
+<button type="button" id="eliminar">Eliminar</button>
 
 
 <script>
@@ -41,14 +45,14 @@ function Empezar(){
         $("#tiempo").timer('resume')
     });
 
-    // $("#eliminar").on('click', function(){
-    //     $("#tiempo").timer('remove')
-    // });
-
+    $("#eliminar").on('click', function(){
+        $("#tiempo").timer('remove')
+    });
+    // $("#tiempo").timer('remove');
     $("#tiempo").timer({
-        countdown:true,
-        duration:'<?php  echo $horas ?>'+'h'+
-        '<?php echo $minutos ?>'+'m'+'<?php echo $segundos ?>'+'s',
+        countdown:true, 
+        duration:$("#h").val()+'h'+
+        $("#m").val()+'m'+$("#s").val()+'s',
         callback:function(){
             // audio.addEventListener('ended', function(){
             //     this.currentTime=0;

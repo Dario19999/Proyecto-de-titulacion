@@ -1,7 +1,7 @@
 <?php
 
     require 'conexion.php';
- 
+    
     if(isset($_POST['reg'])){
 
         echo '<hr>';
@@ -64,7 +64,7 @@
                 $query->close();
                 $conexion->close();
 
-                echo "<script type='text/javascript'>window.location.replace('perfil.php');</script>";
+                echo "<script type='text/javascript'>window.location.replace('index.php');</script>";
             }
         }
     }

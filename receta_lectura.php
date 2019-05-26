@@ -1,4 +1,8 @@
 <?php
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    require 'vendor/autoload.php';
     include 'sesion.php';
     include 'validar.php';
     $userSession = new userSession();
@@ -26,11 +30,12 @@
         $usuario = $_SESSION['username'];
     }
 
-    $query =("SELECT id_usuario FROM usuario WHERE nombre = '$usuario'");
+    $query =("SELECT * FROM usuario WHERE nombre = '$usuario'");
     $rs = mysqli_query ($conexion, $query);
         while(($row=mysqli_fetch_array($rs))) {
             $id_usuario=$row['id_usuario'];
         }
+
     // echo $id_usuario.'<br>';
     // echo $id_receta.'<br>';
     // echo $cant.'<br>';
@@ -47,7 +52,12 @@
         mysqli_query ($conexion, $query);    
     }
 
-
+    $query =("SELECT * FROM usuario WHERE id_usuario = '$id_usuario_receta'");
+    $rs = mysqli_query ($conexion, $query);
+        while(($row=mysqli_fetch_array($rs))) {
+            $correo=$row['correo'];
+            $nombre_usuario_receta=$row['nombre'];
+        }
 
     $query =("SELECT * FROM reportes WHERE id_reportes = $id_usuario AND id_receta=$id_receta");
     $rs = mysqli_query ($conexion, $query);
@@ -392,22 +402,61 @@
                         <?php
                             if (isset($_POST['rep_receta']) && $den_receta!=1){
 
-                                    if ($total>=0 && $total<5){
-                                        $query = ("UPDATE receta SET reportes = reportes+1 WHERE receta.id_receta = $id_receta");
-                                        $rs = mysqli_query ($conexion, $query);
-                                        echo "Hacer reporte";                                          
-                                        $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportes =$id_usuario");
-                                        mysqli_query ($conexion, $query);
-                                    }else if ($total==5){
-                                        $query = ("DELETE FROM receta WHERE receta.id_receta=$id_receta");
-                                        $rs = mysqli_query ($conexion, $query);                              
-                                        $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportes =$id_usuario");
-                                        mysqli_query ($conexion, $query);
-                                        echo "Eliminar";
-                                        //ENVIAR CORREO
-                                    }
+                                if ($total>=0 && $total<5){
+                                    $query = ("UPDATE receta SET reportes = reportes+1 WHERE receta.id_receta = $id_receta");
+                                    $rs = mysqli_query ($conexion, $query);
+                                    echo "Hacer reporte";                                          
+                                    $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportes =$id_usuario");
+                                    mysqli_query ($conexion, $query);
+                                }else if ($total==5){
+                                    $query = ("DELETE FROM receta WHERE receta.id_receta=$id_receta");
+                                    $rs = mysqli_query ($conexion, $query);                              
+                                    $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportes =$id_usuario");
+                                    mysqli_query ($conexion, $query);
+                                    echo "Eliminar";
+                                    // $mail = new Mailer();
+                                    $asunto="Receta eliminada";
+                                    $cuerpo ="Lamentamos informarle que su receta de $nombre_receta ha sido eliminada";
+                                    // if ($mail->email($nombre_usuario_receta, $correo, $asunto, $cuerpo)){
+                                    //     echo "Enviado";
+                                    // }else{
+                                    //     echo $mensaje;
+                                    // }
 
-                           
+                                    $mail = new PHPMailer(true);
+                                    try {
+                                        //Server settings
+                                        $mail->SMTPDebug = 2;                                       // Enable verbose debug output
+                                        $mail->isSMTP();                                            // Set mailer to use SMTP
+                                        $mail->Host       = 'smtp.hostinger.mx';                    // Specify main and backup SMTP servers
+                                        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                                        $mail->Username   = 'contacto@lacousine.com';               // SMTP username
+                                        $mail->Password   = 'hola12345';                            // SMTP password
+                                        $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                                        $mail->Port       = 587;                                    // TCP port to connect to
+
+                                        //Recipients
+                                        $mail->setFrom('contacto@lacousine.com', 'La Cousine');
+                                        $mail->addAddress($correo, $nombre_usuario_receta);     // Add a recipient
+
+                                        // // Attachments
+                                        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+                                        // Content
+                                        $mail->isHTML(true);                                  // Set email format to HTML
+                                        $mail->Subject = $asunto;
+                                        $mail->Body    = $cuerpo;
+                                        $mail->AltBody = $cuerpo;
+
+                                        $mail->send();
+                                        echo 'Message has been sent';
+                                        return true;
+                                    } catch (Exception $e) {
+                                        return $mensaje="Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                                        
+                                    }
+                                }                
                             }
                         
                     ?>
@@ -468,19 +517,61 @@
                                     $deshabilitada=$row['deshabilitada'];
                                 }
 
-                                if ($total>=0 && $total<10){
+                                if ($total>=0 && $total<5){
                                     $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
                                     $rs = mysqli_query ($conexion, $query);
                                     echo "Reporte hecho";
                                 
                                 }else if($total>=5 && $total<10 && $deshabilitada!=1){
-
+                                    $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
+                                    $rs = mysqli_query ($conexion, $query);
                                     $query = "UPDATE usuario SET fecha = CURDATE() WHERE usuario.id_usuario = $id_usuario_receta";
                                     $rs = mysqli_query ($conexion, $query); 
                                     $query = "UPDATE usuario SET desabilitada=1";
                                     $rs = mysqli_query ($conexion, $query); 
+                                    $asunto="Cuenta deshabilitada temporalmente";
+                                    $cuerpo ="Lamentamos informarle que su cuenta ha sido deshabilitada por el plazo de 10
+                                    días debido a que usted ha recibido numerosas denuncias por comportamiento 
+                                    inadecuado dentro de esta plataforma. Si vuelve a ser denunciado una vez que se 
+                                    reactive, su cuenta será eliminada";
+                                    $mail = new PHPMailer(true);
+                                    try {
+                                        //Server settings
+                                        $mail->SMTPDebug = 2;                                       // Enable verbose debug output
+                                        $mail->isSMTP();                                            // Set mailer to use SMTP
+                                        $mail->Host       = 'smtp.hostinger.mx';                    // Specify main and backup SMTP servers
+                                        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                                        $mail->Username   = 'contacto@lacousine.com';               // SMTP username
+                                        $mail->Password   = 'hola12345';                            // SMTP password
+                                        $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                                        $mail->Port       = 587;                                    // TCP port to connect to
 
-                                }else if($total==10) {
+                                        //Recipients
+                                        $mail->setFrom('contacto@lacousine.com', 'La Cousine');
+                                        $mail->addAddress($correo, $nombre_usuario_receta);     // Add a recipient
+
+                                        // // Attachments
+                                        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+                                        // Content
+                                        $mail->isHTML(true);                                  // Set email format to HTML
+                                        $mail->Subject = $asunto;
+                                        $mail->Body    = $cuerpo;
+                                        $mail->AltBody = $cuerpo;
+
+                                        $mail->send();
+                                        echo 'Message has been sent';
+                                        return true;
+                                    } catch (Exception $e) {
+                                        return $mensaje="Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                                        
+                                    }
+
+                                }else if($total>=5 && $total<10 && $deshabilitada==1){
+                                    $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
+                                    $rs = mysqli_query ($conexion, $query);  
+                                }else {
                                     $query = ("DELETE FROM usuario WHERE usuario.id_usuario=$id_usuario_receta");
                                     $rs = mysqli_query ($conexion, $query);
                                     //ENVIAR CORREO

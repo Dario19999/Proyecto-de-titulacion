@@ -1,8 +1,4 @@
 
-
-<!DOCTYPE html>
-<html>
-
 <?php include 'plantilla.php';?>
 
     <div class="container-fluid encabezado"> <!--Contenedor fluid - abarca la pantalla completa. Clase encabezado-->
