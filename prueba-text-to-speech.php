@@ -1,6 +1,4 @@
 <?php
-
-include_once 'text-to-speech/auth.php';
 // includes the autoloader for libraries installed with composer
 require __DIR__ . '/vendor/autoload.php';
 
@@ -17,12 +15,12 @@ $client = new TextToSpeechClient();
 
 // sets text to be synthesised
 $synthesisInputText = (new SynthesisInput())
-    ->setText('Hello, world!');
+    ->setText('Hola mis amigos del youtube hoy les traigo una recetas bien vergas');
 
 // build the voice request, select the language code ("en-US") and the ssml
 // voice gender
 $voice = (new VoiceSelectionParams())
-    ->setLanguageCode('en-US')
+    ->setLanguageCode('es-ES')
     ->setSsmlGender(SsmlVoiceGender::FEMALE);
 
 // Effects profile
@@ -39,7 +37,8 @@ $response = $client->synthesizeSpeech($synthesisInputText, $voice, $audioConfig)
 $audioContent = $response->getAudioContent();
 
 // the response's audioContent is binary
-file_put_contents('output.mp3', $audioContent);
+file_put_contents('audio/output.mp3', $audioContent);
 echo 'Audio content written to "output.mp3"' . PHP_EOL;
 
+// return $audioContent;
 ?>

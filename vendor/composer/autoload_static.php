@@ -28,6 +28,7 @@ class ComposerStaticInit3631ae089318f05ef4191804dd9e4a42
         'M' => 
         array (
             'Mpdf\\' => 5,
+            'Monolog\\' => 8,
         ),
         'G' => 
         array (
@@ -38,6 +39,8 @@ class ComposerStaticInit3631ae089318f05ef4191804dd9e4a42
             'Grpc\\' => 5,
             'Google\\Protobuf\\' => 16,
             'Google\\Cloud\\TextToSpeech\\' => 26,
+            'Google\\Cloud\\Storage\\' => 21,
+            'Google\\Cloud\\Core\\' => 18,
             'Google\\Auth\\' => 12,
             'Google\\ApiCore\\' => 15,
             'Google\\' => 7,
@@ -76,6 +79,10 @@ class ComposerStaticInit3631ae089318f05ef4191804dd9e4a42
         array (
             0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
         ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -103,6 +110,14 @@ class ComposerStaticInit3631ae089318f05ef4191804dd9e4a42
         'Google\\Cloud\\TextToSpeech\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/cloud-text-to-speech/src',
+        ),
+        'Google\\Cloud\\Storage\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-storage/src',
+        ),
+        'Google\\Cloud\\Core\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-core/src',
         ),
         'Google\\Auth\\' => 
         array (
@@ -143,12 +158,23 @@ class ComposerStaticInit3631ae089318f05ef4191804dd9e4a42
         0 => __DIR__ . '/..' . '/google/grpc-gcp/src/generated',
     );
 
+    public static $prefixesPsr0 = array (
+        'R' => 
+        array (
+            'Rize\\UriTemplate' => 
+            array (
+                0 => __DIR__ . '/..' . '/rize/uri-template/src',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit3631ae089318f05ef4191804dd9e4a42::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit3631ae089318f05ef4191804dd9e4a42::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInit3631ae089318f05ef4191804dd9e4a42::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit3631ae089318f05ef4191804dd9e4a42::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
