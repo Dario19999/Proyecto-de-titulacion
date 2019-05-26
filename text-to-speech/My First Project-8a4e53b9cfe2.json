@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "astute-ace-241823",
+  "private_key_id": "8a4e53b9cfe20773ee1817d02cfee0b0112808ae",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC09mNDsdX1ytbw\nY2md1Ny9N3B0oLZahip/wS6lZ4sYZbxpmDbG+vIyfQb/UuHiz2UgJS3Jl6GRFy6F\nLGVbDouIpNo3xv+tbgh6jXsED9HS0sK9mb0oPvnifoApDrHAQdB8rLo0IV/VVxMe\nLCeW4LA5wqkHIiYDakP/Y0WkWVg1APB9Wauf3OIIhKuKQCsw/p8+MTaqMOFflYtw\nJEuzQLVvcfmOhjbNUcMuReG9IiHMUTDmzjTfhxtLRWTFR73aAT+rGQhUbfhMWGkg\nmwTRQqYddIAN5+eSx7/dJOeiJabpEs4ghxPvy7zetNol+hxIL6bQfOzORPMg0zo5\n99nfyVjvAgMBAAECggEAD0jCLV0I8ve8++4n/pzHpuZwUpsIwkOTtYxvY3Whe2y+\nvNwOc41aRUzNeWVnaJAKYzkqRJBQi2y96qFlAouLc7D//cPXVq9OlJ9JG38Ej1ed\n+1EC937xY+5tGUqnu7lmiELRS7oUs8DlGS0y8mmrqLoNK1Be9CnjcJLsNmUV1kAU\nXFWk5C+lABT7cSK2li0xQw05i8JJqH6HVRzHVR+OINWog224/W8/Kfvob9o24A6J\nw3y95+7ONx+Ww1LJQoDamSj+VavDwsFtYlzXHPEcpv5tXJQrXlV5LFkPP4e5rCuz\nvYWzEjY0frBP96jSrYQjaXrBiyFFJPvUvhiF528eYQKBgQDxlnLQLGM/peYDnYjg\nXwIx7Y4a8SVyEqG53L/u0T9ws8HPQ6MgdOx4zwe6WwFAFHUYfgEUQ/yyfVk8VgPe\nol7/FFE0lnEtz9hSzDJoTLCIcbcANWJF3x1PUI14h9W4fVBf7wkyetRBixYJrzNb\neZJ+tKl2l0MUjxaHlJM3y4VhDwKBgQC/whCFe5SzG4XF6VUpMX/qKT5BCEfnb9Vv\ny4YC4Ng9LAbUChmu1DhT4ktPg9wdBP9I9JQHdXDFhIVnRHbhXR4f4Z2oade+jaGi\nVrEzIccmQ3pw4lNE8zbNy2/xRk4eRko/jhpNlxz5poG+lLfa0MSxfUmHYN3GBvut\nkRURJt7KIQKBgC/wp/XxaPx/YkaDY18K23em6VUlV0XstpUYXin48freYO5NQLi3\nGxnaE3GCj5v0s0vZ7ULlPub4gtW7R+dNF0bM9FRYKjtqDEZZ6QLTfRCGaEctUMQG\nw10y4e/yHJIQo/t1hsCyqR4ciJIBZ1KWrGBiX2J+H7ybrF/ZNuGSjHQ3AoGBALU+\nAI2Zk5+CGPtJogNQVN2G499lq0iVTD/hNqXLzLZswXtynHnA/ghS7+mU8NvA2GUl\nPjCakN8vdUN404AImit5/KCsgY0KosYkeFGi0G9bAgRl9lxKIPd8HC8Iy1cUCqNt\ndXD2rh1Mgn8WY3v/LJmxmGjLZnIAMasIYMgYXCThAoGAH04qnAHTJUXTU+/kSUWb\nq3Q5oC0eGyKoNQjiiTtWjLvZcjgGdcPw/K1TPbxuqvHyCsGUVrA63Ls8Ack9UUfy\nuZBd7IGug13lc21pP0MKw7Yb4cuM8gHXZe6QO+azedUBfUp46276WbUtJRXJtjnj\nV/BtMk0iMND+3/Subaxk2lY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "lacousine@astute-ace-241823.iam.gserviceaccount.com",
+  "client_id": "104162114746426465472",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lacousine%40astute-ace-241823.iam.gserviceaccount.com"
+}

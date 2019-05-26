@@ -7,6 +7,7 @@ require 'validar.php';
 $userSession = new userSession();
 $user = new User ();
 
+
 if (isset ($_SESSION ['username'])) {
 
    // echo "Hay sesion";
@@ -25,7 +26,11 @@ if (isset ($_SESSION ['username'])) {
 
     $user = new User();
 
-    if ($user->userExists($userForm, $passForm)){
+    if ($user->userUnabled($userForm)){
+        $errorLogin = "Cuenta deshabilitada".'<br>';
+        include_once 'login.php';
+        
+    }else if ($user->userExists($userForm, $passForm)){
 
         //echo "Usuario valido";
 
@@ -38,7 +43,7 @@ if (isset ($_SESSION ['username'])) {
     }else{
 
        // echo "Usuario y/o contraseña incorrectos".'<br>';
-        $errorLogin = "Nombre de usuario y/o contraseña incorrectos".'<br>';
+        $errorLogin = "Usuario y/o contraseña incorrectos".'<br>';
         include_once 'login.php';
        
     }

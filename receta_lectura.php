@@ -5,15 +5,60 @@
     $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
-    $puntuar=0;
 
-
+    if(isset($_GET ['id_receta'])) {
+        $id_receta = $_GET ['id_receta'];
+        $nombre =("SELECT nombre_receta FROM receta WHERE id_receta = $id_receta");
+        $rs = mysqli_query ($conexion, $nombre);
+        $cant = mysqli_num_rows($rs);
+        while(($row=mysqli_fetch_array($rs))){ 
+        $nombre_receta= $row['nombre_receta'];
+        }
+    }
 ?>
+    <hr>
         <hr>
-        <hr>
-        <hr>
-        <hr>
-        <?php echo $puntuar; ?>
+            <hr>
+                <hr>
+
+<?php
+    if (isset ($_SESSION ['username'])) {
+        $usuario = $_SESSION['username'];
+    }
+
+    $query =("SELECT id_usuario FROM usuario WHERE nombre = '$usuario'");
+    $rs = mysqli_query ($conexion, $query);
+        while(($row=mysqli_fetch_array($rs))) {
+            $id_usuario=$row['id_usuario'];
+        }
+    // echo $id_usuario.'<br>';
+    // echo $id_receta.'<br>';
+    // echo $cant.'<br>';
+
+    $query =("SELECT * FROM receta WHERE id_receta=$id_receta ");
+    $rs = mysqli_query($conexion, $query);     
+        while(($row=mysqli_fetch_array($rs))) {
+            $id_usuario_receta=$row['id_usuario'];
+            $total = $row['reportes']; 
+        }
+    // echo $id_usuario_receta;
+    if (isset ($id_usuario_receta)){
+        $query = ("INSERT INTO reportes (id_reportes, id_receta, id_usuario) VALUES ($id_usuario,$id_receta,$id_usuario_receta )");
+        mysqli_query ($conexion, $query);    
+    }
+
+
+
+    $query =("SELECT * FROM reportes WHERE id_reportes = $id_usuario AND id_receta=$id_receta");
+    $rs = mysqli_query ($conexion, $query);
+
+        while(($row=mysqli_fetch_array($rs))) {
+            $den_receta=$row['receta_rep'];
+            $den_usuario=$row['usuario_rep'];
+            $cant_votos=$row['calificacion'];
+        }
+
+    if($cant!=0){?>
 
 <div class="container-fluid receta">
 
@@ -137,17 +182,18 @@
 
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="tiempo5" name="tiempo" class="custom-control-input" value="5">
-                                <label class="custom-control-label" for="tiempo5"  value="5">5</label>
+                                <label class="custom-control-label" for="tiempo5">5</label>
                             </div>
 
                                 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn boton_generico" name="cal">Enviar</button>
+                                <button type="submit" class="btn boton_generico" name="cal" >Enviar</button>
+                                
 
                                 <?php 
-                                    if(isset($_POST['cal'])){
-
+                                if(isset($_POST['cal']) && $cant_votos!=1){
+   
                                         if(isset($_POST ['sabor'])){
                                             $sabor = $_POST ['sabor'];
                                         }else $sabor=0;
@@ -161,16 +207,16 @@
                                             $tiempo = $_POST ['tiempo'];
                                         } else $tiempo=0;
 
-                                        if(isset($_GET ['id_receta']) && $puntuar!=0) {
-                                            $id_receta = $_GET ['id_receta'];
-                                            $query="UPDATE receta SET cantidad_vot=cantidad_vot+1, sabor=(sabor+$sabor)/cantidad_vot, 
-                                            dificultad= (dificultad+$dificultad)/cantidad_vot,
-                                            accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
-                                            WHERE receta.id_receta = $id_receta;";
-                                            $rs = mysqli_query ($conexion, $query);
-                                            $puntuar = 1;
-                                        }
-                                    }
+                                        
+                                        $id_receta = $_GET ['id_receta'];
+                                        $query="UPDATE receta SET cantidad_vot=cantidad_vot+1, sabor=(sabor+$sabor)/cantidad_vot, 
+                                        dificultad= (dificultad+$dificultad)/cantidad_vot,
+                                        accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
+                                        WHERE receta.id_receta = $id_receta;";
+                                        $rs = mysqli_query ($conexion, $query);
+                                        $query =("UPDATE reportes SET calificacion = '1' WHERE reportes.id_reportes =$id_usuario");
+                                        mysqli_query ($conexion, $query);
+                                }
                                 ?>
                             </div>
                         </form>
@@ -183,22 +229,15 @@
 
 
         <div class="nombre_receta">
-            <?php 
-                require 'php/conexion.php';
-
-                if(isset($_GET ['id_receta'])) {
-                    $id_receta = $_GET ['id_receta'];
-                    $nombre =("SELECT nombre_receta FROM receta WHERE id_receta = $id_receta");
-                    $rs = mysqli_query ($conexion, $nombre);
-            ?>
-                <h1><?php while(($row=mysqli_fetch_array($rs))){ 
-                echo $row['nombre_receta']; }?></h1>
-            <?php } ?>
+  
+                       <h1> <?php echo $nombre_receta;?></h1>
+    
         </div>
     
         
         <div class="row align-items-end">
             <div class="col-7 col-sm-5 col-md-4 ingredientes">
+
                 <h3>Ingredientes</h3>
                 <ul class="list-group">
 
@@ -214,7 +253,8 @@
                     ?>
 
                         <li class="list-group-item">
-                            <?php echo $row['nombre']."   " ?>
+                            <?php 
+                                echo $row['nombre']."   " ?>
                             <small> <?php echo $row['cantidad']." ".$row['medida'] ?></small>
                         </li>
                         
@@ -326,7 +366,7 @@
                     </div>
     
                 <div class="modal-body">
-                    <form>
+                    <form action="" method="POST">
                             <div class="form-group">
                                 <label for="motivo_receta">Motivo de denuncia</label>
                                 <select class="form-control" id="motivo_receta">
@@ -343,24 +383,41 @@
                                 <label for="comentarios_receta">Comentarios</label>
                                 <textarea class="form-control" id="comentarios_receta" rows="3"></textarea>
                             </div>
+              
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" name="rep_receta" class="btn boton_generico">Enviar</button>
+                            </div>
+
+                        <?php
+                            if (isset($_POST['rep_receta']) && $den_receta!=1){
+
+                                    if ($total>=0 && $total<5){
+                                        $query = ("UPDATE receta SET reportes = reportes+1 WHERE receta.id_receta = $id_receta");
+                                        $rs = mysqli_query ($conexion, $query);
+                                        echo "Hacer reporte";                                          
+                                        $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportes =$id_usuario");
+                                        mysqli_query ($conexion, $query);
+                                    }else if ($total==5){
+                                        $query = ("DELETE FROM receta WHERE receta.id_receta=$id_receta");
+                                        $rs = mysqli_query ($conexion, $query);                              
+                                        $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportes =$id_usuario");
+                                        mysqli_query ($conexion, $query);
+                                        echo "Eliminar";
+                                        //ENVIAR CORREO
+                                    }
+
+                           
+                            }
+                        
+                    ?>
                     </form>           
                 </div>
-    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn boton_generico">Enviar</button>
-                    </div>
+
                     </div>
                 </div>
             </div>
     </div>
-
-
-
-        <i class="descarga fas fa-arrow-down">
-            <a href="descarga.php?id_receta=<?php echo $id_receta?>" type="button" name="descargar" class="btn boton_generico" >Descargar</button>
-
-        </i> 
 
         <div class="btn_denunciar">
             <hr>
@@ -379,38 +436,81 @@
                     </div>
     
                 <div class="modal-body">
-                        <form>
-                                <div class="form-group">
-                                    <label for="motivo_usuario">Motivo de denuncia</label>
-                                    <select class="form-control" id="motivo_usuario">
-                                    <option>Es ofensivo</option>
-                                    <option>Es un bromista</option>
-                                    <option>Es molesto</option>
-                                    <option>Otra</option>
-                                    </select>
-                                </div>
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="motivo_usuario">Motivo de denuncia</label>
+                                <select class="form-control" id="motivo_usuario">
+                                <option>Es ofensivo</option>
+                                <option>Es un bromista</option>
+                                <option>Es molesto</option>
+                                <option>Otra</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="comentarios_usuario">Comentarios</label>
-                                    <textarea class="form-control" id="comentarios_usuario" rows="3"></textarea>
-                                </div>
-                        </form>      
+                            <div class="form-group">
+                                <label for="comentarios_usuario">Comentarios</label>
+                                <textarea class="form-control" id="comentarios_usuario" rows="3"></textarea>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" name="rep_usuario" class="btn boton_generico">Enviar</button>
+                            </div>
+                    <?php
+                        if (isset($_POST['rep_usuario']) && $den_usuario!=1){
+     
+
+                                $query = ("SELECT * FROM usuario WHERE id_usuario=$id_usuario_receta");
+                                $rs = mysqli_query ($conexion, $query);
+
+                                while(($row=mysqli_fetch_array($rs))){ 
+                                    $total = $row['reportes'];
+                                    $deshabilitada=$row['deshabilitada'];
+                                }
+
+                                if ($total>=0 && $total<10){
+                                    $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
+                                    $rs = mysqli_query ($conexion, $query);
+                                    echo "Reporte hecho";
+                                
+                                }else if($total>=5 && $total<10 && $deshabilitada!=1){
+
+                                    $query = "UPDATE usuario SET fecha = CURDATE() WHERE usuario.id_usuario = $id_usuario_receta";
+                                    $rs = mysqli_query ($conexion, $query); 
+                                    $query = "UPDATE usuario SET desabilitada=1";
+                                    $rs = mysqli_query ($conexion, $query); 
+
+                                }else if($total==10) {
+                                    $query = ("DELETE FROM usuario WHERE usuario.id_usuario=$id_usuario_receta");
+                                    $rs = mysqli_query ($conexion, $query);
+                                    //ENVIAR CORREO
+                                }
+
+                                $query =("UPDATE reportes SET usuario_rep = '1' WHERE reportes.id_reportes =$id_usuario");
+                                mysqli_query ($conexion, $query);
+
+                            }
+                    ?>  
                         
                 </div>
     
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn boton_generico">Enviar</button>
-                    </div>
+
                     </div>
                 </div>
             </div>
     </div>
+
+    </form>
+
+    <a href="descarga.php?id_receta=<?php echo $id_receta?>" type="button" name="descargar" class="btn boton_generico">Descargar</button>
+   
 
 <script src="js/jquery-3.3.1.slim.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/popper.min.js"></script>
 
 </body>
+<?php }else {echo "<h1>La receta no existe</h1>";} ?>
+     
 
 </html>
