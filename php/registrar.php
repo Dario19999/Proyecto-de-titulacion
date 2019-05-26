@@ -1,7 +1,7 @@
 <?php
 
     require 'conexion.php';
- 
+    
     if(isset($_POST['reg'])){
 
         echo '<hr>';
@@ -60,7 +60,7 @@
                 $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
                 mysqli_close ($conexion);
 
-                echo "<script type='text/javascript'>window.location.replace('perfil.php');</script>";
+                echo "<script type='text/javascript'>window.location.replace('index.php');</script>";
             }
         }
     }

@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Iniciar sesión</title>
         <link rel="icon" href="img/icon1.png">
-        <link rel="stylesheet" href="CSS/login.css">
+        <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/plantilla.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">   

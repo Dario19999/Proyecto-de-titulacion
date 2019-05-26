@@ -3,8 +3,17 @@
     include 'sesion.php';
     include 'validar.php';
     $userSession = new userSession();
+    $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
+
+    if (isset ($_SESSION ['username'])) {
+
+    // echo "Hay sesion";
+
+        $usuario = $_SESSION['username'];
+    }
+
 
 ?>
  <hr>
@@ -27,17 +36,9 @@
 
             <?php
 
-            if (isset ($_SESSION ['username'])) {
-
-            // echo "Hay sesion";
-
-                $usuario = $_SESSION['username'];
-            }
 
             $query = "SELECT * FROM usuario WHERE nombre = '$usuario'";
             $rs = mysqli_query ($conexion, $query);
-
-
 
             while(($row=mysqli_fetch_assoc($rs))) {
 

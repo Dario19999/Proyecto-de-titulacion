@@ -7,7 +7,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" href="img/icon1.png">
-        <link rel="stylesheet" href="CSS/plantilla.css">
+        <link rel="stylesheet" href="css/plantilla.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
         <script src="js/redirigir.js"></script>
@@ -46,6 +46,9 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
             }else if($pagina == 'subir_receta'){
                 echo "<title>Subir Receta</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/subir_receta.css'";
+            }else if($pagina == 'pagina_principal'){
+                echo "<title>Página principal</title>";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'";
             }
         ?>
     </head>
