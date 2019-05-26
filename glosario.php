@@ -2,6 +2,12 @@
 
     include_once 'plantilla.php';
 
+        if(isset($_GET ['letra'])) {
+        $termino = $_GET ['letra'];
+    }else {
+        $termino = 'A';
+    }
+
 ?>
     <!-----------------------------------[Fin de Plantilla]------------------------------------------>
     
@@ -24,7 +30,7 @@
                     <form action="php/glosario.php" method="POST">
                         <div class="form-row">
                             <h4>Término a Definir.</h4>
-                            <input type="text" class="form-control" name="termino" placeholder="Ejem. Menear, Batir, Cocer, etc.">
+                            <input type="text" class="form-control" name="termino" placeholder="Ejem. Menear, Batir, Cocer, etc." required>
                         </div>
 
                         <hr>
@@ -32,7 +38,7 @@
                         <div>
                             <h4>Definición</h4>
                             <textarea name="definicion" class="form-control textarea_resize" maxlength="3000" rows="10" cols="30" 
-                            placeholder="Describa detalladamente la definición del término..."></textarea>
+                            placeholder="Describa detalladamente la definición del término..." required></textarea>
 
                         </div>
                         <div class="modal-footer">
@@ -49,48 +55,55 @@
     <div class="container-fluid definicion">
 
         <div class="letra">
-            <li type= "circle" value="J">J</h1>
+            <li type= "circle"><?php echo $termino ?></h1>
         </div>
 
         <div>
             <dl>
                 <?php
                 include 'php/conexion.php';
-                $query = "SELECT * FROM termino ORDER BY palabra ASC" ;
+                $query = "SELECT * FROM termino WHERE palabra LIKE '$termino%' ORDER BY palabra ASC" ;
                 $rs = mysqli_query ($conexion, $query);
                 while(($row=mysqli_fetch_assoc($rs))) {
+                   $video= ($row['video']);
                 ?>
-                <dt id="termino"><?php echo $row['palabra']?></dt>
+                <dt id="termino"><hr><?php echo $row['palabra']?></dt>
                     
                 <dd><?php echo $row['definicion']?></dd>
-                <?php } ?>       
+
+                <?php if (isset ($video)) { ?>
+
+                <div class="video">
+                    <button type="button" name="ver_video" value="Video" class="btn boton_generico" data-toggle="modal" data-target="#modal_video" style="float:left;">Video</button>
+                    
+                    <div class="modal fade" id="modal_video" tabindex="-1" role="dialog" aria-labelledby="ver_video" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ver_video"><?php echo $row['palabra']?></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">                               
+                                    <video src="<?php echo $row['video'] ?>" controls></video>                            
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+            <?php }
+                 } ?>       
             </dl>
         
         </div>
         
 
-        <div class="video">
-            <button type="button" name="ver_video" value="Video" class="btn boton_generico" data-toggle="modal" data-target="#modal_video" style="float:left;">Video</button>
-            
-            <div class="modal fade" id="modal_video" tabindex="-1" role="dialog" aria-labelledby="ver_video" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="ver_video">Juliana</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">                               
-                            <video src="vid/juliana.mp4" controls></video>                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  
+ 
         
         
         
@@ -99,36 +112,12 @@
     <nav aria-label="Page navigation example" class="fixed-bottom">
             <ul class="pagination pagination-sm justify-content-center align-content-end">
                 <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">A</a></li>
-                <li class="page-item"><a class="page-link" href="#">B</a></li>
-                <li class="page-item"><a class="page-link" href="#">C</a></li>
-                <li class="page-item"><a class="page-link" href="#">D</a></li>
-                <li class="page-item"><a class="page-link" href="#">F</a></li>
-                <li class="page-item"><a class="page-link" href="#">G</a></li>
-                <li class="page-item"><a class="page-link" href="#">H</a></li>
-                <li class="page-item"><a class="page-link" href="#">I</a></li>
-                <li class="page-item"><a class="page-link" href="#">J</a></li>
-                <li class="page-item"><a class="page-link" href="#">K</a></li>
-                <li class="page-item"><a class="page-link" href="#">L</a></li>
-                <li class="page-item"><a class="page-link" href="#">M</a></li>
-                <li class="page-item"><a class="page-link" href="#">N</a></li>
-                <li class="page-item"><a class="page-link" href="#">Ñ</a></li>
-                <li class="page-item"><a class="page-link" href="#">O</a></li>
-                <li class="page-item"><a class="page-link" href="#">P</a></li>
-                <li class="page-item"><a class="page-link" href="#">Q</a></li>
-                <li class="page-item"><a class="page-link" href="#">R</a></li>
-                <li class="page-item"><a class="page-link" href="#">S</a></li>
-                <li class="page-item"><a class="page-link" href="#">T</a></li>
-                <li class="page-item"><a class="page-link" href="#">U</a></li>
-                <li class="page-item"><a class="page-link" href="#">V</a></li>
-                <li class="page-item"><a class="page-link" href="#">W</a></li>
-                <li class="page-item"><a class="page-link" href="#">X</a></li>
-                <li class="page-item"><a class="page-link" href="#">Y</a></li>
-                <li class="page-item"><a class="page-link" href="#">Z</a></li>
+                <?php foreach( range( 'A', 'Z' ) as $letra ) {?>
+                <li class="page-item"><a class="page-link" href="glosario.php?letra=<?php echo $letra ?>"><?php echo $letra ?></li></a>
+              <?php  }  ?>
+                
                 <li class="page-item">
-                <a class="page-link" href="#">Siguiente</a>
                 </li>
             </ul>
             </nav>
