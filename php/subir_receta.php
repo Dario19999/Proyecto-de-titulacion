@@ -66,7 +66,7 @@
                                 if(stripos($paso, $row['groseria']) === FALSE){
                                         
                                 }else{
-                                        echo "<p style = 'color: red'>*Error: Se detectó un apalabra altisonante en uno de los pasos. Favor de corregir</p>";
+                                        echo "<p style = 'color: red'>*Error: Se detectó una palabra altisonante en uno de los pasos. Favor de corregir</p>";
                                         $bandera = 0;
                                 }
 
@@ -82,7 +82,7 @@
                         $registrar=mysqli_query($conexion, $query);
                         mysqli_close ($conexion);
                         
-                        require 'success..html';
+                        require 'success.html';
 
                 }
         }
