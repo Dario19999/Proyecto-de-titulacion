@@ -1,41 +1,80 @@
 <?php
 
     include_once 'plantilla.php';
+    include_once 'php/conexion.php';
+
+    if(isset($_GET ['id_receta'])) {
+        $id_receta = $_GET ['id_receta'];
+        $query = ("SELECT * FROM receta WHERE id_receta = $id_receta");
+        $rs = mysqli_query ($conexion, $query);
+        while(($row=mysqli_fetch_array($rs))){ 
+        $nombre_receta= $row['nombre_receta'];
+        // $query = ("SELECT * FROM procedimiento WHERE id_receta =$id_receta");
+        // $rs = mysqli_query ($conexion, $query);
+        // while(($row=mysqli_fetch_array($rs))){ 
+        // $paso= $row['paso'];
+        // $audio = $row ['audio'];
 
 ?>
 <html>
 <body>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
         
     <div class="container-fluid receta">
 
 
         <div class="nombre_receta">
-            <h1>Nombre receta</h1>
+            <h1><?php echo $nombre_receta;?></h1>
         </div>
     
         
         <div class="row align-items-end">
             <div class="col-7 col-sm-5 col-md-4 ingredientes">
+                <hr>
                 <h3>Ingredientes</h3>
                 <ul class="list-group">
-                        <li class="list-group-item">Obo <small> 2 cucharadas</small></li>
+                    <?php 
+                        $query = ("SELECT porciones, cantidad, medida, ingrediente.nombre 
+                        FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
+                        = ingrediente.id_ingrediente");
+                        $rs = mysqli_query ($conexion, $query);
+
+                        while(($row=mysqli_fetch_assoc($rs))){ 
                         
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                    ?>
+
+                        <li class="list-group-item">
+                            <?php 
+                                echo $row['nombre']."   " ?>
+                            <small> <?php echo $row['cantidad']." ".$row['medida'] ?></small>
+                        </li>
+                        
+                    <?php } ?>
                 </ul>
             </div>
 
         </div>
-
+<hr>
         <div class="procedimiento">
+             <h3>Procedimiento</h3>
             <ol>
 
-                <li value="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, mollitia dolorem temporibus officiis eos facilis nemo omnis totam magni illum deserunt. Consequatur voluptas sint tempore a nemo nulla omnis reprehenderit?.</li>
-                <li value="2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fuga fugit, odit eos tempore quam sit deserunt eaque, ex odio vel quibusdam iusto deleniti neque delectus repellat doloremque labore sequi!.</li>
-                <li value="3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rerum laudantium dignissimos omnis eligendi ullam eveniet enim corrupti ad est illum veritatis itaque voluptate, quis minima exercitationem laborum qui similique..</li>
-                    
+                    <?php 
+                        $query = ("SELECT * FROM procedimiento WHERE id_receta=$id_receta");
+                        $rs = mysqli_query ($conexion, $query);
+
+                        while(($row=mysqli_fetch_assoc($rs))){ 
+                        $paso=$row['paso'];
+                        $audio=$row['audio'];
+                    ?>
+
+                        <li><?php echo $row['paso']?></small></li>
+                        <audio src="<?php echo $audio ?>" autoplay></audio>
+                        
+                    <?php } ?>        
             </ol>
 
         </div>
@@ -99,3 +138,7 @@
     </body>
 
 </html>
+
+<?php }
+    } 
+    ?>
