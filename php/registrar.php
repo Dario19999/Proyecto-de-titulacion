@@ -56,9 +56,13 @@
             if(preg_match($patron_p, $pass) && preg_match($patron_u, $user) && $pass != $user && $bandera == 1){
 
                 $en_pass = password_hash($pass, PASSWORD_DEFAULT);
-                $query="INSERT INTO usuario (nombre,pass,correo,id_nacionalidad,sexo) values ('$user','$en_pass','$correo','$nacionalidad','$sexo')";
-                $registrar=mysqli_query($conexion, $query) or die ('No se pudo registrar <br>'.mysqli_error($conexion));
-                mysqli_close ($conexion);
+
+                $query=$conexion->prepare("INSERT INTO usuario (nombre,pass,correo,id_nacionalidad,sexo) values (?,?,?,?,?)");
+                $query->bind_param('sssis', $user, $en_pass, $correo, $nacionalidad, $sexo);
+                $query->execute();
+
+                $query->close();
+                $conexion->close();
 
                 echo "<script type='text/javascript'>window.location.replace('index.php');</script>";
             }

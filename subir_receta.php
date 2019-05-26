@@ -4,7 +4,7 @@
     include_once 'plantilla.php';
 
 ?>
-        <form action = "php/subir_receta.php" method="POST"  id="form_subir">
+        <form action = "php/validacion_subir.php" method="POST"  id="form_subir" autocomplete="off">
             <br>
             <br>
             <br>
@@ -13,8 +13,8 @@
             <p class="subtitulo_subir">Nombre de Receta</p>
             
             <div class="form-row ">
-                <div class="form-group col-md-1 ">
-                    <input class="nombre_receta" type="text" name="nombre_receta" required>
+                <div class="form-group col-md-1">
+                    <input class="nombre_receta" type="text" name="nombre_receta" placeholder="Nombre de la receta"required>
                 </div>
             </div>
             <hr>
@@ -100,7 +100,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-2 text-center">
-                    <input type="button" name="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico" onclick="clonar_ingr()">
+                    <input type="button" id="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico">
                 </div>
             </div>
 
@@ -110,7 +110,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-1 text-center " style="margin-left: 30px">
-                    <input type="number" name="cant_0" class="cantidad" min="1" value="1" required> 
+                    <input type="number" name="porciones" class="cantidad" min="1" value="1" required> 
                 </div>
             </div>
             
@@ -129,7 +129,7 @@
                     </div>
         
                     <div class="form-group col-md-2 align-self-center">
-                        <button class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Cronómetro</button>
+                        <!-- <button class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Cronómetro</button> -->
                         <div class="modal fade" id="modal_crnm" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -181,7 +181,7 @@
 
             <div class="form-row">
                 <div class="form-group col-md-3 text-center">
-                    <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico" onclick="clonar_paso()">
+                    <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico">
                 </div>
             </div>
             
@@ -191,16 +191,15 @@
             <div class="div_boton">
                 <button type="submit" class="btn boton_generico" name="subir">Subir</button>
             </div>
-            
-            <?php
-                require 'php/subir_receta.php';
-            ?>
         </form>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>
-        <script src ="js/subir_receta.js"></script>
+        <script src ="js/autocompletar.js"></script>        
+        <script src ="js/clonar.js"></script>
+        <!-- <script src ="js/subir_receta.js"></script> -->
+        
         
     </body>
 </html>

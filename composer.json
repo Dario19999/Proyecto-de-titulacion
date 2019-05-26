@@ -1,6 +1,7 @@
 {
     "require": {
         "mpdf/mpdf": "^8.0",
-        "phpmailer/phpmailer": "^6.0"
+        "phpmailer/phpmailer": "^6.0",
+        "google/cloud-text-to-speech": "^0.4.3"
     }
 }

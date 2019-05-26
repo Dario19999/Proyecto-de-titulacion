@@ -79,7 +79,7 @@
                         <br>
                         - 8 caracteres como mínimo
                         <br>
-                        - Una letra en mayúscula
+                        - Una letra en mayúscula como mínimo
                         <br>
                         - Un caracter numérico
                         </p>
