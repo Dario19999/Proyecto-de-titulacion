@@ -307,7 +307,7 @@
     <div class="container-fluid botones">    
 
             <div class="btn_dictado">
-                <a href="receta_dictado.html" class="btn boton_generico"> Dictado</a>
+                <a href="receta_dictado.php?id_receta=<?php echo $id_receta ?>" class="btn boton_generico"> Dictado</a>
                     
             </div>
         <hr>

@@ -1,6 +1,7 @@
 <?php
 // includes the autoloader for libraries installed with composer
 require __DIR__ . '/vendor/autoload.php';
+include 'php/conexion.php';
 
 // Imports the Cloud Client Library
 use Google\Cloud\TextToSpeech\V1\AudioConfig;
@@ -12,10 +13,17 @@ use Google\Cloud\TextToSpeech\V1\VoiceSelectionParams;
 
 // instantiates a client
 $client = new TextToSpeechClient();
+$query= "SELECT * FROM procedimiento WHERE id_receta = 17";
+$rs = mysqli_query ($conexion, $query);
+
+while(($row=mysqli_fetch_assoc($rs))) {
+    $texto = $row['paso'];
+    $id_procedimiento = $row ['id_procedimiento'];
 
 // sets text to be synthesised
 $synthesisInputText = (new SynthesisInput())
-    ->setText('Hola mis amigos del youtube hoy les traigo una recetas bien vergas');
+
+    ->setText($texto);
 
 // build the voice request, select the language code ("en-US") and the ssml
 // voice gender
@@ -37,8 +45,12 @@ $response = $client->synthesizeSpeech($synthesisInputText, $voice, $audioConfig)
 $audioContent = $response->getAudioContent();
 
 // the response's audioContent is binary
-file_put_contents('audio/output.mp3', $audioContent);
-echo 'Audio content written to "output.mp3"' . PHP_EOL;
+file_put_contents('audio/paso'.$id_procedimiento.'.mp3', $audioContent);
 
+echo 'Audio content written to '.$id_procedimiento.'.mp3' . PHP_EOL;
+
+$query1= "UPDATE procedimiento SET audio = 'audio/paso$id_procedimiento.mp3' WHERE id_procedimiento = $id_procedimiento";
+mysqli_query ($conexion, $query1) OR DIE ("Error: ".mysqli_error($conexion));
+}
 // return $audioContent;
 ?>

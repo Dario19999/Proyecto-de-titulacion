@@ -4,16 +4,22 @@
         
         if(isset($_POST['subir'])){
 
-                $nombre = $_POST['nombre_receta'];
-                $categoria = $_POST['tipo_receta']; 
-                $nacionalidad = $_POST['nacionalidad'];
-                // $cant = $_POST['cant_1'];
-                // $medida = $_POST['medida_1'];
-                // $ingr = $_POST['ingr_1'];
-                $porciones = $_POST['porciones'];
-                // $paso = $_POST['paso_1'];
-                
-                
+                $nombre = filter_var($_POST['nombre_receta'], FILTER_SANITIZE_STRING);
+                $categoria = filter_var($_POST['tipo_receta'], FILTER_SANITIZE_STRING);
+                $nacionalidad = filter_var($_POST['nacionalidad'], FILTER_SANITIZE_STRING);
+                $porciones = filter_var($_POST['porciones'], FILTER_SANITIZE_STRING);
+                // $cant_ingr = filter_var($_POST['porciones'], FILTER_SANITIZE_NUMBER_INT);
+                // $cant_pasos = filter_var($_POST['porciones'], FILTER_SANITIZE_NUMBER_INT);
+
+                try{
+
+
+
+                }catch(Exception $e){
+                        $respuesta = array(
+                                'error' => $e->getMessage()
+                        );
+                }
                 echo json_encode($_POST);
 
                 $bandera = 1;
