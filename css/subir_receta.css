@@ -87,3 +87,18 @@ input[type ="text"]{
 .autocompletar_active strong{
     color: #fffaa3;
 }
+
+.error_nombre{
+    display: block;
+    margin-left: 25px;
+}
+
+.error_ingr{
+    display: block;
+    margin-right: 20px;
+}
+
+.error_paso{
+    display: block;
+    margin-left: 170px;
+}

@@ -17,8 +17,12 @@
                     <input class="nombre_receta" type="text" name="nombre_receta" placeholder="Nombre de la receta"required>
                 </div>
             </div>
+
+            <div class="form-row" >
+                <div class="form-group col-md-2 error alert alert-danger error_nombre" id="error_nombre_1"></div>
+            </div>
+
             <hr>
-            
             
             <p class="subtitulo_subir">Tipo de platillo</p>
 
@@ -97,6 +101,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-row" >
+                <div class="form-group col-md-1"></div>
+                <div class="form-group col-md-2"></div>
+                <div class="form-group col-md-3 error alert alert-danger error_ingr" id="error_ingr_1"></div>
+            </div>
+            
             
             <div class="form-row">
                 <div class="form-group col-md-2 text-center">
@@ -128,8 +139,8 @@
                         <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" placeholder="Describa el paso."></textarea> 
                     </div>
         
-                    <div class="form-group col-md-2 align-self-center">
-                        <!-- <button class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Cronómetro</button> -->
+                    <!-- <div class="form-group col-md-2 align-self-center">
+                        <button class="btn boton_generico" data-toggle="modal" data-target="#modal_crnm">Cronómetro</button>
                         <div class="modal fade" id="modal_crnm" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -142,7 +153,7 @@
                                     </div>
                         
                                     <div class="modal-body">
-                                        <!-- <form>
+                                        <form>
                                             <div class="form-row justify-content-center">
                                                 <div class="col-3">
                                                     <label for="nombre_crnm"></label>
@@ -170,15 +181,20 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                                 <button type="submit" class="btn boton_generico">Agregar</button>
                                             </div>
-                                        </form>     -->
+                                        </form>    
                                     </div>                                   
                                 </div>
                             </div>
                         </div>
-                    </div>  
-                </div>
+                    </div>   -->
+                    
+                </div> 
             </div>
 
+            <div class="form-row" >
+                <div class="form-group col-md-6 error alert alert-danger error_paso" id="error_paso_1"></div>
+            </div>
+            
             <div class="form-row">
                 <div class="form-group col-md-3 text-center">
                     <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico">
@@ -197,8 +213,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src ="js/autocompletar.js"></script>        
-        <script src ="js/clonar.js"></script>
-        <!-- <script src ="js/subir_receta.js"></script> -->
+        <script src ="js/subir_receta.js"></script>
         
         
     </body>
