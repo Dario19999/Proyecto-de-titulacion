@@ -197,8 +197,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src ="js/autocompletar.js"></script>        
-        <script src ="js/clonar.js"></script>
-        <!-- <script src ="js/subir_receta.js"></script> -->
+        <script src ="js/subir_receta.js"></script>
         
         
     </body>
