@@ -72,7 +72,7 @@
 
                     <div class="custom-control custom-radio margen">
                         <input type="radio" name="tipo" id="radio3" class="custom-control-input" value ="3" >
-                        <label  class="custom-control-label radio-inline" for="radio3" ><h4>Cocteles</h4></label> 
+                        <label  class="custom-control-label radio-inline" for="radio3" ><h4>Bebidas</h4></label> 
                     </div>
                 
                 </div>
