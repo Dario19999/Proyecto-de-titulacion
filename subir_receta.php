@@ -4,7 +4,7 @@
     include_once 'plantilla.php';
 
 ?>
-        <form action = "php/validacion_subir.php" method="POST"  id="form_subir" autocomplete="off">
+        <form action="php/validar_subir.php" method="POST"  id="form_subir" autocomplete="off">
             <br>
             <br>
             <br>
@@ -19,7 +19,7 @@
             </div>
 
             <div class="form-row" >
-                <div class="form-group col-md-2 error alert alert-danger error_nombre" id="error_nombre_1"></div>
+                <div class="form-group col-md-2 error alert alert-danger error_nombre"></div>
             </div>
 
             <hr>
@@ -88,10 +88,11 @@
                             <option value="Oz">Oz</option>
                             <option value="L">L</option>
                             <option value="ml">ml</option>
-                            <option value="Cucharada">Cucharada</option>
-                            <option value="Cucharadita">Cucharadita</option>
-                            <option value="Taza">Taza</option>
-                            <option value="Pugno">Puño</option>
+                            <option value="Cucharada">Cucharada(s)</option>
+                            <option value="Cucharadita">Cucharadita(s)</option>
+                            <option value="Taza">Taza(s)</option>
+                            <option value="Pugno">Puño(s)</option>
+                            <option value="Pieza">Pieza(s)</option>
                             <option value="x">Al gusto</option>
                         </select>
                     </div>
@@ -105,7 +106,7 @@
             <div class="form-row" >
                 <div class="form-group col-md-1"></div>
                 <div class="form-group col-md-2"></div>
-                <div class="form-group col-md-3 error alert alert-danger error_ingr" id="error_ingr_1"></div>
+                <div class="form-group col-md-4 error alert alert-danger error_ingr"></div>
             </div>
             
             
@@ -192,7 +193,7 @@
             </div>
 
             <div class="form-row" >
-                <div class="form-group col-md-6 error alert alert-danger error_paso" id="error_paso_1"></div>
+                <div class="form-group col-md-6 error alert alert-danger error_paso"></div>
             </div>
             
             <div class="form-row">
@@ -206,6 +207,9 @@
 
             <div class="div_boton">
                 <button type="submit" class="btn boton_generico" name="subir">Subir</button>
+            </div>
+            <div class="form-row" >
+                <div class="form-group col-md alert alert-danger" id="error">Valió :(</div>
             </div>
         </form>
 

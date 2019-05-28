@@ -7,6 +7,8 @@ let cont_id = 1;
 $(".error_nombre").hide();
 $(".error_ingr").hide();
 $(".error_paso").hide();
+$("#error").hide();
+
 $(function(){
     $("#agregar_ingr").on("click", function(){
         clonar_ingr();
@@ -16,31 +18,48 @@ $(function(){
         clonar_paso();
     });
 
-    $("form").submit(function(e){
+    $("#form_subir").submit(function(e){
         e.preventDefault();
-
-        // for(let i = 1; i <= cont_ingr; i++){
-        //     if($("ingr_"+i).value)
-        // }
-
-
-
         var datos = $(this).serializeArray();
+        var url = $(this).attr('action');
         datos.push({name: "cant_ingr", value: cont_ingr});
         datos.push({name: "cant_pasos", value: cont_paso});
         console.log(datos);
         $.ajax({
             type: 'post',
             data: datos,
-            url: $(this).attr('action'),
+            url: url,
             dataType: 'json',
             success: function(data){
-                if(data.resultado == "exitont"){
-                    $(".error_nombre").html("El nombre contiene una palabra altisonante. Favor de corregir").show();
+                console.log(data);
 
+                if(data.error_nombre == 1){
+                    $(".error_nombre").html("<strong>Error:</strong> El nombre de la receta contiene una o más palabras altisonantes. Favor de corregir.").show();
+                }else{
+                    $(".error_nombre").hide();
                 }
+
+                if(data.error_ingr == 1){
+                    $(".error_ingr").html("<strong>Error:</strong> Uno de los ingredientes contiene una o más palabras altisonantes. Favor de corregir.").show();
+                }else{
+                    $(".error_ingr").hide();
+                }
+
+                if(data.error_paso == 1){
+                    $(".error_paso").html("<strong>Error:</strong> Uno de los pasos contiene una o más palabras altisonantes. Favor de corregir.").show();
+                }else{
+                    $(".error_paso").hide();
+                }
+
+                if(data.error_nombre == 0 || data.error_ingr == 0 || data.error_paso == 0){
+                    window.location.replace("/success.html");
+                }
+            },
+            error: function(){
+                console.log("esto es un error");
+                $("#error").show();
             }
-        })
+        });
     });
 });
 
@@ -94,21 +113,6 @@ function clonar_ingr(){
     new_ingr.setAttribute("id", "name_ingr");
     new_ingr.setAttribute("required", "");
     div_ingr.appendChild(new_ingr);
-
-    //error para cada ingrediente
-    // var ingr_error_row = document.createElement("div");
-    // ingr_error_row.setAttribute("class", "form-row");
-    // new_container.appendChild(ingr_error_row);
-    // var ingr_error_col_1 = document.createElement("div");
-    // ingr_error_col_1.setAttribute("class", "form-group col-md-1");
-    // ingr_error_row.appendChild(ingr_error_col_1);    
-    // var ingr_error_col_2 = document.createElement("div");
-    // ingr_error_col_2.setAttribute("class", "form-group col-md-1");
-    // ingr_error_row.appendChild(ingr_error_col_2);
-    // var ingr_error_col_3 = document.createElement("div");
-    // ingr_error_col_3.setAttribute("class", "form-group col-md-1form-group col-md-3 error alert alert-danger error_ingr");
-    // ingr_error_col_3.setAttribute("id", "error_ingr_"+cont_name_ingr);
-    // ingr_error_row.appendChild(ingr_error_col_3);
 
     //boton para eliminar ingrediente
     var div_btn_delete = document.createElement("div");

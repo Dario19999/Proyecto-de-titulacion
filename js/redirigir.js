@@ -30,5 +30,8 @@
         case 'btn_registrar':
             window.location.replace("registro.php");
         break;
+        case 'btn_success':
+            window.location.replace("index.php");
+        break;
     }
 }
