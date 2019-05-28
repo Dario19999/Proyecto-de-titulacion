@@ -49,6 +49,9 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
             }else if($pagina == 'pagina_principal'){
                 echo "<title>Página principal</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'";
+            }else if($pagina == 'success'){
+                echo "<title>Subir receta</title>";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/plantilla.css'";
             }
         ?>
     </head>
