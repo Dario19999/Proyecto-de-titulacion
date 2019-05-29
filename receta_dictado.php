@@ -1,4 +1,3 @@
-
 <?php
 
     include_once 'plantilla.php';
@@ -6,12 +5,13 @@
 
     if(isset($_GET ['id_receta'])) {
         $nombre=0;
+        $paso_actual=0;
         $id_receta = $_GET ['id_receta'];
 
         if (isset ($_GET['paso'])){
             $paso_actual=$_GET['paso'];
         }else{
-            $paso_actual=0;
+            $paso_actual=-1;
             $nombre=1;
         }
 
@@ -31,6 +31,14 @@
             $i++;
         }
 
+        // $query = ("SELECT * FROM receta WHERE id_receta=$id_receta ");
+        // $rs = mysqli_query ($conexion, $query);
+        // while(($row=mysqli_fetch_assoc($rs))){ 
+        //     $row ['id'] = $i;
+        //     $json[$i] = $row;
+        //     $i++;
+        // }
+
         $query = ("SELECT * FROM procedimiento WHERE id_receta=$id_receta");
         $rs = mysqli_query ($conexion, $query);
         $rs=mysqli_query ($conexion, $query);
@@ -38,7 +46,7 @@
             $row ['id'] = $i;
             $json[$i] = $row;
             $i++;
-        } $res = json_encode($json);
+        }$res = json_encode($json);
 
         $array = json_decode($res);
         ($array);
@@ -75,11 +83,9 @@
                 }               
             ?>
             <audio src="<?php echo $audio ?>" autoplay></audio>
-            <?php } ?>
-        </div>
-        
+            <?php } else if (isset ($_GET['paso'])){ ?>
         <audio src="<?php echo $array[$paso_actual]->audio; ?>" autoplay></audio>
-    
+        <?php } ?>
         
         <div class="row align-items-end">
             <div class="col-7 col-sm-5 col-md-4 ingredientes">
@@ -87,9 +93,9 @@
                 <h3>Ingredientes</h3>
                 <ul class="list-group">
                     <?php 
-                        $query = ("SELECT porciones, cantidad, medida, id_datos, ingrediente.nombre 
-                        FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
-                        = ingrediente.id_ingrediente");
+                        $query = ("SELECT cantidad, medida, id_datos, ingrediente.nombre, receta.porciones 
+                        FROM datos_receta, ingrediente, receta WHERE datos_receta.id_receta=$id_receta 
+                        AND receta.id_receta=$id_receta AND datos_receta.id_ingrediente = ingrediente.id_ingrediente");
                         $rs = mysqli_query ($conexion, $query);
                         while(($row=mysqli_fetch_assoc($rs))){     
                         
@@ -128,8 +134,21 @@
         </div>
 
     </div>
- 
-    <div class="reproductor">
+
+    <h3 id="nombre">Temporizadores</h3>
+    <h1 id="tiempo">00:00:00</h1>
+
+    Horas<input type="number" id="h">
+    Minutos<input type="number" id="m">
+    Segundos<input type="number" id="s">
+
+
+    <button type="button" class ="btn" onclick="Empezar()">Empezar</button>
+    <button type="button" class ="btn" id="detener">Detener</button>
+    <button type="button" class ="btn" id="reiniciar">Continuar</button>
+    <button type="button" class ="btn" id="eliminar">Eliminar</button>
+
+    <!-- <div class="reproductor">
 
         <a href="#"><i class="fas fa-redo"></i></a>
         <a href="#"><i class="fas fa-angle-double-left"></i></a>
@@ -139,11 +158,12 @@
 
         <p id="escribe"></p>
     
-    </div>
+    </div> -->
    
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
+    <script src="js/timer.jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 
         
@@ -153,7 +173,7 @@
 
         var paso_actual=<?php echo $paso_actual ?>;
         var total_pasos = <?php echo $total_pasos ?>;
-        var paso_inicial =0;
+        var paso_inicial =-1;
 
     // Let's define our first command. First the text we expect, and then the function it should call
     var commands = {
@@ -164,9 +184,10 @@
         if ( paso_actual < total_pasos ){
             paso_actual = paso_actual+1;
             location.replace(window.location.href + "&paso=" + paso_actual) ;
-        }
+            }
 
         },
+        
         'repetir': function() {
 
         // alert("Repetir");
@@ -174,6 +195,7 @@
             location.replace(window.location.href + "&paso=" + paso_actual) ;
 
         },
+
         'anterior': function() {
 
         // alert("Anterior");
@@ -181,7 +203,7 @@
                 paso_actual = paso_actual-1;
                 location.replace(window.location.href + "&paso=" + paso_actual) ;
             }
-        }
+        },
 
     };
 
@@ -224,6 +246,51 @@
 
 
     })
+
+
+    audio_fin=new Audio("audio/fin.mp3");
+    audio_inicio=new Audio("audio/inicio.mp3");
+
+    function Empezar(){
+        audio_fin.pause();
+        audio_inicio.pause();
+        audio_fin.currentTime=0;
+        audio_inicio.currentTime=0;
+        audio_inicio.play();
+
+        $("#tiempo").timer('remove');
+
+        //pause an existing timer
+        $("#detener").on('click', function(){
+            $("#tiempo").timer('pause')
+        });
+
+        //resume a paused timer
+        $("#reiniciar").on('click', function(){
+            $("#tiempo").timer('resume')
+        });
+
+        $("#eliminar").on('click', function(){
+            $("#tiempo").timer('remove')
+        });
+        // $("#tiempo").timer('remove');
+        $("#tiempo").timer({
+            countdown:true, 
+            duration:$("#h").val()+'h'+
+            $("#m").val()+'m'+$("#s").val()+'s',
+            callback:function(){
+                // audio.addEventListener('ended', function(){
+                //     this.currentTime=0;
+                //     this.play();
+                //     }, false);
+                    audio_fin.play();
+                // alert("Time up!");
+
+                },
+                format:'%H:%M:%S'
+            
+        });
+    }
         
  
 </script>

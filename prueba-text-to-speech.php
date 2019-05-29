@@ -13,7 +13,7 @@ use Google\Cloud\TextToSpeech\V1\VoiceSelectionParams;
 
 // instantiates a client
 $client = new TextToSpeechClient();
-$query= "SELECT * FROM procedimiento WHERE id_receta = 17";
+$query= "SELECT * FROM procedimiento WHERE id_receta = 18";
 $rs = mysqli_query ($conexion, $query);
 
 //GUARDA AUDIO PROCEDIMIENTO
@@ -49,18 +49,18 @@ $audioContent = $response->getAudioContent();
 // the response's audioContent is binary
 file_put_contents('audio/paso'.$id_procedimiento.'.mp3', $audioContent);
 
-echo 'Audio content written to '.$id_procedimiento.'.mp3' . PHP_EOL;
+echo 'Audio content written to audio/paso'.$id_procedimiento.'.mp3' . PHP_EOL .'<br>';
 
 $query1= "UPDATE procedimiento SET audio = 'audio/paso$id_procedimiento.mp3' WHERE id_procedimiento = $id_procedimiento";
 mysqli_query ($conexion, $query1) OR DIE ("Error: ".mysqli_error($conexion));
 }
 
 
-//GUARDA AUDIO DE NOMBRES
+// //GUARDA AUDIO DE NOMBRES
 
 // instantiates a client
 $client = new TextToSpeechClient();
-$query= "SELECT * FROM receta WHERE id_receta = 17";
+$query= "SELECT * FROM receta WHERE id_receta = 18";
 $rs = mysqli_query ($conexion, $query);
 
 while(($row=mysqli_fetch_assoc($rs))) {
@@ -94,7 +94,7 @@ $audioContent = $response->getAudioContent();
 // the response's audioContent is binary
 file_put_contents('audio/nombre'.$id_receta.'.mp3', $audioContent);
 
-echo 'Audio content written to '.$id_receta.'.mp3' . PHP_EOL;
+echo 'Audio content written to audio/nombre'.$id_receta.'.mp3' . PHP_EOL .'<br>';
 
 $query= "UPDATE receta SET audio = 'audio/nombre$id_receta.mp3' WHERE id_receta = $id_receta";
 mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
@@ -102,20 +102,20 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 
 // return $audioContent;
 
-//GUARDA AUDIO DE
+//GUARDA AUDIO DE DATOS
 
 // instantiates a client
 $client = new TextToSpeechClient();
-$query=("SELECT * FROM datos_receta WHERE id_receta=17");
+$query=("SELECT * FROM datos_receta WHERE id_receta=18");
 $rs=mysqli_query($conexion, $query);
 while ($row=mysqli_fetch_array($rs)){
     $id_datos=$row['id_datos'];
 }
 
 
-$query= ("SELECT porciones, cantidad, medida, ingrediente.nombre 
-        FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
-        = ingrediente.id_ingrediente");
+$query= ("SELECT cantidad, medida, id_datos, ingrediente.nombre, receta.porciones 
+        FROM datos_receta, ingrediente, receta WHERE datos_receta.id_receta=$id_receta 
+        AND receta.id_receta=$id_receta AND datos_receta.id_ingrediente = ingrediente.id_ingrediente");
         $rs = mysqli_query ($conexion, $query);
 
     while(($row=mysqli_fetch_assoc($rs))){ 
@@ -153,11 +153,13 @@ $audioContent = $response->getAudioContent();
 // the response's audioContent is binary
 file_put_contents('audio/datos'.$id_datos.'.mp3', $audioContent);
 
-echo 'Audio content written to '.$id_datos.'.mp3' . PHP_EOL;
+echo 'Audio content written to audio/datos'.$id_datos.'.mp3' . PHP_EOL .'<br>';
 
 $query= "UPDATE datos_receta SET audio = 'audio/datos$id_datos.mp3' WHERE id_datos = $id_datos";
 mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 }
 
-// return $audioContent;
-?>
+// // return $audioContent;
+
+
+// ?>

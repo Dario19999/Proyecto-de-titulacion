@@ -1,5 +1,5 @@
 <html>
-<link rel="stylesheet" href="CSS/resultado_busqueda.css">    
+<link rel="stylesheet" href="css/resultado_busqueda.css">    
 
 <?php
 

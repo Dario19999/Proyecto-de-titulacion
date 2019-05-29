@@ -30,4 +30,5 @@ for($i=0; $i < ($col); $i++)
 	
 	catch(Exception $e){echo 'Excepción capturada: ',  $e->getMessage(), "\n";}
 }
+consultaDefinicion();
 ?>

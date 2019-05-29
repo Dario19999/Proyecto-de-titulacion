@@ -1,10 +1,10 @@
 <html>
 <?php
 
-    include 'php/conexion.php';
+include 'php/conexion.php';
 
 
-$query =("SELECT * FROM procedimiento WHERE id_receta=14");
+$query =("SELECT * FROM procedimiento WHERE id_receta=17");
 $rs = mysqli_query ($conexion, $query);
     while(($row=mysqli_fetch_array($rs))) {
         $horas=$row['horas'];
