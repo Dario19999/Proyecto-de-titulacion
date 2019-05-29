@@ -13,10 +13,21 @@
         $res_u = mysqli_query($conexion, $query_u);
         $res_c = mysqli_query($conexion,$query_c);
 
+        $query_groseria = "SELECT groseria FROM groseria";
+        $res_groseria = mysqli_query($conexion, $query_groseria);
+
         $user_exists = mysqli_num_rows($res_u);
         $correo_exists = mysqli_num_rows($res_c);
         $bandera = 1;
         
+        while($row = mysqli_fetch_array($res_groseria)){
+            if(strpos($user, $row['groseria']) !== false){
+                $bandera = 0;
+                echo "<p class = 'error' style = 'color: red'>*El nombre de usuario contiene una o más palabras altisonantes. Favor de corregir.</p>";
+                break;
+            }
+        }
+
         if(empty($correo)){
 
         }else{
@@ -47,7 +58,7 @@
             if(!preg_match($patron_p, $pass)){
                 echo "<p class = 'error' style = 'color: red'>*La contraseña debe contener al menos 8 caracteres. Entre ellos 1 letra mayúscula y un caracter numérico. 
                 Recuerda que el nombre de usuario y la contraseña deben de ser diferentes.</p>";
-                $indicador = 0;
+                $bandera = 0;
             }
             if($pass_ver != $pass){
                 echo "<p class = 'error' style = 'color: red'>*Las contraseñas deben de ser iguales en ambos campos.</p>";

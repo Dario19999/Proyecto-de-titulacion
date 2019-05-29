@@ -87,7 +87,7 @@
                 <h3>Ingredientes</h3>
                 <ul class="list-group">
                     <?php 
-                        $query = ("SELECT porciones, cantidad, medida, id_datos, ingrediente.nombre 
+                        $query = ("SELECT cantidad, medida, id_datos, ingrediente.nombre 
                         FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
                         = ingrediente.id_ingrediente");
                         $rs = mysqli_query ($conexion, $query);

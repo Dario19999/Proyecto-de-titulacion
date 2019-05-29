@@ -39,7 +39,6 @@
     $p=0;
 
     while($row = mysqli_fetch_array($res_groseria)){
-
    
         if(strpos($nombre_receta, $row['groseria']) !== false){
             $bandera = 0; 
@@ -66,6 +65,13 @@
        
     }
 
+    $respuesta = array(
+        "error_nombre" => $mostrar_nombre_error,
+        "error_paso" => $mostrar_paso_error,
+        "bandera" => $bandera
+    ); 
+    echo json_encode($respuesta);
+
     if($bandera == 1){
         try{
    
@@ -74,7 +80,7 @@
             $insert_receta->execute();
             $id_receta = mysqli_insert_id($conexion);
             $insert_receta->close();
-                
+
             for($j = 1; $j<=$cant_pasos; $j++){
                 $insert_paso = $conexion->prepare("INSERT INTO procedimiento (id_receta, paso) VALUES (?, ?)");
                 $insert_paso->bind_param('is', $id_receta, ${"paso_" . $j});
@@ -89,23 +95,16 @@
             }
             $conexion->close();
 
-            $respuesta = array(
-                "error_nombre" => $mostrar_nombre_error,
-                "error_paso" => $mostrar_paso_error,
-                "bandera" => $bandera
-            );  
-
+            
         }catch(Exception $e){
 
             $respuesta = array(
                   
                 'error' => $e->getMessage()
             );
+            // echo json_encode($respuesta);
         }
-        echo json_encode($respuesta);
-    }else{
-        return false;
+        
     }
 
-    
 ?>

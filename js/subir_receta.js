@@ -7,7 +7,6 @@ let cont_id = 1;
 $(".error_nombre").hide();
 $(".error_ingr").hide();
 $(".error_paso").hide();
-$("#error").hide();
 
 $(function(){
      $("#select1").select2({
@@ -48,7 +47,7 @@ $(function(){
                     $(".error_paso").hide();
                 }
 
-                if(data.error_nombre == 0 ||  data.error_paso == 0){
+                if(data.error_nombre == 0 || data.error_paso == 0){
                     window.location.replace("success.php");
                     console.log("a huevo");
                 }

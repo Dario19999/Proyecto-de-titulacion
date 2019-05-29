@@ -1,4 +1,3 @@
-
 <?php
     require 'php/conexion.php'; 
 
@@ -175,9 +174,6 @@
 
             <div class="div_boton">
                 <button type="submit" class="btn boton_generico" name="subir">Subir</button>
-            </div>
-            <div class="form-row" >
-                <div class="form-group col-md alert alert-danger" id="error">Valió :(</div>
             </div>
         </form>
 
