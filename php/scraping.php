@@ -2,7 +2,7 @@
 
 require 'simple_html_dom.php';
 
-$html = file_get_html("https://www.superama.com.mx/catalogo/d-despensa/f-cereales");
+echo $html = file_get_html("https://www.chedraui.com.mx/Departamentos/S%C3%BAper/c/MC21?siteName=Sitio+de+Chedraui&isAlcoholRestricted=false");
 
 // foreach($html->find('ul') as $ul) 
 // {
@@ -12,15 +12,17 @@ $html = file_get_html("https://www.superama.com.mx/catalogo/d-despensa/f-cereale
 //        }
 // }
 
-// $container = $html->find('div.result_col');
+// $container = $html->find('ul.items');
 
-foreach($container->find('ul') as $ul) 
-{
-       foreach($ul->find('li') as $li) 
-       {
-            $li->find('a.nombreProductoDisplay', 0)->plaintext .'<br>';
-       }
-}
+// foreach($container->find('ul') as $ul) 
+// {
+//        foreach($ul->find('li') as $li) 
+//        {
+//             $li->find('a.nombreProductoDisplay', 0)->plaintext .'<br>';
+//        }
+// }
+
+$ret = $html->find('a')->plaintext;
 
 
 ?>
