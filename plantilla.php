@@ -18,41 +18,41 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
 
             if($pagina == 'buscar_receta'){
                 echo "<title>Buscar</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/buscar_receta.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/buscar_receta.css'>";
             }else if($pagina == 'editar_perfil'){
                 echo "<title>Editar Perfil</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/editar_perfil.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/editar_perfil.css'>";
             }else if($pagina == 'glosario'){
                 echo "<title>Glosario</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/glosario.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/glosario.css'>";
             }else if($pagina == 'index'){
                 echo "<title>La Cousine</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'>";
             }else if($pagina == 'perfil'){
                 echo "<title>Perfil</title>";
             }else if($pagina == 'receta_dictado'){
                 echo "<title>Dictado</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_dictado.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'>";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_dictado.css'>";
                 echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
             }else if($pagina == 'receta_edicion'){
                 echo "<title>Editar Receta</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'>";
                 echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
             }else if($pagina == 'receta_lectura'){
                 echo "<title>Lectura</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/receta_lectura.css'>";
                 echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.1/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
             }else if($pagina == 'subir_receta'){
                 echo "<title>Subir Receta</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/subir_receta.css'";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/select2.min.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/subir_receta.css'>";
+                echo "<link rel='stylesheet' type='text/css' href='css\select2.min.css'>";
             }else if($pagina == 'pagina_principal'){
                 echo "<title>Página principal</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'>";
             }else if($pagina == 'success'){
                 echo "<title>Subir receta</title>";
-                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/plantilla.css'";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/plantilla.css'>";
             }
         ?>
     </head>

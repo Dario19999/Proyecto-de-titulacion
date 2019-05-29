@@ -10,6 +10,10 @@ $(".error_paso").hide();
 $("#error").hide();
 
 $(function(){
+     $("#select1").select2({
+        placeholder: 'Seleccione un ingrediente'
+    });
+
     $("#agregar_ingr").on("click", function(){
         clonar_ingr();
     });
@@ -32,17 +36,10 @@ $(function(){
             dataType: 'json',
             success: function(data){
                 console.log(data);
-
                 if(data.error_nombre == 1){
                     $(".error_nombre").html("<strong>Error:</strong> El nombre de la receta contiene una o más palabras altisonantes. Favor de corregir.").show();
                 }else{
                     $(".error_nombre").hide();
-                }
-
-                if(data.error_ingr == 1){
-                    $(".error_ingr").html("<strong>Error:</strong> Uno de los ingredientes contiene una o más palabras altisonantes. Favor de corregir.").show();
-                }else{
-                    $(".error_ingr").hide();
                 }
 
                 if(data.error_paso == 1){
@@ -51,7 +48,7 @@ $(function(){
                     $(".error_paso").hide();
                 }
 
-                if(data.error_nombre == 0 ){//|| data.error_ingr == 0 || data.error_paso == 0){
+                if(data.error_nombre == 0 ||  data.error_paso == 0){
                     window.location.replace("success.php");
                     console.log("a huevo");
                 }
@@ -68,9 +65,9 @@ function clonar_ingr(){
     
     let id_cant = "cant_"+cont_name_ingr;
     let id_medida = "medida_"+cont_name_ingr;
-    let id_ingr = "ingr_"+cont_name_ingr;
+    let name_ingr = "ingr_"+cont_name_ingr;
     let id_group = "ingrediente_"+cont_name_ingr;
-
+    let id_ingr = "select"+cont_name_ingr;
 
     var ingr_input = document.getElementById("ingr_group");
 
@@ -103,17 +100,22 @@ function clonar_ingr(){
     new_medida.setAttribute("name", id_medida);
     div_medida.appendChild(new_medida);
 
-    //nuevo input text para insertar el nombre del ingrediente
+    //nuevo select para seleccionar el ingrediente
     var div_ingr = document.createElement("div");
-    div_ingr.setAttribute("class", "form-group col-md-3 text-center");
+    div_ingr.setAttribute("class", "form-group col-md-2 text-center");
+    div_ingr.setAttribute("style", "margin-left: 60px;");
     new_container.appendChild(div_ingr);
-    var new_ingr = document.createElement("input")
-    new_ingr.setAttribute("type", "text");
-    new_ingr.setAttribute("name", id_ingr);
-    new_ingr.setAttribute("class", "ingr");
-    new_ingr.setAttribute("id", "name_ingrediente");
-    new_ingr.setAttribute("required", "");
+    var new_select_ingr = document.querySelector("select[name = 'ingr']");
+    var new_ingr = new_select_ingr.cloneNode(true);
+    new_ingr.removeAttribute("name");
+    new_ingr.removeAttribute("id");
+    new_ingr.removeAttribute("style");
+    new_ingr.setAttribute("name", name_ingr);
+    new_ingr.setAttribute("id", id_ingr);
     div_ingr.appendChild(new_ingr);
+    $("#"+id_ingr).select2({
+        placeholder: 'Seleccione un ingrediente'      
+    });
 
     //boton para eliminar ingrediente
     var div_btn_delete = document.createElement("div");
@@ -146,10 +148,6 @@ function clonar_paso(){
 
     let container = "paso_"+cont_npaso;
     let npaso = "paso_"+cont_npaso;
-    // let nombre_cont = "nombre_"+cont_npaso;
-    // let hora_cont = "hora_"+cont_npaso;
-    // let minuto_cont = "minuto_"+cont_npaso;
-    // let segundo_cont = "segundo_"+cont_npaso;
 
     var paso_input = document.getElementById("pasos_group");
 

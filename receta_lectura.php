@@ -253,7 +253,7 @@
 
                     <?php 
                         require 'php/conexion.php';
-                        $query = ("SELECT porciones, cantidad, medida, ingrediente.nombre 
+                        $query = ("SELECT cantidad, medida, ingrediente.nombre 
                         FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
                         = ingrediente.id_ingrediente");
                         $rs = mysqli_query ($conexion, $query);
