@@ -1,5 +1,18 @@
+
+<!-- <hr>
+<hr>
+<hr>
+<hr> -->
+
 <?php
+    include 'sesion.php';
+    include 'validar.php';
+    $userSession = new userSession();
+    $user = new User ();
     require 'php/conexion.php';
+    include_once 'plantilla.php';
+
+
 
     if(isset($_POST['reg'])){
         $user = $_POST['usuario'];
