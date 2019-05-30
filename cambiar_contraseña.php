@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="css/plantilla.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
+        <script src="js/redirigir.js"></script>
     </head>
     
     <body> 
@@ -37,6 +38,7 @@
                 <div class="text-center">
                     <input name="usuario_correo" type="text" placeholder="Inserte su correo" required>
                     <button type="submit" name="rec" class="btn boton_generico">Recuperar contraseña</button>
+                    <a href="index.php" style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_volver">Volver</a>
                 </div>
 
             </form>
@@ -106,7 +108,7 @@
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>
-        
+
     </body>
 
 </html>

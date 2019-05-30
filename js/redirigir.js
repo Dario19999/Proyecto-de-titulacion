@@ -1,4 +1,5 @@
  function redirigir(id){
+     console.log(id);
     switch (id){
         case 'btn_buscar':
             window.location.replace("buscar_receta.php");
@@ -32,6 +33,9 @@
         break;
         case 'btn_success':
             window.location.replace("index.php");
+        break;
+        case 'btn_volver':
+            window.location.replace("login.php");
         break;
     }
 }
