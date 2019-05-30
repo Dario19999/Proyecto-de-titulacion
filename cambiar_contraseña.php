@@ -64,8 +64,8 @@
 
             $url="http://localhost/lacousine.com/nueva_contraseña.php?id=$actual_pass";
 
-            $asunto="Recuperar contrase&ntilde;a";
-            $cuerpo ="Hemos notado que deseas cambiar tu contrase&ntilde;a. De ser esto correcto, 
+            $asunto="Recuperar ";
+            $cuerpo ="Hemos notado que deseas cambiar tu clave de ingreso. De ser esto correcto, 
             por favor ingresa al siguiente enlace: <a href='$url'>$url</a>";
 
             $mail = new PHPMailer(true);
@@ -90,7 +90,7 @@
                 $mail->Body    = $cuerpo;
 
                 $mail->send();
-                echo 'Se ha enviado un correo electronico para el cambio de contrase&ntilde;a';
+                echo 'Se ha enviado un correo electronico para la recuperacion';
                 return true;
             }catch (Exception $e) {
                 return $mensaje="Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
