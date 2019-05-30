@@ -1,50 +1,64 @@
-  <?php
+<?php
+    include_once 'php/conexion.php';
     require __DIR__ . '/vendor/autoload.php';
-    include 'php/conexion.php';
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    ?>
-<!DOCTYPE html>
-<html>
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Cambiar contraseña</title>
-        <link rel="icon" href="img/icon1.png">
-        <link rel="stylesheet" href="css/login.css">
-        <link rel="stylesheet" href="css/plantilla.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Sacramento|Overlock|Yellowtail|Bree+Serif" rel="stylesheet">
-    </head>
+    // $query_groseria = "SELECT groseria FROM groseria";
+    // $res_groseria = mysqli_query($conexion, $query_groseria);
+    // $paso_1="lala puta";
+    // $paso_2="hola como estas";
+    // $paso_3="leche de";
+    // $cant_pasos=3;
+    // $p=0;
     
-    <body> 
+    // while($row = mysqli_fetch_array($res_groseria)){
+    //     echo $row['groseria'];
+    //     if($p != $cant_pasos){
+    //         $p++;
+    //         if(strpos($paso_1, $row['groseria']) !== false){
+                
+    //             $bandera = 0;
+    //             $mostrar_paso_error = 1;
+    //             echo $bandera;
+    //             break;
+                
+                
+    //         }else{    
+    //             $bandera = 1; 
+    //             $mostrar_paso_error = 0; 
+    //             // echo ${"paso_" . $p};
+    //             echo $bandera;
+    //         }
+    //         // echo ${"paso_" . $p};
+    //     }else{
+    //         break;
 
-        <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
-                <a href="#" class="navbar-brand brand" style="color: #fffaa3; font-size: 40px;">La Cousine</a>
-        </nav>
+    //     }
+       
+    // }
+    // $user_correo="jessica@gmail.com";
+    // $query = ("SELECT * FROM usuario WHERE correo = '$user_correo'");
+    // $rs = mysqli_query ($conexion, $query);
+    // $existe = mysqli_num_rows($rs);
+    // $asunto="Recuperación de contraseña";
+    // $cuerpo ="Siga el siguiente link para recuperar su contraseña";
+    // if($existe !==1){
+    //     echo "<p class = 'error' style = 'color: red'>El nombre de usuario o correo no existe.</p>";
 
-        <div class="login">
+    // }else{
+    //     while($row=mysqli_fetch_array($rs)){ 
+    //         echo $correo = $row['correo'];
+    //         echo $user = $row['nombre'];
+    //         echo $actual_pass = $row['pass'];
+    //     }
 
-            <div class="titulo">
-                <h1>La cousine</h1>
-            </div>
+
+    // }
+
+    $user_correo = $_POST['usuario_correo'];
         
-
-            <form action="" method="POST">
-                <div class="text-center">
-                    <input name="usuario_correo" type="text" placeholder="Inserte su correo" required>
-                    <button type="submit" name="rec" class="btn boton_generico">Recuperar contraseña</button>
-                </div>
-
-            </form>
-<?php
-
-
     if (isset($_POST['rec'])){
-        $user_correo = $_POST['usuario_correo'];
      
         $query = "SELECT correo, nombre, pass FROM usuario WHERE correo = '$user_correo'";
         $rs = mysqli_query ($conexion, $query);
@@ -60,16 +74,16 @@
                 $actual_pass = $row['pass'];
             }
 
-            $url="http://localhost/lacousine.com/nueva_contraseña.php?id=$actual_pass";
+            $url="http://localhost/lacousine.com/nueva_contraseña?id='.$actual_pass .";
 
-            $asunto="Recuperar contraseña";
+            $asunto="Recupearar contraseña";
             $cuerpo ="Hemos notado que deseas cambiar tu contraseña. De ser esto correcto, 
             por favor ingresa al siguiente enlace: <a href='$url'>$url</a>";
 
             $mail = new PHPMailer(true);
             try {
                 //Server settings
-                // $mail->SMTPDebug = 2;                                       // Enable verbose debug output
+                $mail->SMTPDebug = 2;                                       // Enable verbose debug output
                 $mail->isSMTP();                                            // Set mailer to use SMTP
                 $mail->Host       = 'smtp.hostinger.mx';                    // Specify main and backup SMTP servers
                 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
@@ -88,7 +102,7 @@
                 $mail->Body    = $cuerpo;
 
                 $mail->send();
-                echo 'Se ha enviado un correo electronico para el cambio de contraseña';
+                echo 'Message has been sent';
                 return true;
             }catch (Exception $e) {
                 return $mensaje="Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -96,17 +110,4 @@
 
         }
     }
-                                                  
-                            
-                        
 ?>
-
-        </div>
-        
-        <script src="js/jquery-3.3.1.slim.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        
-    </body>
-
-</html>

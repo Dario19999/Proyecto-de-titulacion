@@ -149,7 +149,9 @@
                                 <img src="img/insignia4.png" width="100" height="100">
                                 <img src="img/insignia5.png" width="100" height="100">
                                 <img src="img/insignia6.png" width="100" height="100">
-                            <?php } ?>
+                            <?php }else{?>
+                                <p> No tienes insignias </p>
+                           <?php } ?>
                     </div>
                 </div>
 
@@ -183,7 +185,9 @@
                                 <img src="img/insignia4.png" width="100" height="100">
                                 <img src="img/insignia5.png" width="100" height="100">
                                 <img src="img/insignia6.png" width="100" height="100">
-                            <?php } ?>
+                            <?php }else{?>
+                                <p> No tienes insignias </p>
+                           <?php } ?>
                     </div>
                 </div>
 
@@ -217,7 +221,9 @@
                                 <img src="img/insignia4.png" width="100" height="100">
                                 <img src="img/insignia5.png" width="100" height="100">
                                 <img src="img/insignia6.png" width="100" height="100">
-                            <?php } ?>
+                            <?php }else{?>
+                                <p> No tienes insignias </p>
+                           <?php } ?>
                     </div>
                 </div>
             </div>

@@ -15,14 +15,14 @@
 
     if(isset($_GET ['id_receta'])) {
         $nombre=0;
-        $paso_actual=0;
+        $paso_actual=-1;
         $id_receta = $_GET ['id_receta'];
 
         if (isset ($_GET['paso'])){
             $paso_actual=$_GET['paso'];
         }else{
             $paso_actual=-1;
-            $nombre=1;
+    
         }
 
         $query = ("SELECT * FROM receta WHERE id_receta = $id_receta");
@@ -84,7 +84,7 @@
         <div class="nombre_receta">
             <h1><?php echo $nombre_receta;?></h1>
             <?php
-            if ($nombre==1){
+            if ($paso_actual==-1){
 
                 $query = ("SELECT audio FROM receta WHERE id_receta=$id_receta");
                 $rs = mysqli_query ($conexion, $query);         
@@ -176,7 +176,6 @@
 <?php
 
 
-
 $query= "SELECT audio FROM receta WHERE id_receta = $id_receta";
 $rs = mysqli_query ($conexion, $query);
 while(($row=mysqli_fetch_assoc($rs))) {
@@ -184,6 +183,7 @@ while(($row=mysqli_fetch_assoc($rs))) {
 }
 
 if (!isset ($set_audio)){
+
 
 
 // includes the autoloader for libraries installed with composer
@@ -341,7 +341,7 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 // // return $audioContent;
 
 
-}
+        }
 
 
 
