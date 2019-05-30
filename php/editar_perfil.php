@@ -38,13 +38,27 @@ if(isset($_POST ['nacionalidad'])){
     $nacionalidad = $_POST ['nacionalidad'];
 }else $nacionalidad=0;
 if(isset($_POST ['img_perfil'])){
-    $img_perfil = $_POST ['img_perfil'];
+    $img_perfil = 
+    $img_name = $_FILES['img_perfil']['name'];
+    $ruta = $_FILES['img_perfil']['tmp_name'];
+
+
 }else $img_perfil=0;
 
+$tips = "jpg";
+$type = array("image/jpeg" => "jpg");
+
+$img=$id_usuario.".".$tips;
+
+if(is_uploaded_file($ruta)){
+    $save_on = "img_perfiles/".$img;
+    copy($ruta, $save_on);
+
+}  
 echo $nombre_usuario."<br>";
 echo $genero."<br>";
 echo $nacionalidad."<br>";
-echo $img_perfil."<br>";
+echo $save_on."<br>";
 
 function is_empty ($query){
     if (strlen($query)==18) {
@@ -87,7 +101,6 @@ echo $query.=" WHERE id_usuario=$id_usuario";
 $rs = mysqli_query ($conexion, $query);
 
 if ($perfil==1){
-
     $userSession->setCurrentUser($nombre_usuario);
 }
 
@@ -95,7 +108,7 @@ if ($perfil==1){
 
 <script>
     
-    document.location.href="http://localhost/lacousine.com/perfil.php" ;
+    // document.location.href="http://localhost/lacousine.com/perfil.php" ;
 
 </script>
 
