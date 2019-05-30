@@ -206,22 +206,22 @@
             <div class="form-group">
                 <hr>
                 <h2>Precio</h2>
-                <label for="formControlRange">Min $0 Max $5,000</label>
-                <input type="range" class="form-control-range" id="formControlRange" min="0" max="5000" step="1" 
-                list="tickmarks" name="precio">
+                <label for="formControlRange">Min $0 Max $1,000</label>
+                <input type="range" class="form-control-range" id="formControlRange" min="0" max="1000" step="100" 
+                list="tickmarks" name="precio" default="0">
 
                 <datalist id="tickmarks">
                 <option value="0" label="$0">
-                <option value="10">
-                <option value="20">
-                <option value="30">
-                <option value="40">
-                <option value="50" label="$2,500">
-                <option value="60">
-                <option value="70">
-                <option value="80">
-                <option value="90">
-                <option value="100" label="$5,00">
+                <option value="100" label="$100"> 
+                <option value="200"label="$200">
+                <option value="300"label="$300">
+                <option value="400"label="$400">
+                <option value="500" label="500">
+                <option value="600"label="$600">
+                <option value="700"label="$700">
+                <option value="800"label="$800">
+                <option value="900"label="$900">
+                <option value="100" label="$1,00">
                 </datalist>
             </div>
 

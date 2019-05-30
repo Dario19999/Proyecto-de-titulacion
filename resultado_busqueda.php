@@ -1,6 +1,6 @@
+<!-- <hr>
 <hr>
-<hr>
-<hr> 
+<hr>  -->
 <hr>
 
 
@@ -42,7 +42,7 @@ if(isset($_POST ['nacionalidad'])){
     $nacionalidad = $_POST ['nacionalidad'];
 }else $dificultad=0;
 if(isset($_POST ['precio'])){
-    echo $precio = $_POST ['precio'];
+    $precio = $_POST ['precio'];
 }else $precio=0;
 
 // echo $busqueda."<br>";

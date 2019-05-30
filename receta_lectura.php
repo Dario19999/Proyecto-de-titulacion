@@ -13,8 +13,8 @@
 
     if(isset($_GET ['id_receta'])) {
         $id_receta = $_GET ['id_receta'];
-        $nombre =("SELECT nombre_receta FROM receta WHERE id_receta = $id_receta");
-        $rs = mysqli_query ($conexion, $nombre);
+        $query =("SELECT nombre_receta FROM receta WHERE id_receta = $id_receta");
+        $rs = mysqli_query ($conexion, $query);
         $cant = mysqli_num_rows($rs);
         while(($row=mysqli_fetch_array($rs))){ 
         $nombre_receta= $row['nombre_receta'];
@@ -49,7 +49,7 @@
         }
     // echo $id_usuario_receta;
     if (isset ($id_usuario_receta)){
-        $query = ("INSERT INTO reportes (id_reportes, id_receta, id_usuario) VALUES ($id_usuario,$id_receta,$id_usuario_receta )");
+        $query = ("INSERT INTO reportes (id_reportando, id_receta, id_usuario) VALUES ($id_usuario,$id_receta,$id_usuario_receta )");
         mysqli_query ($conexion, $query);    
     }
 
@@ -225,8 +225,12 @@
                                         accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
                                         WHERE receta.id_receta = $id_receta;";
                                         $rs = mysqli_query ($conexion, $query);
-                                        $query =("UPDATE reportes SET calificacion = '1' WHERE reportes.id_reportes =$id_usuario");
+
+                                        $query =("UPDATE reportes SET calificacion = '1' WHERE reportes.id_reportando =$id_usuario");
                                         mysqli_query ($conexion, $query);
+
+                                        $query="UPDATE usuario SET votos = +1 WHERE usuario.id_usuario = $id_usuario;";
+                                        $rs = mysqli_query ($conexion, $query);
                                 }
                                 ?>
                             </div>
