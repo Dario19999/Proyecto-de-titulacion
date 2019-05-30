@@ -87,8 +87,8 @@
             </div>
             <?php
 
-                if(isset($_POST['save']))
-                echo "<script type='text/javascript'>window.location.replace('perfil.php');</script>"
+                // if(isset($_POST['save']))
+                // echo "<script type='text/javascript'>window.location.replace('perfil.php');</script>"
 
             ?>
            

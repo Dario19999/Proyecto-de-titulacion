@@ -47,6 +47,7 @@ $type = array("image/jpeg" => "jpg");
 $img=$id_usuario.".".$tips;
 
 if(is_uploaded_file($ruta)){
+    $save_bd = "img_perfiles/".$img;
     $save_on = "../img_perfiles/".$img;
     copy($ruta, $save_on);
 }  
@@ -62,8 +63,6 @@ function is_empty ($query){
 }
 // UPDATE `usuario` SET `id_nacionalidad` = '20', `nombre` = 'Pepe', `sexo` = 'M' WHERE `usuario`.`id_usuario` = 15;
 
-
-
 $query_groseria = "SELECT groseria FROM groseria";
 $res_groseria = mysqli_query($conexion, $query_groseria);
 
@@ -76,7 +75,7 @@ while($row = mysqli_fetch_array($res_groseria)){
         $bandera = 1;
     }
 }
-
+$perfil=0;
 $query="UPDATE usuario SET";
 if($bandera == 1){
     if (!empty ($nombre_usuario) && !is_empty ($query)){
@@ -104,10 +103,10 @@ if (!empty ($nacionalidad) && !is_empty ($query)){
 
 is_empty($query);
 
-if (!empty ($img_perfil) && !is_empty ($query)){
-    $query.= " , img_perfil = '$save_on'";
-}else if(!empty ($img_perfil) && is_empty ($query)){
-    $query.= "  img_perfil = '$save_on'";
+if (!empty ($save_on) && !is_empty ($query)){
+    $query.= " , img_perfil = '$save_bd'";
+}else if(!empty ($save_on) && is_empty ($query)){
+    $query.= "  img_perfil = '$save_bd'";
 }
 
 echo $query.=" WHERE id_usuario=$id_usuario";
@@ -120,7 +119,7 @@ if ($perfil==1){
 ?>
 
 <script>
-    window.location.replace("../perfil.php")
+    window.location.replace("../perfil.php");
 </script>
 
 
