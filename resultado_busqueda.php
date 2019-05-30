@@ -1,3 +1,9 @@
+<hr>
+<hr>
+<hr> 
+<hr>
+
+
 <html>
 <link rel="stylesheet" href="css/resultado_busqueda.css">    
 
@@ -35,6 +41,9 @@ if(isset($_POST ['tiempo'])){
 if(isset($_POST ['nacionalidad'])){
     $nacionalidad = $_POST ['nacionalidad'];
 }else $dificultad=0;
+if(isset($_POST ['precio'])){
+    echo $precio = $_POST ['precio'];
+}else $precio=0;
 
 // echo $busqueda."<br>";
 // echo $tipo."<br>";
@@ -100,6 +109,11 @@ if (!empty ($nacionalidad) && !is_empty ($query) && $nacionalidad!==0){
     $query.= " AND id_nacionalidad=$nacionalidad";
 }else if(!empty ($nacionalidad) && is_empty ($query) && $nacionalidad!==0){
     $query.= "  id_nacionalidad=$nacionalidad";
+}
+if (!empty ($precio) && !is_empty ($query) && $precio!==0){
+    $query.= " AND precio=$precio";
+}else if(!empty ($precio) && is_empty ($query) && $precio!==0){
+    $query.= "  precio=$precio";
 }
 
 
