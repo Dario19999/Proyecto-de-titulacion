@@ -1,12 +1,9 @@
 <?php
     require 'php/conexion.php';
 
-    if(isset($_POST['reg'])){
-        $new_pass = $_PSOT['new_pass'];
-        $conf_new_pass = $_POST['conf_new_pass'];
-        $actual_pass = $_GET['key']
-    }
-?>
+    if(isset($_GET['id'])){
+        $actual_pass=$_GET['id']?>
+  
 <!DOCTYPE html>
 <html>
 
@@ -35,21 +32,33 @@
             </div>
         
 
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+            <form action="" method="POST">
                 <input type="password" placeholder=" Contraseña nueva" name="new_pass"required>
                 <input type="password" placeholder=" Confirmar contraseña" name="conf_new_pass"required>
-                <button type="submit" name="rec">Recuperar contraseña</button>
+                <button class="btn boton_generico" type="submit" name="rec">Recuperar contraseña</button>
             </form>
         </div>
 
-        <?php
-
-            if($new_pass === $conf_new_pass){
-                $update_query = "UPDATE usuario SET pass=$new_pass WHERE pass=$actual_pass";
-            }else{
-                echo "<p class = 'error' style = 'color: red'>La confirmación de la contraseña y la contraseña deben ser iguales. Favor de corregir</p>";
-            }
+<?php
+        if(isset($_POST['rec'])){
             
+        $new_pass = $_POST['new_pass'];
+        $conf_new_pass = $_POST['conf_new_pass'];
+        $actual_pass = $_GET['id'];
+
+        $en_pass = password_hash($new_pass, PASSWORD_DEFAULT);
+
+        if($new_pass === $conf_new_pass){
+            $query = "UPDATE usuario SET pass='$en_pass' WHERE pass='$actual_pass'";
+            mysqli_query ($conexion, $query);
+            echo "Contraseña modificada";
+            header('Location: http://localhost/lacousine.com/index.php');
+        }else{
+            echo "<p class = 'error' style = 'color: red'>La confirmación de la contraseña y la contraseña deben ser iguales. Favor de corregir</p>";
+        }
+        
+        }
+
         ?>
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -57,3 +66,6 @@
     </body>
 
 </html>
+
+<?php }
+?>
