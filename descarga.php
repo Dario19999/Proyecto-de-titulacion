@@ -9,43 +9,32 @@ if(isset($_GET ['id_receta'])) {
             
 $query="SELECT * FROM receta WHERE id_receta=$id_receta";
 $rs = mysqli_query ($conexion, $query);
-while(($row=mysqli_fetch_assoc($rs))) {
+while($row=mysqli_fetch_assoc($rs)) {
 
     $nombre_receta=($row['nombre_receta']);
     $html.= 
     '<h1>'.$nombre_receta.'</h1>';
 }
 
-$html.='<hr>
-        <h2>Ingredientes</h2>';
-
-$query = ("SELECT porciones, cantidad, medida, ingrediente.nombre 
-FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
-= ingrediente.id_ingrediente");
+$query = "SELECT porciones, cantidad, medida, ingrediente.nombre 
+FROM datos_receta, ingrediente, receta WHERE receta.id_receta=$id_receta
+AND datos_receta.id_receta=$id_receta AND datos_receta.id_ingrediente = ingrediente.id_ingrediente";
 $rs = mysqli_query ($conexion, $query);
+while ($row=mysqli_fetch_assoc($rs)){
+$html.='<hr> <h2> Ingredientes (porción '.$row['porciones'].') </h2>
 
-while(($row=mysqli_fetch_assoc($rs))) {
-
-    $cantidad=$row['cantidad'];
-    $medida= $row['medida'];
-    $porciones= $row['porciones'];
-
-    $html.= 
-    '<h3< Porciones </h3>
-    <p>' .$porciones. '</p>
-    <ul>
-        <li >'
-            .$row['nombre']."   ".
-            '<small>' .$cantidad." ".$medida. '</small>
-        </li>
+    <ul type="square">
+        <li>'.$row['nombre']." ".$row['cantidad']." ".$row['medida'].'</li> 
     </ul>';
+
 }
+
 
 $html.='<hr>
         <h2>Procedimiento</h2>';
 
-$query1 = ("SELECT paso FROM procedimiento WHERE id_receta=$id_receta");
-$rs1 = mysqli_query ($conexion, $query1);
+$query = ("SELECT paso FROM procedimiento WHERE id_receta=$id_receta");
+$rs1 = mysqli_query ($conexion, $query);
 
 while(($row=mysqli_fetch_assoc($rs1))) {
 
