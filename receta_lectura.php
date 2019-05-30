@@ -271,18 +271,25 @@
                     <?php } ?>
                 </ul>
             </div>
-            <div class="col-2 col-md-1">
-
-                <label class="my-1 mr-2" for="porciones">Porciones</label>
-                <select class="custom-select my-1 mr-sm-2" id="porciones">
-                    <option selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-
         </div>
+        <div class="row">
+            <div class="col-2 col-md-1 align-items-end ingredientes">
+                <?php 
+                    $query_por = "SELECT porciones FROM receta WHERE id_receta = $id_receta";
+                    $res_porciones = mysqli_query($conexion, $query_por);
+                    while($row = mysqli_fetch_array($res_porciones)){
+                        $porciones = $row['porciones'];
+                    }
+                ?>
+
+                <form action="" method="POST" id="calc_porciones">
+                    <h3>Porciones</h3>
+                    <input type="number" name="porcion" id="porciones" value="<?php echo $porciones?>">
+                    <button type="submit" class="btn boton_generico">Recalcular</button>
+                </form>
+            </div>
+        </div>
+
         <hr>
         <div class="procedimiento">
             <ol>
