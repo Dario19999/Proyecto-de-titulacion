@@ -1,5 +1,6 @@
 <?php
     require 'php/conexion.php'; 
+    
 
     $q_ingr = "SELECT id_ingrediente, nombre FROM ingrediente";
     $res_ingr = mysqli_query($conexion, $q_ingr);
@@ -193,6 +194,8 @@
         <script type="text/javascript" src ="js/select2.min.js"></script>     
         <script src ="js/subir_receta.js"></script>
         
-        
+
+
+
     </body>
 </html>

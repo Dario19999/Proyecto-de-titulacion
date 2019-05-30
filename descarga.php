@@ -28,9 +28,12 @@ while(($row=mysqli_fetch_assoc($rs))) {
 
     $cantidad=$row['cantidad'];
     $medida= $row['medida'];
+    $porciones= $row['porciones'];
 
     $html.= 
-    '<ul>
+    '<h3< Porciones </h3>
+    <p>' .$porciones. '</p>
+    <ul>
         <li >'
             .$row['nombre']."   ".
             '<small>' .$cantidad." ".$medida. '</small>

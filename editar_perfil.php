@@ -1,12 +1,22 @@
+<!-- <hr>
+<hr>
+<hr>
+<hr>
+ -->
+
 <?php
 
-    include_once 'plantilla.php';
+    include 'php/conexion.php';
+    include 'plantilla.php';
 
 ?>
 <!-----------------------------------[Fin de Plantilla]------------------------------------------>
 
+<hr>
+<hr>
+<hr>
+<hr>
 <div class="container-fluid">
-
     <div class="row justify-content-center align-items-center">
         <div class="col d-inline text-center">
             <img src="img/abstract-user-icon-3.svg" alt="Foto de perfil" width="300" height="300">
@@ -27,11 +37,11 @@
     <br>
 
     <div class="contenedor_formulario text-center">
-        <form action="" method="POST">
+        <form action="php/editar_perfil.php" method="POST">
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-8 text-center">
                     <h2>Nombre</h2>
-                    <input type="text"  class="form-control" placeholder="Ingrese su nuevo nombre de usuario...">
+                    <input type="text" name="username" class="form-control" placeholder="Ingrese su nuevo nombre de usuario...">
                 </div>
             </div>
             <hr>
