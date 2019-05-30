@@ -241,11 +241,10 @@
 
         <div class="nombre_receta">
   
-                       <h1> <?php echo $nombre_receta;?></h1>
+            <h1> <?php echo $nombre_receta;?></h1>
     
         </div>
-    
-        
+
         <div class="row align-items-end">
             <div class="col-7 col-sm-5 col-md-4 ingredientes">
 
@@ -260,39 +259,73 @@
                         $rs = mysqli_query ($conexion, $query);
 
                         while(($row=mysqli_fetch_assoc($rs))){ 
-                        
+                            $cantidad = $row['cantidad']
                     ?>
 
                         <li class="list-group-item">
                             <?php 
                                 echo $row['nombre']."   " ?>
-                            <small> <?php echo $row['cantidad']." ".$row['medida'] ?></small>
+                            <small id ="ingrediente"> <?php echo $cantidad." ".$row['medida'] ?></small>
                         </li>
                         
                     <?php } ?>
                 </ul>
             </div>
         </div>
+
         <div class="row">
             <div class="col-2 col-md-1 align-items-end ingredientes">
                 <?php 
                     $query_por = "SELECT porciones FROM receta WHERE id_receta = $id_receta";
                     $res_porciones = mysqli_query($conexion, $query_por);
                     while($row = mysqli_fetch_array($res_porciones)){
-                        $porciones = $row['porciones'];
+                        $actual_porciones = $row['porciones'];
                     }
                 ?>
 
                 <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
-                    <input type="number" name="porcion" id="porciones" value="<?php echo $porciones?>">
-                    <button type="submit" class="btn boton_generico">Recalcular</button>
+                    <input type="number" name="porcion" id="porciones" value="<?php echo $actual_porciones?>">
+                    <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
+
+                    <?php 
+                        if(isset($_POST['recalcular'])){
+                    ?>
+                        <div class="row align-items-end">
+                            <div class="col-7 col-sm-5 col-md-4 ingredientes">
+                                <ul class="list-group">
+                    <?php
+                            $query = ("SELECT cantidad, medida, ingrediente.nombre 
+                            FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
+                            = ingrediente.id_ingrediente");
+                            $rs = mysqli_query ($conexion, $query);
+
+                            $new_porcion = $_POST['porcion'];
+
+                            while($row = mysqli_fetch_array($res_cant)){
+                                $actual_cantidad = $row['cantidad'];
+                                $new_cantidad = ($new_porcion*$actual_cantidad)/$actual_porciones;
+                    ?>
+
+                                <li class="list-group-item">
+                                    <?php 
+                                        echo $row['nombre']."   " ?>
+                                    <small id ="ingrediente"> <?php echo $new_cantidad." ".$row['medida'] ?></small>
+                                </li>
+                        
+                    <?php } }?>
+                                </ul>
+                            </div>
+                        </div>
                 </form>
             </div>
         </div>
 
         <hr>
+        <hr>
+
         <div class="procedimiento">
+            <h3>Procedimiento</h3>
             <ol>
                     <?php 
                         require 'php/conexion.php';

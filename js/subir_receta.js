@@ -47,14 +47,13 @@ $(function(){
                     $(".error_paso").hide();
                 }
 
-                if(data.error_nombre == 0 || data.error_paso == 0){
+                if(data.error_nombre == 0 && data.error_paso == 0){
                     window.location.replace("success.php");
                     console.log("a huevo");
                 }
             },
             error: function(){
                 console.log("esto no es un no error");
-                $("#error").show();
             }
         });
     });

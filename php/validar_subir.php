@@ -29,9 +29,11 @@
         ${"medida_" . $i} = filter_var($_POST['medida_' . $i],FILTER_SANITIZE_STRING);
         ${"ingr_" . $i} = filter_var($_POST['ingr_' . $i],FILTER_SANITIZE_NUMBER_INT);
     }
-
+    
+    $pasote = "";
     for($p=1; $p<=$cant_pasos; $p++){
         ${"paso_" . $p} = filter_var($_POST['paso_' . $p],FILTER_SANITIZE_STRING);
+        $pasote = $pasote.${"paso_".$p};
     }
 
     $query_groseria = "SELECT groseria FROM groseria";
@@ -49,18 +51,13 @@
             $mostrar_nombre_error = 0; 
         }
         
-        if($p != $cant_pasos){
-            $p++;
-            if(strpos(${"paso_" . $p}, $row['groseria']) !== false){
-                $bandera = 0;
-                $mostrar_paso_error = 1;
-                break;
-            }else{    
-                $bandera = 1; 
-                $mostrar_paso_error = 0; 
-            }
-        }else{
+        if(strpos($pasote, $row['groseria']) !== false){
+            $bandera = 0;
+            $mostrar_paso_error = 1;
             break;
+        }else{    
+            $bandera = 1; 
+            $mostrar_paso_error = 0; 
         }
        
     }
@@ -70,6 +67,7 @@
         "error_paso" => $mostrar_paso_error,
         "bandera" => $bandera
     ); 
+
     echo json_encode($respuesta);
 
     if($bandera == 1){
@@ -102,7 +100,6 @@
                   
                 'error' => $e->getMessage()
             );
-            // echo json_encode($respuesta);
         }
         
     }
