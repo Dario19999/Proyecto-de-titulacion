@@ -6,14 +6,34 @@
     $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
-
     if (isset ($_SESSION ['username'])) {
-
-    // echo "Hay sesion";
-
         $usuario = $_SESSION['username'];
     }
 
+    $query = "SELECT * FROM usuario WHERE nombre = '$usuario'";
+    $rs = mysqli_query ($conexion, $query);
+
+    while(($row=mysqli_fetch_assoc($rs))) {
+
+        $usuario= ($row['nombre']);
+        $sexo= ($row['sexo']);
+        $id_nacionalidad = ($row['id_nacionalidad']);
+        $id_usuario=($row['id_usuario']);
+        $votos=($row['votos']);
+        $descargas=($row['descargas']);
+        $img_perfil=($row['img_perfil']);
+
+    }
+                                            
+    $nacionalidad="SELECT nombre FROM nacionalidad WHERE id_nacionalidad='$id_nacionalidad'";
+    $nac = mysqli_query ($conexion, $nacionalidad);
+    while(($row=mysqli_fetch_assoc($nac))) {
+        $R_Nac= ($row['nombre']).'<br>';
+    }
+
+    $receta = "SELECT * FROM receta WHERE id_usuario='$id_usuario'";
+    $recetas = mysqli_query ($conexion, $receta);
+    $cant_recetas = mysqli_num_rows($recetas);
 
 ?>
  <hr>
@@ -29,41 +49,10 @@
 
         <div class="row justify-content-center align-items-center">
             <div class="col d-inline text-center">
-                <img src="img/abstract-user-icon-3.svg" alt="Foto de perfil" width="300" height="300">
+                <img src="<?php echo $img_perfil?>" alt="Foto de perfil" width="300" height="300" name="img_perfil">
             </div>
 
             <div class="datos col d-inline">
-
-            <?php
-
-
-            $query = "SELECT * FROM usuario WHERE nombre = '$usuario'";
-            $rs = mysqli_query ($conexion, $query);
-
-            while(($row=mysqli_fetch_assoc($rs))) {
-
-                $usuario= ($row['nombre']);
-                $sexo= ($row['sexo']);
-                $id_nacionalidad = ($row['id_nacionalidad']);
-                $id_usuario=($row['id_usuario']);
-                $votos=($row['votos']);
-                $descargas=($row['descargas']);
-
-            }
-                                                    
-            $nacionalidad="SELECT nombre FROM nacionalidad WHERE id_nacionalidad='$id_nacionalidad'";
-            $nac = mysqli_query ($conexion, $nacionalidad);
-            while(($row=mysqli_fetch_assoc($nac))) {
-                $R_Nac= ($row['nombre']).'<br>';
-            }
-
-            $receta = "SELECT * FROM receta WHERE id_usuario='$id_usuario'";
-            $recetas = mysqli_query ($conexion, $receta);
-            $cant_recetas = mysqli_num_rows($recetas);
-
-
-
-            ?>
 
                 <h2>
                     Usuario: <?php echo $usuario?>

@@ -71,8 +71,22 @@
                 $query=$conexion->prepare("INSERT INTO usuario (nombre,pass,correo,id_nacionalidad,sexo) values (?,?,?,?,?)");
                 $query->bind_param('sssis', $user, $en_pass, $correo, $nacionalidad, $sexo);
                 $query->execute();
-
+                $id_new_user = mysqli_insert_id($conexion);
                 $query->close();
+
+                $tips = "jpg";
+                $type = array("image/jpeg" => "jpg");
+                $img_name = $_FILES["img_perfil"]["name"];
+                $ruta = $_FILES["img_perfil"]["tmp_name"];
+                $img=$id_new_user.".".$tips;
+
+                if(is_uploaded_file($ruta)){
+                    $save_on = "img_perfiles/".$img;
+                    copy($ruta, $save_on);
+                }
+                $query_img="UPDATE usuario SET img_perfil = '$save_on' WHERE id_usuario =$id_new_user";
+                $res_img = mysqli_query($conexion, $query_img);
+
                 $conexion->close();
 
                 echo "<script type='text/javascript'>window.location.replace('index.php');</script>";

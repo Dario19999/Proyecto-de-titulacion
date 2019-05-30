@@ -18,17 +18,13 @@
 <hr>
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
-        <div class="col d-inline text-center">
-            <img src="img/abstract-user-icon-3.svg" alt="Foto de perfil" width="300" height="300">
-        </div>
-
-        <div class="datos col d-inline" align="left">
-            <form>
-                <div class="form-group">
+        <div class="datos col d-inline">
+            <form action="php/editar_perfil.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group text-center">
                     <label class="form-control-file" for="subir_foto">Seleccionar nueva imagen de perfil</label>
-                    <input type="file" id="customFile"  accept = "image/*">
+                    <input type="file" id="subir_foto" accept ="image/*" name="img_perfil">
                 </div>
-            </form>
+
         </div>
     </div>
     
@@ -37,11 +33,11 @@
     <br>
 
     <div class="contenedor_formulario text-center">
-        <form action="php/editar_perfil.php" method="POST">
+        
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-8 text-center">
                     <h2>Nombre</h2>
-                    <input type="text" name="username" class="form-control" placeholder="Ingrese su nuevo nombre de usuario...">
+                    <input type="text" name="username" class="form-control" placeholder="Ingrese su nuevo nombre de usuario..." >
                 </div>
             </div>
             <hr>
@@ -50,7 +46,7 @@
                 <div class="form-group col-md-6">
                     <h2>Nacionalidad</h2>
                     
-                    <select class="form-control custom-select" style="width:225px">
+                    <select class="form-control custom-select" style="width:225px" >
                     <option value="0">Ninguna</option>
                         <?php
                         require 'php/conexion.php';
@@ -66,12 +62,12 @@
                     
                     <h2>Genero</h2>
                     <div class=" custom-control custom-radio custom-control-inline">
-                        <input type="radio"  class="custom-control-input" id="inputGeneroM" name="genero" value="M">
+                        <input type="radio"  class="custom-control-input" id="inputGeneroM" name="genero" value="M" >
                         <label for="inputGeneroM" class="custom-control-label ">Masuculino</label>
                     </div>
 
                     <div class=" custom-control custom-radio custom-control-inline">
-                        <input type="radio"  class="custom-control-input" id="inputGeneroF" name="genero" value="F">
+                        <input type="radio"  class="custom-control-input" id="inputGeneroF" name="genero" value="F" >
                         <label for="inputGeneroF" class="custom-control-label ">Femenino</label>
                     </div>
                 </div>

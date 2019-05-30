@@ -21,6 +21,7 @@
         $pass = $_POST['contra'];
         $pass_ver = $_POST['contra2'];
         $nacionalidad = $_POST['nacionalidad'];
+
     }
 ?>
 
@@ -45,27 +46,29 @@
         <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
             <a href="#" class="navbar-brand brand" style="color: #fffaa3; font-size: 40px;">La Cousine</a>
         </nav>
-        
+    
+    <br>
+    <br>
+    <br>
+    <br>
+
     <div class="container-fluid">
+        
+        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" class="needs-validation" id="reg_user" enctype="multipart/form-data">
 
-        <div class="row justify-content-center align-items-center">
-            <div class="col d-inline text-center">
-                <img src="img/abstract-user-icon-3.svg" alt="Foto de perfil" width="300" height="300">
-            </div>
+            <div class="row justify-content-center align-items-center text-center">
 
-            <div class="datos col d-inline">
-                <form>
+                <div class="datos col d-inline">
+
                     <div class="form-group">
                         <label for="subir_foto" class="form-control-file">Seleccionar Imagen de Perfil</label>
-                        <input type="file" id="subir_foto" accept = "image/*">
+                        <input type="file" id="subir_foto" accept ="image/*" name="img_perfil" required>
                     </div>
-                </form>
+
+                </div>
             </div>
-        </div>
-    
-        <hr>
         
-        <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" class="needs-validation">
+            <hr>
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <h2>Correo</h2>
@@ -85,7 +88,8 @@
             <div class="form-row h-100 justify-content-center align-items-center sepcs">
                 <div class="form-group col-md-3 text-center">
                     <h2>Contraseña</h2>
-                    <input type="password"  class="form-control" placeholder="Contraseña" name="contra" id="in_pass" required>
+                    <input type="password"  class="form-control" placeholder="Contraseña" name="contra" id="in_pass" style="margin-bottom: 10px;" required>
+                    <input type="password"  class="form-control" placeholder="Repita su contraseña" name ="contra2" id = "in_pass" required>
                     <div class="col-md text-left specs border">
                         <p>
                         La contraseña debe contener:
@@ -101,15 +105,6 @@
                     <div class="invalid-feedback">Es necesario ingresar una contraseña</div>
                 </div>
             </div>
-            <br>        
-            <div class="form-row h-100 justify-content-center align-items-center">
-                <div class="form-group col-md-3 text-center">
-                    <h2>Confirmar contraseña</h2>
-                    <input type="password"  class="form-control" placeholder="Repita su contraseña" name ="contra2" id = "in_pass" required>
-                    <div class="invalid-feedback">Es necesario repetir la contraseña</div>
-                </div>
-            </div>
-
             <hr>
 
             <div class="form-row h-100 justify-content-center align-items-center">
