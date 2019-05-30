@@ -3,10 +3,14 @@ include 'php/conexion.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 
-if(isset($_GET ['id_receta'])) {
+if(isset($_GET ['id_receta']) && isset ($_GET ['id_usuario'])) {
     $id_receta = $_GET ['id_receta'];
+    $id_usuario = $_GET ['id_usuario'];
 
-            
+$query="UPDATE usuario SET descargas = descargas+1 WHERE usuario.id_usuario = $id_usuario";
+$rs = mysqli_query ($conexion, $query); 
+
+
 $query="SELECT * FROM receta WHERE id_receta=$id_receta";
 $rs = mysqli_query ($conexion, $query);
 while($row=mysqli_fetch_assoc($rs)) {

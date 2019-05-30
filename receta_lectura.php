@@ -638,8 +638,7 @@
 
     </form>
 
-    <a href="descarga.php?id_receta=<?php echo $id_receta?>" type="button" name="descargar" class="btn boton_generico">Descargar</button>
-   
+    <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" type="button" name="descargar" class="btn boton_generico">Descargar</button>
 
 <script src="js/jquery-3.3.1.slim.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
