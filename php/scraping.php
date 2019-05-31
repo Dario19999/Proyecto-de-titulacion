@@ -1,34 +1,37 @@
 <?php
-function consultaDefinicion() {
+function producto() {
 	try{
-		
-	if($_GET['producto']!=""){
-$client = new SoapClient("http://namestormingwebservice.gearhostpreview.com/WebService.asmx?WSDL", array('cache_wsdl' => WSDL_CACHE_NONE)); 
-		
-       $params = array(
-  "producto" => $_GET['producto']
-);
-      
-$response = $client->jessyMethod($params);
-$col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));
+		if (isset ($_POST['producto'])){
+			$opts = array(
+				'ssl' => array(
+					'ciphers' => 'RC4-SHA',
+					'verify_peer' => false,
+					'verify_peer_name' => false
+				)
+			);
+			// SOAP 1.2 client
+			$reponseParams = array(
+				'pkSitio' => '1',
+				'producto' => $_POST['producto']
+			);
 
-echo '<h2>DEFINICIONES</h2>';
-echo "<table class='tablaResultado' style='border:1px solid #000'>";
-		
-for($i=0; $i < ($col); $i++)
-{
-	echo "<tr>";
-	echo "<td style='border:1px solid #000'>".$response->jessyMethodResult->RespuestaModelo->valor."</td>";
-	echo "</tr>";
-	}
-			echo "</table>";
-	//
+			$client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
+			$response = $client->jessyMethod($reponseParams);
+			$col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));
 
+			header('Content-Type: application/json');
+					
+			// for($i=0; $i < ($col); $i++)
+			// {
+
+			// }
+
+			echo json_encode($response->jessyMethodResult->RespuestaModelo);
+		}				
 	}
-			
+
+	catch(Exception $e) {
+		echo 'Excepción capturada: ',  $e->getMessage(), "\n";
 	}
-	
-	catch(Exception $e){echo 'Excepción capturada: ',  $e->getMessage(), "\n";}
 }
-consultaDefinicion();
 ?>

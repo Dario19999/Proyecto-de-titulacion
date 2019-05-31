@@ -22,9 +22,9 @@
     }
 ?>
     <hr>
-        <hr>
-            <hr>
-                <hr>
+    <hr>
+    <hr>
+    <hr>
 
 <?php
     if (isset ($_SESSION ['username'])) {
@@ -309,15 +309,20 @@
                             while($row = mysqli_fetch_array($res_cant)){
                                 $actual_cantidad = $row['cantidad'];
                                 $new_cantidad = ($new_porcion*$actual_cantidad)/$actual_porciones;
+                                
                     ?>
 
                                 <li class="list-group-item">
+                                
                                     <?php 
+                                    
                                         echo $row['nombre']."   " ?>
+
                                     <small id ="ingrediente"> <?php echo $new_cantidad." ".$row['medida'] ?></small>
+
                                 </li>
                         
-                    <?php } }?>
+                    <?php } } ?>
                                 </ul>
                             </div>
                         </div>
@@ -360,21 +365,23 @@
         
     </div>
 
+    
+
     <div class="container-fluid cotizacion">
         <div class="row align-items-center justify-content-center">
             <div class="col col-xs-4 col-md-3 ">
                 <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" id="super">Walmart</h5>
+                            <h5 class="card-title" id="super">Bodega Aurrera</h5>
                             <h6 class="card-subtitle mb-2 text-muted" id="precio">$$$</h6>
                             <p class="card-text">Es la cotización aproximada en este supermercado.</p>
-                            <a href="https://www.walmart.com.mx/?gclid=CjwKCAiAy-_iBRAaEiwAYhSlA4PQlONBDovv8-Z34GW2HqZ-yU14y7im4fMdLky41LtWH0PCeGcNSBoCdy4QAvD_BwE" target="_blank" class="card-link">Ir a la p&aacute;gina</a>
+                            <a href="https://bodegaaurrera.net/" target="_blank" class="card-link">Ir a la p&aacute;gina</a>
                         </div>
                 </div>
 
             </div>
 
-            <div class="col col-xs-4 col-md-3 ">
+            <!-- <div class="col col-xs-4 col-md-3 ">
 
                 <div class="card" >
                         <div class="card-body">
@@ -396,7 +403,7 @@
                             </div>
                     </div>
                 </div>
-        </div>
+        </div> -->
 
     </div>
 
