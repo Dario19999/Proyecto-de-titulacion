@@ -27,7 +27,7 @@
 //una variable está definida y no es NULL
 
 
-
+$flag = false;
 if(isset($_POST ['username'])){
     $nombre_usuario = $_POST ['username'];
 }else $nombre_usuario = 0;
@@ -38,8 +38,18 @@ if(isset($_POST ['nacionalidad'])){
     $nacionalidad = $_POST ['nacionalidad'];
 }else $nacionalidad=0;
 if(isset($_POST ['save'])){
-    $img_name = $_FILES['img_perfil']['name'];
-    $ruta = $_FILES['img_perfil']['tmp_name'];
+    $flag = true;
+    $type = $_FILES["img_perfil"]["type"];
+    if($type == "image/png" || $type =="imagge/jpg" || $type=="image/jpeg")
+    {
+        $flag = true;
+        $img_name = $_FILES['img_perfil']['name'];
+        $ruta = $_FILES['img_perfil']['tmp_name'];
+    }
+    else 
+    {
+        echo '<script>alert("Formato de imagen incorrecto")</script>';
+    }
 }else $img_perfil=0;
 
 $tips = "jpg";
@@ -103,10 +113,13 @@ if (!empty ($nacionalidad) && !is_empty ($query)){
 
 is_empty($query);
 
-if (!empty ($save_on) && !is_empty ($query)){
+if($flag)
+{
+ if (!empty ($save_on) && !is_empty ($query)){
     $query.= " , img_perfil = '$save_bd'";
 }else if(!empty ($save_on) && is_empty ($query)){
     $query.= "  img_perfil = '$save_bd'";
+}   
 }
 
 echo $query.=" WHERE id_usuario=$id_usuario";
