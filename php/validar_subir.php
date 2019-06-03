@@ -36,6 +36,12 @@
         $pasote = $pasote.${"paso_".$p};
     }
 
+    $ingredientote = "";
+    for($i=1; $i<=$cant_ingr; $i++){
+        ${"ingr_" . $i} = filter_var($_POST['ingr_' . $i],FILTER_SANITIZE_STRING);
+        $ingredientote = $ingredientote.${"ingr_".$i};
+    }
+
     $query_groseria = "SELECT groseria FROM groseria";
     $res_groseria = mysqli_query($conexion, $query_groseria);
     $p=0;
@@ -49,6 +55,15 @@
         }else{
             $bandera = 1;
             $mostrar_nombre_error = 0; 
+        }
+
+        if(strpos($ingredientote, $row['groseria']) !== false){
+            $bandera = 0;
+            $mostrar_ingr_error = 1;
+            break;
+        }else{    
+            $bandera = 1; 
+            $mostrar_ingr_error = 0; 
         }
         
         if(strpos($pasote, $row['groseria']) !== false){
@@ -64,10 +79,11 @@
 
     $respuesta = array(
         "error_nombre" => $mostrar_nombre_error,
+        "error_ingr" => $mostrar_ingr_error,
         "error_paso" => $mostrar_paso_error,
         "bandera" => $bandera
     ); 
-
+    
     echo json_encode($respuesta);
 
     if($bandera == 1){
@@ -87,8 +103,8 @@
             $insert_paso->close();
 
             for($j = 1; $j<=$cant_ingr; $j++){
-                $insert_ingr = $conexion->prepare("INSERT INTO datos_receta (id_receta, id_ingrediente, cantidad, medida) VALUES (?, ?, ?, ?)");
-                $insert_ingr->bind_param('iiss', $id_receta, ${"ingr_" . $j}, ${"cant_" . $j}, ${"medida_" . $j});
+                $insert_ingr = $conexion->prepare("INSERT INTO datos_receta (id_receta, nombre_ingrediente, cantidad, medida) VALUES (?, ?, ?, ?)");
+                $insert_ingr->bind_param('isss', $id_receta, ${"ingr_" . $j}, ${"cant_" . $j}, ${"medida_" . $j});
                 $insert_ingr->execute();
             }
             $conexion->close();

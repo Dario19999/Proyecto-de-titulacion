@@ -175,17 +175,17 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>    
         <script src ="js/subir_receta.js"></script>
-        <script>
+        <!-- <script>
 
-            // var ingredientes = <?= json_encode($ingredientes)?>;
-            // console.log(ingredientes);
-            // $("#name_ingr_1").on("focus", function(){
-            //     $(this).autocomplete({
-            //         source: ingredientes
-            //     });
-            // });
+            var ingredientes = <?= json_encode($ingredientes)?>;
+            console.log(ingredientes);
+            $("#name_ingr_1").on("focus", function(){
+                $(this).autocomplete({
+                    source: ingredientes
+                });
+            });
         
-        </script>
+        </script> -->
 
     </body>
 </html>

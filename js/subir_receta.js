@@ -45,13 +45,19 @@ $(function(){
                     $(".error_nombre").hide();
                 }
 
+                if(data.error_ingr == 1){
+                    $(".error_ingr").html("<strong>Error:</strong> Uno de los ingredientes contiene una o más palabras altisonantes. Favor de corregir.").show();
+                }else{
+                    $(".error_ingr").hide();
+                }
+
                 if(data.error_paso == 1){
                     $(".error_paso").html("<strong>Error:</strong> Uno de los pasos contiene una o más palabras altisonantes. Favor de corregir.").show();
                 }else{
                     $(".error_paso").hide();
                 }
 
-                if(data.error_nombre == 0 && data.error_paso == 0){
+                if(data.error_nombre == 0 && data.error_paso == 0 && data.error_ingr == 0){
                     window.location.replace("success.php");
                     console.log("a huevo");
                 }

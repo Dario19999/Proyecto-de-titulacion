@@ -44,14 +44,16 @@
 
     <div class="container-fluid">
 
-        <div style="float: right;">
-            <button class="boton_generico btn" id="btn_editar_perfil" onclick="redirigir(this.id)" style="width: 100%;">Editar Perfil</button>
-        </div>
-
-        <div class="row justify-content-center align-items-center">
-            <div class="col d-inline text-center">
-                <img src="<?php echo $img_perfil?>" alt="Foto de perfil" width="300" height="300" name="img_perfil">
+            <div class="row justify-content-center align-items-center">
+                <div class="col d-inline text-center">
+                    <!-- <div style="float: right;">
+                        <button class="boton_generico btn" id="btn_editar_perfil" onclick="redirigir(this.id)" style="width: 100%;">Editar Perfil</button>
+                    </div> -->
+                    <img src="<?php echo $img_perfil?>" alt="Foto de perfil" width="300" height="300" name="img_perfil">
+                </div>
             </div>
+
+        <div class="row justify-content-center align-items-center text-center">
 
             <div class="datos col d-inline">
 
