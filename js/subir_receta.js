@@ -12,12 +12,7 @@ $(function(){
 
     $("#name_ingr_1").on("focus", function(){
             $(this).autocomplete({
-            source: 'php/get_ingredientes.php',
-            // response: function(event, ui){
-            //     if (ui.content.length === 0) {
-            //         $(this).css("border", "solid red");
-            //     }
-            // }
+            source: 'php/get_ingredientes.php'
         });
     });
 
