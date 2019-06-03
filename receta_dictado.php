@@ -107,10 +107,10 @@
                 <ul class="list-group">
                     <?php 
                         $query = ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porciones 
-                        FROM datos_receta, ingrediente, receta WHERE datos_receta.id_receta=$id_receta 
+                        FROM datos_receta, receta WHERE datos_receta.id_receta=$id_receta 
                         AND receta.id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
-                        while(($row=mysqli_fetch_assoc($rs))){     
+                        while(($row=mysqli_fetch_array($rs))){     
                         
                     ?>
 
