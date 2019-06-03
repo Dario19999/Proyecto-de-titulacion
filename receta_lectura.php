@@ -485,6 +485,9 @@
             <hr>
             <button type="button" name="denunciar_usuario" value="denunciar_usuario" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_usuario">Denunciar usuario</button>
 
+
+            <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" name="descargar" class="btn boton_generico">Descargar
+
             <div class="modal fade" id="modal_denuncia_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
     
@@ -606,7 +609,9 @@
 
     </form>
 
-    <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" name="descargar" class="btn boton_generico">Descargar</button>
+    
+
+    
 
 <script src="js/jquery-3.3.1.slim.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
