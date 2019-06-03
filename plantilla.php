@@ -46,7 +46,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
             }else if($pagina == 'subir_receta'){
                 echo "<title>Subir Receta</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/subir_receta.css'>";
-                echo "<link rel='stylesheet' type='text/css' href='css\select2.min.css'>";
+                echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/jquery-ui.css'>";
             }else if($pagina == 'pagina_principal'){
                 echo "<title>Página principal</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'>";

@@ -68,8 +68,8 @@
 
                 $en_pass = password_hash($pass, PASSWORD_DEFAULT);
 
-                $query=$conexion->prepare("INSERT INTO usuario (nombre,pass,correo,id_nacionalidad,sexo) values (?,?,?,?,?)");
-                $query->bind_param('sssis', $user, $en_pass, $correo, $nacionalidad, $sexo);
+                $query=$conexion->prepare("INSERT INTO usuario (nombre,pass,correo,id_nacionalidad,sexo, edad) values (?,?,?,?,?,?)");
+                $query->bind_param('sssisi', $user, $en_pass, $correo, $nacionalidad, $sexo, $edad);
                 $query->execute();
                 $id_new_user = mysqli_insert_id($conexion);
                 $query->close();

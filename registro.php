@@ -1,9 +1,3 @@
-
-<!-- <hr>
-<hr>
-<hr>
-<hr> -->
-
 <?php
     include 'sesion.php';
     include 'validar.php';
@@ -18,6 +12,7 @@
         $user = $_POST['usuario'];
         $correo = $_POST['correo'];
         $sexo = $_POST['genero'];
+        $edad = $_POST['edad'];
         $pass = $_POST['contra'];
         $pass_ver = $_POST['contra2'];
         $nacionalidad = $_POST['nacionalidad'];
@@ -44,7 +39,7 @@
     <body>
 
         <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
-            <a href="#" class="navbar-brand brand" style="color: #fffaa3; font-size: 40px;">La Cousine</a>
+            <a class="navbar-brand brand" style="color: #fffaa3; font-size: 40px; cursor:pointer;" id="btn_logout" onclick="redirigir(this.id)">La Cousine</a>
         </nav>
     
     <br>
@@ -73,7 +68,6 @@
                 <div class="form-group col-md-3 text-center">
                     <h2>Correo</h2>
                     <input type="email"  class="form-control" placeholder="Correo electronico" name="correo" id="in_correo" required>
-                    <div class="invalid-feedback">Es necesario ingresar un correo</div>
                 </div>
             </div>
             <br>
@@ -81,7 +75,6 @@
                 <div class="form-group col-md-3 text-center">
                     <h2>Nombre de Usuario</h2>
                     <input type="text"  class="form-control" placeholder="Ingrese su nuevo nombre de usuario..." name="usuario" id="in_nombre" required>
-                    <div class="invalid-feedback">Es necesario ingresar un nombre de usuario</div>
                 </div>
             </div>
             <br>
@@ -102,7 +95,6 @@
                         </p>
                         
                     </div>
-                    <div class="invalid-feedback">Es necesario ingresar una contraseña</div>
                 </div>
             </div>
             <hr>
@@ -120,7 +112,14 @@
                         }
                     ?>
                     </select>
-                    <div class="invalid-feedback">Es necesario seleccionar una nacionalidad</div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <div class="form-group col-md-2 text-center">
+                    <h2>Edad</h2>
+                    <input type="number" name="edad" min="0" value="18" required>
                 </div>
             </div>
             <hr>
@@ -140,7 +139,6 @@
                                 <input type="radio"  class="custom-control-input" id="inputGeneroF" name="genero" value="F" required>
                                 <label for="inputGeneroF" class="custom-control-label">Femenino</label>
                             </div>
-                            <div class="invalid-feedback">Es necesario seleccionar un genero</div>
                         </div>
                     </div>
                    

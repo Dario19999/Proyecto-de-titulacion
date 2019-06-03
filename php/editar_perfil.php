@@ -7,7 +7,6 @@
     include '../validar.php';
     $userSession = new userSession();
     $user = new User ();
-    include '../plantilla.php';
     include 'conexion.php';
 
 
@@ -34,6 +33,9 @@ if(isset($_POST ['username'])){
 if(isset($_POST ['genero'])){
     $genero = $_POST ['genero'];
 }else $genero=0;
+if(isset($_POST ['edad'])){
+    $edad = $_POST ['edad'];
+}else $edad=0;
 if(isset($_POST ['nacionalidad'])){
     $nacionalidad = $_POST ['nacionalidad'];
 }else $nacionalidad=0;
@@ -79,7 +81,8 @@ $res_groseria = mysqli_query($conexion, $query_groseria);
 while($row = mysqli_fetch_array($res_groseria)){
     if(strpos($nombre_usuario, $row['groseria']) !== false){
         $bandera = 0;
-        echo "<p class = 'error' style = 'color: red'>*El nombre de usuario contiene una o más palabras altisonantes. Favor de corregir.</p>";
+        echo '<script>alert("No se permiten groserias en el username.")</script>';
+        echo "<script type='text/javascript'>window.location.replace('../editar_perfil.php')</script>";
         break;
     }else{
         $bandera = 1;
@@ -97,12 +100,16 @@ if($bandera == 1){
     }
 }
 
-
-
 if (!empty ($genero) && !is_empty ($query)){
     $query.= " , sexo = '$genero'";
 }else if(!empty ($genero) && is_empty ($query)){
     $query.= " sexo = '$genero'";
+}
+
+if (!empty ($edad) && !is_empty ($query)){
+    $query.= " , edad = '$edad'";
+}else if(!empty ($edad) && is_empty ($query)){
+    $query.= " edad = '$edad'";
 }
 
 if (!empty ($nacionalidad) && !is_empty ($query)){

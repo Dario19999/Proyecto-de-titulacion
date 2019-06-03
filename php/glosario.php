@@ -23,14 +23,12 @@
         $res_groseria = mysqli_query($conexion, $query_groseria);
         $bandera = 1;
         while($row = mysqli_fetch_array($res_groseria)){
-            if(strpos($termino, $row['groseria']) !== false){
-                echo "<p class = 'error' style = 'color: red'>*El termino contiene una o más palabras altisonantes. Favor de corregir.</p>";
+            if(strpos($termino, $row['groseria']) !== false || strpos($definicion, $row['groseria']) !== false){
                 $bandera = 0;
-            }else if(strpos($definicion, $row['groseria']) !== false){
-                echo "<p class = 'error' style = 'color: red'>*La definición contiene una o más palabras altisonantes. Favor de corregir.</p>";
-                $bandera = 0;
-            }
-            
+                echo '<script>alert("No se permiten groserias. favor de corregir")</script>';
+                echo "<script type='text/javascript'>window.location.replace('../glosario.php')</script>";
+
+            }   
         }
         
         if($bandera == 1){

@@ -16,7 +16,6 @@ if (isset ($_SESSION ['username'])) {
 
     include_once 'pagina_principal.php';
     
-
     }else if (isset ($_POST ['username']) && isset ($_POST ['pass'])){
 
     //echo "Validacion de login";
@@ -31,9 +30,7 @@ if (isset ($_SESSION ['username'])) {
         include_once 'login.php';
         
     }else if ($user->userExists($userForm, $passForm)){
-
         //echo "Usuario valido";
-
         $userSession->setCurrentUser($userForm);
         $user->setUser($userForm);
 

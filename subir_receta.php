@@ -2,11 +2,13 @@
     require 'php/conexion.php'; 
     
 
-    $q_ingr = "SELECT id_ingrediente, nombre FROM ingrediente";
+    $q_ingr = "SELECT nombre FROM ingrediente";
     $res_ingr = mysqli_query($conexion, $q_ingr);
-
-    $q_ingr2 = "SELECT id_ingrediente, nombre FROM ingrediente";
-    $res_ingr2 = mysqli_query($conexion, $q_ingr2);
+    $ingredientes = array();
+    while($row = mysqli_fetch_array($res_ingr)){
+        $ingr = $row['nombre'];
+        array_push($ingredientes, $ingr);
+    }
 
     include_once 'plantilla.php';
 
@@ -104,18 +106,8 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-md-2 text-center" style="margin-left: 60px;" id="select_container">
-                        <select name="ingr_1" id="select1" class="custom-select">
-                            <option></option>
-                            <?php while($row=mysqli_fetch_row($res_ingr)){?>
-
-                            <option value="<?php echo $row[0]?>">
-                                <?php echo $row[1]?>
-                            </option>
-
-                            <?php }?>
-                        </select>
-                        
+                    <div class="form-group col-md-3 text-center">
+                        <input type="text" name="ingr_1" class="ingr" id="name_ingr_1" placeholder="Nombre del ingrediente" required>
                     </div>
 
                 </div>
@@ -155,7 +147,7 @@
                     </div>
 
                     <div class="form-group col-md-7">
-                        <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" placeholder="Describa el paso."></textarea> 
+                        <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" id = "textarea" placeholder="Describa el paso."></textarea> 
                     </div>
                 </div> 
             </div>
@@ -178,24 +170,22 @@
             </div>
         </form>
 
-        <select name="ingr" id="select" class="custom-select" style="display:none;">
-            <option></option>
-            <?php while($row=mysqli_fetch_row($res_ingr2)){?>
-
-            <option value="<?php echo $row[0]?>">
-                <?php echo $row[1]?>
-            </option>
-
-            <?php }?>
-        </select>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script type="text/javascript" src ="js/select2.min.js"></script>     
+        <script src="js/popper.min.js"></script>    
         <script src ="js/subir_receta.js"></script>
+        <!-- <script>
+
+            var ingredientes = <?= json_encode($ingredientes)?>;
+            console.log(ingredientes);
+            $("#name_ingr_1").on("focus", function(){
+                $(this).autocomplete({
+                    source: ingredientes
+                });
+            });
         
-
-
+        </script> -->
 
     </body>
 </html>

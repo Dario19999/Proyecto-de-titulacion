@@ -9,13 +9,22 @@ $(".error_ingr").hide();
 $(".error_paso").hide();
 
 $(function(){
-     $("#select1").select2({
-        placeholder: 'Seleccione un ingrediente'
+
+    $("#name_ingr_1").on("focus", function(){
+            $(this).autocomplete({
+            source: 'php/get_ingredientes.php',
+            // response: function(event, ui){
+            //     if (ui.content.length === 0) {
+            //         $(this).css("border", "solid red");
+            //     }
+            // }
+        });
     });
 
     $("#agregar_ingr").on("click", function(){
         clonar_ingr();
     });
+
 
     $("#agregar_paso").on("click", function(){
         clonar_paso();
@@ -65,7 +74,7 @@ function clonar_ingr(){
     let id_medida = "medida_"+cont_name_ingr;
     let name_ingr = "ingr_"+cont_name_ingr;
     let id_group = "ingrediente_"+cont_name_ingr;
-    let id_ingr = "select"+cont_name_ingr;
+    let id_ingr = "name_ingr_"+cont_name_ingr;
 
     var ingr_input = document.getElementById("ingr_group");
 
@@ -98,23 +107,24 @@ function clonar_ingr(){
     new_medida.setAttribute("name", id_medida);
     div_medida.appendChild(new_medida);
 
-    //nuevo select para seleccionar el ingrediente
+    //nuevo input text para insertar el nombre del ingrediente
     var div_ingr = document.createElement("div");
-    div_ingr.setAttribute("class", "form-group col-md-2 text-center");
-    div_ingr.setAttribute("style", "margin-left: 60px;");
+    div_ingr.setAttribute("class", "form-group col-md-3 text-center");
     new_container.appendChild(div_ingr);
-    var new_select_ingr = document.querySelector("select[name = 'ingr']");
-    var new_ingr = new_select_ingr.cloneNode(true);
-    new_ingr.removeAttribute("name");
-    new_ingr.removeAttribute("id");
-    new_ingr.removeAttribute("style");
+    var new_ingr = document.createElement("input")
+    new_ingr.setAttribute("type", "text");
     new_ingr.setAttribute("name", name_ingr);
+    new_ingr.setAttribute("class", "ingr ui-autocomplete-input");
     new_ingr.setAttribute("id", id_ingr);
+    new_ingr.setAttribute("placeholder", "Nombre del ingrediente");
+    new_ingr.setAttribute("required", "");
     div_ingr.appendChild(new_ingr);
-    $("#"+id_ingr).select2({
-        placeholder: 'Seleccione un ingrediente'      
+    $("#"+id_ingr).on("focus", function(){
+            $(this).autocomplete({
+            source: 'php/get_ingredientes.php'
+        });
     });
-
+    
     //boton para eliminar ingrediente
     var div_btn_delete = document.createElement("div");
     div_btn_delete.setAttribute("class", "form-group col-md-1");
@@ -135,6 +145,7 @@ function clonar_ingr(){
         var deleted = document.querySelectorAll('div#ingr_group div.form-row');
         deleted[1].parentNode.removeChild(deleted[1]);
         cont_ingr-=1;
+        cont_name_ingr-=1;
     });
 
     
@@ -194,6 +205,7 @@ function clonar_paso(){
         var deleted = document.querySelectorAll('div#pasos_group div.form-row.d-flex.h-100');
         deleted[1].parentNode.removeChild(deleted[1]);
         cont_paso-=1;
+        cont_npaso-=1;
     });
 
     //se incrementa el contador para asignar nuevos name a cada input

@@ -20,18 +20,19 @@
     <div class="row justify-content-center align-items-center">
         <div class="datos col d-inline">
             <form action="php/editar_perfil.php" method="POST" enctype="multipart/form-data">
+                <br>
+                <br>
+
                 <div class="form-group text-center">
                     <label class="form-control-file" for="subir_foto">Seleccionar nueva imagen de perfil</label>
-                    <input type="file" id="subir_foto" accept ="image/*" name="img_perfil">
+                    <input type="file" id="subir_foto" accept ="image/*" name="img_perfil" required>
                 </div>
 
         </div>
     </div>
-    
-    <br>
     <hr>
     <br>
-
+    
     <div class="contenedor_formulario text-center">
         
             <div class="form-row h-100 justify-content-center align-items-center">
@@ -73,6 +74,15 @@
                 </div>
 
             </div>
+
+            <hr>
+
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <div class="form-group col-md-2 text-center">
+                    <h2>Edad</h2>
+                    <input type="number" name="edad" min="0" value="18" style="width: 100px;" required>
+                </div>
+            </div>
             
             <br>
 
@@ -85,12 +95,6 @@
             <div class="form-row h-100 justify-content-center align-items-center">
                 <button type="submit" class="btn boton_generico" name="save">Guardar Cambios</button>
             </div>
-            <?php
-
-                // if(isset($_POST['save']))
-                // echo "<script type='text/javascript'>window.location.replace('perfil.php');</script>"
-
-            ?>
            
         </form>
     </div>
