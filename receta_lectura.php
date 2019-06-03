@@ -10,6 +10,7 @@
     $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
+    include 'php/scraping.php';
 
     if(isset($_GET ['id_receta'])) {
         $id_receta = $_GET ['id_receta'];
@@ -263,16 +264,20 @@
                         $rs = mysqli_query ($conexion, $query);
 
                         while(($row=mysqli_fetch_assoc($rs))){ 
-                            $cantidad = $row['cantidad']
+                            $cantidad = $row['cantidad'];
+                            $ingrediente=$row['nombre'];
                     ?>
 
                         <li class="list-group-item">
                             <?php 
+                                
                                 echo $row['nombre']."   " ?>
                             <small id ="ingrediente"> <?php echo $cantidad." ".$row['medida'] ?></small>
                         </li>
+
                         
-                    <?php } ?>
+                        
+                    <?php } producto($ingrediente); ?>
                 </ul>
             </div>
         </div>
