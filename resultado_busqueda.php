@@ -26,9 +26,6 @@ if(isset($_POST ['busqueda'])){
 if(isset($_POST ['tipo'])){
     $tipo = $_POST ['tipo'];
 }
-if(isset($_POST ['sabor'])){
-    $sabor = $_POST ['sabor'];
-}else $sabor=0;
 if(isset($_POST ['dificultad'])){
     $dificultad = $_POST ['dificultad'];
 }else $dificultad=0;
@@ -130,11 +127,6 @@ $cant_recetas = mysqli_num_rows($rs);
         <a href="receta_lectura.php?id_receta=<?php echo ($row['id_receta'])?>">
         <?php echo ($row['nombre_receta'])?></a>
         <hr>
-            <p>Sabor</p>
-            <div class="progress"> 
-                <div class="progress-bar" role="progressbar" style="width: <?php echo ($row['sabor'])*20?>%" aria-valuenow="<?php echo ($row['sabor'])*20?>" 
-                aria-valuemin="0" aria-valuemax="100%"><?php echo ($row['sabor'])?></div>
-            </div>
             <p>Dificultad</p>
             <div class="progress"> 
                 <div class="progress-bar" role="progressbar" style="width: <?php echo ($row['dificultad'])*20?>%;" aria-valuenow="<?php echo ($row['dificultad'])*20?>" 

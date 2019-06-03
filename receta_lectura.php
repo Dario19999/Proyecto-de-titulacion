@@ -10,6 +10,7 @@
     $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
+    
     if(isset($_GET ['id_receta'])) {
         $id_receta = $_GET ['id_receta'];
         $query =("SELECT nombre_receta FROM receta WHERE id_receta = $id_receta");
@@ -20,10 +21,11 @@
         }
     }
 ?>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+
 
 <?php
     if (isset ($_SESSION ['username'])) {
@@ -322,7 +324,6 @@
 
             <div class="btn_dictado">
                 <a href="receta_dictado.php?id_receta=<?php echo $id_receta ?>" class="btn boton_generico"> Dictado</a>
-                    
             </div>
         <hr>
 
@@ -331,9 +332,9 @@
 
     
 
-    <div class="container-fluid cotizacion">
-        <div class="row align-items-center justify-content-center">
-            <div class="col col-xs-4 col-md-3 ">
+    <div class="container-fluid ">
+        <div class="row text-center" style="display:block;">
+            <div class="col col-xs-4 col-md-3">
                 <div class="card">
                         <div class="card-body">
                             <h5 class="card-title" id="super">Bodega Aurrera</h5>
@@ -366,12 +367,8 @@
                                 <a href="https://www.costco.com.mx/"  target="_blank" class="card-link">Ir a la p&aacute;gina</a>
                             </div>
                     </div>
-                </div>
-        </div> -->
-
-    </div>
-
-    <div class="container-fluid pie">
+                </div>-->
+        </div>
 
     </div>
 
@@ -609,7 +606,7 @@
 
     </form>
 
-    <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" type="button" name="descargar" class="btn boton_generico">Descargar</button>
+    <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" name="descargar" class="btn boton_generico">Descargar</button>
 
 <script src="js/jquery-3.3.1.slim.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

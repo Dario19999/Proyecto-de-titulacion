@@ -80,33 +80,6 @@
             </div>
 
             <div class="form-group col-md-4 text-center">
-              
-                <p>Sabor</p>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" value="1" id="sabor1" name="sabor" class="custom-control-input" >
-                    <label  class="custom-control-label" for="sabor1" >1</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" value="2" id="sabor2" name="sabor" class="custom-control-input" >
-                    <label  class="custom-control-label" for="sabor2">2</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" value="3" id="sabor3" name="sabor" class="custom-control-input" >
-                    <label class="custom-control-label" for="sabor3">3</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" value="4" id="sabor4" name="sabor" class="custom-control-input" >
-                    <label class="custom-control-label" for="sabor4">4</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" value="5" id="sabor5" name="sabor" class="custom-control-input" >
-                    <label class="custom-control-label" for="sabor5">5</label>
-                </div>
-                <hr>
                 
                 <p>Dificultad</p>
                 <div class="custom-control custom-radio custom-control-inline">

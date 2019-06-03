@@ -94,7 +94,7 @@
                     $set_audio =$row['audio'];                
                 }               
             ?>
-            <?php echo $audio ?>
+
             <audio src="<?php echo $audio ?>" autoplay></audio>
             <?php } else if (isset ($_GET['paso'])){ ?>
         <audio src="<?php echo $array[$paso_actual]->audio; ?>" autoplay></audio>
