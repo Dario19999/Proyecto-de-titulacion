@@ -249,9 +249,9 @@
             <h1> <?php echo $nombre_receta;?></h1>
     
         </div>
-
+        <hr>
         <div class="row">
-            <div class="col-2 col-md-1 align-items-end ingredientes">
+            <div class="col-5 col-md-5 align-items-end ingredientes">
                 <?php 
                     $query_por = "SELECT porciones FROM receta WHERE id_receta = $id_receta";
                     $res_porciones = mysqli_query($conexion, $query_por);
@@ -264,9 +264,9 @@
                     <h3>Porciones</h3>
                     <input type="number" name="porcion" id="porciones" value="<?php echo $actual_porciones?>">
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
-
-                    <div class="row align-items-end">
-                        
+                    
+                    <div class="align-items-end">
+                    <h3>Ingredientes</h3>    
                             
                     <?php
                             if (isset($_POST['porcion'])){
@@ -275,9 +275,8 @@
                                 $new_porcion = $actual_porciones;
                             }
                                 
-                        $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,0) Recalculo, medida, ingrediente.nombre 
-                        FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
-                        = ingrediente.id_ingrediente");
+                        $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,0) Recalculo, medida, nombre_ingrediente
+                        FROM datos_receta WHERE id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
                     
                         while($row = mysqli_fetch_array($rs)){
@@ -285,9 +284,9 @@
                     ?>
              
                             <hr>
-                            <h3>Ingredientes</h3>
+                        
 
-                                <p><?php echo $row['nombre']."   " .$new_cantidad." ".$row['medida'] ?></p>
+                                <p><?php echo $row['nombre_ingrediente']."   " .$new_cantidad." ".$row['medida'] ?></p>
 
                             
                         </div>
@@ -486,7 +485,7 @@
             <button type="button" name="denunciar_usuario" value="denunciar_usuario" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_usuario">Denunciar usuario</button>
 
 
-            <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" name="descargar" class="btn boton_generico">Descargar
+            <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" name="descargar" class="btn boton_generico" target="_blank">Descargar</a>
 
             <div class="modal fade" id="modal_denuncia_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
