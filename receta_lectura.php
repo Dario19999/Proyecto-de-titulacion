@@ -10,8 +10,6 @@
     $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
-    include 'php/scraping.php';
-
     if(isset($_GET ['id_receta'])) {
         $id_receta = $_GET ['id_receta'];
         $query =("SELECT nombre_receta FROM receta WHERE id_receta = $id_receta");
@@ -93,7 +91,7 @@
 
                     <div class="modal-body">
                         <form action="" method="POST">
-                            <p>Sabor</p>
+                            <!-- <p>Sabor</p>
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="sabor1" name="sabor" class="custom-control-input" value="1">
                                 <label class="custom-control-label" for="sabor1">1</label>
@@ -117,7 +115,7 @@
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="sabor5" name="sabor" class="custom-control-input" value="5">
                                 <label class="custom-control-label" for="sabor5">5</label>
-                            </div>
+                            </div> -->
 
                             <p>Dificultad</p>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -206,9 +204,9 @@
                                 <?php 
                                 if(isset($_POST['cal']) && $cant_votos!=1){
    
-                                        if(isset($_POST ['sabor'])){
-                                            $sabor = $_POST ['sabor'];
-                                        }else $sabor=0;
+                                        // if(isset($_POST ['sabor'])){
+                                        //     $sabor = $_POST ['sabor'];
+                                        // }else $sabor=0;
                                         if(isset($_POST ['dificultad'])){
                                             $dificultad = $_POST ['dificultad'];
                                         }else $dificultad=0;
@@ -221,7 +219,7 @@
 
                                         
                                         $id_receta = $_GET ['id_receta'];
-                                        $query="UPDATE receta SET cantidad_vot=cantidad_vot+1, sabor=(sabor+$sabor)/cantidad_vot, 
+                                        $query="UPDATE receta SET cantidad_vot=cantidad_vot+1,  
                                         dificultad= (dificultad+$dificultad)/cantidad_vot,
                                         accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
                                         WHERE receta.id_receta = $id_receta;";
@@ -250,38 +248,6 @@
     
         </div>
 
-        <div class="row align-items-end">
-            <div class="col-7 col-sm-5 col-md-4 ingredientes">
-
-                <h3>Ingredientes</h3>
-                <ul class="list-group">
-
-                    <?php 
-                        require 'php/conexion.php';
-                        $query = ("SELECT cantidad, medida, ingrediente.nombre 
-                        FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
-                        = ingrediente.id_ingrediente");
-                        $rs = mysqli_query ($conexion, $query);
-
-                        while(($row=mysqli_fetch_assoc($rs))){ 
-                            $cantidad = $row['cantidad'];
-                            $ingrediente=$row['nombre'];
-                    ?>
-
-                        <li class="list-group-item">
-                            <?php 
-                                
-                                echo $row['nombre']."   " ?>
-                            <small id ="ingrediente"> <?php echo $cantidad." ".$row['medida'] ?></small>
-                        </li>
-
-                        
-                        
-                    <?php } producto($ingrediente); ?>
-                </ul>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-2 col-md-1 align-items-end ingredientes">
                 <?php 
@@ -297,45 +263,38 @@
                     <input type="number" name="porcion" id="porciones" value="<?php echo $actual_porciones?>">
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
 
-                    <?php 
-                        if(isset($_POST['recalcular'])){
-                    ?>
-                        <div class="row align-items-end">
-                            <div class="col-7 col-sm-5 col-md-4 ingredientes">
-                                <ul class="list-group">
-                    <?php
-                            $query = ("SELECT cantidad, medida, ingrediente.nombre 
-                            FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
-                            = ingrediente.id_ingrediente");
-                            $rs = mysqli_query ($conexion, $query);
-
-                            $new_porcion = $_POST['porcion'];
-
-                            while($row = mysqli_fetch_array($res_cant)){
-                                $actual_cantidad = $row['cantidad'];
-                                $new_cantidad = ($new_porcion*$actual_cantidad)/$actual_porciones;
-                                
-                    ?>
-
-                                <li class="list-group-item">
-                                
-                                    <?php 
-                                    
-                                        echo $row['nombre']."   " ?>
-
-                                    <small id ="ingrediente"> <?php echo $new_cantidad." ".$row['medida'] ?></small>
-
-                                </li>
+                    <div class="row align-items-end">
                         
-                    <?php } } ?>
-                                </ul>
-                            </div>
+                            
+                    <?php
+                            if (isset($_POST['porcion'])){
+                                $new_porcion = $_POST['porcion'];
+                            }else{
+                                $new_porcion = $actual_porciones;
+                            }
+                                
+                        $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,0) Recalculo, medida, ingrediente.nombre 
+                        FROM datos_receta, ingrediente WHERE id_receta=$id_receta AND datos_receta.id_ingrediente 
+                        = ingrediente.id_ingrediente");
+                        $rs = mysqli_query ($conexion, $query);
+                    
+                        while($row = mysqli_fetch_array($rs)){
+                        $new_cantidad = $row['Recalculo'];         
+                    ?>
+             
+                            <hr>
+                            <h3>Ingredientes</h3>
+
+                                <p><?php echo $row['nombre']."   " .$new_cantidad." ".$row['medida'] ?></p>
+
+                            
                         </div>
                 </form>
-            </div>
-        </div>
+                <?php }?>
 
-        <hr>
+        
+        </div>
+        </div>
         <hr>
 
         <div class="procedimiento">

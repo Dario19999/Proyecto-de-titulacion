@@ -73,11 +73,11 @@ if (!empty ($tipo) && !is_empty ($query)){
     $query.= "  id_categorias=$tipo";
 }
 
-if (!empty ($sabor) && !is_empty ($query)){
-    $query.= " AND sabor=$sabor";
-}else if(!empty ($sabor) && is_empty ($query)){
-    $query.= "  sabor=$sabor";
-}
+// if (!empty ($sabor) && !is_empty ($query)){
+//     $query.= " AND sabor=$sabor";
+// }else if(!empty ($sabor) && is_empty ($query)){
+//     $query.= "  sabor=$sabor";
+// }
 
 is_empty($query);
 
