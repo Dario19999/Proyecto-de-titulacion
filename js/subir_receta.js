@@ -10,11 +10,11 @@ $(".error_paso").hide();
 
 $(function(){
 
-    $("#name_ingr_1").on("focus", function(){
-            $(this).autocomplete({
-            source: 'php/get_ingredientes.php'
-        });
-    });
+    // $("#name_ingr_1").on("focus", function(){
+    //         $(this).autocomplete({
+    //         source: 'php/get_ingredientes.php'
+    //     });
+    // });
 
     $("#agregar_ingr").on("click", function(){
         clonar_ingr();
