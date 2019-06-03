@@ -86,7 +86,7 @@
             <div id="ingr_group">
                 <div class="form-row" id="ingrediente_1">
                     <div class="form-group col-md-1 text-center">
-                        <input type="number" name="cant_1" class="cantidad" min="1" value="1" required> 
+                        <input type="number" name="cant_1" class="cantidad" min="0" value="0.00" step="0.01" required> 
                     </div>
 
                     <div class="form-group col-md-2 text-center">
