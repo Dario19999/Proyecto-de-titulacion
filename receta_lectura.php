@@ -61,7 +61,7 @@
             $nombre_usuario_receta=$row['nombre'];
         }
 
-    $query =("SELECT * FROM reportes WHERE id_reportes = $id_usuario AND id_receta=$id_receta");
+    $query =("SELECT receta_rep, usuario_rep, calificacion FROM reportes WHERE id_reportando = $id_usuario AND id_receta=$id_receta LIMIT 1");
     $rs = mysqli_query ($conexion, $query);
 
         while(($row=mysqli_fetch_array($rs))) {
@@ -69,6 +69,7 @@
             $den_usuario=$row['usuario_rep'];
             $cant_votos=$row['calificacion'];
         }
+
 
     if($cant!=0){?>
 
@@ -200,8 +201,7 @@
                                 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn boton_generico" name="cal" >Enviar</button>
-                                
+                                <button type="submit" class="btn boton_generico" name="cal" >Enviar</button>                              
 
                                 <?php 
                                 if(isset($_POST['cal']) && $cant_votos!=1){
@@ -221,7 +221,7 @@
 
                                         
                                         $id_receta = $_GET ['id_receta'];
-                                        $query="UPDATE receta SET cantidad_vot=cantidad_vot+1,  
+                                        $query="UPDATE receta SET cantidad_vot=+1,  
                                         dificultad= (dificultad+$dificultad)/cantidad_vot,
                                         accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
                                         WHERE receta.id_receta = $id_receta;";
@@ -275,7 +275,7 @@
                                 $new_porcion = $actual_porciones;
                             }
                                 
-                        $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,0) Recalculo, medida, nombre_ingrediente
+                        $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,0) Recalculo, medida, nombre_ingrediente 
                         FROM datos_receta WHERE id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
                     
@@ -415,7 +415,7 @@
                             if (isset($_POST['rep_receta']) && $den_receta!=1){
 
                                 if ($total>=0 && $total<5){
-                                    $query = ("UPDATE receta SET reportes = reportes+1 WHERE receta.id_receta = $id_receta");
+                                    $query = ("UPDATE receta SET reportes = +1 WHERE receta.id_receta = $id_receta");
                                     $rs = mysqli_query ($conexion, $query);
                                     echo "Hacer reporte";                                          
                                     $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportes =$id_usuario");
