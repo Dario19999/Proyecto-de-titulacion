@@ -155,7 +155,6 @@
                 <input type="submit" class="btn boton_generico" name ="reg" value ="Registrar">
             </div>
             <?php
-               
                 require 'php/registrar.php';
             ?>
         </form>

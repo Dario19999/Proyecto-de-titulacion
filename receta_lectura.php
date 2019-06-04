@@ -102,32 +102,6 @@ if($cant!=0){
                     <div class="modal-body">
                     <?php if ($cant_votos!=1){ ?>
                         <form action="" method="POST">
-                            <!-- <p>Sabor</p>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="sabor1" name="sabor" class="custom-control-input" value="1">
-                                <label class="custom-control-label" for="sabor1">1</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="sabor2" name="sabor" class="custom-control-input" value="2">
-                                <label class="custom-control-label" for="sabor2">2</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="sabor3" name="sabor" class="custom-control-input" value="3">
-                                <label class="custom-control-label" for="sabor3">3</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="sabor4" name="sabor" class="custom-control-input" value="4">
-                                <label class="custom-control-label" for="sabor4">4</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="sabor5" name="sabor" class="custom-control-input" value="5">
-                                <label class="custom-control-label" for="sabor5">5</label>
-                            </div> -->
-
                             <p>Dificultad</p>
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="dificultad1" name="dificultad" class="custom-control-input" value="1">
@@ -270,7 +244,7 @@ if($cant!=0){
 
                 <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
-                    <input type="number" name="porcion" id="porciones" min="1" value="<?php echo $actual_porciones?>">
+                    <input type="number" name="porcion" id="porciones" min="1" max='3' value="<?php echo $actual_porciones?>">
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
                     
                     <div class="align-items-end">

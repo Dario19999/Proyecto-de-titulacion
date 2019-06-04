@@ -22,7 +22,6 @@
             $paso_actual=$_GET['paso'];
         }else{
             $paso_actual=-1;
-    
         }
 
         $query = ("SELECT * FROM receta WHERE id_receta = $id_receta");
@@ -178,8 +177,7 @@
 
 <?php
 
-
-$query = ("SELECT * FROM receta WHERE id_receta=$id_receta");
+$query = ("SELECT audio FROM receta WHERE id_receta=$id_receta");
 $rs = mysqli_query ($conexion, $query);         
 while(($row=mysqli_fetch_assoc($rs))){        
     $set_audio =$row['audio'];                
@@ -441,16 +439,7 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 // mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 // }
 
-}
-
-?>
-
-
-
-
-
-    
-   
+} ?>
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>

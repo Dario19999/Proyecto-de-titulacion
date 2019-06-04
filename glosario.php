@@ -67,6 +67,7 @@
                 while(($row=mysqli_fetch_assoc($rs))) {
                    $video= ($row['video']);
                 ?>
+                <br>
                 <dt id="termino"><hr><?php echo $row['palabra']?></dt>
                     
                 <dd><?php echo $row['definicion']?></dd>
@@ -75,7 +76,7 @@
 
                 <div class="video">
                     <button type="button" name="ver_video" value="Video" class="btn boton_generico" data-toggle="modal" data-target="#modal_video" style="float:left;">Video</button>
-                    
+                    <br>
                     <div class="modal fade" id="modal_video" tabindex="-1" role="dialog" aria-labelledby="ver_video" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
