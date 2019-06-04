@@ -74,7 +74,8 @@
                 $actual_pass = $row['pass'];
             }
 
-            $url="http://localhost/lacousine.com/nueva_contraseña?id='.$actual_pass .";
+            // $url="http://localhost/lacousine.com/nueva_contraseña?id='.$actual_pass .";
+            $url="https://lacousine.com/nueva_contraseña?id='.$actual_pass .";
 
             $asunto="Recupearar contraseña";
             $cuerpo ="Hemos notado que deseas cambiar tu contraseña. De ser esto correcto, 

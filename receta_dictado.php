@@ -160,20 +160,6 @@
     <button type="button" class ="btn" id="reiniciar">Continuar</button>
     <button type="button" class ="btn" id="eliminar">Eliminar</button>
 
-    <!-- <div class="reproductor">
-
-        <a href="#"><i class="fas fa-redo"></i></a>
-        <a href="#"><i class="fas fa-angle-double-left"></i></a>
-        <a href="#"><i class="fas fa-play reproducir"></i></a>
-        <a href="#"><i class="fas fa-angle-double-right"></i></a>
-        <a href="#"><i class="far fa-clock"></i></a>
-
-        <p id="escribe"></p>
-    
-    </div> -->
-
-
-
 
 <?php
 
@@ -460,7 +446,7 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 
         'siguiente': function() {
 
-        // alert("Siguiente");
+        alert("Siguiente");
         if ( paso_actual < total_pasos ){
             paso_actual = paso_actual+1;
             location.replace(window.location.href + "&paso=" + paso_actual) ;
@@ -470,7 +456,7 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
         
         'repetir': function() {
 
-        // alert("Repetir");
+        alert("Repetir");
             paso_actual = paso_actual;
             location.replace(window.location.href + "&paso=" + paso_actual) ;
 
@@ -478,7 +464,7 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 
         'anterior': function() {
 
-        // alert("Anterior");
+        alert("Anterior");
             if ( paso_actual > paso_inicial){
                 paso_actual = paso_actual-1;
                 location.replace(window.location.href + "&paso=" + paso_actual) ;

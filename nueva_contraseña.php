@@ -52,7 +52,8 @@
             $query = "UPDATE usuario SET pass='$en_pass' WHERE pass='$actual_pass'";
             mysqli_query ($conexion, $query);
             echo "Contraseña modificada";
-            header('Location: http://localhost/lacousine.com/index.php');
+            // header('Location: http://localhost/lacousine.com/index.php');
+            header('Location: https://lacousine.com/index.php');
         }else{
             echo "<p class = 'error' style = 'color: red'>La confirmación de la contraseña y la contraseña deben ser iguales. Favor de corregir</p>";
         }
