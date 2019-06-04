@@ -184,7 +184,7 @@
                     source: ingredientes,
                     response: function(event, ui){
                         if (ui.content.length === 0) {
-                        $(this).css("border", "solid red");
+                        $(this).css("border", "1px solid red");
                     }else{
                         $(this).css("border", "1px solid gray");
                     }

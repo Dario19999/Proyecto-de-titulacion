@@ -40,9 +40,10 @@ if(isset($_POST ['nacionalidad'])){
     $nacionalidad = $_POST ['nacionalidad'];
 }else $nacionalidad=0;
 if(isset($_POST ['save'])){
+
     $flag = true;
     $type = $_FILES["img_perfil"]["type"];
-    if($type == "image/png" || $type =="imagge/jpg" || $type=="image/jpeg")
+    if($type == "image/png" || $type =="image/jpg" || $type=="image/jpeg" || $_FILES['img_perfil']['size'] == 0)
     {
         $flag = true;
         $img_name = $_FILES['img_perfil']['name'];
@@ -62,7 +63,8 @@ if(is_uploaded_file($ruta)){
     $save_bd = "img_perfiles/".$img;
     $save_on = "../img_perfiles/".$img;
     copy($ruta, $save_on);
-}  
+}
+
 echo $nombre_usuario."<br>";
 echo $genero."<br>";
 echo $nacionalidad."<br>";
@@ -113,9 +115,9 @@ if (!empty ($edad) && !is_empty ($query)){
 }
 
 if (!empty ($nacionalidad) && !is_empty ($query)){
-    $query.= " , nacionalidad = '$nacionalidad'";
+    $query.= " , id_nacionalidad = '$nacionalidad'";
 }else if(!empty ($nacionalidad) && is_empty ($query)){
-    $query.= " nacionalidad = '$nacionalidad'";
+    $query.= " id_nacionalidad = '$nacionalidad'";
 }
 
 is_empty($query);
