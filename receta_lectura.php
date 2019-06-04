@@ -255,6 +255,7 @@ if($cant!=0){
                   
                             
                     <?php
+                            $array=[];
                             if (isset($_POST['porcion'])){
                                 $new_porcion = $_POST['porcion'];
                             }else{
@@ -264,11 +265,34 @@ if($cant!=0){
                         $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
                         FROM datos_receta WHERE id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
-                    
+
                         while($row = mysqli_fetch_assoc($rs)){
-                        $new_cantidad = $row['Recalculo']; 
-                        $medida=$row['medida'];
-                        $ingrediente=$row['nombre_ingrediente']
+                            $new_cantidad = $row['Recalculo']; 
+                            $medida=$row['medida'];
+                            $ingrediente=$row['nombre_ingrediente']; 
+         
+                            $opts = array(
+                                'ssl' => array(
+                                    'ciphers' => 'RC4-SHA',
+                                    'verify_peer' => false,
+                                    'verify_peer_name' => false
+                                )
+                            );
+                            // SOAP 1.2 client
+                            $reponseParams = array(
+                                'pkSitio' => '1',
+                                'producto' => $ingrediente
+                            );
+
+                            $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
+                            $response = $client->jessyMethod($reponseParams);
+                            if (isset ($response->jessyMethodResult->RespuestaModelo)){
+                                $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));                                       
+                                $data= json_decode($response->jessyMethodResult->RespuestaModelo);
+                                array_push($array,$data);
+                                var_dump ($array);
+                            }else 
+
                     ?>
                           <div>
                             <ul>
@@ -277,7 +301,10 @@ if($cant!=0){
                             
                         </div>
                 </form>
-                <?php }?>
+        <?php
+  
+
+                }?>
     </div>
         </div>
         </div>
