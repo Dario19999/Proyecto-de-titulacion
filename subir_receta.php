@@ -158,7 +158,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-3 text-center">
-                    <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico">
+                    <input type="button" id="agregar_paso" name="agregar_paso" value="Agregar paso" class="btn boton_generico">
                 </div>
             </div>
             

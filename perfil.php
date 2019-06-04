@@ -17,7 +17,7 @@
 
         $usuario= ($row['nombre']);
         $sexo= ($row['sexo']);
-        $edad = $row['edad'];
+        $edad = ($row['edad']);
         $id_nacionalidad = ($row['id_nacionalidad']);
         $id_usuario=($row['id_usuario']);
         $votos=($row['votos']);

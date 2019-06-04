@@ -107,9 +107,9 @@ if (!empty ($genero) && !is_empty ($query)){
 }
 
 if (!empty ($edad) && !is_empty ($query)){
-    $query.= " , edad = '$edad'";
+    $query.= " , edad = $edad";
 }else if(!empty ($edad) && is_empty ($query)){
-    $query.= " edad = '$edad'";
+    $query.= " edad = $edad";
 }
 
 if (!empty ($nacionalidad) && !is_empty ($query)){
