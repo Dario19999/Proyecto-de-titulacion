@@ -17,7 +17,7 @@ $pagina_anterior=$_SERVER['HTTP_REFERER'];
 }
 // if ($pagina_anterior=="")
 
-if (isset ($_SESSION ['username'])) {
+else if (isset ($_SESSION ['username'])) {
 
    // echo "Hay sesion";
 
