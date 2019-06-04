@@ -11,5 +11,5 @@
     }
     
     echo json_encode($ingredientes);
-   
+    mysqli_free_result($res_ingr);
 ?>

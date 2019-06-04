@@ -105,7 +105,6 @@
                     
                     <select name="nacionalidad" class="form-conrtol custom-select" style="width: 225px" required>
                     <?php
-                        
                         $query = $conexion -> query ("SELECT * FROM nacionalidad");
                         while ($valores = mysqli_fetch_array($query)) {
                             echo '<option value="'.$valores[id_nacionalidad].'">'.$valores[nombre].'</option>';

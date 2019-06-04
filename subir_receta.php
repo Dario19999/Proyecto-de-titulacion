@@ -147,7 +147,7 @@
                     </div>
 
                     <div class="form-group col-md-7">
-                        <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" id = "textarea" placeholder="Describa el paso."></textarea> 
+                        <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" id = "textarea" placeholder="Describa el paso." required></textarea> 
                     </div>
                 </div> 
             </div>
@@ -184,7 +184,7 @@
                     source: ingredientes,
                     response: function(event, ui){
                         if (ui.content.length === 0) {
-                        $(this).css("border", "solid red");
+                        $(this).css("border", "1px solid red");
                     }else{
                         $(this).css("border", "1px solid gray");
                     }

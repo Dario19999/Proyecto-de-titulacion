@@ -270,7 +270,7 @@ if($cant!=0){
 
                 <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
-                    <input type="number" name="porcion" id="porciones" value="<?php echo $actual_porciones?>">
+                    <input type="number" name="porcion" id="porciones" min="1" value="<?php echo $actual_porciones?>">
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
                     
                     <div class="align-items-end">

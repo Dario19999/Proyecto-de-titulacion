@@ -1,8 +1,3 @@
-<!-- <hr>
-<hr>
-<hr>
-<hr>
- -->
 
 <?php
 
@@ -10,12 +5,12 @@
     include 'plantilla.php';
 
 ?>
-<!-----------------------------------[Fin de Plantilla]------------------------------------------>
 
-<hr>
-<hr>
-<hr>
-<hr>
+<br>
+<br>
+<br>
+<br>
+
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="datos col d-inline">
@@ -25,7 +20,7 @@
 
                 <div class="form-group text-center">
                     <label class="form-control-file" for="subir_foto">Seleccionar nueva imagen de perfil</label>
-                    <input type="file" id="subir_foto" accept ="image/*" name="img_perfil" required>
+                    <input type="file" id="subir_foto" accept ="image/*" name="img_perfil">
                 </div>
 
         </div>
@@ -47,10 +42,9 @@
                 <div class="form-group col-md-6">
                     <h2>Nacionalidad</h2>
                     
-                    <select class="form-control custom-select" style="width:225px" >
+                    <select class="form-control custom-select" style="width:225px" name="nacionalidad">
                     <option value="0">Ninguna</option>
                         <?php
-                        require 'php/conexion.php';
                         $query = $conexion -> query ("SELECT * FROM nacionalidad");
                         while ($valores = mysqli_fetch_array($query)) {
                             echo '<option value="'.$valores[id_nacionalidad].'">'.$valores[nombre].'</option>';
