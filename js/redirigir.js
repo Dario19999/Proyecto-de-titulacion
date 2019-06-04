@@ -19,6 +19,9 @@
         case 'btn_editar_perfil':
             window.location.replace("editar_perfil.php");
         break;
+        case 'btn_recuperar_contra':
+            window.location.replace("recuperar_contraseña.php");
+        break;
         case 'btn_cambiar_contra':
             window.location.replace("cambiar_contraseña.php");
         break;
