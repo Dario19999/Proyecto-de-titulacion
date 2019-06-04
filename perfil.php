@@ -116,27 +116,39 @@
                 <div class="col">
                     <div class="text-center">
                         <h2>Subidas</h2>
-                            <?php if($cant_recetas>=1 && $cant_recetas<5){?>
+                            <?php if($cant_recetas>=1 && $cant_recetas<5){
+                                echo "Has ganado una insignia por subir 1 receta"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
-                            <?php }else if($cant_recetas>=5 && $cant_recetas<10){?>
+                            <?php }else if($cant_recetas>=5 && $cant_recetas<10){
+                                echo "Has ganado una insignia por subir 5 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
-                            <?php }else if($cant_recetas>=10 && $cant_recetas<20){?>
+                            <?php }else if($cant_recetas>=10 && $cant_recetas<20){
+                                echo "Has ganado una insignia por subir 10 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
-                            <?php }else if($cant_recetas>=20 && $cant_recetas<50){?>
+                            <?php }else if($cant_recetas>=20 && $cant_recetas<50){
+                                echo "Has ganado una insignia por subir 20 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
                                 <img src="img/insignia4.png" width="100" height="100">
-                            <?php }else if($cant_recetas>=20 && $cant_recetas<100){?>
+                            <?php }else if($cant_recetas>=50 && $cant_recetas<100){
+                                echo "Has ganado una insignia por subir 50 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
                                 <img src="img/insignia4.png" width="100" height="100">
                                 <img src="img/insignia5.png" width="100" height="100">
-                            <?php }else if($cant_recetas>=100){?>
+                            <?php }else if($cant_recetas>=100){
+                                echo "Has ganado una insignia por subir 100 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
@@ -152,27 +164,38 @@
                 <div class="col">
                     <div class="text-center">
                         <h2>Descargas</h2>
-                            <?php if($descargas>=1 && $descargas<5){?>
+                            <?php if($descargas>=1 && $descargas<5){
+                                echo "Has ganado una insignia por descargar 1 receta"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
-                            <?php }else if($descargas>=5 && $descargas<10){?>
+                            <?php }else if($descargas>=5 && $descargas<10){
+                                echo "Has ganado una insignia por descargar 5 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
-                            <?php }else if($descargas>=10 && $descargas<20){?>
+                            <?php }else if($descargas>=10 && $descargas<20){
+                                echo "Has ganado una insignia por descargar 10 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
-                            <?php }else if($descargas>=20 && $descargas<50){?>
+                            <?php }else if($descargas>=20 && $descargas<50){
+                                echo "Has ganado una insignia por descargar 20 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
                                 <img src="img/insignia4.png" width="100" height="100">
-                            <?php }else if($descargas>=20 && $descargas<100){?>
+                            <?php }else if($descargas>=50 && $descargas<100){
+                                echo "Has ganado una insignia por descargar 50 recetas"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
                                 <img src="img/insignia4.png" width="100" height="100">
                                 <img src="img/insignia5.png" width="100" height="100">
-                            <?php }else if($descargas>=100){?>
+                            <?php }else if($descargas>=100){
+                                echo "Has ganado una insignia por descargar 100 recetas"?>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
@@ -188,27 +211,39 @@
                 <div class="col">
                     <div class="text-center">
                         <h2>Votos</h2>
-                            <?php if($votos>=1 && $votos<5){?>
+                            <?php if($votos>=1 && $votos<5){
+                                echo "Has ganado una insignia por votar 1 receta"?>
+                                <br>
                                 <img src="img/insignia1.png" width="100" height="100">
-                            <?php }else if($votos>=5 && $votos<10){?>
+                            <?php }else if($votos>=5 && $votos<10){
+                                echo "Has ganado una insignia por votar 5 recetas"?>
+                            <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
-                            <?php }else if($votos>=10 && $votos<20){?>
+                            <?php }else if($votos>=10 && $votos<20){
+                                 echo "Has ganado una insignia por votar 10 recetas"?>
+                            <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
-                            <?php }else if($votos>=20 && $votos<50){?>
+                            <?php }else if($votos>=20 && $votos<50){
+                                 echo "Has ganado una insignia por votar 20 recetas"?>
+                            <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
                                 <img src="img/insignia4.png" width="100" height="100">
-                            <?php }else if($votos>=20 && $votos<100){?>
+                            <?php }else if($votos>=50 && $votos<100){
+                                 echo "Has ganado una insignia por votar 50 recetas"?>
+                            <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
                                 <img src="img/insignia4.png" width="100" height="100">
                                 <img src="img/insignia5.png" width="100" height="100">
-                            <?php }else if($votos>=100){?>
+                            <?php }else if($votos>=100){
+                                 echo "Has ganado una insignia por votar 100 recetas"?>
+                            <br>
                                 <img src="img/insignia1.png" width="100" height="100">
                                 <img src="img/insignia2.png" width="100" height="100">
                                 <img src="img/insignia3.png" width="100" height="100">
