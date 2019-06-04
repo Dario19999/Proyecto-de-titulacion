@@ -1,10 +1,21 @@
-  <?php
-    require __DIR__ . '/vendor/autoload.php';
+<?php
     include 'php/conexion.php';
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+    include_once 'sesion.php';
+    include 'validar.php';
 
-    ?>
+    $userSession = new userSession();
+    $user = new User ();
+
+    if(isset($_SESSION['username'])){
+        $usuario = $_SESSION['username'];
+    }
+
+    $query_this_user = "SELECT id_usuario FROM usuario WHERE nombre = '$usuario'";
+    $res = mysqli_query($conexion, $query_this_user);
+    while($row = mysqli_fetch_array($res)){
+        $id_usuario=$row['id_usuario'];
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -36,76 +47,46 @@
 
             <form action="" method="POST">
                 <div class="text-center">
-                    <input name="usuario_correo" type="text" placeholder="Inserte su correo" required>
-                    <button type="submit" name="rec" class="btn boton_generico">Recuperar contraseña</button>
+                    <input name="nueva_contra" type="password" placeholder="Inserte su nueva contraseña" required>
+                    <input name="nueva_contra_rep" type="password" placeholder="Repita su nueva contraseña" required>
+                    <button type="submit" name="cambiar" class="btn boton_generico">Cambiar contraseña</button>
                     <a href="index.php" style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_volver">Volver</a>
                 </div>
 
             </form>
-<?php
-
-
-    if (isset($_POST['rec'])){
-        $user_correo = $_POST['usuario_correo'];
-     
-        $query = "SELECT correo, nombre, pass FROM usuario WHERE correo = '$user_correo'";
-        $rs = mysqli_query ($conexion, $query);
-        $existe = mysqli_num_rows($rs);
-        
-        if($existe !==1){
-            echo "<p class = 'error' style = 'color: red'>El correo no existe.</p>";
-
-        }else{
-            while($row=mysqli_fetch_array($rs)){ 
-                $correo = $row['correo'];
-                $user = $row['nombre'];
-                $actual_pass = $row['pass'];
-            }
-
-            // $url="http://localhost/lacousine.com/nueva_contraseña.php?id=$actual_pass";
-            $url="https://lacousine.com/nueva_contraseña.php?id=$actual_pass";
-
-            $asunto="Recuperar ";
-            $cuerpo ="Hemos notado que deseas cambiar tu clave de ingreso. De ser esto correcto, 
-            por favor ingresa al siguiente enlace: <a href='$url'>$url</a>";
-
-            $mail = new PHPMailer(true);
-            try {
-                //Server settings
-                // $mail->SMTPDebug = 2;                                       // Enable verbose debug output
-                $mail->isSMTP();                                            // Set mailer to use SMTP
-                $mail->Host       = 'smtp.hostinger.mx';                    // Specify main and backup SMTP servers
-                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = 'otro@lacousine.com';               // SMTP username
-                $mail->Password   = 'hola12345';                            // SMTP password
-                $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-                $mail->Port       = 587;                                    // TCP port to connect to
-
-                //Recipients
-                $mail->setFrom('otro@lacousine.com', 'La Cousine');
-                $mail->addAddress($correo, $user);     // Add a recipient
-
-                // Content
-                $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = $asunto;
-                $mail->Body    = $cuerpo;
-
-                $mail->send();
-                echo 'Se ha enviado un correo electronico para la recuperacion';
-                return true;
-            }catch (Exception $e) {
-                return $mensaje="Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            }
-
-        }
-    }
-                                                  
-                            
-                        
-?>
-
         </div>
         
+        <?php
+            if(isset($_POST['cambiar'])){
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+                $nueva_contra = $_POST['nueva_contra'];
+                $nueva_contra_rep = $_POST['nueva_contra_rep'];
+
+                $patron_p = "/^(?=.*\d)(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/";
+                $bandera = 1;
+
+                if(!preg_match($patron_p, $nueva_contra)){
+                    echo "<p class = 'error' style = 'color: red'>*La contraseña debe contener al menos 8 caracteres. Entre ellos 1 letra mayúscula y un caracter numérico. 
+                    Recuerda que el nombre de usuario y la contraseña deben de ser diferentes.</p>";
+                    $bandera = 0;
+                }
+                if($nueva_contra != $nueva_contra_rep){
+                    echo "<p class = 'error' style = 'color: red'>*Las contraseñas deben de ser iguales en ambos campos.</p>";
+                    $bandera = 0;
+                }
+                if(preg_match($patron_p, $nueva_contra) && $bandera == 1){
+                    $en_pass = password_hash($nueva_contra, PASSWORD_DEFAULT);
+                    $query_new_contra = "UPDATE usuario SET pass = '$en_pass' WHERE id_usuario = '$id_usuario'";
+                    $res_new_contra = mysqli_query($conexion, $query_new_contra);
+
+                    echo "<p>Se cambió la contraseña exitosamente</p>";
+                }
+            }   
+        ?>
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>

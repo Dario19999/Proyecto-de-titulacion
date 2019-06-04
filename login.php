@@ -48,7 +48,7 @@
 
             <div class="hiperenlace text-center">
                 <p> <a style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_registrar" onclick="redirigir(this.id)">Registrarse</a></p>
-                <p> <a style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_cambiar_contra" onclick="redirigir(this.id)">¿Olvidaste tu contraseña?</a></p>
+                <p> <a style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_recuperar_contra" onclick="redirigir(this.id)">¿Olvidaste tu contraseña?</a></p>
             </div>
 
         </div>

@@ -40,7 +40,7 @@ textarea{
 
 input[type ="number"]{
     padding-left: 30px;
-    height: 100%;
+    width: 100%;
 }
 
 input[type ="text"]{
@@ -101,4 +101,8 @@ input[type ="text"]{
 .error_paso{
     display: block;
     margin-left: 170px;
+}
+
+.nombre_crnm{
+    width: 100%;
 }
