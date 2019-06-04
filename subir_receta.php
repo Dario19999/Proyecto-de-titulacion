@@ -147,7 +147,7 @@
                     </div>
 
                     <div class="form-group col-md-7">
-                        <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" id = "textarea" placeholder="Describa el paso."></textarea> 
+                        <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" id = "textarea" placeholder="Describa el paso." required></textarea> 
                     </div>
                 </div> 
             </div>
@@ -158,7 +158,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-3 text-center">
-                    <input type="button" id="agregar_paso" name="agregar_paso" value="Agragar paso" class="btn boton_generico">
+                    <input type="button" id="agregar_paso" name="agregar_paso" value="Agregar paso" class="btn boton_generico">
                 </div>
             </div>
             
