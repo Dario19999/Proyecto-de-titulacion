@@ -8,17 +8,17 @@
     $mail = new PHPMailer(true);
     try {
         //Server settings
-        $mail->SMTPDebug = 2;                                       // Enable verbose debug output
+        $mail->SMTPDebug = 1;                                       // Enable verbose debug output
         $mail->isSMTP();                                            // Set mailer to use SMTP
         $mail->Host       = 'smtp.hostinger.mx';                    // Specify main and backup SMTP servers
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'contacto@lacousine.com';               // SMTP username
+        $mail->Username   = 'otro@lacousine.com';               // SMTP username
         $mail->Password   = 'hola12345';                            // SMTP password
         $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
         $mail->Port       = 587;                                    // TCP port to connect to
 
         //Recipients
-        $mail->setFrom('contacto@lacousine.com', 'La Cousine');
+        $mail->setFrom('otro@lacousine.com', 'La Cousine');
         $mail->addAddress("jessicaamaralfranco@gmail.com", "Jessica");     // Add a recipient
 
         // // Attachments
