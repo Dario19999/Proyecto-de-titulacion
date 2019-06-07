@@ -37,8 +37,8 @@
 
 			$client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
 			$response = $client->jessyMethod($reponseParams);
-			echo $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));
-
+			$col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));
+			
 			// // header('Content-Type: application/json');
 					
 			// // for($i=0; $i < ($col); $i++) {

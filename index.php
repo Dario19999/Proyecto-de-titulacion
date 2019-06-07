@@ -10,8 +10,8 @@ $user = new User ();
 
 if(isset($_SERVER['HTTP_REFERER'])) {
 $pagina_anterior=$_SERVER['HTTP_REFERER'];
-    // if ($pagina_anterior=='http://localhost/lacousine.com/registro.php'){
-    if ($pagina_anterior=='https://lacousine.com/registro.php'){
+    if ($pagina_anterior=='http://localhost/lacousine.com/registro.php'){
+    // if ($pagina_anterior=='https://lacousine.com/registro.php'){
         $errorLogin = "Registro exitoso".'<br>';
         include_once 'login.php';
     }
