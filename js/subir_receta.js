@@ -1,7 +1,8 @@
 
 let cont_npaso = 2;
-let cont_ncrnm = 2;
+let cont_ncrnm = 0;
 let cont_paso = 1;
+let cont_crnm = 0;
 let cont_id = 1;
 
 $(".error_nombre").hide();
@@ -23,6 +24,7 @@ $(function(){
         var url = $(this).attr('action');
         datos.push({name: "cant_ingr", value: cont_ingr});
         datos.push({name: "cant_pasos", value: cont_paso});
+        datos.push({name: "cant_crnm", value: cont_crnm});
         console.log(datos);
         $.ajax({
             type: 'post',
@@ -50,7 +52,7 @@ $(function(){
                 }
 
                 if(data.error_nombre == 0 && data.error_paso == 0 && data.error_ingr == 0){
-                    window.location.replace("success.php");
+                    // window.location.replace("success.php");
                     console.log("a huevo");
                 }
             },
@@ -124,6 +126,12 @@ function clonar_paso(){
 }
 
 function clonar_crnm() {
+
+    
+    cont_ncrnm+=1;
+    cont_crnm+=1;
+    console.log(cont_crnm);
+
     let name_nombre_crnm = "nombre_crnm_"+cont_ncrnm;
     let name_horas = "horas_"+cont_ncrnm;
     let name_minutos = "minutos_"+cont_ncrnm;
@@ -133,6 +141,7 @@ function clonar_crnm() {
     var crnm_input = document.getElementById("crnm_group");
     var cronometro = document.createElement("div");
     cronometro.setAttribute("id", id_cronometro);
+    cronometro.setAttribute("class", "cronometro");    
     crnm_input.appendChild(cronometro);
 
     var new_name_container = document.createElement("div");
@@ -162,6 +171,7 @@ function clonar_crnm() {
     new_hora.setAttribute("id", name_horas);
     new_hora.setAttribute("min", "1");
     new_hora.setAttribute("max", "60");
+    new_hora.setAttribute("value", "0");
     new_hora.setAttribute("placeholder", "horas");
     new_hora.setAttribute("name", name_horas);
     horas_div.appendChild(new_hora);
@@ -171,6 +181,7 @@ function clonar_crnm() {
     new_minutos.setAttribute("id", name_minutos);
     new_minutos.setAttribute("min", "1");
     new_minutos.setAttribute("max", "60");
+    new_minutos.setAttribute("value", "0");
     new_minutos.setAttribute("placeholder", "minutos");
     new_minutos.setAttribute("name", name_minutos);
     minutos_div.appendChild(new_minutos);
@@ -180,12 +191,10 @@ function clonar_crnm() {
     new_segundos.setAttribute("id", name_segundos);
     new_segundos.setAttribute("min", "1");
     new_segundos.setAttribute("max", "60");
-    new_segundos.setAttribute("placeholder", "horas");
+    new_segundos.setAttribute("value", "0");
+    new_segundos.setAttribute("placeholder", "segundos");
     new_segundos.setAttribute("name", name_segundos);
     segundos_div.appendChild(new_segundos);
-
-    var line = document.createElement("hr");
-    crnm_input.appendChild(line);
 
     //boton para eliminar el cronometro
     var div_btn_delete = document.createElement("div");
@@ -203,9 +212,10 @@ function clonar_crnm() {
     btn_delete.appendChild(span);
     //función que elimina el nodo
     btn_delete.addEventListener("click", function(){
-        var deleted = document.querySelectorAll('div#cronometro_2 div.form-row');
+        var deleted = document.querySelectorAll('div#crnm_group div.cronometro');
         deleted[0].parentNode.removeChild(deleted[0]);
-        deleted[1].parentNode.removeChild(deleted[1]);
         cont_ncrnm-=1;
+        cont_crnm-=1;
     });
+
 }

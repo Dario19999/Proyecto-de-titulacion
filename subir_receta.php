@@ -166,7 +166,7 @@
             <p class="subtitulo_subir">Cronómetros</p>
 
             <div id="crnm_group">
-                <div id="cronometro_1">
+                <!-- <div id="cronometro_1" class="cronometro">
                     <div class="form-row">
                         <div class="form-group col-md-2 text-center">
                             <input type="text" id="nombre_crnm_1" placeholder="nombre" name="nombre_crnm_1">
@@ -185,7 +185,7 @@
                         </div>
                     </div>                
                 </div>
-                <hr>
+                <hr> -->
             </div>
             
 
