@@ -14,7 +14,7 @@
     $query_this_user = "SELECT id_usuario FROM usuario WHERE nombre = '$usuario'";
     $res = mysqli_query($conexion, $query_this_user);
     while($row = mysqli_fetch_array($res)){
-        $id_usuario=$row['id_usuario'];
+        $i_usuario=$row['id_usuario'];
     }
 
     $nombre_receta = filter_var($_POST['nombre_receta'], FILTER_SANITIZE_STRING);
@@ -35,10 +35,10 @@
             ${"minutos_" . $c} = filter_var($_POST['minutos_' .$c], FILTER_SANITIZE_STRING);
             ${"segundos" . $c} = filter_var($_POST['segundos_' .$c], FILTER_SANITIZE_STRING);
         }
+        // echo json_encode($nombre_crnm_1);
+        // die();
     }    
-   
 
-   
     for($i=1; $i<=$cant_ingr; $i++){
         ${"cant_" . $i} = filter_var($_POST['cant_' . $i],FILTER_SANITIZE_STRING);
         ${"medida_" . $i} = filter_var($_POST['medida_' . $i],FILTER_SANITIZE_STRING);
@@ -100,7 +100,7 @@
     ); 
 
     echo json_encode($respuesta);
-
+    
     if($bandera == 1){
         try{
 
@@ -108,7 +108,7 @@
             $insert_receta->bind_param('iiiss', $nacionalidad, $id_usuario, $categoria, $nombre_receta, $porciones);
             $insert_receta->execute();
             $id_receta = mysqli_insert_id($conexion);
-            $insert_receta->close();
+            // $insert_receta->close();
 
             for($j = 1; $j<=$cant_pasos; $j++){
                 $insert_paso = $conexion->prepare("INSERT INTO procedimiento (id_receta, paso) VALUES (?, ?)");
@@ -122,19 +122,20 @@
                 $insert_ingr->execute();
             }
 
-
-
             if($cant_crnm == 0){
 
             }else{
-
+                
                 for($c=1; $c<=$cant_crnm; $c++){
+                    
                     $insert_crnm = $conexion->prepare("INSERT INTO cronometros (id_receta, nombre, horas, minutos, segundos) VALUES (?, ?, ?, ?, ?)");
-                    $insert_crnm->bind_param('isiii', $id_receta, ${"nombre_crnm_" . $c}, ${"hora_" . $c}, ${"minutos_" . $c}, ${"segundos_" . $c});
-                    $insert_crnm->excecute();
-                }              
+                    
+                    $insert_crnm->bind_param('issss', $id_receta, ${"nombre_crnm_" . $c}, ${"hora_" . $c}, ${"minutos_" . $c}, ${"segundos_" . $c});
+                    
+                    $insert_crnm->execute();
+                    // die(); 
+                }             
             }        
-                die();
 
         }catch(Exception $e){
 

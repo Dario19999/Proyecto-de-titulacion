@@ -56,7 +56,7 @@ $(function(){
                 }
             },
             error: function(){
-                console.log("esto no es un no error");
+                console.log("error");
             }
         });
     });
@@ -126,10 +126,8 @@ function clonar_paso(){
 
 function clonar_crnm() {
 
-    
     cont_ncrnm+=1;
-    cont_crnm+=1;
-    console.log(cont_crnm);
+    console.log(cont_ncrnm);
 
     let name_nombre_crnm = "nombre_crnm_"+cont_ncrnm;
     let name_horas = "horas_"+cont_ncrnm;
@@ -214,7 +212,6 @@ function clonar_crnm() {
         var deleted = document.querySelectorAll('div#crnm_group div.cronometro');
         deleted[0].parentNode.removeChild(deleted[0]);
         cont_ncrnm-=1;
-        cont_crnm-=1;
     });
 
 }
