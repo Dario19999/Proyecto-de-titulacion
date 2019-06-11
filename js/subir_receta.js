@@ -2,7 +2,6 @@
 let cont_npaso = 2;
 let cont_ncrnm = 0;
 let cont_paso = 1;
-let cont_crnm = 0;
 let cont_id = 1;
 
 $(".error_nombre").hide();
@@ -24,7 +23,7 @@ $(function(){
         var url = $(this).attr('action');
         datos.push({name: "cant_ingr", value: cont_ingr});
         datos.push({name: "cant_pasos", value: cont_paso});
-        datos.push({name: "cant_crnm", value: cont_crnm});
+        datos.push({name: "cant_crnm", value: cont_ncrnm});
         console.log(datos);
         $.ajax({
             type: 'post',

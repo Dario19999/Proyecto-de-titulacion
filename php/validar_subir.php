@@ -2,7 +2,7 @@
     // echo json_encode("depurador 3000");
     include_once 'conexion.php';
     include_once '../sesion.php';
-    include '../validar.php';
+    include_once '../validar.php';
 
     $userSession = new userSession();
     $user = new User ();
@@ -26,15 +26,17 @@
     $cant_crnm = filter_var($_POST['cant_crnm'], FILTER_SANITIZE_NUMBER_INT);
 
     if($cant_crnm == 0){
-
+ 
     }else{
+ 
         for($c=1; $c<=$cant_crnm; $c++){
             ${"nombre_crnm_" . $c} = filter_var($_POST['nombre_crnm_' .$c], FILTER_SANITIZE_STRING);
             ${"horas_" . $c} = filter_var($_POST['horas_' .$c], FILTER_SANITIZE_STRING);
             ${"minutos_" . $c} = filter_var($_POST['minutos_' .$c], FILTER_SANITIZE_STRING);
             ${"segundos" . $c} = filter_var($_POST['segundos_' .$c], FILTER_SANITIZE_STRING);
         }
-    }
+    }    
+   
 
    
     for($i=1; $i<=$cant_ingr; $i++){
@@ -42,7 +44,7 @@
         ${"medida_" . $i} = filter_var($_POST['medida_' . $i],FILTER_SANITIZE_STRING);
         ${"ingr_" . $i} = filter_var($_POST['ingr_' . $i],FILTER_SANITIZE_STRING);
     }
-    
+
     $pasote = "";
     for($p=1; $p<=$cant_pasos; $p++){
         ${"paso_" . $p} = filter_var($_POST['paso_' . $p],FILTER_SANITIZE_STRING);
@@ -98,10 +100,10 @@
     ); 
 
     echo json_encode($respuesta);
-die();
+
     if($bandera == 1){
         try{
-   
+
             $insert_receta = $conexion->prepare("INSERT INTO receta (id_nacionalidad, id_usuario, id_categorias, nombre_receta, porciones) VALUES (?, ?, ?, ?, ?)");
             $insert_receta->bind_param('iiiss', $nacionalidad, $id_usuario, $categoria, $nombre_receta, $porciones);
             $insert_receta->execute();
@@ -120,18 +122,20 @@ die();
                 $insert_ingr->execute();
             }
 
-            // if($cant_crnm == 0){
-            //     echo "hola";
-            // }else{
 
-            //     for($j=1; $j<=$cant_crnm; $j++){
-            //         $insert_crnm = $conexion->prepare("INSERT INTO cronometros (id_receta, nombre, horas, minutos, segundos) VALUES (?, ?, ?, ?, ?)");
-            //         $insert_crnm->bind_param('isiii', $id_receta, ${"nombre_crnm_" . $j}, ${"hora_" . $j}, ${"minutos_" . $j}, ${"segundos_" . $j});
-            //         $insert_crnm->excecute();
-            //     }  
-                             
-            // }                
-            
+
+            if($cant_crnm == 0){
+
+            }else{
+
+                for($c=1; $c<=$cant_crnm; $c++){
+                    $insert_crnm = $conexion->prepare("INSERT INTO cronometros (id_receta, nombre, horas, minutos, segundos) VALUES (?, ?, ?, ?, ?)");
+                    $insert_crnm->bind_param('isiii', $id_receta, ${"nombre_crnm_" . $c}, ${"hora_" . $c}, ${"minutos_" . $c}, ${"segundos_" . $c});
+                    $insert_crnm->excecute();
+                }              
+            }        
+                die();
+
         }catch(Exception $e){
 
             $respuesta = array(
