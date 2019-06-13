@@ -33,10 +33,8 @@
             ${"nombre_crnm_" . $c} = filter_var($_POST['nombre_crnm_' .$c], FILTER_SANITIZE_STRING);
             ${"horas_" . $c} = filter_var($_POST['horas_' .$c], FILTER_SANITIZE_STRING);
             ${"minutos_" . $c} = filter_var($_POST['minutos_' .$c], FILTER_SANITIZE_STRING);
-            ${"segundos" . $c} = filter_var($_POST['segundos_' .$c], FILTER_SANITIZE_STRING);
+            ${"segundos_" . $c} = filter_var($_POST['segundos_' .$c], FILTER_SANITIZE_STRING);
         }
-        // echo json_encode($nombre_crnm_1);
-        // die();
     }    
 
     for($i=1; $i<=$cant_ingr; $i++){
@@ -129,11 +127,8 @@
                 for($c=1; $c<=$cant_crnm; $c++){
                     
                     $insert_crnm = $conexion->prepare("INSERT INTO cronometros (id_receta, nombre, horas, minutos, segundos) VALUES (?, ?, ?, ?, ?)");
-                    
-                    $insert_crnm->bind_param('issss', $id_receta, ${"nombre_crnm_" . $c}, ${"hora_" . $c}, ${"minutos_" . $c}, ${"segundos_" . $c});
-                    
+                    $insert_crnm->bind_param('isiii', $id_receta, ${"nombre_crnm_" . $c}, ${"horas_" . $c}, ${"minutos_" . $c}, ${"segundos_" . $c});
                     $insert_crnm->execute();
-                    // die(); 
                 }             
             }        
 
