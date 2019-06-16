@@ -146,23 +146,36 @@
         </div>
 
     </div>
+    <hr>
+    <h2>Temporizadores</h2>                  
+    <?php
+    
+    $query =("SELECT * FROM cronometros WHERE id_receta=$id_receta");
+    $rs = mysqli_query ($conexion, $query);
+    while(($row=mysqli_fetch_array($rs))) {
 
-    <h3 id="nombre">Temporizadores</h3>
-    <h1 id="tiempo">00:00:00</h1>
+        $horas=$row['horas'];
+        $minutos=$row['minutos'];
+        $segundos=$row['segundos'];
+        $id_crnm = $row['id_cronometro'];
+        $nombre_crnm = $row['nombre'];?>
 
-    Horas<input type="number" id="h">
-    Minutos<input type="number" id="m">
-    Segundos<input type="number" id="s">
+      
+        <?php if(isset($nombre_crnm)) {?>
+        <br>
+        <h3> <?php echo $nombre_crnm ?> </h3>
 
-
-    <button type="button" class ="btn" onclick="Empezar()">Empezar</button>
-    <button type="button" class ="btn" id="detener">Detener</button>
-    <button type="button" class ="btn" id="reiniciar">Continuar</button>
-    <button type="button" class ="btn" id="eliminar">Eliminar</button>
-
-
+        <h3 id="<?php echo $id_crnm?>tiempo"><?php echo $horas ?>:<?php echo $minutos ?>
+        :<?php echo $segundos ?></h3>           
+    
+        <button type="button" onclick="<?php echo $id_crnm?>+Empezar()">Empezar</button>
+        <button type="button" id="detener">Detener</button>
+        <button type="button" id="reiniciar">Continuar</button>
+        <br>
+      
+    <?php } else echo "No hay temporizadores";}?>
+     
 <?php
-
 $query = ("SELECT audio FROM receta WHERE id_receta=$id_receta");
 $rs = mysqli_query ($conexion, $query);         
 while(($row=mysqli_fetch_assoc($rs))){        
@@ -328,9 +341,6 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 // // return $audioContent;
 
 
-        
-
-
 // //GUARDA AUDIO DE INICIO CRONÓMETROS
 
 // instantiates a client
@@ -430,8 +440,9 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/timer.jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
         
     <script>
 
@@ -513,36 +524,48 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 
     })
 
-    audio_fin=new Audio("audio/fin.mp3");
-    audio_inicio=new Audio("audio/inicio.mp3");
+    <?php
+    
+    $query =("SELECT * FROM cronometros WHERE id_receta=$id_receta");
+    $rs = mysqli_query ($conexion, $query);
+    while(($row=mysqli_fetch_array($rs))) {
 
-    function Empezar(){
+        $horas=$row['horas'];
+        $minutos=$row['minutos'];
+        $segundos=$row['segundos'];
+        $id_crnm = $row['id_cronometro'];
+        $nombre_crnm = $row['nombre'];?>    
+
+        audio_fin=new Audio("audio/fin.mp3");
+        audio_inicio=new Audio("audio/inicio.mp3");
+
+    function <?php echo $id_crnm ?>Empezar(){
         audio_fin.pause();
         audio_inicio.pause();
         audio_fin.currentTime=0;
         audio_inicio.currentTime=0;
         audio_inicio.play();
 
-        $("#tiempo").timer('remove');
+        $("#<?php echo $id_crnm?>tiempo").timer('remove');
 
         //pause an existing timer
         $("#detener").on('click', function(){
-            $("#tiempo").timer('pause')
+            $("#<?php echo $id_crnm?>tiempo").timer('pause')
         });
 
         //resume a paused timer
         $("#reiniciar").on('click', function(){
-            $("#tiempo").timer('resume')
+            $("#<?php echo $id_crnm?>tiempo").timer('resume')
         });
 
         $("#eliminar").on('click', function(){
-            $("#tiempo").timer('remove')
+            $("#<?php echo $id_crnm?>tiempo").timer('remove')
         });
         // $("#tiempo").timer('remove');
-        $("#tiempo").timer({
+        $("#<?php echo $id_crnm?>tiempo").timer({
             countdown:true, 
-            duration:$("#h").val()+'h'+
-            $("#m").val()+'m'+$("#s").val()+'s',
+            duration:'<?php  echo $horas ?>'+'h'+
+            '<?php echo $minutos ?>'+'m'+'<?php echo $segundos ?>'+'s',
             callback:function(){
                 // audio.addEventListener('ended', function(){
                 //     this.currentTime=0;
@@ -556,6 +579,8 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
             
         });
     }
+    <?php }?>
+    
         
  
 </script>

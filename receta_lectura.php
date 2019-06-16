@@ -226,9 +226,9 @@ if($cant!=0){
 </div>
 
 
-        <div class="nombre_receta">
+    <div class="nombre_receta">
   
-            <h1> <?php echo $nombre_receta;?></h1>
+        <h1> <?php echo $nombre_receta;?></h1>
     
         </div>
         <hr>
@@ -244,7 +244,7 @@ if($cant!=0){
 
                 <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
-                    <input type="number" name="porcion" id="porciones" min="1" max='3' value="<?php echo $actual_porciones?>">
+                    <input type="number" name="porcion" id="porciones" min="1" max= "<?php $max ?>" value="<?php echo $actual_porciones?>">
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
                     
                     <div class="align-items-end">
@@ -255,12 +255,18 @@ if($cant!=0){
                   
                             
                     <?php
-                            $array=[];
-                            if (isset($_POST['porcion'])){
-                                $new_porcion = $_POST['porcion'];
-                            }else{
-                                $new_porcion = $actual_porciones;
-                            }
+                        $array=[];
+                        if (isset($_POST['porcion'])){
+                            $new_porcion = $_POST['porcion'];
+                        }else{
+                            $new_porcion = $actual_porciones;
+                        }
+
+                        $query = ("SELECT cantidad FROM datos_receta WHERE id_receta = $id_receta");
+                        $rs = mysqli_query ($conexion, $query);
+                        while ($row = mysqli_fetch_assoc($rs)){
+                            $cant_original =$row ['cantidad'];
+                        }
                                 
                         $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
                         FROM datos_receta WHERE id_receta=$id_receta");
@@ -270,6 +276,7 @@ if($cant!=0){
                             $new_cantidad = $row['Recalculo']; 
                             $medida=$row['medida'];
                             $ingrediente=$row['nombre_ingrediente']; 
+                            
          
                             $opts = array(
                                 'ssl' => array(
@@ -287,16 +294,29 @@ if($cant!=0){
                             $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
                             $response = $client->jessyMethod($reponseParams);
                             if (isset ($response->jessyMethodResult->RespuestaModelo)){
-                                $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));                                       
+                                $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0)); 
+                                // for($i=0; $i < ($col); $i++) {
+                                //     $data= json_decode($response->jessyMethodResult->RespuestaModelo);
+                                //     array_push($array,$data);
+			                    // }                                         
                                 $data= json_decode($response->jessyMethodResult->RespuestaModelo);
-                                array_push($array,$data);
                                 var_dump ($array);
                             }else 
 
                     ?>
                           <div>
                             <ul>
-                                <li><?php echo $ingrediente."   " .$new_cantidad." ".$medida ?></li>
+                                
+                                
+                                <?php 
+                                // if($new_cantidad>($cant_original*3)){
+                                //     $max=
+                                    
+                                // } ?>
+                                    <li> <?php  echo $ingrediente."   " .$new_cantidad." ".$medida ; ?> </li>
+                               
+                                
+                                
                             <ul>
                             
                         </div>
