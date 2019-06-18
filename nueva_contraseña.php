@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Cambiar contraseña</title>
+        <title>Recuperar Contraseña</title>
         <link rel="icon" href="img/icon1.png">
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/plantilla.css">
@@ -22,20 +22,22 @@
     <body> 
 
         <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
-                <a href="#" class="navbar-brand brand" style="color: #fffaa3; font-size: 40px;">La Cousine</a>
+                <a href="#" class="navbar-brand brand" style="color: #fffaa3; font-size: 40px;">La Cuisine</a>
         </nav>
 
         <div class="login">
 
             <div class="titulo">
-                <h1>La cousine</h1>
+                <h1>La Cuisine</h1>
+                <h3>Ventana de Recuperación de contraseña</h3>
+                <h5>Usted está recuperando su contraseña</h5>
             </div>
         
 
             <form action="" method="POST">
                 <input type="password" placeholder=" Contraseña nueva" name="new_pass"required>
                 <input type="password" placeholder=" Confirmar contraseña" name="conf_new_pass"required>
-                <button class="btn boton_generico" type="submit" name="rec">Recuperar contraseña</button>
+                <button class="btn boton_generico" type="submit" name="rec">Pulse aquí para Recuperar su contraseña porque usted está en la ventana de recuperación de contraseña</button>
             </form>
         </div>
 

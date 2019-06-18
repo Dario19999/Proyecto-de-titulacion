@@ -26,7 +26,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
                 echo "<title>Glosario</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/glosario.css'>";
             }else if($pagina == 'index'){
-                echo "<title>La Cousine</title>";
+                echo "<title>La Cuisine</title>";
                 echo "<link rel = 'stylesheet' type = 'text/css' href = 'css/pagina_principal.css'>";
             }else if($pagina == 'perfil'){
                 echo "<title>Perfil</title>";
@@ -69,7 +69,7 @@ al presionar un botón con ícono de configuarción-->
 
         <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
 
-            <button class="navbar-brand btn" id="btn_brand" onclick="redirigir(this.id)" style="color: #fffaa3; background-color: #ff7e05; font-family: 'Yellowtail', cursive; font-size: 40px;">La Cousine</button>
+            <button class="navbar-brand btn" id="btn_brand" onclick="redirigir(this.id)" style="color: #fffaa3; background-color: #ff7e05; font-family: 'Yellowtail', cursive; font-size: 40px;">La Cuisine</button>
 
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

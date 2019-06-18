@@ -39,7 +39,7 @@
     <body>
 
         <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
-            <a class="navbar-brand brand" style="color: #fffaa3; font-size: 40px; cursor:pointer;" id="btn_logout" onclick="redirigir(this.id)">La Cousine</a>
+            <a class="navbar-brand brand" style="color: #fffaa3; font-size: 40px; cursor:pointer;" id="btn_logout" onclick="redirigir(this.id)">La Cuisine</a>
         </nav>
     
     <br>

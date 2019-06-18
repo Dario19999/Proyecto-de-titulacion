@@ -240,11 +240,12 @@ if($cant!=0){
                     while($row = mysqli_fetch_array($res_porciones)){
                         $actual_porciones = $row['porciones'];
                     }
+                    $max = $actual_porciones+5;
                 ?>
 
                 <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
-                    <input type="number" name="porcion" id="porciones" min="1" max= "<?php $max ?>" value="<?php echo $actual_porciones?>">
+                    <input type="number" name="porcion" id="porciones" min="1" max= "<?php echo $max ?>" value="<?php echo $actual_porciones?>">
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
                     
                     <div class="align-items-end">

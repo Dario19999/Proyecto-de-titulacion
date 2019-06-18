@@ -14,7 +14,7 @@
     $query_this_user = "SELECT id_usuario FROM usuario WHERE nombre = '$usuario'";
     $res = mysqli_query($conexion, $query_this_user);
     while($row = mysqli_fetch_array($res)){
-        $i_usuario=$row['id_usuario'];
+        $id_usuario=$row['id_usuario'];
     }
 
     $nombre_receta = filter_var($_POST['nombre_receta'], FILTER_SANITIZE_STRING);
@@ -106,7 +106,6 @@
             $insert_receta->bind_param('iiiss', $nacionalidad, $id_usuario, $categoria, $nombre_receta, $porciones);
             $insert_receta->execute();
             $id_receta = mysqli_insert_id($conexion);
-            // $insert_receta->close();
 
             for($j = 1; $j<=$cant_pasos; $j++){
                 $insert_paso = $conexion->prepare("INSERT INTO procedimiento (id_receta, paso) VALUES (?, ?)");
