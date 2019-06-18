@@ -353,6 +353,7 @@ if($cant!=0){
                         $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
                         FROM datos_receta WHERE id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
+                        $cot=0;
                         while($row = mysqli_fetch_assoc($rs)){
                             $new_cantidad = $row['Recalculo']; 
                             $medida=$row['medida'];
@@ -373,7 +374,6 @@ if($cant!=0){
 
                             $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
                             $response = $client->jessyMethod($reponseParams);
-                            $cot=0;
                             if (isset ($response->jessyMethodResult->RespuestaModelo)){
                                 $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));                                          
                                 $data=($response->jessyMethodResult->RespuestaModelo);
@@ -382,8 +382,10 @@ if($cant!=0){
                                 echo $valor = $data[1]->valor;
                                 echo "<br>";
                                 $precio=substr($valor, 3);
-                                $cot=$cot+$precio;
-                            }else echo "No se encontró <br>";
+                                // echo $new_cantidad;
+                                // echo "<br>";
+                                $cot=($cot+$precio)*$new_cantidad;
+                            }else echo $ingrediente." no se encontró <br>";
                         }
                         echo "Precio total: $".$cot."<br>";
                             ?>

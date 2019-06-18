@@ -153,7 +153,6 @@
     $query =("SELECT * FROM cronometros WHERE id_receta=$id_receta");
     $rs = mysqli_query ($conexion, $query);
     while(($row=mysqli_fetch_array($rs))) {
-
         $horas=$row['horas'];
         $minutos=$row['minutos'];
         $segundos=$row['segundos'];
@@ -165,12 +164,13 @@
         <br>
         <h3> <?php echo $nombre_crnm ?> </h3>
 
-        <h3 id="<?php echo $id_crnm?>tiempo"><?php echo $horas ?>:<?php echo $minutos ?>
+        <h3 id="tiempo<?php echo $id_crnm ?>"><?php echo $horas ?>:<?php echo $minutos ?>
         :<?php echo $segundos ?></h3>           
     
-        <button type="button" onclick="<?php echo $id_crnm?>+Empezar()">Empezar</button>
-        <button type="button" id="detener">Detener</button>
-        <button type="button" id="reiniciar">Continuar</button>
+        <button type="button" id="<?php echo $id_crnm ?>" data-h="<?php echo $horas ?>" 
+        data-m="<?php echo $minutos ?>" data-s="<?php echo $segundos ?>" onclick="Empezar(this.id)">Empezar</button>
+        <button type="button" id="detener<?php echo $id_crnm ?>">Detener</button>
+        <button type="button" id="reiniciar<?php echo $id_crnm ?>">Continuar</button>
         <br>
       
     <?php } else echo "No hay temporizadores";}?>
@@ -435,7 +435,7 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 // mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 // }
 
-} ?>
+}?>
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -523,49 +523,42 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
     // document.location.href="http://localhost/lacousine.com/perfil.php" ;
 
     })
-
-    <?php
-    
-    $query =("SELECT * FROM cronometros WHERE id_receta=$id_receta");
-    $rs = mysqli_query ($conexion, $query);
-    while(($row=mysqli_fetch_array($rs))) {
-
-        $horas=$row['horas'];
-        $minutos=$row['minutos'];
-        $segundos=$row['segundos'];
-        $id_crnm = $row['id_cronometro'];
-        $nombre_crnm = $row['nombre'];?>    
-
         audio_fin=new Audio("audio/fin.mp3");
         audio_inicio=new Audio("audio/inicio.mp3");
 
-    function <?php echo $id_crnm ?>Empezar(){
+    function Empezar(id){
         audio_fin.pause();
         audio_inicio.pause();
         audio_fin.currentTime=0;
         audio_inicio.currentTime=0;
         audio_inicio.play();
 
-        $("#<?php echo $id_crnm?>tiempo").timer('remove');
+        var horas = parseInt($(id).attr("data-h"));
+        var minutos = parseInt($(id).attr("data-m"));
+        var segundos = parseInt($(id).attr("data-s"));
+
+        console.log(segundos);
+        console.log(id);
+
+        $("#tiempo"+id).timer('remove');
 
         //pause an existing timer
-        $("#detener").on('click', function(){
-            $("#<?php echo $id_crnm?>tiempo").timer('pause')
+        $("#detener"+id).on('click', function(){
+            $("#tiempo"+id).timer('pause')
         });
 
         //resume a paused timer
-        $("#reiniciar").on('click', function(){
-            $("#<?php echo $id_crnm?>tiempo").timer('resume')
+        $("#reiniciar"+id).on('click', function(){
+            $("#tiempo"+id).timer('resume')
         });
 
-        $("#eliminar").on('click', function(){
-            $("#<?php echo $id_crnm?>tiempo").timer('remove')
+        $("#eliminar"+id).on('click', function(){
+            $("#tiempo"+id).timer('remove')
         });
         // $("#tiempo").timer('remove');
-        $("#<?php echo $id_crnm?>tiempo").timer({
-            countdown:true, 
-            duration:'<?php  echo $horas ?>'+'h'+
-            '<?php echo $minutos ?>'+'m'+'<?php echo $segundos ?>'+'s',
+        $("#tiempo"+id).timer({
+            countdown:true,
+            duration:horas+'h'+minutos+'m'+segundos+'s',   
             callback:function(){
                 // audio.addEventListener('ended', function(){
                 //     this.currentTime=0;
@@ -578,10 +571,7 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
                 format:'%H:%M:%S'
             
         });
-    }
-    <?php }?>
-    
-        
+    }    
  
 </script>
 
