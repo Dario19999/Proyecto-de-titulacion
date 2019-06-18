@@ -240,11 +240,12 @@ if($cant!=0){
                     while($row = mysqli_fetch_array($res_porciones)){
                         $actual_porciones = $row['porciones'];
                     }
+                    $max = $actual_porciones+5;
                 ?>
 
                 <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
-                    <input type="number" name="porcion" id="porciones" min="1" max= "<?php $max ?>" value="<?php echo $actual_porciones?>">
+                    <input type="number" name="porcion" id="porciones" min="1" max= "<?php echo $max ?>" value="<?php echo $actual_porciones?>">
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
                     
                     <div class="align-items-end">
@@ -278,30 +279,30 @@ if($cant!=0){
                             $ingrediente=$row['nombre_ingrediente']; 
                             
          
-                            $opts = array(
-                                'ssl' => array(
-                                    'ciphers' => 'RC4-SHA',
-                                    'verify_peer' => false,
-                                    'verify_peer_name' => false
-                                )
-                            );
-                            // SOAP 1.2 client
-                            $reponseParams = array(
-                                'pkSitio' => '1',
-                                'producto' => $ingrediente
-                            );
+                            // $opts = array(
+                            //     'ssl' => array(
+                            //         'ciphers' => 'RC4-SHA',
+                            //         'verify_peer' => false,
+                            //         'verify_peer_name' => false
+                            //     )
+                            // );
+                            // // SOAP 1.2 client
+                            // $reponseParams = array(
+                            //     'pkSitio' => '1',
+                            //     'producto' => $ingrediente
+                            // );
 
-                            $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
-                            $response = $client->jessyMethod($reponseParams);
-                            if (isset ($response->jessyMethodResult->RespuestaModelo)){
-                                $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0)); 
-                                // for($i=0; $i < ($col); $i++) {
-                                //     $data= json_decode($response->jessyMethodResult->RespuestaModelo);
-                                //     array_push($array,$data);
-			                    // }                                         
-                                $data= json_decode($response->jessyMethodResult->RespuestaModelo);
-                                var_dump ($array);
-                            }else 
+                            // $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
+                            // $response = $client->jessyMethod($reponseParams);
+                            // if (isset ($response->jessyMethodResult->RespuestaModelo)){
+                            //     $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0)); 
+                            //     // for($i=0; $i < ($col); $i++) {
+                            //     //     $data= json_decode($response->jessyMethodResult->RespuestaModelo);
+                            //     //     array_push($array,$data);
+			                //     // }                                         
+                            //     $data= json_decode($response->jessyMethodResult->RespuestaModelo);
+                            //     var_dump ($array);
+                            // }else 
 
                     ?>
                           <div>

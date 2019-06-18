@@ -51,8 +51,8 @@ $(function(){
                 }
 
                 if(data.error_nombre == 0 && data.error_paso == 0 && data.error_ingr == 0){
-                    // window.location.replace("success.php");
-                    console.log("a huevo");
+                    window.location.replace("success.php");
+                    // console.log("a huevo");
                 }
             },
             error: function(){
@@ -167,8 +167,7 @@ function clonar_crnm() {
     new_hora.setAttribute("type", "number");
     new_hora.setAttribute("id", name_horas);
     new_hora.setAttribute("min", "1");
-    new_hora.setAttribute("max", "60");
-    new_hora.setAttribute("value", "0");
+    new_hora.setAttribute("max", "60");;
     new_hora.setAttribute("placeholder", "horas");
     new_hora.setAttribute("name", name_horas);
     horas_div.appendChild(new_hora);
@@ -178,7 +177,6 @@ function clonar_crnm() {
     new_minutos.setAttribute("id", name_minutos);
     new_minutos.setAttribute("min", "1");
     new_minutos.setAttribute("max", "60");
-    new_minutos.setAttribute("value", "0");
     new_minutos.setAttribute("placeholder", "minutos");
     new_minutos.setAttribute("name", name_minutos);
     minutos_div.appendChild(new_minutos);
@@ -188,7 +186,6 @@ function clonar_crnm() {
     new_segundos.setAttribute("id", name_segundos);
     new_segundos.setAttribute("min", "1");
     new_segundos.setAttribute("max", "60");
-    new_segundos.setAttribute("value", "0");
     new_segundos.setAttribute("placeholder", "segundos");
     new_segundos.setAttribute("name", name_segundos);
     segundos_div.appendChild(new_segundos);

@@ -12,7 +12,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Cambiar contraseña</title>
+        <title>Recuperar contraseña</title>
         <link rel="icon" href="img/icon1.png">
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/plantilla.css">
@@ -24,13 +24,13 @@
     <body> 
 
         <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">
-                <a href="#" class="navbar-brand brand" style="color: #fffaa3; font-size: 40px;">La Cousine</a>
+                <a href="#" class="navbar-brand brand" style="color: #fffaa3; font-size: 40px;">La Cuisine</a>
         </nav>
 
         <div class="login">
 
             <div class="titulo">
-                <h1>La cousine</h1>
+                <h1>La Cuisine</h1>
             </div>
         
 

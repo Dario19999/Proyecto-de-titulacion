@@ -50,7 +50,7 @@
                     <input name="nueva_contra" type="password" placeholder="Inserte su nueva contraseña" required>
                     <input name="nueva_contra_rep" type="password" placeholder="Repita su nueva contraseña" required>
                     <button type="submit" name="cambiar" class="btn boton_generico">Cambiar contraseña</button>
-                    <a href="index.php" style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_volver">Volver</a>
+                    <a href="editar_perfil.php" style="font-family: 'Bree Serif', serif; color: #ff7e05; cursor: pointer;" id="btn_volver">Volver</a>
                 </div>
 
             </form>

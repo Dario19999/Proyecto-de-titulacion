@@ -86,17 +86,17 @@
             <div id="ingr_group">
                 <div class="form-row" id="ingrediente_1">
                     <div class="form-group col-md-1 text-center">
-                        <input type="number" name="cant_1" class="cantidad" min="0.00" value="0.00" step="0.01" required> 
+                        <input type="number" name="cant_1" class="cantidad" min="0.0" value="0.0" step="0.1" required> 
                     </div>
 
                     <div class="form-group col-md-2 text-center">
                         <select class="form-control custom-select" name="medida_1" required>
-                            <option value="Kilo gramo">Kg</option>
-                            <option value="gramo">g</option>
-                            <option value="mili gramo">mg</option>
-                            <option value="Onza">Oz</option>
-                            <option value="Litro">L</option>
-                            <option value="mili litro">ml</option>
+                            <option value="Kilo gramos">Kg</option>
+                            <option value="gramos">g</option>
+                            <option value="mili gramos">mg</option>
+                            <option value="Onzas">Oz</option>
+                            <option value="Litros">L</option>
+                            <option value="mili litros">ml</option>
                             <option value="Cucharadas">Cucharada(s)</option>
                             <option value="Cucharaditas">Cucharadita(s)</option>
                             <option value="Tazas">Taza(s)</option>
@@ -132,7 +132,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-1 text-center " style="margin-left: 30px">
-                    <input type="number" name="porciones" class="cantidad" min="1" value="1" required> 
+                    <input type="number" name="porciones" class="cantidad" min="1" max="20" value="1" required> 
                 </div>
             </div>
             
@@ -166,28 +166,7 @@
             <p class="subtitulo_subir">Cronómetros</p>
 
             <div id="crnm_group">
-                <!-- <div id="cronometro_1" class="cronometro">
-                    <div class="form-row">
-                        <div class="form-group col-md-2 text-center">
-                            <input type="text" id="nombre_crnm_1" placeholder="nombre" name="nombre_crnm_1">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-2 text-center">
-                            <input type="number" id="horas_1" min="1" max="60" placeholder="horas" name="horas_1">
-                        </div>
-                        <div class="form-group col-md-2 text-center">
-                            <input type="number" id="minutos_1" min="1" max="60" placeholder="minutos" name="minutos_1">
-                        </div>
-                        <div class="form-group col-md-2 text-center">
-                            <input type="number" id="segundos_1" min="1" max="60" placeholder="segundos" name="segundos_1">
-                        </div>
-                    </div>                
-                </div>
-                <hr> -->
-            </div>
-            
+            </div>  
 
             <div class="form-row">
                 <div class="form-group col-md-1 text-center">
@@ -217,7 +196,6 @@
             });
 
             var ingredientes = <?= json_encode($ingredientes)?>;
-            console.log(ingredientes);
             $("#name_ingr_1").on("focus", function(){
                 $(this).autocomplete({
                     source: ingredientes,
@@ -255,9 +233,9 @@
                 new_cant.setAttribute("type", "number");
                 new_cant.setAttribute("name", id_cant);
                 new_cant.setAttribute("class", "cantidad");
-                new_cant.setAttribute("min", "0");
-                new_cant.setAttribute("value", "0.00");
-                new_cant.setAttribute("step", "0.01")
+                new_cant.setAttribute("min", "0.0");
+                new_cant.setAttribute("value", "0.0");
+                new_cant.setAttribute("step", "0.1")
                 new_cant.setAttribute("required", "");
                 div_cant.appendChild(new_cant);
 
