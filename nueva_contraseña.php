@@ -30,14 +30,13 @@
             <div class="titulo">
                 <h1>La Cuisine</h1>
                 <h3>Ventana de Recuperación de contraseña</h3>
-                <h5>Usted está recuperando su contraseña</h5>
             </div>
         
 
             <form action="" method="POST">
                 <input type="password" placeholder=" Contraseña nueva" name="new_pass"required>
                 <input type="password" placeholder=" Confirmar contraseña" name="conf_new_pass"required>
-                <button class="btn boton_generico" type="submit" name="rec">Pulse aquí para Recuperar su contraseña porque usted está en la ventana de recuperación de contraseña</button>
+                <button class="btn boton_generico" type="submit" name="rec">Recuperar contraseña</button>
             </form>
         </div>
 
