@@ -100,7 +100,7 @@ if($cant!=0){
                     </div>
 
                     <div class="modal-body">
-                    <?php if ($cant_votos!=1){ ?>
+                    <?php if ($cant_votos!=1 && $cant_votos==0){ ?>
                         <form action="" method="POST">
                             <p>Dificultad</p>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -277,42 +277,19 @@ if($cant!=0){
                             $medida=$row['medida'];
                             $ingrediente=$row['nombre_ingrediente']; 
                             
-         
-                            $opts = array(
-                                'ssl' => array(
-                                    'ciphers' => 'RC4-SHA',
-                                    'verify_peer' => false,
-                                    'verify_peer_name' => false
-                                )
-                            );
-                            // SOAP 1.2 client
-                            $reponseParams = array(
-                                'pkSitio' => '1',
-                                'producto' => $ingrediente
-                            );
+                               
 
-                            $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
-                            $response = $client->jessyMethod($reponseParams);
-                            if (isset ($response->jessyMethodResult->RespuestaModelo)){
-                                $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0)); 
-                                // for($i=0; $i < ($col); $i++) {
-                                //     $data= json_decode($response->jessyMethodResult->RespuestaModelo);
-                                //     array_push($array,$data);
-			                    // }                                         
-                                $data= json_decode($response->jessyMethodResult->RespuestaModelo);
-                                var_dump ($array);
-                            }else 
 
                     ?>
                           <div>
                             <ul>
                                 
                                 
-                                <?php 
+                                <!-- <?php 
                                 // if($new_cantidad>($cant_original*3)){
                                 //     $max=
                                     
-                                // } ?>
+                                // } ?> -->
                                     <li> <?php  echo $ingrediente."   " .$new_cantidad." ".$medida ; ?> </li>
                                
                                 
@@ -371,7 +348,44 @@ if($cant!=0){
                         <div class="card-body">
                             <h5 class="card-title" id="super">Bodega Aurrera</h5>
                             <h6 class="card-subtitle mb-2 text-muted" id="precio">$$$</h6>
-                            <p class="card-text">Es la cotización aproximada en este supermercado.</p>
+                            <?php 
+                        $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
+                        FROM datos_receta WHERE id_receta=$id_receta");
+                        $rs = mysqli_query ($conexion, $query);
+                        while($row = mysqli_fetch_assoc($rs)){
+                            $new_cantidad = $row['Recalculo']; 
+                            $medida=$row['medida'];
+                            $ingrediente=$row['nombre_ingrediente']; 
+
+                            $opts = array(
+                                'ssl' => array(
+                                'ciphers' => 'RC4-SHA',
+                                'verify_peer' => false,
+                                'verify_peer_name' => false
+                                )
+                            );
+                            // SOAP 1.2 client
+                            $reponseParams = array(
+                                'pkSitio' => '1',
+                                'producto' => $ingrediente
+                            );
+
+                            $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
+                            $response = $client->jessyMethod($reponseParams);
+                            $cot=0;
+                            if (isset ($response->jessyMethodResult->RespuestaModelo)){
+                                $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));                                          
+                                $data=($response->jessyMethodResult->RespuestaModelo);
+                                // var_dump($data);
+                                echo $producto = $data[0]->valor;
+                                echo $valor = $data[1]->valor;
+                                echo "<br>";
+                                $precio=substr($valor, 3);
+                                $cot=$cot+$precio;
+                            }else echo "No se encontró <br>";
+                        }
+                        echo "Precio total: $".$cot."<br>";
+                            ?>
                             <a href="https://bodegaaurrera.net/" target="_blank" class="card-link">Ir a la p&aacute;gina</a>
                         </div>
                 </div>
@@ -399,11 +413,12 @@ if($cant!=0){
                     </div>
     
                 <div class="modal-body">
-                <?php if ($id_usuario_receta!=$id_usuario && $den_receta!=1){ ?>
+                <?php if ($id_usuario_receta!=$id_usuario && $den_receta!=1 && $den_receta==0){ ?>
                     <form action="" method="POST">
                             <div class="form-group">
                                 <label for="motivo_receta">Motivo de denuncia</label>
                                 <select class="form-control" id="motivo_receta">
+                                
                                 <option>Es una mala receta</option>
                                 <option>Es dañina para la salud</option>
                                 <option>Los ingredientes son incorrectos</option>
@@ -427,8 +442,7 @@ if($cant!=0){
                                  
                                 if ($total>=0 && $total<4){
                                     $query = ("UPDATE receta SET reportes = reportes +1 WHERE receta.id_receta = $id_receta");
-                                    $rs = mysqli_query ($conexion, $query);
-                                    echo "No puedes reportar esta receta de nuevo";                                          
+                                    $rs = mysqli_query ($conexion, $query);                                         
                                     $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportando =$id_usuario");
                                     mysqli_query ($conexion, $query);
                                 }else if ($total>4){
@@ -449,7 +463,7 @@ if($cant!=0){
 
                                     mailer ($correo, $nombre_usuario_receta, $asunto, $cuerpo);
                                 }
-                                $den_receta=1;
+                                
                             }
                             }else if ($id_usuario_receta==$id_usuario){
                                     echo "No puedes reportarte a ti mismo, bro";  
