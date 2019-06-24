@@ -1,21 +1,18 @@
+<hr><hr><hr><hr>
 <?php
     include 'php/conexion.php';
     include_once 'sesion.php';
     include 'validar.php';
-
+    include 'php/consultasUsuario.php';
     $userSession = new userSession();
     $user = new User ();
 
     if(isset($_SESSION['username'])){
         $usuario = $_SESSION['username'];
     }
-
-    $query_this_user = "SELECT id_usuario FROM usuario WHERE nombre = '$usuario'";
-    $res = mysqli_query($conexion, $query_this_user);
-    while($row = mysqli_fetch_array($res)){
-        $id_usuario=$row['id_usuario'];
-    }
+    $id_usuario=getIdUsuario($usuario);
 ?>
+
 <!DOCTYPE html>
 <html>
 

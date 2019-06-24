@@ -4,14 +4,8 @@
     include_once 'php/conexion.php';
     require __DIR__ . '/vendor/autoload.php';
     include 'php/conexion.php';
-
-    // Imports the Cloud Client Library
-    use Google\Cloud\TextToSpeech\V1\AudioConfig;
-    use Google\Cloud\TextToSpeech\V1\AudioEncoding;
-    use Google\Cloud\TextToSpeech\V1\SsmlVoiceGender;
-    use Google\Cloud\TextToSpeech\V1\SynthesisInput;
-    use Google\Cloud\TextToSpeech\V1\TextToSpeechClient;
-    use Google\Cloud\TextToSpeech\V1\VoiceSelectionParams;
+    include 'php/consultasReceta.php';
+    include 'php/generar_audios.php';
 
     if(isset($_GET ['id_receta'])) {
         $nombre=0;
@@ -24,10 +18,7 @@
             $paso_actual=-1;
         }
 
-        $query = ("SELECT * FROM receta WHERE id_receta = $id_receta");
-        $rs = mysqli_query ($conexion, $query);
-        while(($row=mysqli_fetch_array($rs))){ 
-        $nombre_receta= $row['nombre_receta'];
+        $nombre_receta = getReceta($id_receta);
 
         $json = array();
         $i=0;
@@ -39,14 +30,6 @@
             $json[$i] = $row;
             $i++;
         }
-
-        // $query = ("SELECT * FROM receta WHERE id_receta=$id_receta ");
-        // $rs = mysqli_query ($conexion, $query);
-        // while(($row=mysqli_fetch_assoc($rs))){ 
-        //     $row ['id'] = $i;
-        //     $json[$i] = $row;
-        //     $i++;
-        // }
 
         $query = ("SELECT * FROM procedimiento WHERE id_receta=$id_receta");
         $rs = mysqli_query ($conexion, $query);
@@ -84,14 +67,9 @@
             <h1><?php echo $nombre_receta;?></h1>
             <?php
             if ($paso_actual==-1){
-
-                // setNombre();
-                $query = ("SELECT * FROM receta WHERE id_receta=$id_receta");
-                $rs = mysqli_query ($conexion, $query);         
-                while(($row=mysqli_fetch_assoc($rs))){ 
-                    $audio=$row['audio'];       
-                    $set_audio =$row['audio'];                
-                }               
+            
+                $audio = getAudio($id_receta);
+                $set_audio = getSetAudio ($id_receta);
             ?>
 
             <audio src="<?php echo $audio ?>" autoplay></audio>
@@ -176,120 +154,55 @@
     <?php } else echo "No hay temporizadores";}?>
      
 <?php
-$query = ("SELECT audio FROM receta WHERE id_receta=$id_receta");
-$rs = mysqli_query ($conexion, $query);         
-while(($row=mysqli_fetch_assoc($rs))){        
-    $set_audio =$row['audio'];                
-}          
- 
-if (!isset ($set_audio)){
 
-    // function setNombre() {
-    // instantiates a client
-    $client = new TextToSpeechClient();
+// $query = ("SELECT audio FROM receta WHERE id_receta=$id_receta");
+// $rs = mysqli_query ($conexion, $query);         
+// while(($row=mysqli_fetch_assoc($rs))){        
+//     $set_audio =$row['audio'];                
+// }          
+ 
+// if (!isset ($set_audio)){
+
+// NOMBRE RECETA 
     $query= "SELECT * FROM receta WHERE id_receta = $id_receta";
     $rs = mysqli_query ($conexion, $query);
 
     while(($row=mysqli_fetch_assoc($rs))) {
         $texto = $row['nombre_receta'];
         $id_receta = $row ['id_receta'];
+        $contenido = "nombre";
 
-        // sets text to be synthesised
-        $synthesisInputText = (new SynthesisInput())
-
-            ->setText($texto);
-
-        // build the voice request, select the language code ("en-US") and the ssml
-        // voice gender
-        $voice = (new VoiceSelectionParams())
-            ->setLanguageCode('es-ES')
-            ->setSsmlGender(SsmlVoiceGender::FEMALE);
-
-        // Effects profile
-        $effectsProfileId = "telephony-class-application";
-
-        // select the type of audio file you want returned
-        $audioConfig = (new AudioConfig())
-            ->setAudioEncoding(AudioEncoding::MP3)
-            ->setEffectsProfileId(array($effectsProfileId));
-
-        // perform text-to-speech request on the text input with selected voice
-        // parameters and audio file type
-        $response = $client->synthesizeSpeech($synthesisInputText, $voice, $audioConfig);
-        $audioContent = $response->getAudioContent();
-
-        // the response's audioContent is binary
-        file_put_contents('audio/nombre'.$id_receta.'.mp3', $audioContent);
-
-        // echo 'Audio content written to audio/nombre'.$id_receta.'.mp3' . PHP_EOL .'<br>';
+        audio ($texto, $contenido, $id_receta);
 
         $query= "UPDATE receta SET audio = 'audio/nombre$id_receta.mp3' WHERE id_receta = $id_receta";
         mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
     }
-// }
+
 
 // PROCEDIMIENTO
 
-
-// instantiates a client
-$client = new TextToSpeechClient();
 $query= "SELECT * FROM procedimiento WHERE id_receta = $id_receta";
 $rs = mysqli_query ($conexion, $query);
-
-//GUARDA AUDIO PROCEDIMIENTO
 
 while(($row=mysqli_fetch_assoc($rs))) {
     $texto = $row['paso'];
     $id_procedimiento = $row ['id_procedimiento'];
+    $contenido = "paso";
 
-// sets text to be synthesised
-$synthesisInputText = (new SynthesisInput())
+    audio ($texto, $contenido, $id_procedimiento);
 
-    ->setText($texto);
-
-// build the voice request, select the language code ("en-US") and the ssml
-// voice gender
-$voice = (new VoiceSelectionParams())
-    ->setLanguageCode('es-ES')
-    ->setSsmlGender(SsmlVoiceGender::FEMALE);
-
-// Effects profile
-$effectsProfileId = "telephony-class-application";
-
-// select the type of audio file you want returned
-$audioConfig = (new AudioConfig())
-    ->setAudioEncoding(AudioEncoding::MP3)
-    ->setEffectsProfileId(array($effectsProfileId));
-
-// perform text-to-speech request on the text input with selected voice
-// parameters and audio file type
-$response = $client->synthesizeSpeech($synthesisInputText, $voice, $audioConfig);
-$audioContent = $response->getAudioContent();
-
-// the response's audioContent is binary
-file_put_contents('audio/paso'.$id_procedimiento.'.mp3', $audioContent);
-
-// echo 'Audio content written to audio/paso'.$id_procedimiento.'.mp3' . PHP_EOL .'<br>';
-
-$query1= "UPDATE procedimiento SET audio = 'audio/paso$id_procedimiento.mp3' WHERE id_procedimiento = $id_procedimiento";
-mysqli_query ($conexion, $query1) OR DIE ("Error: ".mysqli_error($conexion));
+    $query1= "UPDATE procedimiento SET audio = 'audio/paso$id_procedimiento.mp3' WHERE id_procedimiento = $id_procedimiento";
+    mysqli_query ($conexion, $query1) OR DIE ("Error: ".mysqli_error($conexion));
 }
-
-
-// //GUARDA AUDIO DE NOMBRES
-
-// return $audioContent;
 
 //GUARDA AUDIO DE DATOS
 
 // instantiates a client
-$client = new TextToSpeechClient();
 $query=("SELECT * FROM datos_receta WHERE id_receta=$id_receta");
 $rs=mysqli_query($conexion, $query);
 while ($row=mysqli_fetch_array($rs)){
     $id_datos=$row['id_datos'];
 }
-
 
 $query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porciones 
         FROM datos_receta, receta WHERE datos_receta.id_receta=$id_receta 
@@ -302,140 +215,16 @@ $query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porcione
         $medida=$row['medida'];
         $ingrediente=$row['nombre_ingrediente'];
         $texto=$cantidad.$medida.$ingrediente;
+        $contenido = "datos";
 
+        audio ($texto, $contenido, $id_datos);
 
-// sets text to be synthesised
-$synthesisInputText = (new SynthesisInput())
-
-    ->setText($texto);
-
-// build the voice request, select the language code ("en-US") and the ssml
-// voice gender
-$voice = (new VoiceSelectionParams())
-    ->setLanguageCode('es-ES')
-    ->setSsmlGender(SsmlVoiceGender::FEMALE);
-
-// Effects profile
-$effectsProfileId = "telephony-class-application";
-
-// select the type of audio file you want returned
-$audioConfig = (new AudioConfig())
-    ->setAudioEncoding(AudioEncoding::MP3)
-    ->setEffectsProfileId(array($effectsProfileId));
-
-// perform text-to-speech request on the text input with selected voice
-// parameters and audio file type
-$response = $client->synthesizeSpeech($synthesisInputText, $voice, $audioConfig);
-$audioContent = $response->getAudioContent();
-
-// the response's audioContent is binary
-file_put_contents('audio/datos'.$id_datos.'.mp3', $audioContent);
-
-// echo 'Audio content written to audio/datos'.$id_datos.'.mp3' . PHP_EOL .'<br>';
-
-$query= "UPDATE datos_receta SET audio = 'audio/datos$id_datos.mp3' WHERE id_datos = $id_datos";
-mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
+        $query= "UPDATE datos_receta SET audio = 'audio/datos$id_datos.mp3' WHERE id_datos = $id_datos";
+        mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 }
 
 
-// // return $audioContent;
-
-
-// //GUARDA AUDIO DE INICIO CRONÓMETROS
-
-// instantiates a client
-// $client = new TextToSpeechClient();
-// $query= "SELECT * FROM receta WHERE id_receta = $id_receta";
-// $rs = mysqli_query ($conexion, $query);
-
-// while(($row=mysqli_fetch_assoc($rs))) {
-//     $nombre = $row['nombre_receta'];
-//     $id_receta = $row ['id_receta'];
-//     $inicio ="Se ha iniciado el temporizador ";
-//     $texto=$inicio.$nombre;
-
-// // sets text to be synthesised
-// $synthesisInputText = (new SynthesisInput())
-
-//     ->setText($texto);
-
-// // build the voice request, select the language code ("en-US") and the ssml
-// // voice gender
-// $voice = (new VoiceSelectionParams())
-//     ->setLanguageCode('es-ES')
-//     ->setSsmlGender(SsmlVoiceGender::FEMALE);
-
-// // Effects profile
-// $effectsProfileId = "telephony-class-application";
-
-// // select the type of audio file you want returned
-// $audioConfig = (new AudioConfig())
-//     ->setAudioEncoding(AudioEncoding::MP3)
-//     ->setEffectsProfileId(array($effectsProfileId));
-
-// // perform text-to-speech request on the text input with selected voice
-// // parameters and audio file type
-// $response = $client->synthesizeSpeech($synthesisInputText, $voice, $audioConfig);
-// $audioContent = $response->getAudioContent();
-
-// // the response's audioContent is binary
-// file_put_contents('audio/inicio'.$id_receta.'.mp3', $audioContent);
-
-// // echo 'Audio content written to audio/inicio'.$id_receta.'.mp3' . PHP_EOL .'<br>';
-
-// $query= "UPDATE receta SET audio = 'audio/inicio$id_receta.mp3' WHERE id_receta = $id_receta";
-// mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
-// }
-
-
-
-// //GUARDA AUDIO DE FIN DE CRONÓMETROS
-
-// instantiates a client
-// $client = new TextToSpeechClient();
-// $query= "SELECT * FROM receta WHERE id_receta = $id_receta";
-// $rs = mysqli_query ($conexion, $query);
-
-// while(($row=mysqli_fetch_assoc($rs))) {
-//     $nombre = $row['nombre_receta'];
-//     $id_receta = $row ['id_receta'];
-//     $inicio ="Se ha terminado el temporizador ";
-//     $texto=$inicio.$nombre;
-
-// // sets text to be synthesised
-// $synthesisInputText = (new SynthesisInput())
-
-//     ->setText($texto);
-
-// // build the voice request, select the language code ("en-US") and the ssml
-// // voice gender
-// $voice = (new VoiceSelectionParams())
-//     ->setLanguageCode('es-ES')
-//     ->setSsmlGender(SsmlVoiceGender::FEMALE);
-
-// // Effects profile
-// $effectsProfileId = "telephony-class-application";
-
-// // select the type of audio file you want returned
-// $audioConfig = (new AudioConfig())
-//     ->setAudioEncoding(AudioEncoding::MP3)
-//     ->setEffectsProfileId(array($effectsProfileId));
-
-// // perform text-to-speech request on the text input with selected voice
-// // parameters and audio file type
-// $response = $client->synthesizeSpeech($synthesisInputText, $voice, $audioConfig);
-// $audioContent = $response->getAudioContent();
-
-// // the response's audioContent is binary
-// file_put_contents('audio/fin'.$id_receta.'.mp3', $audioContent);
-
-// // echo 'Audio content written to audio/fin'.$id_receta.'.mp3' . PHP_EOL .'<br>';
-
-// $query= "UPDATE receta SET audio = 'audio/fin$id_receta.mp3' WHERE id_receta = $id_receta";
-// mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
-// }
-
-}?>
+?>
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -537,7 +326,7 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
         var minutos = parseInt($(id).attr("data-m"));
         var segundos = parseInt($(id).attr("data-s"));
 
-        console.log(segundos);
+        console.log(horas);
         console.log(id);
 
         $("#tiempo"+id).timer('remove');
@@ -580,5 +369,5 @@ mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
 </html>
 
 <?php }
-    }
+    
     ?>

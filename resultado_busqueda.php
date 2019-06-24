@@ -19,7 +19,6 @@ include 'php/conexion.php';
 //una variable está definida y no es NULL
 
 
-
 if(isset($_POST ['busqueda'])){
     $busqueda = $_POST ['busqueda'];
 }

@@ -1,4 +1,3 @@
-
 <?php
     include 'sesion.php';
     include 'validar.php';
@@ -6,36 +5,23 @@
     $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
-    if (isset ($_SESSION ['username'])) {
+    include 'php/consultasUsuario.php';
+
+    if(isset($_SESSION['username'])){
         $usuario = $_SESSION['username'];
     }
 
-    $query = "SELECT * FROM usuario WHERE nombre = '$usuario'";
-    $rs = mysqli_query ($conexion, $query);
-
-    while(($row=mysqli_fetch_assoc($rs))) {
-
-        $usuario= ($row['nombre']);
-        $sexo= ($row['sexo']);
-        $edad = ($row['edad']);
-        $id_nacionalidad = ($row['id_nacionalidad']);
-        $id_usuario=($row['id_usuario']);
-        $votos=($row['votos']);
-        $descargas=($row['descargas']);
-        $img_perfil=($row['img_perfil']);
-
-    }
-                                            
-    $nacionalidad="SELECT nombre FROM nacionalidad WHERE id_nacionalidad='$id_nacionalidad'";
-    $nac = mysqli_query ($conexion, $nacionalidad);
-    while(($row=mysqli_fetch_assoc($nac))) {
-        $R_Nac= ($row['nombre']).'<br>';
-    }
-
-    $receta = "SELECT * FROM receta WHERE id_usuario='$id_usuario'";
-    $recetas = mysqli_query ($conexion, $receta);
-    $cant_recetas = mysqli_num_rows($recetas);
-
+    $usuario = getUsuario ($usuario);
+    $sexo = getGenero($usuario);
+    $edad = getEdad($usuario);
+    $id_nacionalidad = getIdNacionalidad ($usuario);
+    $id_usuario = getIdUsuario ($usuario);
+    $votos = getVotos ($usuario);
+    $descargas = getDescargas ($usuario);
+    $img_perfil = getImgPerfil ($usuario);
+    $R_Nac = getNacionalidad ($id_nacionalidad);
+    $cant_recetas = getCantRecetas ($id_usuario);
+    $recetas = getRecetas ($id_usuario);
 ?>
  <hr>
  <hr>
