@@ -52,7 +52,7 @@ $(function(){
 
                 if(data.error_nombre == 0 && data.error_paso == 0 && data.error_ingr == 0){
                     window.location.replace("success.php");
-                    // console.log("a huevo");
+                    // console.log("a huevo"); 
                 }
             },
             error: function(){
@@ -71,7 +71,7 @@ function clonar_paso(){
 
     //contenedor de inputs de agregar paso
     var new_container = document.createElement("div");
-    new_container.setAttribute("class", "form-row d-flex h-100");
+    new_container.setAttribute("class", "form-row d-flex h-100 justify-content-center align-items-center");
     new_container.setAttribute("id", container); 
     paso_input.appendChild(new_container);
 
@@ -142,59 +142,42 @@ function clonar_crnm() {
     crnm_input.appendChild(cronometro);
 
     var new_name_container = document.createElement("div");
-    new_name_container.setAttribute("class", "form-row");
+    new_name_container.setAttribute("class", "form-row h-100 justify-content-center align-items-center");
     cronometro.appendChild(new_name_container);
     var name_div = document.createElement("div");
-    name_div.setAttribute("class", "form-group col-md-2 text-center");
+    name_div.setAttribute("class", "form-group col-md-1.25 text-center");
+    name_div.setAttribute("style", "margin-right: 25px;");
+    var space = document.createElement("div");
+    space.setAttribute("class", "form-group col-md-1.25");
     new_name_container.appendChild(name_div);
+
+
     var new_name = document.createElement("input");
     new_name.setAttribute("type", "text");
     new_name.setAttribute("id", name_nombre_crnm);
     new_name.setAttribute("placeholder", "nombre");
+    new_name.setAttribute("style", "width: 120px;");  
+    new_name.setAttribute("required", ""); 
     new_name.setAttribute("name", name_nombre_crnm);
     name_div.appendChild(new_name);
 
-    var horas_div = name_div.cloneNode(false);
-    var minutos_div = name_div.cloneNode(false);
-    var segundos_div = name_div.cloneNode(false);
+
+    var horas_div = document.createElement("div");
+    horas_div.setAttribute("class", "form-group col-md-1.25 text-center");
+    var minutos_div = horas_div.cloneNode(false);
+    var segundos_div = horas_div.cloneNode(false);
     var new_tiempo_container = new_name_container.cloneNode(false);
     cronometro.appendChild(new_tiempo_container);
+    // new_tiempo_container.appendChild(space);
     new_tiempo_container.appendChild(horas_div);
     new_tiempo_container.appendChild(minutos_div);
     new_tiempo_container.appendChild(segundos_div);
 
-    var new_hora = document.createElement("input");
-    new_hora.setAttribute("type", "number");
-    new_hora.setAttribute("id", name_horas);
-    new_hora.setAttribute("min", "1");
-    new_hora.setAttribute("max", "60");;
-    new_hora.setAttribute("placeholder", "horas");
-    new_hora.setAttribute("name", name_horas);
-    horas_div.appendChild(new_hora);
-
-    var new_minutos = document.createElement("input");
-    new_minutos.setAttribute("type", "number");
-    new_minutos.setAttribute("id", name_minutos);
-    new_minutos.setAttribute("min", "1");
-    new_minutos.setAttribute("max", "60");
-    new_minutos.setAttribute("placeholder", "minutos");
-    new_minutos.setAttribute("name", name_minutos);
-    minutos_div.appendChild(new_minutos);
-
-    var new_segundos = document.createElement("input");
-    new_segundos.setAttribute("type", "number");
-    new_segundos.setAttribute("id", name_segundos);
-    new_segundos.setAttribute("min", "1");
-    new_segundos.setAttribute("max", "60");
-    new_segundos.setAttribute("placeholder", "segundos");
-    new_segundos.setAttribute("name", name_segundos);
-    segundos_div.appendChild(new_segundos);
-
     //boton para eliminar el cronometro
     var div_btn_delete = document.createElement("div");
-    div_btn_delete.setAttribute("class", "form-group col-md-1");
+    div_btn_delete.setAttribute("class", "form-group col-md-.50");
     div_btn_delete.setAttribute("id", "delete_ingr");
-    new_name_container.appendChild(div_btn_delete);
+    new_tiempo_container.appendChild(div_btn_delete);
     var btn_delete = document.createElement("button");
     btn_delete.setAttribute("type", "button");
     btn_delete.setAttribute("class", "close");
@@ -210,5 +193,42 @@ function clonar_crnm() {
         deleted[0].parentNode.removeChild(deleted[0]);
         cont_ncrnm-=1;
     });
+
+    var br = document.createElement("br");
+    cronometro.appendChild(br);
+
+    var new_hora = document.createElement("input");
+    new_hora.setAttribute("type", "number");
+    new_hora.setAttribute("id", name_horas);
+    new_hora.setAttribute("min", "1");
+    new_hora.setAttribute("max", "60");
+    new_hora.setAttribute("placeholder", "horas");
+    new_hora.setAttribute("style", "width: 120px;");  
+    new_hora.setAttribute("required", ""); 
+    new_hora.setAttribute("name", name_horas);
+    horas_div.appendChild(new_hora);
+
+    var new_minutos = document.createElement("input");
+    new_minutos.setAttribute("type", "number");
+    new_minutos.setAttribute("id", name_minutos);
+    new_minutos.setAttribute("min", "1");
+    new_minutos.setAttribute("max", "60");
+    new_minutos.setAttribute("placeholder", "minutos");
+    new_minutos.setAttribute("style", "width: 120px;");  
+    new_minutos.setAttribute("required", "");  
+    new_minutos.setAttribute("name", name_minutos);
+    minutos_div.appendChild(new_minutos);
+
+    var new_segundos = document.createElement("input");
+    new_segundos.setAttribute("type", "number");
+    new_segundos.setAttribute("id", name_segundos);
+    new_segundos.setAttribute("min", "1");
+    new_segundos.setAttribute("max", "60");
+    new_segundos.setAttribute("placeholder", "segundos");
+    new_segundos.setAttribute("style", "width: 120px;");  
+    new_segundos.setAttribute("required", ""); 
+    new_segundos.setAttribute("name", name_segundos);
+    segundos_div.appendChild(new_segundos);
+
 
 }

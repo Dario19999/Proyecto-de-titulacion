@@ -13,30 +13,29 @@
     include_once 'plantilla.php';
 
 ?>
+
         <form action="php/validar_subir.php" method="POST"  id="form_subir" autocomplete="off">
+
             <br>
             <br>
             <br>
             <br>
 
-            <p class="subtitulo_subir">Nombre de Receta</p>
-            
-            <div class="form-row ">
-                <div class="form-group col-md-1">
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <p class="subtitulo_subir">Nombre de Receta</p>
+                <div class="form-group col-md-12 text-center">
                     <input class="nombre_receta" type="text" name="nombre_receta" placeholder="Nombre de la receta"required>
                 </div>
             </div>
-
-            <div class="form-row" >
+            <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-2 error alert alert-danger error_nombre"></div>
             </div>
 
             <hr>
-            
-            <p class="subtitulo_subir">Tipo de platillo</p>
 
-            <div class="form-row">
-                <div class="form-group col-md-1">
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <p class="subtitulo_subir">Tipo de platillo</p>
+                <div class="form-group col-md-12 text-center">
                     <select name="tipo_receta" id="tipo" class="form-control custom-select" style="width: 200px; margin-left: 30px;" required>
                         <?php
                             $query = mysqli_query($conexion,"SELECT * FROM categorias");
@@ -49,10 +48,11 @@
             </div>
             <hr>
 
-            <p class="subtitulo_subir">Nacionalidad</p>
+
             
-            <div class="form-row">
-                <div class="form-group col-md-1 align-items-center">
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <p class="subtitulo_subir">Nacionalidad</p>
+                <div class="form-group col-md-12 text-center">
                     <select name="nacionalidad" class="form-control custom-select"  style="width: 200px; margin-left: 30px;" required>
                         <?php
                             
@@ -66,10 +66,12 @@
             </div>
 
             <hr>
-
-            <p class="subtitulo_subir">Ingredientes</p> 
-
-            <div class="form-row">
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <p class="subtitulo_subir">Ingredientes</p> 
+            </div>
+            
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <div class="form-group col-md-1 text-center"></div>                
                 <div class="form-group col-md-1 text-center">
                     <h4>Cantidad.</h4>
                 </div>
@@ -84,7 +86,8 @@
             </div>      
 
             <div id="ingr_group">
-                <div class="form-row" id="ingrediente_1">
+                <div class="form-row h-100 justify-content-center align-items-center" id="ingrediente_1">
+                    <div class="form-group col-md-1 text-center"></div>         
                     <div class="form-group col-md-1 text-center">
                         <input type="number" name="cant_1" class="cantidad" min="0.0" value="0.0" step="0.1" required> 
                     </div>
@@ -109,39 +112,44 @@
                     <div class="form-group col-md-3 text-center">
                         <input type="text" name="ingr_1" class="ingr" id="name_ingr_1" placeholder="Nombre del ingrediente" required>
                     </div>
-
-                </div>
+                    <div class="form-group col-md-1 text-center"></div>
+                </div>                               
             </div>
 
-            <div class="form-row" >
+            <div class="form-row h-100 justify-content-center align-items-center" >
                 <div class="form-group col-md-1"></div>
                 <div class="form-group col-md-2"></div>
                 <div class="form-group col-md-4 error alert alert-danger error_ingr"></div>
             </div>
             
             
-            <div class="form-row">
+            <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-2 text-center">
                     <input type="button" id="agregar_ingr" value="Agregar Ingrediente" class="btn boton_generico">
                 </div>
             </div>
 
             <hr>
-
-            <p class="subtitulo_subir">Porciones</p>
             
-            <div class="form-row">
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <p class="subtitulo_subir">Prciones</p> 
+            </div>
+
+            <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-1 text-center " style="margin-left: 30px">
                     <input type="number" name="porciones" class="cantidad" min="1" max="20" value="1" required> 
                 </div>
             </div>
             
             <hr>
-            
-            <p class="subtitulo_subir">Procedimiento</p>
 
             <div id="pasos_group">
-                <div class="form-row d-flex h-100" id="paso_1">
+
+                <div class="form-row h-100 justify-content-center align-items-center">
+                    <p class="subtitulo_subir">Ingredientes</p> 
+                </div>
+                <div class="form-row d-flex h-100 justify-content-center align-items-center" id="paso_1">
+                    <br>
                     <div class="form-group col-md-1 text-center">
                         <h4>Paso 1:</h4> 
                     </div>
@@ -149,27 +157,33 @@
                     <div class="form-group col-md-7">
                         <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" id = "textarea" placeholder="Describa el paso." required></textarea> 
                     </div>
+                    <div class="form-group col-md-1 text-center"></div>         
                 </div> 
             </div>
 
-            <div class="form-row">
+            <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-6 error alert alert-danger error_paso"></div>
             </div>
             
-            <div class="form-row">
+            <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <input type="button" id="agregar_paso" name="agregar_paso" value="Agregar paso" class="btn boton_generico">
                 </div>
             </div>
             <hr>
 
-            <p class="subtitulo_subir">Cronómetros</p>
+            <div class="form-row h-100 justify-content-center align-items-center">
+                <p class="subtitulo_subir">Cronómetros</p>
+                <div class="col-md-12 text-center">
+                    <div id="crnm_group">
 
-            <div id="crnm_group">
-            </div>  
+                    </div>                  
+                </div>
+            </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-1 text-center">
+
+            <div class="form-row h-100 justify-content-center.align-items-center">
+                <div class="form-group col-md-12 text-center">
                     <input type="button" id="agregar_crnm" name="agregar_crnm" value="Agregar cronómetro" class="btn boton_generico">
                 </div>
             </div>
@@ -179,7 +193,9 @@
             <div class="div_boton">
                 <button type="submit" class="btn boton_generico" name="subir">Subir</button>
             </div>
-        </form>
+        </form>     
+    </div>
+
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="js/jquery-ui.js"></script>
@@ -221,9 +237,34 @@
 
                 //contenedor de inputs de agregar ingrediente
                 var new_container = document.createElement("div");
-                new_container.setAttribute("class", "form-row");
+                new_container.setAttribute("class", "form-row h-100 justify-content-center align-items-center");
+                // new_container.setAttribute("style", "margin-right: 100px;");
                 new_container.setAttribute("id", id_group); 
                 ingr_input.appendChild(new_container);
+
+                //boton para eliminar ingrediente
+                var div_btn_delete = document.createElement("div");
+                div_btn_delete.setAttribute("class", "form-group col-md-1");
+                div_btn_delete.setAttribute("id", "delete_ingr");
+                // div_btn_delete.setAttribute("style", "margin-left: px;");
+                new_container.appendChild(div_btn_delete);
+                var btn_delete = document.createElement("button");
+                btn_delete.setAttribute("type", "button");
+                btn_delete.setAttribute("class", "close");
+                btn_delete.setAttribute("aria-label", "Close");
+                btn_delete.setAttribute("id", "delete_ingr")
+                div_btn_delete.appendChild(btn_delete);
+                var span = document.createElement("span");
+                span.setAttribute("aria-hidden", "true");
+                span.innerHTML = "&times;"
+                btn_delete.appendChild(span);
+
+                btn_delete.addEventListener("click", function(){
+                    var deleted = document.querySelectorAll('div#ingr_group div.form-row');
+                    deleted[1].parentNode.removeChild(deleted[1]);
+                    cont_ingr-=1;
+                    cont_name_ingr-=1;
+                });
 
                 //nuevo input text para insertar la cantidad del ingrediente
                 var div_cant = document.createElement("div")
@@ -242,6 +283,7 @@
                 //clon del select para insertar la medida del ingrediente
                 var div_medida = document.createElement("div")
                 div_medida.setAttribute("class", "form-group col-md-2 text-center");
+                // div_medida.setAttribute("style", "margin-left: 190px;");
                 new_container.appendChild(div_medida);
                 var select_medida = document.querySelector("select[name = 'medida_1']");
                 var new_medida = select_medida.cloneNode(true);
@@ -252,6 +294,7 @@
                 //nuevo input text para insertar el nombre del ingrediente
                 var div_ingr = document.createElement("div");
                 div_ingr.setAttribute("class", "form-group col-md-3 text-center");
+                // div_ingr.setAttribute("style", "margin-left: 115px;");
                 new_container.appendChild(div_ingr);
                 var new_ingr = document.createElement("input")
                 new_ingr.setAttribute("type", "text");
@@ -274,29 +317,9 @@
                     });
                 });
                 
-                //boton para eliminar ingrediente
-                var div_btn_delete = document.createElement("div");
-                div_btn_delete.setAttribute("class", "form-group col-md-1");
-                div_btn_delete.setAttribute("id", "delete_ingr");
-                new_container.appendChild(div_btn_delete);
-                var btn_delete = document.createElement("button");
-                btn_delete.setAttribute("type", "button");
-                btn_delete.setAttribute("class", "close");
-                btn_delete.setAttribute("aria-label", "Close");
-                btn_delete.setAttribute("id", "delete_ingr")
-                div_btn_delete.appendChild(btn_delete);
-                var span = document.createElement("span");
-                span.setAttribute("aria-hidden", "true");
-                span.innerHTML = "&times;"
-                btn_delete.appendChild(span);
-
-                btn_delete.addEventListener("click", function(){
-                    var deleted = document.querySelectorAll('div#ingr_group div.form-row');
-                    deleted[1].parentNode.removeChild(deleted[1]);
-                    cont_ingr-=1;
-                    cont_name_ingr-=1;
-                });
-
+                var space = document.createElement("div");
+                space.setAttribute("class", "form-group col-md-1 text-center");
+                new_container.appendChild(space);
                 cont_ingr+=1;
                 cont_name_ingr+=1;
             }
