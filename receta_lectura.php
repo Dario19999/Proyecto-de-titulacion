@@ -226,14 +226,14 @@ if($cant!=0){
 </div>
 
 
-    <div class="nombre_receta">
+    <div class="form-row h-100 justify-content-center align-items-center nombre_receta">
   
         <h1> <?php echo $nombre_receta;?></h1>
     
         </div>
         <hr>
-        <div class="row">
-            <div class="col-5 col-md-5 align-items-end ingredientes">
+        <div class="form-row h-100 justify-content-center align-items-center">
+            <div class="col-5 col-md-5 justify-content-center ingredientes">
                 <?php 
                     $query_por = "SELECT porciones FROM receta WHERE id_receta = $id_receta";
                     $res_porciones = mysqli_query($conexion, $query_por);
@@ -248,7 +248,7 @@ if($cant!=0){
                     <input type="number" name="porcion" id="porciones" min="1" max= "<?php echo $max ?>" value="<?php echo $actual_porciones?>">
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
                     
-                    <div class="align-items-end">
+                    <div class="justify-content-center">
                     <hr>
                     <h3>Ingredientes</h3>   
                     <br> 
@@ -309,8 +309,10 @@ if($cant!=0){
         </div>
         <hr>
 
-        <div class="procedimiento">
-            <h3>Procedimiento</h3>
+         <div class="row justify-content-center procedimiento">
+             <h2>Procedimiento</h2>
+        </div>
+        <div class="form-row h-100 justify-content-center align-items-center">
             <ol>
                     <?php 
                         require 'php/conexion.php';
@@ -330,8 +332,8 @@ if($cant!=0){
 
     </div>
 
-    <div class="container-fluid botones">    
-<hr>
+    <div class="form-row h-100 justify-content-center align-items-center botones">    
+    <hr>
             <div class="btn_dictado">
                 <a href="receta_dictado.php?id_receta=<?php echo $id_receta ?>" class="btn boton_generico"> Dictado</a>
             </div>
@@ -342,10 +344,10 @@ if($cant!=0){
 
     
 
-    <div class="container-fluid ">
-        <div class="row text-center" style="display:block;">
+    <div class="container-fluid  ">
+        <div class="row text-center " style="display:block;">
             <div class="col col-xs-4 col-md-3">
-                <div class="card">
+                <div class="card justify-content-center align-items-center">
                         <div class="card-body">
                             <h5 class="card-title" id="super">Bodega Aurrera</h5>
                             <h6 class="card-subtitle mb-2 text-muted" id="precio">$$$</h6>
@@ -399,7 +401,7 @@ if($cant!=0){
 
     </div>
 
-    <div class="btn_denunciar">
+    <div class="form-row h-100 justify-content-center align-items-center  btn_denunciar">
         <hr>
             <button type="button" name="denunciar_receta" value="denunciar_receta" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_receta">Denunciar receta</button>
 
@@ -483,7 +485,7 @@ if($cant!=0){
             </div>
     </div>
 
-        <div class="btn_denunciar">
+        <div class="form-row h-100 justify-content-center align-items-center btn_denunciar">
             <hr>
             <button type="button" name="denunciar_usuario" value="denunciar_usuario" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_usuario">Denunciar usuario</button>
 

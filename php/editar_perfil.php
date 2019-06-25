@@ -24,7 +24,7 @@
 // qué campos han sido llenados dentro del formulario en
 // la busqueda de recetas. Con isset podemos saber si 
 //una variable está definida y no es NULL
-
+$save_on ="";
 
 $flag = false;
 if(isset($_POST ['username'])){
