@@ -1,15 +1,12 @@
 <?php
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-    
-    require 'vendor/autoload.php';
     include 'sesion.php';
     include 'validar.php';
     $userSession = new userSession();
     $user = new User ();
     include_once 'plantilla.php';
     include 'php/conexion.php';
+    include 'php/mailer.php';
     
     if(isset($_GET ['id_receta'])) {
         $id_receta = $_GET ['id_receta'];
@@ -81,150 +78,6 @@ if($cant!=0){
     ?>
 
 <div class="container-fluid receta">
-
-        
-    <div class="btn_calificar">
-        <div style="float:right;">
-        <button type="button" name="calificar" value="calificar" class="btn boton_generico" data-toggle="modal" data-target="#modal_calificar">Calificar</button>
-
-        <div class="modal fade calificar" id="modal_calificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modal_titulo_calificar" style="text-align:center;">Calificar</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                    <?php if ($cant_votos!=1 && $cant_votos==0){ ?>
-                        <form action="" method="POST">
-                            <p>Dificultad</p>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="dificultad1" name="dificultad" class="custom-control-input" value="1">
-                                <label class="custom-control-label" for="dificultad1">1</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="dificultad2" name="dificultad" class="custom-control-input" value="2">
-                                <label class="custom-control-label" for="dificultad2">2</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="dificultad3" name="dificultad" class="custom-control-input" value="3">
-                                <label class="custom-control-label" for="dificultad3">3</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="dificultad4" name="dificultad" class="custom-control-input" value="4">
-                                <label class="custom-control-label" for="dificultad4">4</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="dificultad5" name="dificultad" class="custom-control-input" value="5">
-                                <label class="custom-control-label" for="dificultad5">5</label>
-                            </div>
-
-                            <p>Accesibilidad</p>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="accesibilidad1" name="accesibilidad" class="custom-control-input" value="1">
-                                <label class="custom-control-label" for="accesibilidad1">1</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="accesibilidad2" name="accesibilidad" class="custom-control-input" value="2">
-                                <label class="custom-control-label" for="accesibilidad2">2</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="accesibilidad3" name="accesibilidad" class="custom-control-input" value="3">
-                                <label class="custom-control-label" for="accesibilidad3">3</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="accesibilidad4" name="accesibilidad" class="custom-control-input" value="4">
-                                <label class="custom-control-label" for="accesibilidad4">4</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="accesibilidad5" name="accesibilidad" class="custom-control-input" value="5">
-                                <label class="custom-control-label" for="accesibilidad5">5</label>
-                            </div>
-
-                            <p>Tiempo</p>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="tiempo1" name="tiempo" class="custom-control-input"  value="1">
-                                <label class="custom-control-label" for="tiempo1">1</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="tiempo2" name="tiempo" class="custom-control-input" value="2">
-                                <label class="custom-control-label" for="tiempo2">2</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="tiempo3" name="tiempo" class="custom-control-input" value="3">
-                                <label class="custom-control-label" for="tiempo3" >3</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="tiempo4" name="tiempo" class="custom-control-input" value="4">
-                                <label class="custom-control-label" for="tiempo4" >4</label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="tiempo5" name="tiempo" class="custom-control-input" value="5">
-                                <label class="custom-control-label" for="tiempo5">5</label>
-                            </div>
-
-                                
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn boton_generico" name="cal" >Enviar</button>   
-
-                    <?php if(isset($_POST['cal'])){
-   
-                                        // if(isset($_POST ['sabor'])){
-                                        //     $sabor = $_POST ['sabor'];
-                                        // }else $sabor=0;
-                                        if(isset($_POST ['dificultad'])){
-                                            $dificultad = $_POST ['dificultad'];
-                                        }else $dificultad=0;
-                                        if(isset($_POST ['accesibilidad'])){
-                                            $accesibilidad = $_POST ['accesibilidad'];
-                                        } else $accesibilidad=0;
-                                        if(isset($_POST ['tiempo'])){
-                                            $tiempo = $_POST ['tiempo'];
-                                        } else $tiempo=0;
-
-                                        
-                                        $id_receta = $_GET ['id_receta'];
-                                        $query="UPDATE receta SET cantidad_vot=+1,  
-                                        dificultad= (dificultad+$dificultad)/cantidad_vot,
-                                        accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
-                                        WHERE receta.id_receta = $id_receta;";
-                                        $rs = mysqli_query ($conexion, $query);
-
-                                        $query =("UPDATE reportes SET calificacion = '1' WHERE reportes.id_reportando =$id_usuario");
-                                        mysqli_query ($conexion, $query);
-
-                                        $query="UPDATE usuario SET votos = +1 WHERE usuario.id_usuario = $id_usuario;";
-                                        $rs = mysqli_query ($conexion, $query);
-                                        }
-                                } else { echo "Sólo puedes votar una vez por esta receta.";}
-                                ?>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
     <div class="form-row h-100 justify-content-center align-items-center nombre_receta">
   
@@ -404,6 +257,7 @@ if($cant!=0){
 
     <div class="form-row h-100 justify-content-center align-items-center  btn_denunciar">
         <hr>
+        
             <button type="button" name="denunciar_receta" value="denunciar_receta" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_receta">Denunciar receta</button>
 
             <div class="modal fade" id="modal_denuncia_receta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -484,14 +338,9 @@ if($cant!=0){
                     </div>
                 </div>
             </div>
-    </div>
 
-        <div class="form-row h-100 justify-content-center align-items-center btn_denunciar">
             <hr>
             <button type="button" name="denunciar_usuario" value="denunciar_usuario" class="btn boton_generico" data-toggle="modal" data-target="#modal_denuncia_usuario">Denunciar usuario</button>
-
-
-            <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" name="descargar" class="btn boton_generico" target="_blank">Descargar</a>
 
             <div class="modal fade" id="modal_denuncia_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -588,6 +437,149 @@ if($cant!=0){
     </div>
 
     </form>
+
+   <hr>
+        <a href="descarga.php?id_receta=<?php echo $id_receta?>&id_usuario=<?php echo $id_usuario?>" name="descargar" class="btn boton_generico" target="_blank">Descargar</a>
+        <button type="button" name="calificar" value="calificar" class="btn boton_generico" data-toggle="modal" data-target="#modal_calificar">Calificar</button>
+
+        <div class="modal fade calificar" id="modal_calificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_titulo_calificar" style="text-align:center;">Calificar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                    <?php if ($cant_votos!=1 && $cant_votos==0){ ?>
+                        <form action="" method="POST">
+                            <p>Dificultad</p>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="dificultad1" name="dificultad" class="custom-control-input" value="1">
+                                <label class="custom-control-label" for="dificultad1">1</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="dificultad2" name="dificultad" class="custom-control-input" value="2">
+                                <label class="custom-control-label" for="dificultad2">2</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="dificultad3" name="dificultad" class="custom-control-input" value="3">
+                                <label class="custom-control-label" for="dificultad3">3</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="dificultad4" name="dificultad" class="custom-control-input" value="4">
+                                <label class="custom-control-label" for="dificultad4">4</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="dificultad5" name="dificultad" class="custom-control-input" value="5">
+                                <label class="custom-control-label" for="dificultad5">5</label>
+                            </div>
+
+                            <p>Accesibilidad</p>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="accesibilidad1" name="accesibilidad" class="custom-control-input" value="1">
+                                <label class="custom-control-label" for="accesibilidad1">1</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="accesibilidad2" name="accesibilidad" class="custom-control-input" value="2">
+                                <label class="custom-control-label" for="accesibilidad2">2</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="accesibilidad3" name="accesibilidad" class="custom-control-input" value="3">
+                                <label class="custom-control-label" for="accesibilidad3">3</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="accesibilidad4" name="accesibilidad" class="custom-control-input" value="4">
+                                <label class="custom-control-label" for="accesibilidad4">4</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="accesibilidad5" name="accesibilidad" class="custom-control-input" value="5">
+                                <label class="custom-control-label" for="accesibilidad5">5</label>
+                            </div>
+
+                            <p>Tiempo</p>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="tiempo1" name="tiempo" class="custom-control-input"  value="1">
+                                <label class="custom-control-label" for="tiempo1">1</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="tiempo2" name="tiempo" class="custom-control-input" value="2">
+                                <label class="custom-control-label" for="tiempo2">2</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="tiempo3" name="tiempo" class="custom-control-input" value="3">
+                                <label class="custom-control-label" for="tiempo3" >3</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="tiempo4" name="tiempo" class="custom-control-input" value="4">
+                                <label class="custom-control-label" for="tiempo4" >4</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="tiempo5" name="tiempo" class="custom-control-input" value="5">
+                                <label class="custom-control-label" for="tiempo5">5</label>
+                            </div>
+
+                                
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn boton_generico" name="cal" >Enviar</button>   
+
+                    <?php if(isset($_POST['cal'])){
+   
+                                        // if(isset($_POST ['sabor'])){
+                                        //     $sabor = $_POST ['sabor'];
+                                        // }else $sabor=0;
+                                        if(isset($_POST ['dificultad'])){
+                                            $dificultad = $_POST ['dificultad'];
+                                        }else $dificultad=0;
+                                        if(isset($_POST ['accesibilidad'])){
+                                            $accesibilidad = $_POST ['accesibilidad'];
+                                        } else $accesibilidad=0;
+                                        if(isset($_POST ['tiempo'])){
+                                            $tiempo = $_POST ['tiempo'];
+                                        } else $tiempo=0;
+
+                                        
+                                        $id_receta = $_GET ['id_receta'];
+                                        $query="UPDATE receta SET cantidad_vot=+1,  
+                                        dificultad= (dificultad+$dificultad)/cantidad_vot,
+                                        accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
+                                        WHERE receta.id_receta = $id_receta;";
+                                        $rs = mysqli_query ($conexion, $query);
+
+                                        $query =("UPDATE reportes SET calificacion = '1' WHERE reportes.id_reportando =$id_usuario");
+                                        mysqli_query ($conexion, $query);
+
+                                        $query="UPDATE usuario SET votos = +1 WHERE usuario.id_usuario = $id_usuario;";
+                                        $rs = mysqli_query ($conexion, $query);
+                                        }
+                                } else { echo "Sólo puedes votar una vez por esta receta.";}
+                                ?>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     
 
 <script src="js/jquery-3.3.1.slim.min.js"></script>
@@ -597,41 +589,7 @@ if($cant!=0){
 </body>
 <?php } else {
     echo "<h1>La receta no existe</h1>";
-    }   
-
-    
-        function mailer ($correo, $nombre_usuario_receta, $asunto, $cuerpo)
-        {
-            $mail = new PHPMailer(true);
-                //Server settings
-                $mail->SMTPDebug = 2;                                       // Enable verbose debug output
-                $mail->isSMTP();                                            // Set mailer to use SMTP
-                $mail->Host       = 'smtp.hostinger.mx';                    // Specify main and backup SMTP servers
-                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = 'otro@lacousine.com';               // SMTP username
-                $mail->Password   = 'hola12345';                            // SMTP password
-                $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-                $mail->Port       = 587;                                    // TCP port to connect to
-
-                //Recipients
-                $mail->setFrom('otro@lacousine.com', 'La Cousine');
-                $mail->addAddress($correo, $nombre_usuario_receta);     // Add a recipient
-
-                // // Attachments
-                // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-                // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-                // Content
-                $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = $asunto;
-                $mail->Body    = $cuerpo;
-                $mail->AltBody = $cuerpo;
-
-                $mail->send();
-            }
-        
-            
-            ?>
+    }  ?>
      
 
 </html>

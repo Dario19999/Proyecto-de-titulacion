@@ -76,13 +76,13 @@
                 $mail->isSMTP();                                            // Set mailer to use SMTP
                 $mail->Host       = 'smtp.hostinger.mx';                    // Specify main and backup SMTP servers
                 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = 'contacto@lacousine.com';               // SMTP username
-                $mail->Password   = 'ASDf123';                            // SMTP password
+                $mail->Username   = 'lacuisine@lacousine.com';               // SMTP username
+                $mail->Password   = '#BEgwTy`77jnhwj17k';                            // SMTP password
                 $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
                 $mail->Port       = 587;                                    // TCP port to connect to
 
                 //Recipients
-                $mail->setFrom('contacto@lacousine.com', 'La Cousine');
+                $mail->setFrom('lacuisine@lacousine.com', 'La Cuisine');
                 $mail->addAddress($correo, $user);     // Add a recipient
 
                 // Content

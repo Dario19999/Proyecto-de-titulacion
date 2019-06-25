@@ -142,21 +142,24 @@
         $segundos=$row['segundos'];
         $id_crnm = $row['id_cronometro'];
         $nombre_crnm = $row['nombre'];?>
-
       
         <?php if(isset($nombre_crnm)) {?>
         <br>
-        <h3> <?php echo $nombre_crnm ?> </h3>
-
+        <div class="row h-100 justify-content-center">
+        <h3> <?php echo $nombre_crnm ?> <br></h3>
+        </div>
+        <div class="row h-100 justify-content-center">
         <h3 id="tiempo<?php echo $id_crnm ?>"><?php echo $horas ?>:<?php echo $minutos ?>
-        :<?php echo $segundos ?></h3>           
-    
+        :<?php echo $segundos ?><br></h3>           
+        </div>
+        <div class="row h-100 justify-content-center">
         <button type="button" id="<?php echo $id_crnm ?>" data-h="<?php echo $horas ?>" 
         data-m="<?php echo $minutos ?>" data-s="<?php echo $segundos ?>" onclick="Empezar(this.id)">Empezar</button>
         <button type="button" id="detener<?php echo $id_crnm ?>">Detener</button>
         <button type="button" id="reiniciar<?php echo $id_crnm ?>">Continuar</button>
         <br>
-      
+        </div>
+        <hr>
     <?php } else echo "No hay temporizadores";}?>
      
 <?php
@@ -169,7 +172,7 @@
  
 // if (!isset ($set_audio)){
 
-NOMBRE RECETA 
+// // NOMBRE RECETA 
     $query= "SELECT * FROM receta WHERE id_receta = $id_receta";
     $rs = mysqli_query ($conexion, $query);
 
@@ -187,13 +190,13 @@ NOMBRE RECETA
 
 // PROCEDIMIENTO
 
-$query= "SELECT * FROM procedimiento WHERE id_receta = $id_receta";
-$rs = mysqli_query ($conexion, $query);
+    $query= "SELECT * FROM procedimiento WHERE id_receta = $id_receta";
+    $rs = mysqli_query ($conexion, $query);
 
-while(($row=mysqli_fetch_assoc($rs))) {
-    $texto = $row['paso'];
-    $id_procedimiento = $row ['id_procedimiento'];
-    $contenido = "paso";
+    while(($row=mysqli_fetch_assoc($rs))) {
+        $texto = $row['paso'];
+        $id_procedimiento = $row ['id_procedimiento'];
+        $contenido = "paso";
 
     audio ($texto, $contenido, $id_procedimiento);
 
@@ -204,14 +207,14 @@ while(($row=mysqli_fetch_assoc($rs))) {
 //GUARDA AUDIO DE DATOS
 
 // instantiates a client
-$contenido = "datos";
-$query=("SELECT * FROM datos_receta WHERE id_receta=$id_receta");
-$rs=mysqli_query($conexion, $query);
-while ($row=mysqli_fetch_array($rs)){
-    $id_datos=$row['id_datos'];
-}
+    $contenido = "datos";
+    $query=("SELECT * FROM datos_receta WHERE id_receta=$id_receta");
+    $rs=mysqli_query($conexion, $query);
+    while ($row=mysqli_fetch_array($rs)){
+        $id_datos=$row['id_datos'];
+    }
 
-$query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porciones 
+    $query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porciones 
         FROM datos_receta, receta WHERE datos_receta.id_receta=$id_receta 
         AND receta.id_receta=$id_receta");
         $rs = mysqli_query ($conexion, $query);
@@ -221,7 +224,7 @@ $query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porcione
         $cantidad=$row['cantidad'];
         $medida=$row['medida'];
         $ingrediente=$row['nombre_ingrediente'];
-        echo $texto=$cantidad.$medida.$ingrediente."<br>";
+        $texto=$cantidad.$medida.$ingrediente."<br>";
        
 
         audio ($texto, $contenido, $id_datos);
