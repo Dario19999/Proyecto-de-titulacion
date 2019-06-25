@@ -200,7 +200,7 @@ function clonar_crnm() {
     var new_hora = document.createElement("input");
     new_hora.setAttribute("type", "number");
     new_hora.setAttribute("id", name_horas);
-    new_hora.setAttribute("min", "1");
+    new_hora.setAttribute("min", "0");
     new_hora.setAttribute("max", "60");
     new_hora.setAttribute("placeholder", "horas");
     new_hora.setAttribute("style", "width: 120px;");  
@@ -211,7 +211,7 @@ function clonar_crnm() {
     var new_minutos = document.createElement("input");
     new_minutos.setAttribute("type", "number");
     new_minutos.setAttribute("id", name_minutos);
-    new_minutos.setAttribute("min", "1");
+    new_minutos.setAttribute("min", "0");
     new_minutos.setAttribute("max", "60");
     new_minutos.setAttribute("placeholder", "minutos");
     new_minutos.setAttribute("style", "width: 120px;");  
@@ -222,7 +222,7 @@ function clonar_crnm() {
     var new_segundos = document.createElement("input");
     new_segundos.setAttribute("type", "number");
     new_segundos.setAttribute("id", name_segundos);
-    new_segundos.setAttribute("min", "1");
+    new_segundos.setAttribute("min", "0");
     new_segundos.setAttribute("max", "60");
     new_segundos.setAttribute("placeholder", "segundos");
     new_segundos.setAttribute("style", "width: 120px;");  

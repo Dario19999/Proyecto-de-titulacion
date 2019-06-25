@@ -53,8 +53,7 @@
         
 ?>
 
-<html>
-<body>
+
     <hr>
     <hr>
     <hr>
@@ -229,8 +228,6 @@ $query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porcione
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/timer.jquery.min.js"></script>
-
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
         
     <script>
@@ -322,12 +319,9 @@ $query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porcione
         audio_inicio.currentTime=0;
         audio_inicio.play();
 
-        var horas = parseInt($(id).attr("data-h"));
-        var minutos = parseInt($(id).attr("data-m"));
-        var segundos = parseInt($(id).attr("data-s"));
-
-        console.log(horas);
-        console.log(id);
+        var horas = parseInt($("#"+id).attr("data-h"));
+        var minutos = parseInt($("#"+id).attr("data-m"));
+        var segundos = parseInt($("#"+id).attr("data-s"));
 
         $("#tiempo"+id).timer('remove');
 
@@ -370,4 +364,4 @@ $query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porcione
 
 <?php }
     
-    ?>
+    ?> 

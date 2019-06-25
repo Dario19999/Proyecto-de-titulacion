@@ -7,13 +7,14 @@
 }
 
 .cantidad{
-    width:80px;
+    width: 50%;
     height: 30px; 
 }
 
 .medida{
-    width: 150px;
+    width: 100px;
     height: 30px; 
+    margin-left: 100px;
 }
 
 .ingr{

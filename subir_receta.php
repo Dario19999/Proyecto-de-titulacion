@@ -69,31 +69,17 @@
             <div class="form-row h-100 justify-content-center align-items-center">
                 <p class="subtitulo_subir">Ingredientes</p> 
             </div>
-            
-            <div class="form-row h-100 justify-content-center align-items-center">
-                <div class="form-group col-md-1 text-center"></div>                
-                <div class="form-group col-md-1 text-center">
-                    <h4>Cantidad.</h4>
-                </div>
-
-                <div class="form-group col-md-2 text-center">
-                    <h4>Medida.</h4>
-                </div>
-
-                <div class="form-group col-md-3 text-center">
-                    <h4>Ingrediente.</h4>
-                </div>
-            </div>      
 
             <div id="ingr_group">
                 <div class="form-row h-100 justify-content-center align-items-center" id="ingrediente_1">
                     <div class="form-group col-md-1 text-center"></div>         
                     <div class="form-group col-md-1 text-center">
-                        <input type="number" name="cant_1" class="cantidad" min="0.0" value="0.0" step="0.1" required> 
+                        <label for="cantidad"> <h4>Cantidad.</h4></label>
+                        <input type="number" name="cant_1" class="cantidad" min="0.0" value="0.0" step="0.1" id="cantidad" required> 
                     </div>
-
-                    <div class="form-group col-md-2 text-center">
-                        <select class="form-control custom-select" name="medida_1" required>
+                    <div class="form-group col-md-1 text-center">
+                        <label for="medida"> <h4>Medida.</h4></label>
+                        <select class="form-control custom-select" name="medida_1" id="medida" required>
                             <option value="Kilo gramos">Kg</option>
                             <option value="gramos">g</option>
                             <option value="mili gramos">mg</option>
@@ -110,6 +96,7 @@
                     </div>
 
                     <div class="form-group col-md-3 text-center">
+                        <label for="name_ingr_1"> <h4>Ingrediente.</h4></label>
                         <input type="text" name="ingr_1" class="ingr" id="name_ingr_1" placeholder="Nombre del ingrediente" required>
                     </div>
                     <div class="form-group col-md-1 text-center"></div>
@@ -155,7 +142,7 @@
                     </div>
 
                     <div class="form-group col-md-7">
-                        <textarea class="textarea_adjust" name="paso_1" cols="30" rows="7" id = "textarea" placeholder="Describa el paso." required></textarea> 
+                        <textarea  name="paso_1" cols="30" rows="7" id = "textarea" placeholder="Describa el paso." required></textarea> 
                     </div>
                     <div class="form-group col-md-1 text-center"></div>         
                 </div> 
@@ -282,7 +269,7 @@
 
                 //clon del select para insertar la medida del ingrediente
                 var div_medida = document.createElement("div")
-                div_medida.setAttribute("class", "form-group col-md-2 text-center");
+                div_medida.setAttribute("class", "form-group col-md-1 text-center");
                 // div_medida.setAttribute("style", "margin-left: 190px;");
                 new_container.appendChild(div_medida);
                 var select_medida = document.querySelector("select[name = 'medida_1']");
