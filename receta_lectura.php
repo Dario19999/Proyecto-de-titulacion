@@ -197,9 +197,9 @@ if($cant!=0){
     </div>
 
     
-
-    <div class="container-fluid  ">
-        <div class="row text-center " style="display:block;">
+<hr>
+    <div class="     ">
+        <div class="row text-center justify-content-center align-items-center " style="display:block;">
             <div class="col col-xs-4 col-md-3">
                 <div class="card justify-content-center align-items-center">
                         <div class="card-body">
@@ -254,7 +254,7 @@ if($cant!=0){
         </div>
 
     </div>
-
+<hr>
     <div class="form-row h-100 justify-content-center align-items-center  btn_denunciar">
         <hr>
         
@@ -300,7 +300,7 @@ if($cant!=0){
 
                     <?php if (isset($_POST['rep_receta'])){
                                  
-                                if ($total>=0 && $total<4){
+                                if ($total>=0 && $total<=4){
                                     $query = ("UPDATE receta SET reportes = reportes +1 WHERE receta.id_receta = $id_receta");
                                     $rs = mysqli_query ($conexion, $query);                                         
                                     $query =("UPDATE reportes SET receta_rep = '1' WHERE reportes.id_reportando =$id_usuario");
@@ -392,7 +392,7 @@ if($cant!=0){
                                     $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
                                     $rs = mysqli_query ($conexion, $query); 
                                 
-                                }else if($total>4 && $total<10 && $deshabilitada!=1){
+                                }else if($total>=4 && $total<10 && $deshabilitada!=1){
                                     $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
                                     $rs = mysqli_query ($conexion, $query);
                                     $query = "UPDATE usuario SET fecha = CURDATE(), deshabilitada=1 WHERE usuario.id_usuario = $id_usuario_receta";
@@ -404,7 +404,7 @@ if($cant!=0){
                                     reactive, su cuenta será eliminada";
                                     mailer($correo, $nombre_usuario_receta, $asunto, $cuerpo);
 
-                                }else if($total>=5 && $total<10 && $deshabilitada==1){
+                                }else if($total>=4 && $total<10 && $deshabilitada==1){
                                     $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
                                     $rs = mysqli_query ($conexion, $query);  
                                 }else {

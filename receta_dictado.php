@@ -164,13 +164,13 @@
      
 <?php
 
-// $query = ("SELECT audio FROM receta WHERE id_receta=$id_receta");
-// $rs = mysqli_query ($conexion, $query);         
-// while(($row=mysqli_fetch_assoc($rs))){        
-//     $set_audio =$row['audio'];                
-// }          
+$query = ("SELECT audio FROM receta WHERE id_receta=$id_receta");
+$rs = mysqli_query ($conexion, $query);         
+while(($row=mysqli_fetch_assoc($rs))){        
+    $set_audio =$row['audio'];                
+}          
  
-// if (!isset ($set_audio)){
+if (!isset ($set_audio)){
 
 // // NOMBRE RECETA 
     $query= "SELECT * FROM receta WHERE id_receta = $id_receta";
@@ -212,27 +212,17 @@
     $rs=mysqli_query($conexion, $query);
     while ($row=mysqli_fetch_array($rs)){
         $id_datos=$row['id_datos'];
-    }
-
-    $query= ("SELECT cantidad, medida, id_datos, nombre_ingrediente, receta.porciones 
-        FROM datos_receta, receta WHERE datos_receta.id_receta=$id_receta 
-        AND receta.id_receta=$id_receta");
-        $rs = mysqli_query ($conexion, $query);
-
-    while(($row=mysqli_fetch_assoc($rs))){ 
-        $porciones=$row ['porciones'];
         $cantidad=$row['cantidad'];
         $medida=$row['medida'];
         $ingrediente=$row['nombre_ingrediente'];
-        $texto=$cantidad.$medida.$ingrediente."<br>";
-       
+        $texto=$cantidad.$medida.$ingrediente;
 
         audio ($texto, $contenido, $id_datos);
 
         $query= "UPDATE datos_receta SET audio = 'audio/datos$id_datos.mp3' WHERE id_datos = $id_datos";
         mysqli_query ($conexion, $query) OR DIE ("Error: ".mysqli_error($conexion));
+    }
 }
-
 
 ?>
     <script src="js/jquery-3.3.1.slim.min.js"></script>
@@ -254,7 +244,7 @@
 
         'siguiente': function() {
 
-        alert("Siguiente");
+        // alert("Siguiente");
         if ( paso_actual < total_pasos ){
             paso_actual = paso_actual+1;
             location.replace(window.location.href + "&paso=" + paso_actual) ;
@@ -264,7 +254,7 @@
         
         'repetir': function() {
 
-        alert("Repetir");
+        // alert("Repetir");
             paso_actual = paso_actual;
             location.replace(window.location.href + "&paso=" + paso_actual) ;
 
@@ -272,7 +262,7 @@
 
         'anterior': function() {
 
-        alert("Anterior");
+        // alert("Anterior");
             if ( paso_actual > paso_inicial){
                 paso_actual = paso_actual-1;
                 location.replace(window.location.href + "&paso=" + paso_actual) ;
