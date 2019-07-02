@@ -194,10 +194,6 @@
             let cont_name_ingr = 2;
             let cont_ingr = 1;
 
-            $("#agregar_ingr").on("click", function(){
-                clonar_ingr();
-            });
-
             var ingredientes = <?= json_encode($ingredientes)?>;
             $("#name_ingr_1").on("focus", function(){
                 $(this).autocomplete({
@@ -209,88 +205,135 @@
                             $(this).css("border", "1px solid gray");
                         }
                     }
-                });
+                }); 
+            });
+
+            $("#agregar_ingr").on("click", function(){
+                clonar_ingr();
             });
 
             function clonar_ingr(){
     
-                let id_cant = "cant_"+cont_name_ingr;
-                let id_medida = "medida_"+cont_name_ingr;
+                //variable que almacena el name del input number para la cantidad
+                let name_cant = "cant_"+cont_name_ingr;
+                //variable que almacena el name del select para la medida
+                let name_medida = "medida_"+cont_name_ingr;
+                //variable que almacena el name del input text para el ingrediente
                 let name_ingr = "ingr_"+cont_name_ingr;
+                //variable que almacena el id del contenedor de los input para 
+                //un solo ingrediente
                 let id_group = "ingrediente_"+cont_name_ingr;
+                //variable que almacena el id con el que se crean los nuevos
+                //input text para el nombre del ingrediente
                 let id_ingr = "name_ingr_"+cont_name_ingr;
 
+                //se crea un nodo padre
                 var ingr_input = document.getElementById("ingr_group");
 
                 //contenedor de inputs de agregar ingrediente
                 var new_container = document.createElement("div");
+                //se agrega un atributo clase para el posicionamiento de las celdas y un id al contenedor
                 new_container.setAttribute("class", "form-row h-100 justify-content-center align-items-center");
-                // new_container.setAttribute("style", "margin-right: 100px;");
-                new_container.setAttribute("id", id_group); 
+                new_container.setAttribute("id", id_group);
+                //se adjunta el contenedor al nodo padre 
                 ingr_input.appendChild(new_container);
 
                 //boton para eliminar ingrediente
                 var div_btn_delete = document.createElement("div");
+                //se agregan atributos de clase para dimension y un id 
                 div_btn_delete.setAttribute("class", "form-group col-md-1");
                 div_btn_delete.setAttribute("id", "delete_ingr");
-                // div_btn_delete.setAttribute("style", "margin-left: px;");
+                //se adjunta el contenedor del boton a la fila 
                 new_container.appendChild(div_btn_delete);
+
+                //se crea el boton para eliminar el paso
                 var btn_delete = document.createElement("button");
+                //se agregan atributos al boton para especificar el estilo y la etiqueta para llamar la
+                //función de eliminar
                 btn_delete.setAttribute("type", "button");
                 btn_delete.setAttribute("class", "close");
                 btn_delete.setAttribute("aria-label", "Close");
                 btn_delete.setAttribute("id", "delete_ingr")
+                //se adjunta el boton al contenedor
                 div_btn_delete.appendChild(btn_delete);
+                //se crea el ícono de la X para el botón de eliminar
                 var span = document.createElement("span");
                 span.setAttribute("aria-hidden", "true");
                 span.innerHTML = "&times;"
                 btn_delete.appendChild(span);
 
+                //función que elimina el nodo
                 btn_delete.addEventListener("click", function(){
+                    //selección de los nodos hijos
                     var deleted = document.querySelectorAll('div#ingr_group div.form-row');
+                    //eliminar el nodo que está en la posición 2
                     deleted[1].parentNode.removeChild(deleted[1]);
+                    //se resta la cantidad de cronómetros
                     cont_ingr-=1;
+                    //se resta ela variable que se usa para identificar los name
                     cont_name_ingr-=1;
                 });
 
                 //nuevo input text para insertar la cantidad del ingrediente
                 var div_cant = document.createElement("div")
+                //se agrega un atributo clase para dimensionar la celda 
                 div_cant.setAttribute("class", "form-group col-md-1 text-center");
+                //se adjunta el contenedor a la fila
                 new_container.appendChild(div_cant);
+
+                //se crea el input number para la cantidad
                 var new_cant = document.createElement("input");
+                //se especifica el atributo tipo
                 new_cant.setAttribute("type", "number");
-                new_cant.setAttribute("name", id_cant);
+                //se agrega el name generado
+                new_cant.setAttribute("name", name_cant);
+                //se agrega la clase cantidad para dar estilo
                 new_cant.setAttribute("class", "cantidad");
+                //se agrefan atributos para la entrada del input
                 new_cant.setAttribute("min", "0.0");
                 new_cant.setAttribute("value", "0.0");
                 new_cant.setAttribute("step", "0.1")
                 new_cant.setAttribute("required", "");
+                //se adjunta el input al contenedor
                 div_cant.appendChild(new_cant);
 
-                //clon del select para insertar la medida del ingrediente
+                //contenedor para el select de la medida
                 var div_medida = document.createElement("div")
                 div_medida.setAttribute("class", "form-group col-md-1 text-center");
-                // div_medida.setAttribute("style", "margin-left: 190px;");
+                //se adjunta la celda a la fila
                 new_container.appendChild(div_medida);
+
+                //se selecciona el select ya creado y se copia
                 var select_medida = document.querySelector("select[name = 'medida_1']");
                 var new_medida = select_medida.cloneNode(true);
+                //se elimina el viejo atributo name y se agrega el generado
                 new_medida.removeAttribute("name");
-                new_medida.setAttribute("name", id_medida);
+                new_medida.setAttribute("name", name_medida);
+                //se adjunta el select a la celda
                 div_medida.appendChild(new_medida);
 
-                //nuevo input text para insertar el nombre del ingrediente
+                //se crea la celda para el input text pera el nombre del ingrediente
                 var div_ingr = document.createElement("div");
                 div_ingr.setAttribute("class", "form-group col-md-3 text-center");
-                // div_ingr.setAttribute("style", "margin-left: 115px;");
+                //se adjunta la celda a la fila
                 new_container.appendChild(div_ingr);
+
+                //se crea el nuevo input text
                 var new_ingr = document.createElement("input")
+                //se especifica el tipo de input y se agrega el name generado
                 new_ingr.setAttribute("type", "text");
                 new_ingr.setAttribute("name", name_ingr);
+                //se agrega la clase para el autocompletado y el id generado
                 new_ingr.setAttribute("class", "ingr ui-autocomplete-input");
                 new_ingr.setAttribute("id", id_ingr);
+                //se agrefan atributos para la entrada del input
                 new_ingr.setAttribute("placeholder", "Nombre del ingrediente");
                 new_ingr.setAttribute("required", "");
+                //se adjunta el input a la celda
                 div_ingr.appendChild(new_ingr);
+
+                //funcion para el autocompletado del ingrediente
+                //igual a la del input del ingrediente 1
                 $("#"+id_ingr).on("focus", function(){
                         $(this).autocomplete({
                         source: ingredientes,
@@ -304,9 +347,14 @@
                     });
                 });
                 
+                //se crea un espacio en blanco y se pone al final de la fila
+                //por cuestiones de estética y centrado del contenido
                 var space = document.createElement("div");
                 space.setAttribute("class", "form-group col-md-1 text-center");
                 new_container.appendChild(space);
+
+                //se suma 1 a la canridad de ingredientes y a la variable que 
+                //identifica los names
                 cont_ingr+=1;
                 cont_name_ingr+=1;
             }

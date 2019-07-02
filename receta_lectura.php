@@ -78,15 +78,16 @@ if($cant!=0){
     ?>
 
 <div class="container-fluid receta">
-
-    <div class="form-row h-100 justify-content-center align-items-center nombre_receta">
-  
-        <h1> <?php echo $nombre_receta;?></h1>
+    <form action="" method="POST" id="calc_porciones">
+        <div class="form-row h-100 justify-content-center align-items-center nombre_receta">
     
+            <h1> <?php echo $nombre_receta;?></h1>
+        
         </div>
         <hr>
+
         <div class="form-row h-100 justify-content-center align-items-center">
-            <div class="col-5 col-md-5 justify-content-center ingredientes">
+            <div class="form-group col-md-5 text center ingredientes">
                 <?php 
                     $query_por = "SELECT porciones FROM receta WHERE id_receta = $id_receta";
                     $res_porciones = mysqli_query($conexion, $query_por);
@@ -95,19 +96,15 @@ if($cant!=0){
                     }
                     $max = $actual_porciones+5;
                 ?>
-
-                <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
                     <input type="number" name="porcion" id="porciones" min="1" max= "<?php echo $max ?>" value="<?php echo $actual_porciones?>">
                     <br>
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
-                    
-                    <div class="justify-content-center">
+            </div>
+        </div>
                     <hr>
                     <h3>Ingredientes</h3>   
                     <br> 
-                    <div>
-                  
                             
                     <?php
                         $array=[];
@@ -131,39 +128,21 @@ if($cant!=0){
                             $new_cantidad = $row['Recalculo']; 
                             $medida=$row['medida'];
                             $ingrediente=$row['nombre_ingrediente']; 
-                            
-                               
-
-
                     ?>
-                          <div>
-                            <ul>
-                                
-                                
-                                <!-- <?php 
-                                // if($new_cantidad>($cant_original*3)){
-                                //     $max=
-                                    
-                                // } ?> -->
-                                    <li> <?php  echo $ingrediente."   " .$new_cantidad." ".$medida ; ?> </li>
-                               
-                                
-                                
-                            <ul>
-                            
-                        </div>
-                </form>
-        <?php
-  
+                            <div>
+                                <ul>
 
-                }?>
-    </div>
-        </div>
-        </div>
-        </div>
+                                    <li> <?php  echo $ingrediente."   " .$new_cantidad." ".$medida ; ?> </li>
+
+                                <ul>     
+                            </div>
+                
+                    <?php } ?>
+    </form>    
+</div>
         <hr>
 
-         <div class="row justify-content-center procedimiento">
+        <div class="row justify-content-center procedimiento">
              <h2>Procedimiento</h2>
         </div>
         <div class="form-row h-100 justify-content-center align-items-center">
