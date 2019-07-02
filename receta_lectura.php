@@ -111,14 +111,14 @@ if($cant!=0){
                         $query = ("SELECT cantidad FROM datos_receta WHERE id_receta = $id_receta");
                         $rs = mysqli_query ($conexion, $query);
                         while ($row = mysqli_fetch_assoc($rs)){
-                            echo $cant_original =$row ['cantidad'];
+                             $cant_original =$row ['cantidad'];
                         }
                                 
                         $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
                         FROM datos_receta WHERE id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
                         while($row = mysqli_fetch_assoc($rs)){
-                            echo $new_cantidad = $row['Recalculo']; 
+                             $new_cantidad = $row['Recalculo']; 
                             $medida=$row['medida'];
                             $ingrediente=$row['nombre_ingrediente']; 
                             
