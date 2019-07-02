@@ -70,15 +70,16 @@ if($cant!=0){
     ?>
 
 <div class="container-fluid receta">
-
-    <div class="form-row h-100 justify-content-center align-items-center nombre_receta">
-  
-        <h1> <?php echo $nombre_receta;?></h1>
+    <form action="" method="POST" id="calc_porciones">
+        <div class="form-row h-100 justify-content-center align-items-center nombre_receta">
     
+            <h1> <?php echo $nombre_receta;?></h1>
+        
         </div>
         <hr>
+
         <div class="form-row h-100 justify-content-center align-items-center">
-            <div class="col-5 col-md-5 justify-content-center ingredientes">
+            <div class="form-group col-md-5 text-center ingredientes">
                 <?php 
                     $query_por = "SELECT porciones FROM receta WHERE id_receta = $id_receta";
                     $res_porciones = mysqli_query($conexion, $query_por);
@@ -87,19 +88,19 @@ if($cant!=0){
                     }
                     $max = $actual_porciones+5;
                 ?>
-
-                <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
                     <input type="number" name="porcion" id="porciones" min="1.0" max= "<?php echo $max ?>" value="<?php echo $actual_porciones?>">
                     <br>
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
+            </div>
+        </div>
+        <hr>
+        <div class="form-row h-100 justify-content-center align-items-center">
+
+            <div class="form-group col-md-3 text-center ingredientes">
                     
-                    <div class="justify-content-center">
-                    <hr>
                     <h3>Ingredientes</h3>   
                     <br> 
-                    <div>
-                  
                             
                     <?php
                         $array=[];
@@ -124,33 +125,22 @@ if($cant!=0){
                             
                                
                     ?>
-                          <div>
+                        <div>
                             <ul>
-                                
-                                
-                                <!-- <?php 
-                                // if($new_cantidad>($cant_original*3)){
-                                //     $max=
-                                    
-                                // } ?> -->
-                                    <li> <?php  echo $ingrediente."   " .$new_cantidad." ".$medida ; ?> </li>
-                               
-                                
-                                
+
+                                <li> <?php  echo $ingrediente."   " .$new_cantidad." ".$medida ; ?> </li>
+  
                             <ul>
                             
                         </div>
-                </form>
-        <?php
-  
-                }?>
-    </div>
+        <?php }?>
+            </div>
         </div>
-        </div>
-        </div>
+    </form>
+</div>
         <hr>
 
-         <div class="row justify-content-center procedimiento">
+        <div class="row justify-content-center procedimiento">
              <h2>Procedimiento</h2>
         </div>
         <div class="form-row h-100 justify-content-center align-items-center">
@@ -184,69 +174,67 @@ if($cant!=0){
 
     
 <hr>
-    <div class="     ">
-        <div class="row text-center justify-content-center align-items-center " style="display:block;">
-            <div class="col col-xs-4 col-md-3">
-                <div class="card justify-content-center align-items-center">
-                        <div class="card-body">
-                            <h5 class="card-title" id="super">Bodega Aurrera</h5>
-                            <h6 class="card-subtitle mb-2 text-muted" id="precio">$$$</h6>
-                            <?php 
-                        $cot=0;
-                        $precio_bd=0;
-                        $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
-                        FROM datos_receta WHERE id_receta=$id_receta");
-                        $rs = mysqli_query ($conexion, $query);
-                        while($row = mysqli_fetch_assoc($rs)){
-                            $new_cantidad = $row['Recalculo']; 
-                            $medida=$row['medida'];
-                            $ingrediente=$row['nombre_ingrediente']; 
-                            $opts = array(
-                                'ssl' => array(
-                                'ciphers' => 'RC4-SHA',
-                                'verify_peer' => false,
-                                'verify_peer_name' => false
-                                )
-                            );
-                            // SOAP 1.2 client
-                            $reponseParams = array(
-                                'pkSitio' => '1',
-                                'producto' => $ingrediente
-                            );
-                            $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
-                            $response = $client->jessyMethod($reponseParams);
-                            if (isset ($response->jessyMethodResult->RespuestaModelo)){
-                                $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));                                          
-                                $data=($response->jessyMethodResult->RespuestaModelo);
-                                // var_dump($data);
-                                echo $producto = $data[0]->valor;
-                                echo $valor = $data[1]->valor;
-                                echo "<br>";
-                                $precio=substr($valor, 3);
-                                // echo $new_cantidad;
-                                // echo "<br>";
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col col-xs-4 col-md-3">
+            <div class="card justify-content-center align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title" id="super">Bodega Aurrera</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" id="precio">$$$</h6>
+                        <?php 
+                    $cot=0;
+                    $precio_bd=0;
+                    $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
+                    FROM datos_receta WHERE id_receta=$id_receta");
+                    $rs = mysqli_query ($conexion, $query);
+                    while($row = mysqli_fetch_assoc($rs)){
+                        $new_cantidad = $row['Recalculo']; 
+                        $medida=$row['medida'];
+                        $ingrediente=$row['nombre_ingrediente']; 
+                        $opts = array(
+                            'ssl' => array(
+                            'ciphers' => 'RC4-SHA',
+                            'verify_peer' => false,
+                            'verify_peer_name' => false
+                            )
+                        );
+                        // SOAP 1.2 client
+                        $reponseParams = array(
+                            'pkSitio' => '1',
+                            'producto' => $ingrediente
+                        );
+                        $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
+                        $response = $client->jessyMethod($reponseParams);
+                        if (isset ($response->jessyMethodResult->RespuestaModelo)){
+                            $col = ceil(count($response->jessyMethodResult->RespuestaModelo,0));                                          
+                            $data=($response->jessyMethodResult->RespuestaModelo);
+                            // var_dump($data);
+                            echo $producto = $data[0]->valor;
+                            echo $valor = $data[1]->valor;
+                            echo "<br>";
+                            $precio=substr($valor, 3);
+                            // echo $new_cantidad;
+                            // echo "<br>";
 
-                                    $cot=($cot+$precio)*$new_cantidad;
-                                    $precio_bd=($precio_bd+$precio)*$cant_original;
-                                
-                                //Subir precio a base de datos
-                                
-                               
-                            }else echo $ingrediente." no se encontró <br>";
-                        }
-                        echo "Precio total APROXIMADO por $new_cantidad porciones: $".$cot."<br>";
-                        $query = ("UPDATE receta SET precio = $precio_bd WHERE receta.id_receta = $id_receta;");
-                        $rs = mysqli_query ($conexion, $query); 
-                        ?>
-                            <a href="https://bodegaaurrera.net/" target="_blank" class="card-link">Ir a la p&aacute;gina</a>
-                        </div>
-                </div>
-
+                                $cot=($cot+$precio)*$new_cantidad;
+                                $precio_bd=($precio_bd+$precio)*$cant_original;
+                            
+                            //Subir precio a base de datos
+                            
+                            
+                        }else echo $ingrediente." no se encontró <br>";
+                    }
+                    echo "Precio total APROXIMADO por $actual_porciones porciones: $".$cot."<br>";
+                    $query = ("UPDATE receta SET precio = $precio_bd WHERE receta.id_receta = $id_receta;");
+                    $rs = mysqli_query ($conexion, $query); 
+                    ?>
+                        <a href="https://bodegaaurrera.net/" target="_blank" class="card-link">Ir a la p&aacute;gina</a>
+                    </div>
             </div>
 
         </div>
 
     </div>
+
 <hr>
     <div class="form-row h-100 justify-content-center align-items-center  btn_denunciar">
         <hr>

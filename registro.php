@@ -9,7 +9,7 @@
 
 
     if(isset($_POST['reg'])){
-        $user = $_POST['usuario'];
+        $user = $_POST['nombre_usuario'];
         $correo = $_POST['correo'];
         $sexo = $_POST['genero'];
         $edad = $_POST['edad'];
@@ -74,7 +74,7 @@
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-3 text-center">
                     <h2>Nombre de Usuario</h2>
-                    <input type="text"  class="form-control" placeholder="Ingrese su nuevo nombre de usuario..." name="usuario" id="in_nombre" required>
+                    <input type="text"  class="form-control" placeholder="Ingrese su nuevo nombre de usuario..." name="nombre_usuario" id="in_nombre" required>
                 </div>
             </div>
             <br>
