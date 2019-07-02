@@ -1,8 +1,7 @@
-  <?php
-    require __DIR__ . '/vendor/autoload.php';
+<?php
+
     include 'php/conexion.php';
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+    include 'php/mailer.php';
 
     ?>
 <!DOCTYPE html>
@@ -68,29 +67,9 @@
             $asunto="Recuperar ";
             $cuerpo ="Hemos notado que deseas cambiar tu clave de ingreso. De ser esto correcto, 
             por favor ingresa al siguiente enlace: <a href='$url'>$url</a>";
-
-            $mail = new PHPMailer(true);
+            
             try {
-                //Server settings
-                // $mail->SMTPDebug = 2;                                       // Enable verbose debug output
-                $mail->isSMTP();                                            // Set mailer to use SMTP
-                $mail->Host       = 'smtp.hostinger.mx';                    // Specify main and backup SMTP servers
-                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = 'lacuisine@lacousine.com';               // SMTP username
-                $mail->Password   = '#BEgwTy`77jnhwj17k';                            // SMTP password
-                $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-                $mail->Port       = 587;                                    // TCP port to connect to
-
-                //Recipients
-                $mail->setFrom('lacuisine@lacousine.com', 'La Cuisine');
-                $mail->addAddress($correo, $user);     // Add a recipient
-
-                // Content
-                $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = $asunto;
-                $mail->Body    = $cuerpo;
-
-                $mail->send();
+                mailer ($correo, $user, $asunto, $cuerpo);
                 echo 'Se ha enviado un correo electronico para la recuperacion';
                 return true;
             }catch (Exception $e) {
@@ -98,14 +77,10 @@
             }
 
         }
-    }
-                                                  
-                            
+    }                                                                          
                         
 ?>
-
-        </div>
-        
+        </div>        
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>

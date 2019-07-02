@@ -12,11 +12,10 @@ if(isset($_SERVER['HTTP_REFERER'])) {
 $pagina_anterior=$_SERVER['HTTP_REFERER'];
     if ($pagina_anterior=='http://localhost/lacousine.com/registro.php'){
     // if ($pagina_anterior=='https://lacousine.com/registro.php'){
-        $errorLogin = "Registro exitoso".'<br>';
+        $msgLogin = "Registro exitoso".'<br>';
         include_once 'login.php';
     }
 }
-// if ($pagina_anterior=="")
 
 if (isset ($_SESSION ['username'])) {
 
@@ -36,7 +35,7 @@ if (isset ($_SESSION ['username'])) {
     $user = new User();
 
     if ($user->userUnabled($userForm)){
-        $errorLogin = "Cuenta deshabilitada".'<br>';
+        $msgLogin = "Cuenta deshabilitada".'<br>';
         include_once 'login.php';
         
     }else if ($user->userExists($userForm, $passForm)){
@@ -45,12 +44,11 @@ if (isset ($_SESSION ['username'])) {
         $user->setUser($userForm);
 
         include_once 'pagina_principal.php';
-       
 
     }else{
 
        // echo "Usuario y/o contraseña incorrectos".'<br>';
-        $errorLogin = "Usuario y/o contraseña incorrectos".'<br>';
+        $msgLogin = "Usuario y/o contraseña incorrectos".'<br>';
         include_once 'login.php';
        
     }

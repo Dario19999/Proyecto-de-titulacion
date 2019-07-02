@@ -1,7 +1,7 @@
 
 <?php
 
-include 'DB.php';
+include 'php/DB.php';
 
 
 class User extends DB{
@@ -26,11 +26,8 @@ class User extends DB{
         
     }
 
-
     public function userExists ($user, $pass){
    
-
-
         //En este query va a hacer una consulta para saber si coinciden las contraseñas y el usuario
         $query = ("SELECT pass FROM usuario WHERE nombre = '$user'");
         $rs = $this->connect() -> query($query);
@@ -47,7 +44,6 @@ class User extends DB{
 
             return false;
         }
-
 
     }
 

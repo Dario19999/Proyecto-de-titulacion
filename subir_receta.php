@@ -160,7 +160,7 @@
             <hr>
 
             <div class="form-row h-100 justify-content-center align-items-center">
-                <p class="subtitulo_subir">Cronómetros</p>
+                <p class="subtitulo_subir">Temporizadores</p>
                 <div class="col-md-12 text-center">
                     <div id="crnm_group">
 
