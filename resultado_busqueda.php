@@ -93,7 +93,7 @@ if (!empty ($precio) && !is_empty ($query) && $precio!==0){
     $query.= "  precio=$precio";
 }
 
-$rs = mysqli_query ($conexion, $query);
+$rs = mysqli_query($conexion, $query);
 $cant_recetas = mysqli_num_rows($rs);
 ?>
 <br>
@@ -126,14 +126,11 @@ $cant_recetas = mysqli_num_rows($rs);
 </div>
 
             <?php }
-
-
+            
             if($cant_recetas==0){ ?>
-            <hr>
-            <hr>
-            <hr>
-            <h1>No hay resultados</h1>
 
+            <h1>No hay resultados</h1>
+            
             <?php } ?>
 
 </html>
