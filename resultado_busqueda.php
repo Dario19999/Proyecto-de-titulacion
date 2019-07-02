@@ -1,9 +1,3 @@
-<!-- <hr>
-<hr>
-<hr>  -->
-<hr>
-
-
 <html>
 <link rel="stylesheet" href="css/resultado_busqueda.css">    
 
@@ -41,13 +35,6 @@ if(isset($_POST ['precio'])){
     $precio = $_POST ['precio'];
 }else $precio=0;
 
-// echo $busqueda."<br>";
-// echo $tipo."<br>";
-// echo $sabor."<br>";
-// echo $dificultad."<br>";
-// echo $accesibilidad."<br>";
-// echo $tiempo."<br>";
-// echo $nacionalidad."<br>";
 
 function is_empty ($query){
     if (strlen($query)==27) {
@@ -68,12 +55,6 @@ if (!empty ($tipo) && !is_empty ($query)){
 }else if(!empty ($tipo) && is_empty ($query)){
     $query.= "  id_categorias=$tipo";
 }
-
-// if (!empty ($sabor) && !is_empty ($query)){
-//     $query.= " AND sabor=$sabor";
-// }else if(!empty ($sabor) && is_empty ($query)){
-//     $query.= "  sabor=$sabor";
-// }
 
 is_empty($query);
 
@@ -112,15 +93,14 @@ if (!empty ($precio) && !is_empty ($query) && $precio!==0){
     $query.= "  precio=$precio";
 }
 
-
 $rs = mysqli_query ($conexion, $query);
 $cant_recetas = mysqli_num_rows($rs);
 ?>
-
+<br>
+<br>
+<br>
 <?php while(($row=mysqli_fetch_assoc($rs))) {?>
-<hr>
-<hr>
-<hr>
+<br>
 <div class="card">
     <div class="card-body">
         <a href="receta_lectura.php?id_receta=<?php echo ($row['id_receta'])?>">

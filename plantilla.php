@@ -57,14 +57,7 @@ y se agregan las fuentes a utilizar mediante Google Fonts-->
         ?>
     </head>
  <!-----------------------------------[Inicio de Plantilla]------------------------------------------>
-<!--Aquí, como en todas las páginas, se agrega la barra de navegación. La clase navbar es propia de
-Bootstrap; nos permite definir en qué tamaño de dispositivo se va a expandir (mediano en este caso)
-y que debe estar fijo en la parte superior
 
-Se define el botón que aparecerá cuando el tamaño del dispositivo sea uno menor al mediano, de forma
-que la barra de navegación sea colapsable al presionarlo. Luego agregamos los botones que enlazarán
-al resto de las páginas y el dropdown para que se desplieguen las opciones de editar perfil y salir
-al presionar un botón con ícono de configuarción-->
     <body>
 
         <nav class="navbar navbar-expand-md inicio fixed-top" role="navigation">

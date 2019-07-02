@@ -118,7 +118,7 @@
             <div class="form-row h-100 justify-content-center align-items-center">
                 <div class="form-group col-md-2 text-center">
                     <h2>Edad</h2>
-                    <input type="number" name="edad" min="0" value="18" required>
+                    <input type="number" name="edad" min="15" value="18" required>
                 </div>
             </div>
             <hr>

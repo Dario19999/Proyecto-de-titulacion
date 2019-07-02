@@ -32,11 +32,9 @@
 
                 <?php
 
-                    if (isset($errorLogin)){
-                        echo $errorLogin;
+                    if (isset($msgLogin)){
+                        echo $msgLogin;
                     }
-
-
 
                 ?>
 

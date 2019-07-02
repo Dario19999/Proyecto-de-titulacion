@@ -1,5 +1,5 @@
+    
 <?php
-
     include 'sesion.php';
     include 'validar.php';
     $userSession = new userSession();
@@ -29,17 +29,14 @@ if($cant!=0){
     if (isset ($_SESSION ['username'])) {
         $usuario = $_SESSION['username'];
     }
-
     $query =("SELECT * FROM usuario WHERE nombre = '$usuario'");
     $rs = mysqli_query ($conexion, $query);
         while(($row=mysqli_fetch_array($rs))) {
             $id_usuario=$row['id_usuario'];
         }
-
     // echo $id_usuario.'<br>';
     // echo $id_receta.'<br>';
     // echo $cant.'<br>';
-
     $query =("SELECT * FROM receta WHERE id_receta=$id_receta ");
     $rs = mysqli_query($conexion, $query);     
         while(($row=mysqli_fetch_array($rs))) {
@@ -53,28 +50,23 @@ if($cant!=0){
         while(($row=mysqli_fetch_array($rs))) {
             $reporte_exists=$row['id_reportando'];
         }
-
     if ($reporte_exists==NULL){
         $query = ("INSERT INTO reportes (id_reportando, id_receta, id_usuario) VALUES ($id_usuario,$id_receta,$id_usuario_receta )");
         mysqli_query ($conexion, $query);    
     }
-
     $query =("SELECT * FROM usuario WHERE id_usuario = '$id_usuario_receta'");
     $rs = mysqli_query ($conexion, $query);
         while(($row=mysqli_fetch_array($rs))) {
             $correo=$row['correo'];
             $nombre_usuario_receta=$row['nombre'];
         }
-
     $query =("SELECT receta_rep, usuario_rep, calificacion FROM reportes WHERE id_reportando = $id_usuario AND id_receta=$id_receta LIMIT 1");
     $rs = mysqli_query ($conexion, $query);
-
         while(($row=mysqli_fetch_array($rs))) {
             $den_receta=$row['receta_rep'];
             $den_usuario=$row['usuario_rep'];
             $cant_votos=$row['calificacion'];
         }
-
     ?>
 
 <div class="container-fluid receta">
@@ -98,7 +90,7 @@ if($cant!=0){
 
                 <form action="" method="POST" id="calc_porciones">
                     <h3>Porciones</h3>
-                    <input type="number" name="porcion" id="porciones" min="1" max= "<?php echo $max ?>" value="<?php echo $actual_porciones?>">
+                    <input type="number" name="porcion" id="porciones" min="1.0" max= "<?php echo $max ?>" value="<?php echo $actual_porciones?>">
                     <br>
                     <button type="submit" class="btn boton_generico" id="recalcular" style="margin-top: 15px;">Recalcular</button>
                     
@@ -116,25 +108,21 @@ if($cant!=0){
                         }else{
                             $new_porcion = $actual_porciones;
                         }
-
                         $query = ("SELECT cantidad FROM datos_receta WHERE id_receta = $id_receta");
                         $rs = mysqli_query ($conexion, $query);
                         while ($row = mysqli_fetch_assoc($rs)){
-                            $cant_original =$row ['cantidad'];
+                            echo $cant_original =$row ['cantidad'];
                         }
                                 
                         $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
                         FROM datos_receta WHERE id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
-
                         while($row = mysqli_fetch_assoc($rs)){
-                            $new_cantidad = $row['Recalculo']; 
+                            echo $new_cantidad = $row['Recalculo']; 
                             $medida=$row['medida'];
                             $ingrediente=$row['nombre_ingrediente']; 
                             
                                
-
-
                     ?>
                           <div>
                             <ul>
@@ -155,7 +143,6 @@ if($cant!=0){
                 </form>
         <?php
   
-
                 }?>
     </div>
         </div>
@@ -172,7 +159,6 @@ if($cant!=0){
                         require 'php/conexion.php';
                         $query = ("SELECT paso FROM procedimiento WHERE id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
-
                         while(($row=mysqli_fetch_assoc($rs))){ 
                         
                     ?>
@@ -206,15 +192,15 @@ if($cant!=0){
                             <h5 class="card-title" id="super">Bodega Aurrera</h5>
                             <h6 class="card-subtitle mb-2 text-muted" id="precio">$$$</h6>
                             <?php 
+                        $cot=0;
+                        $precio_bd=0;
                         $query = ("SELECT TRUNCATE (cantidad*$new_porcion/$actual_porciones,1) Recalculo, medida, nombre_ingrediente 
                         FROM datos_receta WHERE id_receta=$id_receta");
                         $rs = mysqli_query ($conexion, $query);
-                        $cot=0;
                         while($row = mysqli_fetch_assoc($rs)){
                             $new_cantidad = $row['Recalculo']; 
                             $medida=$row['medida'];
                             $ingrediente=$row['nombre_ingrediente']; 
-
                             $opts = array(
                                 'ssl' => array(
                                 'ciphers' => 'RC4-SHA',
@@ -227,7 +213,6 @@ if($cant!=0){
                                 'pkSitio' => '1',
                                 'producto' => $ingrediente
                             );
-
                             $client = new SoapClient('http://jessy.gearhostpreview.com/webservice.asmx?WSDL', $opts);
                             $response = $client->jessyMethod($reponseParams);
                             if (isset ($response->jessyMethodResult->RespuestaModelo)){
@@ -240,11 +225,19 @@ if($cant!=0){
                                 $precio=substr($valor, 3);
                                 // echo $new_cantidad;
                                 // echo "<br>";
-                                $cot=($cot+$precio)*$new_cantidad;
+
+                                    $cot=($cot+$precio)*$new_cantidad;
+                                    $precio_bd=($precio_bd+$precio)*$cant_original;
+                                
+                                //Subir precio a base de datos
+                                
+                               
                             }else echo $ingrediente." no se encontró <br>";
                         }
-                        echo "Precio total: $".$cot."<br>";
-                            ?>
+                        echo "Precio total APROXIMADO por $new_cantidad porciones: $".$cot."<br>";
+                        $query = ("UPDATE receta SET precio = $precio_bd WHERE receta.id_receta = $id_receta;");
+                        $rs = mysqli_query ($conexion, $query); 
+                        ?>
                             <a href="https://bodegaaurrera.net/" target="_blank" class="card-link">Ir a la p&aacute;gina</a>
                         </div>
                 </div>
@@ -320,7 +313,6 @@ if($cant!=0){
                                     // }else{
                                     //     echo $mensaje;
                                     // }
-
                                     mailer ($correo, $nombre_usuario_receta, $asunto, $cuerpo);
                                 }
                                 
@@ -387,7 +379,6 @@ if($cant!=0){
                                     $total = $row['reportes'];
                                     $deshabilitada=$row['deshabilitada'];
                                 }
-
                                 if ($total>=0 && $total<5){
                                     $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
                                     $rs = mysqli_query ($conexion, $query); 
@@ -403,7 +394,6 @@ if($cant!=0){
                                     inadecuado dentro de esta plataforma. Si vuelve a ser denunciado una vez que se 
                                     reactive, su cuenta será eliminada";
                                     mailer($correo, $nombre_usuario_receta, $asunto, $cuerpo);
-
                                 }else if($total>=4 && $total<10 && $deshabilitada==1){
                                     $query = ("UPDATE usuario SET reportes = reportes+1 WHERE usuario.id_usuario = $id_usuario_receta");
                                     $rs = mysqli_query ($conexion, $query);  
@@ -416,11 +406,9 @@ if($cant!=0){
                                     reportado por conducta inadecuada después de la reactivación de su cuenta.";
                                     mailer ($correo, $nombre_usuario_receta, $asunto, $cuerpo);
                                 }
-
                                 $query =("UPDATE reportes SET usuario_rep = '1' WHERE reportes.id_reportando =$id_usuario");
                                 mysqli_query ($conexion, $query);
                                 }
-
                             }else if ($id_usuario_receta==$id_usuario){
                                 echo "No puedes reportarte a ti mismo, bro";  
                             } else  {
@@ -554,7 +542,6 @@ if($cant!=0){
                                         if(isset($_POST ['tiempo'])){
                                             $tiempo = $_POST ['tiempo'];
                                         } else $tiempo=0;
-
                                         
                                         $id_receta = $_GET ['id_receta'];
                                         $query="UPDATE receta SET cantidad_vot=+1,  
@@ -562,10 +549,8 @@ if($cant!=0){
                                         accesibilidad= (accesibilidad+$accesibilidad)/cantidad_vot, tiempo= (tiempo+$tiempo)/cantidad_vot
                                         WHERE receta.id_receta = $id_receta;";
                                         $rs = mysqli_query ($conexion, $query);
-
                                         $query =("UPDATE reportes SET calificacion = '1' WHERE reportes.id_reportando =$id_usuario");
                                         mysqli_query ($conexion, $query);
-
                                         $query="UPDATE usuario SET votos = +1 WHERE usuario.id_usuario = $id_usuario;";
                                         $rs = mysqli_query ($conexion, $query);
                                         }

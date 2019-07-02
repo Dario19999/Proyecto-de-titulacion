@@ -2,6 +2,19 @@
 // includes the autoloader for libraries installed with composer
 require __DIR__ . '/vendor/autoload.php';
 include 'php/conexion.php';
+require 'vendor/autoload.php';
+
+use Google\Cloud\Core\ServiceBuilder;
+
+// Authenticate using a keyfile path
+$cloud = new ServiceBuilder([
+    'keyFilePath' => 'credentials\lacousine-74f283cb1d17.json'
+]);
+
+// Authenticate using keyfile data
+$cloud = new ServiceBuilder([
+    'keyFile' => json_decode(file_get_contents('credentials\lacousine-74f283cb1d17.json'), true)
+]);
 
 // Imports the Cloud Client Library
 use Google\Cloud\TextToSpeech\V1\AudioConfig;
@@ -45,7 +58,7 @@ file_put_contents('audio/prueba.mp3', $audioContent);
 
 echo 'Audio content written to audio/prueba.mp3' . PHP_EOL .'<br>';
 
-$query1= "UPDATE procedimiento SET audio = 'audio/prueba.mp3' WHERE id_procedimiento = $id_procedimiento";
+$query1= "UPDATE receta SET audio = 'audio/prueba.mp3' WHERE id_receta = 27";
 mysqli_query ($conexion, $query1) OR DIE ("Error: ".mysqli_error($conexion));
 
 
