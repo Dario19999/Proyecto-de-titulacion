@@ -39,43 +39,52 @@ if(isset($_POST ['edad'])){
 if(isset($_POST ['nacionalidad'])){
     $nacionalidad = $_POST ['nacionalidad'];
 }else $nacionalidad=0;
+
+//se revisa que el botón submit haya sido pulsado
 if(isset($_POST ['save'])){
 
-    $flag = true;
+    //la variable flag va a servir para identificar si la validación se ha pasado correctamente
+    //se crea una variable que contendrá el formato de imagen
     $type = $_FILES["img_perfil"]["type"];
+    //y se hace una comparación para revisar si $type es alguno de los formatos de imagen aceptados
     if($type == "image/png" || $type =="image/jpg" || $type=="image/jpeg" || $_FILES['img_perfil']['size'] == 0)
     {
+        //en caso de que sí lo sea, la bandera se pone en true
         $flag = true;
+
+        //y se crean los nombres de imagen 
         $img_name = $_FILES['img_perfil']['name'];
         $ruta = $_FILES['img_perfil']['tmp_name'];
     }
     else 
     {
+        //en caso de no ser un formato de imagen soportado se muestra el mensaje de error
         echo '<script>alert("Formato de imagen incorrecto")</script>';
     }
+//finalmente, si no hay ninguna imagen de perfil para actualizar los datos
+//se pone la variable en 0
 }else $img_perfil=0;
 
+//Se preparan las variables para poder guardar la imagen y generar una referencia
+//Extensión que debe de tener la imagen insertada
 $tips = "jpg";
 $type = array("image/jpeg" => "jpg");
+
+//Se genera la referencia como id-usuario.jpg
 $img=$id_usuario.".".$tips;
 
+//Si la imagen está cargada se guarda en la ruta especificada
 if(is_uploaded_file($ruta)){
     $save_bd = "img_perfiles/".$img;
     $save_on = "../img_perfiles/".$img;
     copy($ruta, $save_on);
 }
 
-echo $nombre_usuario."<br>";
-echo $genero."<br>";
-echo $nacionalidad."<br>";
-echo $save_on."<br>";
-
 function is_empty ($query){
     if (strlen($query)==18) {
     return true;
     }else {return false;}
 }
-// UPDATE `usuario` SET `id_nacionalidad` = '20', `nombre` = 'Pepe', `sexo` = 'M' WHERE `usuario`.`id_usuario` = 15;
 
 $query_groseria = "SELECT groseria FROM groseria";
 $res_groseria = mysqli_query($conexion, $query_groseria);

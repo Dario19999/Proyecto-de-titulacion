@@ -1,6 +1,9 @@
  function redirigir(id){
      console.log(id);
+     //con un switch case se compara el id para saber a dónde redirigirse
     switch (id){
+        //ej. en este caso, si el id es "boton_buscar" se
+        //regirige a la página "buscar_receta.php"
         case 'btn_buscar':
             window.location.replace("buscar_receta.php");
         break;

@@ -7,39 +7,34 @@
     $userSession = new userSession();
     $user = new User ();
 
+    //si el formulario tiene listas las variables POST y el usuario está conectado
     if(isset($_POST ['termino']) && isset($_POST ['definicion']) && isset ($_SESSION ['username'])){
+        //se toman las varibles que manda el formulario por post
         $termino = $_POST ['termino'];
         $definicion = $_POST ['definicion'];
-        $usuario = $_SESSION['username'];
 
+        //se toma el username para poder obtener la id del usuario
+        $usuario = $_SESSION['username'];
         $query = "SELECT * FROM usuario WHERE nombre = '$usuario'";
         $rs = mysqli_query ($conexion, $query);
-
         while(($row=mysqli_fetch_assoc($rs)))  { 
-        $id=($row['id_usuario'])."<br>"; 
+            $id=($row['id_usuario'])."<br>"; 
         }
 
-        $query_groseria = "SELECT groseria FROM groseria";
-        $res_groseria = mysqli_query($conexion, $query_groseria);
-        $bandera = 1;
-        while($row = mysqli_fetch_array($res_groseria)){
-            if(strpos($termino, $row['groseria']) !== false || strpos($definicion, $row['groseria']) !== false){
-                $bandera = 0;
-                echo '<script>alert("No se permiten groserias. favor de corregir")</script>';
-                echo "<script type='text/javascript'>window.location.replace('../glosario.php')</script>";
+        //se insertan el id del usuario, la palabra y la definición de la misma
+        //en la tabla "termino".-
+        $query="INSERT INTO 'termino' ('id_usuario', 'definicion', 'palabra') VALUES ('$id', '$definicion', '$termino');";
+        $rs = mysqli_query ($conexion, $query);
 
-            }   
-        }
-        
-        if($bandera == 1){
+        //se obtiene la primera letra del término recién insertado
+        //y se asigna a la variable $primera
+        $primera = substr($termino, 0, 1);
 
-            $query="INSERT INTO `termino` (`id_usuario`, `definicion`, `palabra`) VALUES ('$id', '$definicion', '$termino');";
-            $rs = mysqli_query ($conexion, $query);
-            $primera = substr($termino, 0, 1);
-
-            header ('Location: ../glosario.php?letra='.$primera.'') ;
-        }
+        //se redirige a la página del glosario en la que se encuentra el nuevo término 
+        header ('Location: ../glosario.php?letra='.$primera.'') ;
     }else{
+        //en caso de no estar listas las variables POST, se queda en la página principal
+        //del glosario
         header ('Location: ../glosario.php') ;
     }
 
